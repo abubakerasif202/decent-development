@@ -36,7 +36,7 @@ export default function Projects() {
       <div className="section-shell">
         <motion.div
           className="mx-auto max-w-3xl text-center"
-          initial={reducedMotion ? false : { opacity: 1, y: 24 }}
+          initial={reducedMotion ? false : { opacity: 0, y: 24 }}
           whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.35 }}
           transition={{ duration: 0.55, ease: 'easeOut' }}
@@ -53,7 +53,7 @@ export default function Projects() {
             <motion.article
               key={title}
               className="group"
-              initial={reducedMotion ? false : { opacity: 1, y: 24 }}
+              initial={reducedMotion ? false : { opacity: 0, y: 24 }}
               whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.25 }}
               transition={{ duration: 0.5, delay: reducedMotion ? 0 : index * 0.05, ease: 'easeOut' }}
@@ -62,7 +62,7 @@ export default function Projects() {
                 <img
                   src={image}
                   alt={`${title} example`}
-                  className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                  className="h-full w-full object-cover transition duration-700 group-hover:scale-110"
                   loading="eager"
                   decoding="async"
                 />

@@ -57,7 +57,7 @@ export default function Services() {
       <div className="section-shell flex flex-col gap-12 lg:flex-row">
         <motion.div
           className="lg:w-2/5 lg:pr-10"
-          initial={reducedMotion ? false : { opacity: 1, y: 24 }}
+          initial={reducedMotion ? false : { opacity: 0, y: 24 }}
           whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.35 }}
           transition={{ duration: 0.55, ease: 'easeOut' }}
@@ -80,10 +80,11 @@ export default function Services() {
             <motion.article
               key={title}
               className="group flex min-h-52 flex-col items-center justify-center border border-graphite bg-charcoal p-6 text-center transition duration-300 hover:border-gold hover:shadow-[inset_0_0_24px_rgba(197,160,89,0.12)]"
-              initial={reducedMotion ? false : { opacity: 1, y: 22 }}
+              initial={reducedMotion ? false : { opacity: 0, y: 22 }}
               whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.25 }}
               transition={{ duration: 0.48, delay: reducedMotion ? 0 : index * 0.04, ease: 'easeOut' }}
+              whileHover={reducedMotion ? undefined : { y: -6 }}
             >
               <div className="mb-6 inline-flex h-12 w-12 items-center justify-center border border-gold/50 bg-ink text-gold transition-colors duration-200 group-hover:bg-gold group-hover:text-ink">
                 <Icon size={24} aria-hidden="true" />

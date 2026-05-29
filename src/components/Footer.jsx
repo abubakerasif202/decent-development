@@ -1,3 +1,5 @@
+import { motion, useReducedMotion } from 'framer-motion'
+
 const quickLinks = [
   ['Home', '#home'],
   ['About', '#about'],
@@ -13,30 +15,43 @@ const serviceLinks = [
   ['Consulting', '#services'],
 ]
 
-function BrandMark({ company }) {
+function BrandMark({ company, logo }) {
   return (
-    <span className="flex items-center gap-3">
-      <span className="grid h-8 w-8 place-items-center border border-gold font-display text-lg font-bold text-ivory">
-        D
+    <span className="flex items-center gap-4">
+      <span className="logo-frame h-14 w-[150px]">
+        <img
+          src={logo}
+          alt="DECENT Development logo"
+          className="h-full w-full object-contain"
+          decoding="async"
+          loading="lazy"
+        />
       </span>
       <span className="leading-none">
         <span className="block text-sm font-bold uppercase text-ivory">DECENT</span>
-        <span className="block text-[8px] font-semibold uppercase text-smoke">Development</span>
+        <span className="block text-[10px] font-semibold uppercase text-smoke">Development</span>
       </span>
       <span className="sr-only">{company.name}</span>
     </span>
   )
 }
 
-export default function Footer({ company }) {
+export default function Footer({ company, logo }) {
+  const reducedMotion = useReducedMotion()
   const year = new Date().getFullYear()
 
   return (
-    <footer className="bg-ink text-ivory">
+    <motion.footer
+      className="bg-ink text-ivory"
+      initial={reducedMotion ? false : { opacity: 0, y: 20 }}
+      whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.6, ease: 'easeOut' }}
+    >
       <div className="section-shell border-t border-graphite py-12">
         <div className="grid gap-10 md:grid-cols-[1fr_0.7fr_0.7fr_0.9fr] md:items-start">
           <div>
-            <BrandMark company={company} />
+            <BrandMark company={company} logo={logo} />
           </div>
 
           <div>
@@ -93,6 +108,6 @@ export default function Footer({ company }) {
       <div className="pb-8 text-center text-[10px] uppercase text-stone">
         &copy; {year} {company.name}. All rights reserved.
       </div>
-    </footer>
+    </motion.footer>
   )
 }

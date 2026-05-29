@@ -32,7 +32,7 @@ export default function Contact({ company }) {
     <section id="contact" className="bg-ink py-20 text-ivory sm:py-24" aria-labelledby="contact-title">
       <div className="section-shell grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
         <motion.div
-          initial={reducedMotion ? false : { opacity: 1, y: 24 }}
+          initial={reducedMotion ? false : { opacity: 0, y: 24 }}
           whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.35 }}
           transition={{ duration: 0.55, ease: 'easeOut' }}
@@ -80,7 +80,7 @@ export default function Contact({ company }) {
 
         <motion.div
           className="pt-2"
-          initial={reducedMotion ? false : { opacity: 1, y: 24 }}
+          initial={reducedMotion ? false : { opacity: 0, y: 24 }}
           whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.35 }}
           transition={{ duration: 0.55, delay: 0.08, ease: 'easeOut' }}

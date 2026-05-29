@@ -37,7 +37,7 @@ export default function Team({ assets }) {
       <div className="section-shell">
         <motion.div
           className="mx-auto max-w-3xl text-center"
-          initial={reducedMotion ? false : { opacity: 1, y: 24 }}
+          initial={reducedMotion ? false : { opacity: 0, y: 24 }}
           whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.35 }}
           transition={{ duration: 0.55, ease: 'easeOut' }}
@@ -61,11 +61,12 @@ export default function Team({ assets }) {
           {members.map((member, index) => (
             <motion.article
               key={member.name}
-              className={`group border border-black/5 bg-white p-4 shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-premium ${index === 1 ? 'md:-translate-y-4 md:hover:-translate-y-5' : ''}`}
-              initial={reducedMotion ? false : { opacity: 1, y: 28 }}
+              className={`group border border-black/5 bg-white p-4 shadow-sm transition-shadow duration-200 hover:shadow-premium ${index === 1 ? 'md:-translate-y-4' : ''}`}
+              initial={reducedMotion ? false : { opacity: 0, y: 28 }}
               whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.25 }}
               transition={{ duration: 0.52, delay: reducedMotion ? 0 : index * 0.12, ease: 'easeOut' }}
+              whileHover={reducedMotion ? undefined : { y: index === 1 ? -20 : -6 }}
             >
               <div className="aspect-[4/4.7] overflow-hidden bg-ink">
                 <TeamImage member={member} src={assets?.[member.assetKey]} />

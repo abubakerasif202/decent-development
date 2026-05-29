@@ -7,7 +7,7 @@ export default function About() {
     <section id="about" className="bg-porcelain py-16 text-ink sm:py-20" aria-labelledby="about-title">
       <div className="section-shell grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
         <motion.div
-          initial={reducedMotion ? false : { opacity: 1, y: 24 }}
+          initial={reducedMotion ? false : { opacity: 0, y: 24 }}
           whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.35 }}
           transition={{ duration: 0.55, ease: 'easeOut' }}
@@ -20,7 +20,7 @@ export default function About() {
         </motion.div>
 
         <motion.div
-          initial={reducedMotion ? false : { opacity: 1, y: 24 }}
+          initial={reducedMotion ? false : { opacity: 0, y: 24 }}
           whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.35 }}
           transition={{ duration: 0.55, delay: 0.08, ease: 'easeOut' }}

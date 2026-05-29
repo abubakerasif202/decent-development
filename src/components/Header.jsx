@@ -11,13 +11,18 @@ const navItems = [
   ['Contact', '#contact'],
 ]
 
-function BrandMark({ company }) {
+function BrandMark({ company, logo }) {
   return (
     <span className="flex items-center gap-3">
-      <span className="grid h-9 w-9 place-items-center border-2 border-gold bg-ink/25 font-display text-xl font-bold text-ivory">
-        D
+      <span className="logo-frame h-12 w-[118px] sm:h-14 sm:w-[150px]">
+        <img
+          src={logo}
+          alt="DECENT Development logo"
+          className="h-full w-full object-contain"
+          decoding="async"
+        />
       </span>
-      <span className="leading-none">
+      <span className="hidden leading-none sm:block">
         <span className="block text-sm font-bold uppercase text-ivory">DECENT</span>
         <span className="block text-[10px] font-semibold uppercase text-smoke">Development</span>
       </span>
@@ -26,9 +31,18 @@ function BrandMark({ company }) {
   )
 }
 
-export default function Header({ company }) {
+export default function Header({ company, logo }) {
   const [open, setOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
   const reducedMotion = useReducedMotion()
+
+  useEffect(() => {
+    const updateScrolled = () => setScrolled(window.scrollY > 24)
+
+    updateScrolled()
+    window.addEventListener('scroll', updateScrolled, { passive: true })
+    return () => window.removeEventListener('scroll', updateScrolled)
+  }, [])
 
   useEffect(() => {
     const closeOnWideScreen = () => {
@@ -48,11 +62,21 @@ export default function Header({ company }) {
   }, [open])
 
   return (
-    <header className="absolute left-0 top-0 z-50 w-full bg-transparent px-0 py-4 sm:py-6">
+    <motion.header
+      className="fixed left-0 top-0 z-50 w-full px-0 py-3 transition-shadow duration-300 sm:py-4"
+      initial={false}
+      animate={{
+        backgroundColor: scrolled || open ? 'rgba(18, 18, 18, 0.9)' : 'rgba(18, 18, 18, 0)',
+        backdropFilter: scrolled || open ? 'blur(18px)' : 'blur(0px)',
+        borderBottomColor: scrolled || open ? 'rgba(197, 160, 89, 0.18)' : 'rgba(197, 160, 89, 0)',
+      }}
+      transition={{ duration: reducedMotion ? 0.01 : 0.28, ease: 'easeOut' }}
+      style={{ borderBottomWidth: 1, borderBottomStyle: 'solid' }}
+    >
       <div className="section-shell">
         <div className="flex items-center justify-between gap-4">
           <a href="#home" className="focus-ring rounded-sm" aria-label={`${company.name} home`}>
-            <BrandMark company={company} />
+            <BrandMark company={company} logo={logo} />
           </a>
 
           <nav className="hidden items-center gap-7 md:flex" aria-label="Primary navigation">
@@ -60,7 +84,7 @@ export default function Header({ company }) {
               <a
                 key={label}
                 href={href}
-                className="focus-ring rounded-sm text-xs font-semibold uppercase text-ivory transition-colors duration-200 hover:text-gold"
+                className="nav-link focus-ring rounded-sm text-xs font-semibold uppercase text-ivory transition-colors duration-200 hover:text-gold"
               >
                 {label}
               </a>
@@ -103,7 +127,7 @@ export default function Header({ company }) {
               transition={{ duration: reducedMotion ? 0.01 : 0.28, ease: 'easeOut' }}
             >
               <div className="flex items-center justify-between gap-4">
-                <BrandMark company={company} />
+                <BrandMark company={company} logo={logo} />
                 <button
                   type="button"
                   className="focus-ring inline-flex min-h-11 min-w-11 items-center justify-center border border-gold/25 text-ivory"
@@ -145,6 +169,6 @@ export default function Header({ company }) {
           ) : null}
         </AnimatePresence>
       </div>
-    </header>
+    </motion.header>
   )
 }
