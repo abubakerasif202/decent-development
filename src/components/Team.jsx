@@ -2,9 +2,27 @@ import { motion, useReducedMotion } from 'framer-motion'
 import { Building2, ClipboardCheck, Users } from 'lucide-react'
 
 const members = [
-  { name: 'Nemat Haidari', role: 'Project Manager', assetKey: 'nemat', initials: 'NH' },
-  { name: 'Mohammad Mohsini', role: 'Project Manager', assetKey: 'mohammad', initials: 'MM' },
-  { name: 'Hussain Jafari', role: 'Project Manager', assetKey: 'hussain', initials: 'HJ' },
+  {
+    name: 'Nemat Haidari',
+    role: 'Specialist Project Manager',
+    bio: '20 years of experience in construction.',
+    assetKey: 'nemat',
+    initials: 'NH',
+  },
+  {
+    name: 'Mohammad Mohsini',
+    role: 'Certified Builder & Specialist Project Manager',
+    bio: '10 years of construction experience and certified builder expertise.',
+    assetKey: 'mohammad',
+    initials: 'MM',
+  },
+  {
+    name: 'Hussain Jafari',
+    role: 'Home & Land Package Specialist',
+    bio: 'Specialist in home and land package projects.',
+    assetKey: 'hussain',
+    initials: 'HJ',
+  },
 ]
 
 function TeamImage({ member, src }) {
@@ -61,7 +79,7 @@ export default function Team({ assets }) {
           {members.map((member, index) => (
             <motion.article
               key={member.name}
-              className={`group border border-black/5 bg-white p-4 shadow-sm transition-shadow duration-200 hover:shadow-premium ${index === 1 ? 'md:-translate-y-4' : ''}`}
+              className={`group flex h-full flex-col border border-black/5 bg-white p-4 shadow-sm transition-shadow duration-200 hover:shadow-premium ${index === 1 ? 'md:-translate-y-4' : ''}`}
               initial={reducedMotion ? false : { opacity: 0, y: 28 }}
               whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.25 }}
@@ -71,14 +89,15 @@ export default function Team({ assets }) {
               <div className="aspect-[4/4.7] overflow-hidden bg-ink">
                 <TeamImage member={member} src={assets?.[member.assetKey]} />
               </div>
-              <div className="px-2 py-6 text-center">
+              <div className="flex flex-1 flex-col items-center px-2 py-6 text-center">
                 <div className="mx-auto mb-4 inline-flex h-9 w-9 items-center justify-center border border-gold/35 bg-gold/10 text-gold">
                   <Users size={20} aria-hidden="true" />
                 </div>
                 <h3 className="font-display text-lg font-normal text-ink">{member.name}</h3>
-                <p className="mt-2 text-xs font-semibold uppercase text-stone">
+                <p className="mt-2 min-h-10 max-w-[15rem] text-[11px] font-semibold uppercase leading-5 text-stone">
                   {member.role}
                 </p>
+                <p className="mt-3 max-w-[15rem] text-sm leading-6 text-graphite">{member.bio}</p>
               </div>
             </motion.article>
           ))}
