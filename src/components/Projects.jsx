@@ -1,22 +1,30 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
+import projectCommercial from '../assets/stitch/project-commercial.jpg'
+import projectMultiuse from '../assets/stitch/project-multiuse.jpg'
+import projectRenovation from '../assets/stitch/project-renovation.jpg'
+import projectResidential from '../assets/stitch/project-residential.jpg'
 
 const projects = [
   {
     title: 'Residential Development',
     copy: 'Contemporary residential delivery with a focus on planning clarity, quality finishes, and long-term owner value.',
+    image: projectResidential,
   },
   {
     title: 'Commercial Fit-out',
     copy: 'Efficient commercial fit-out coordination designed to reduce disruption and keep handover milestones clear.',
+    image: projectCommercial,
   },
   {
     title: 'Multi-unit Development',
     copy: 'Multi-dwelling project delivery supported by structured sequencing, consultant coordination, and site control.',
+    image: projectMultiuse,
   },
   {
     title: 'Renovation Project',
     copy: 'Targeted renovations and extensions planned around existing structures, client priorities, and liveability gains.',
+    image: projectRenovation,
   },
 ]
 
@@ -24,55 +32,58 @@ export default function Projects() {
   const reducedMotion = useReducedMotion()
 
   return (
-    <section id="projects" className="bg-ink py-20 text-ivory sm:py-24" aria-labelledby="projects-title">
+    <section id="projects" className="bg-porcelain py-16 text-ink sm:py-20" aria-labelledby="projects-title">
       <div className="section-shell">
-        <div className="grid gap-6 lg:grid-cols-[0.85fr_1.15fr] lg:items-end">
-          <motion.div
-            initial={reducedMotion ? false : { opacity: 0, y: 24 }}
-            whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.35 }}
-            transition={{ duration: 0.55, ease: 'easeOut' }}
-          >
-            <p className="eyebrow">Projects</p>
-            <h2 id="projects-title" className="mt-4 font-display text-4xl font-semibold leading-[1.12] sm:text-5xl">
-              Premium project capability across key property sectors.
-            </h2>
-          </motion.div>
-          <p className="max-w-2xl text-base leading-7 text-smoke lg:justify-self-end">
-            Project examples are structured as premium placeholders so completed
-            development photography can be added without changing the page layout.
-          </p>
-        </div>
+        <motion.div
+          className="mx-auto max-w-3xl text-center"
+          initial={reducedMotion ? false : { opacity: 1, y: 24 }}
+          whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.35 }}
+          transition={{ duration: 0.55, ease: 'easeOut' }}
+        >
+          <h2 id="projects-title" className="font-display text-3xl font-normal leading-tight sm:text-4xl">
+            Premium project capability across
+            <br />
+            key property sectors
+          </h2>
+        </motion.div>
 
-        <div className="mt-12 grid gap-5 md:grid-cols-2">
-          {projects.map(({ title, copy }, index) => (
+        <div className="mt-12 grid gap-x-8 gap-y-14 md:grid-cols-2">
+          {projects.map(({ title, copy, image }, index) => (
             <motion.article
               key={title}
-              className="group overflow-hidden border border-gold/15 bg-ivory/[0.045]"
-              initial={reducedMotion ? false : { opacity: 0, y: 24 }}
+              className="group"
+              initial={reducedMotion ? false : { opacity: 1, y: 24 }}
               whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.25 }}
               transition={{ duration: 0.5, delay: reducedMotion ? 0 : index * 0.05, ease: 'easeOut' }}
             >
-              <div className="project-blueprint relative aspect-[16/10] overflow-hidden">
-                <div className="absolute inset-0 transition duration-300 group-hover:scale-105">
-                  <div className="absolute left-6 top-6 h-20 w-20 border-l border-t border-gold/60" />
-                  <div className="absolute bottom-6 right-6 h-20 w-20 border-b border-r border-gold/60" />
-                  <div className="absolute left-1/2 top-0 h-full w-px bg-ivory/10" />
-                  <div className="absolute left-0 top-1/2 h-px w-full bg-ivory/10" />
-                </div>
-              </div>
-              <div className="p-6">
-                <h3 className="font-display text-2xl font-semibold text-ivory">{title}</h3>
-                <p className="mt-3 text-sm leading-7 text-smoke">{copy}</p>
+              <div className="relative mb-6 aspect-[16/9] overflow-hidden bg-stone/20">
+                <img
+                  src={image}
+                  alt={`${title} example`}
+                  className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                  loading="eager"
+                  decoding="async"
+                />
                 <a
                   href="#contact"
-                  className="focus-ring mt-6 inline-flex items-center gap-2 text-sm font-semibold text-gold transition-colors duration-200 hover:text-gold-soft"
+                  className="focus-ring absolute inset-0 flex items-center justify-center bg-gold/85 opacity-0 transition duration-300 group-hover:opacity-100"
                 >
-                  Discuss a similar project
-                  <ArrowRight size={16} aria-hidden="true" />
+                  <span className="border border-white px-6 py-2 text-xs font-semibold uppercase text-white">
+                    Discuss Project
+                  </span>
                 </a>
               </div>
+              <h3 className="font-display text-xl font-normal text-ink">{title}</h3>
+              <p className="mt-2 max-w-md text-sm font-light leading-6 text-graphite/70">{copy}</p>
+              <a
+                href="#contact"
+                className="focus-ring mt-4 inline-flex items-center gap-2 text-sm font-semibold text-bronze transition-colors duration-200 hover:text-ink"
+              >
+                Discuss a similar project
+                <ArrowRight size={16} aria-hidden="true" />
+              </a>
             </motion.article>
           ))}
         </div>

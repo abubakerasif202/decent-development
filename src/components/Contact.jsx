@@ -29,27 +29,58 @@ export default function Contact({ company }) {
   }
 
   return (
-    <section id="contact" className="bg-charcoal py-20 text-ivory sm:py-24" aria-labelledby="contact-title">
-      <div className="section-shell grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+    <section id="contact" className="bg-ink py-20 text-ivory sm:py-24" aria-labelledby="contact-title">
+      <div className="section-shell grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
         <motion.div
-          initial={reducedMotion ? false : { opacity: 0, y: 24 }}
+          initial={reducedMotion ? false : { opacity: 1, y: 24 }}
           whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.35 }}
           transition={{ duration: 0.55, ease: 'easeOut' }}
         >
-          <p className="eyebrow">Contact</p>
-          <h2 id="contact-title" className="mt-4 font-display text-4xl font-semibold leading-[1.12] sm:text-5xl">
-            Start a conversation about your next project.
+          <h2 id="contact-title" className="font-display text-4xl font-normal leading-tight sm:text-5xl">
+            Start a
+            <br />
+            conversation
+            <br />
+            about your
+            <br />
+            next project.
           </h2>
-          <p className="mt-6 max-w-xl text-base leading-7 text-smoke">
+          <p className="mt-8 max-w-xl text-base font-light leading-7 text-smoke">
             Speak with DECENT Development about construction, property development,
             renovations, extensions, or project management support across New South Wales.
           </p>
+          <div className="mt-12 space-y-4">
+            <div className="flex items-start gap-4">
+              <MapPin className="mt-1 shrink-0 text-gold" size={18} aria-hidden="true" />
+              <p className="text-sm leading-6 text-smoke">{company.address}</p>
+            </div>
+            <div className="flex items-start gap-4">
+              <Mail className="mt-1 shrink-0 text-gold" size={18} aria-hidden="true" />
+              <a className="focus-ring rounded-sm text-sm text-smoke hover:text-gold" href={`mailto:${company.email}`}>
+                {company.email}
+              </a>
+            </div>
+            <div className="flex items-start gap-4">
+              <Phone className="mt-1 shrink-0 text-gold" size={18} aria-hidden="true" />
+              <a className="focus-ring rounded-sm text-sm text-smoke hover:text-gold" href={company.phoneHref}>
+                {company.phone}
+              </a>
+            </div>
+            <div className="flex items-start gap-4">
+              <BadgeCheck className="mt-1 shrink-0 text-gold" size={18} aria-hidden="true" />
+              <p className="text-sm leading-6 text-smoke">
+                Licence Number: {company.licence}
+                <br />
+                ACN: {company.acn}
+              </p>
+            </div>
+          </div>
         </motion.div>
 
         <motion.div
-          className="border border-gold/15 bg-ivory/[0.045] p-6 sm:p-8"
-          initial={reducedMotion ? false : { opacity: 0, y: 24 }}
+          className="pt-2"
+          initial={reducedMotion ? false : { opacity: 1, y: 24 }}
           whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.35 }}
           transition={{ duration: 0.55, delay: 0.08, ease: 'easeOut' }}
@@ -57,7 +88,7 @@ export default function Contact({ company }) {
           <form className="grid gap-5" onSubmit={handleSubmit}>
             <div className="grid gap-5 sm:grid-cols-2">
               <div>
-                <label className="block text-xs font-semibold uppercase text-smoke" htmlFor="quote-name" style={{ letterSpacing: '0.14em' }}>
+                <label className="sr-only" htmlFor="quote-name">
                   Full Name
                 </label>
                 <input
@@ -66,12 +97,12 @@ export default function Contact({ company }) {
                   type="text"
                   autoComplete="name"
                   required
-                  className="focus-ring mt-2 min-h-12 w-full border border-gold/15 bg-ink px-4 py-3 text-ivory placeholder:text-stone"
-                  placeholder="Your name"
+                  className="focus-ring min-h-12 w-full border border-gold/30 bg-transparent px-4 py-3 text-ivory placeholder:text-stone"
+                  placeholder="Name"
                 />
               </div>
               <div>
-                <label className="block text-xs font-semibold uppercase text-smoke" htmlFor="quote-email" style={{ letterSpacing: '0.14em' }}>
+                <label className="sr-only" htmlFor="quote-email">
                   Email
                 </label>
                 <input
@@ -80,15 +111,15 @@ export default function Contact({ company }) {
                   type="email"
                   autoComplete="email"
                   required
-                  className="focus-ring mt-2 min-h-12 w-full border border-gold/15 bg-ink px-4 py-3 text-ivory placeholder:text-stone"
-                  placeholder="you@example.com"
+                  className="focus-ring min-h-12 w-full border border-gold/30 bg-transparent px-4 py-3 text-ivory placeholder:text-stone"
+                  placeholder="Email"
                 />
               </div>
             </div>
 
             <div className="grid gap-5 sm:grid-cols-2">
               <div>
-                <label className="block text-xs font-semibold uppercase text-smoke" htmlFor="quote-phone" style={{ letterSpacing: '0.14em' }}>
+                <label className="sr-only" htmlFor="quote-phone">
                   Phone
                 </label>
                 <input
@@ -96,18 +127,18 @@ export default function Contact({ company }) {
                   name="phone"
                   type="tel"
                   autoComplete="tel"
-                  className="focus-ring mt-2 min-h-12 w-full border border-gold/15 bg-ink px-4 py-3 text-ivory placeholder:text-stone"
-                  placeholder="Best contact number"
+                  className="focus-ring min-h-12 w-full border border-gold/30 bg-transparent px-4 py-3 text-ivory placeholder:text-stone"
+                  placeholder="Phone"
                 />
               </div>
               <div>
-                <label className="block text-xs font-semibold uppercase text-smoke" htmlFor="quote-project-type" style={{ letterSpacing: '0.14em' }}>
+                <label className="sr-only" htmlFor="quote-project-type">
                   Project Type
                 </label>
                 <select
                   id="quote-project-type"
                   name="projectType"
-                  className="focus-ring mt-2 min-h-12 w-full border border-gold/15 bg-ink px-4 py-3 text-ivory"
+                  className="focus-ring min-h-12 w-full border border-gold/30 bg-transparent px-4 py-3 text-smoke"
                   defaultValue="Residential Construction"
                 >
                   <option className="bg-ink text-ivory">Residential Construction</option>
@@ -120,7 +151,7 @@ export default function Contact({ company }) {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold uppercase text-smoke" htmlFor="quote-message" style={{ letterSpacing: '0.14em' }}>
+              <label className="sr-only" htmlFor="quote-message">
                 Project Details
               </label>
               <textarea
@@ -128,17 +159,16 @@ export default function Contact({ company }) {
                 name="message"
                 required
                 rows="5"
-                className="focus-ring mt-2 w-full resize-y border border-gold/15 bg-ink px-4 py-3 text-ivory placeholder:text-stone"
-                placeholder="Tell us about your site, timeline, scope, and priorities."
+                className="focus-ring w-full resize-y border border-gold/30 bg-transparent px-4 py-3 text-ivory placeholder:text-stone"
+                placeholder="Project Details"
               />
             </div>
 
             <button
               type="submit"
-              className="focus-ring inline-flex min-h-14 items-center justify-center gap-3 bg-gold px-6 py-4 text-sm font-semibold uppercase text-ink transition duration-200 hover:-translate-y-0.5 hover:bg-gold-soft"
-              style={{ letterSpacing: '0.16em' }}
+              className="focus-ring gold-gradient-btn inline-flex min-h-14 items-center justify-center gap-3 px-6 py-4 text-sm font-semibold uppercase"
             >
-              Submit Inquiry
+              Submit Request
               <ArrowRight size={18} aria-hidden="true" />
             </button>
 
@@ -149,57 +179,17 @@ export default function Contact({ company }) {
             ) : null}
           </form>
 
-          <div className="mt-8 grid gap-5 border-t border-gold/15 pt-8">
-            <div className="flex gap-4">
-              <MapPin className="mt-1 shrink-0 text-gold" size={22} aria-hidden="true" />
-              <div>
-                <p className="font-semibold text-ivory">Address</p>
-                <p className="mt-1 leading-7 text-smoke">
-                  Level 14, 275 Alfred St North,
-                  <br />
-                  North Sydney NSW 2060
-                </p>
-              </div>
-            </div>
-            <div className="flex gap-4">
-              <Mail className="mt-1 shrink-0 text-gold" size={22} aria-hidden="true" />
-              <div>
-                <p className="font-semibold text-ivory">Email</p>
-                <a className="focus-ring mt-1 inline-block rounded-sm text-smoke hover:text-gold" href={`mailto:${company.email}`}>
-                  {company.email}
-                </a>
-              </div>
-            </div>
-            <div className="flex gap-4">
-              <Phone className="mt-1 shrink-0 text-gold" size={22} aria-hidden="true" />
-              <div>
-                <p className="font-semibold text-ivory">Phone</p>
-                <a className="focus-ring mt-1 inline-block rounded-sm text-smoke hover:text-gold" href={company.phoneHref}>
-                  {company.phone}
-                </a>
-              </div>
-            </div>
-            <div className="flex gap-4">
-              <BadgeCheck className="mt-1 shrink-0 text-gold" size={22} aria-hidden="true" />
-              <div>
-                <p className="font-semibold text-ivory">Credentials</p>
-                <p className="mt-1 leading-7 text-smoke">Licence Number: {company.licence}</p>
-                <p className="leading-7 text-smoke">ACN: {company.acn}</p>
-              </div>
-            </div>
-          </div>
-
           <div className="mt-8 grid gap-3 sm:grid-cols-3">
             <a
               href={company.phoneHref}
-              className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 bg-gold px-4 py-3 text-sm font-semibold text-ink transition duration-200 hover:-translate-y-0.5 hover:bg-gold-soft"
+              className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 border border-gold/30 px-4 py-3 text-sm font-semibold text-ivory transition duration-200 hover:-translate-y-0.5 hover:border-gold hover:text-gold"
             >
               <Phone size={17} aria-hidden="true" />
               Call Now
             </a>
             <a
               href={`mailto:${company.email}`}
-              className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 border border-gold/20 px-4 py-3 text-sm font-semibold text-ivory transition duration-200 hover:-translate-y-0.5 hover:border-gold/70 hover:text-gold"
+              className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 border border-gold/30 px-4 py-3 text-sm font-semibold text-ivory transition duration-200 hover:-translate-y-0.5 hover:border-gold hover:text-gold"
             >
               <Mail size={17} aria-hidden="true" />
               Email Us
@@ -208,7 +198,7 @@ export default function Contact({ company }) {
               href={directionsUrl}
               target="_blank"
               rel="noreferrer"
-              className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 border border-gold/20 px-4 py-3 text-sm font-semibold text-ivory transition duration-200 hover:-translate-y-0.5 hover:border-gold/70 hover:text-gold"
+              className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 border border-gold/30 px-4 py-3 text-sm font-semibold text-ivory transition duration-200 hover:-translate-y-0.5 hover:border-gold hover:text-gold"
             >
               <MapPin size={17} aria-hidden="true" />
               Get Directions

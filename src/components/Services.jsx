@@ -1,5 +1,20 @@
 import { motion, useReducedMotion } from 'framer-motion'
-import { Building2, ClipboardCheck, Hammer, Home, Landmark, Wrench } from 'lucide-react'
+import { BadgeCheck, Brain, Building2, ClipboardCheck, Hammer, Home, Landmark, Wrench } from 'lucide-react'
+
+const proofTiles = [
+  {
+    title: 'Accountable delivery',
+    icon: BadgeCheck,
+  },
+  {
+    title: 'Deep knowledge',
+    icon: Brain,
+  },
+  {
+    title: 'End-to-end excellence',
+    icon: Hammer,
+  },
+]
 
 const services = [
   {
@@ -38,36 +53,43 @@ export default function Services() {
   const reducedMotion = useReducedMotion()
 
   return (
-    <section id="services" className="bg-charcoal py-20 text-ivory sm:py-24" aria-labelledby="services-title">
-      <div className="section-shell">
+    <section id="services" className="bg-ink py-16 text-ivory sm:py-20" aria-labelledby="services-title">
+      <div className="section-shell flex flex-col gap-12 lg:flex-row">
         <motion.div
-          className="max-w-3xl"
-          initial={reducedMotion ? false : { opacity: 0, y: 24 }}
+          className="lg:w-2/5 lg:pr-10"
+          initial={reducedMotion ? false : { opacity: 1, y: 24 }}
           whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.35 }}
           transition={{ duration: 0.55, ease: 'easeOut' }}
         >
-          <p className="eyebrow">Services</p>
-          <h2 id="services-title" className="mt-4 font-display text-4xl font-semibold leading-[1.12] sm:text-5xl">
-            Construction services built around control and certainty.
+          <h2 id="services-title" className="font-display text-3xl font-normal leading-tight sm:text-4xl">
+            Construction services built around control and certainty
           </h2>
+          <div className="mt-12 grid grid-cols-3 gap-3">
+            {proofTiles.map(({ title, icon: Icon }) => (
+              <div key={title} className="border border-gold/30 p-4 text-center sm:p-5">
+                <Icon className="mx-auto mb-4 text-gold" size={22} aria-hidden="true" />
+                <p className="text-[10px] font-semibold uppercase text-smoke">{title}</p>
+              </div>
+            ))}
+          </div>
         </motion.div>
 
-        <div className="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-2 lg:w-3/5 xl:grid-cols-3">
           {services.map(({ title, copy, icon: Icon }, index) => (
             <motion.article
               key={title}
-              className="group border border-gold/15 bg-ivory/[0.045] p-6 transition duration-200 hover:-translate-y-1 hover:border-gold/60 hover:bg-ivory/[0.07]"
-              initial={reducedMotion ? false : { opacity: 0, y: 22 }}
+              className="group flex min-h-52 flex-col items-center justify-center border border-graphite bg-charcoal p-6 text-center transition duration-300 hover:border-gold hover:shadow-[inset_0_0_24px_rgba(197,160,89,0.12)]"
+              initial={reducedMotion ? false : { opacity: 1, y: 22 }}
               whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.25 }}
               transition={{ duration: 0.48, delay: reducedMotion ? 0 : index * 0.04, ease: 'easeOut' }}
             >
-              <div className="mb-6 inline-flex h-12 w-12 items-center justify-center border border-gold/35 bg-gold/10 text-gold transition-colors duration-200 group-hover:bg-gold group-hover:text-ink">
+              <div className="mb-6 inline-flex h-12 w-12 items-center justify-center border border-gold/50 bg-ink text-gold transition-colors duration-200 group-hover:bg-gold group-hover:text-ink">
                 <Icon size={24} aria-hidden="true" />
               </div>
-              <h3 className="text-xl font-semibold text-ivory">{title}</h3>
-              <p className="mt-4 text-sm leading-7 text-smoke">{copy}</p>
+              <h3 className="text-xs font-bold uppercase text-ivory">{title}</h3>
+              <p className="mt-4 text-xs font-light leading-5 text-smoke">{copy}</p>
             </motion.article>
           ))}
         </div>

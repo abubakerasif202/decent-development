@@ -35,7 +35,7 @@ function App() {
   return (
     <>
       <IntroAnimation logo={assets.logo} />
-      <Header company={company} logo={assets.logo} />
+      <Header company={company} />
       <main>
         <Hero company={company} />
         <About />

@@ -4,20 +4,20 @@ export default {
   theme: {
     extend: {
       colors: {
-        ink: '#0b0907',
-        navy: '#15110d',
-        charcoal: '#14110f',
-        graphite: '#29231d',
-        gold: '#c6a15b',
-        'gold-soft': '#ead29b',
-        porcelain: '#f7f0e4',
+        ink: '#121212',
+        navy: '#171717',
+        charcoal: '#1a1a1a',
+        graphite: '#2a2a2a',
+        gold: '#c5a059',
+        'gold-soft': '#d4b886',
+        porcelain: '#f5f2ea',
         ivory: '#fffaf2',
-        smoke: '#d8cbb8',
-        stone: '#a9987e',
-        bronze: '#7c5d35',
+        smoke: '#c9c3b8',
+        stone: '#8f887d',
+        bronze: '#8a6a35',
       },
       fontFamily: {
-        sans: ['Montserrat', 'ui-sans-serif', 'system-ui', 'Segoe UI', 'Arial', 'sans-serif'],
+        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'Segoe UI', 'Arial', 'sans-serif'],
         display: ['Playfair Display', 'Georgia', 'Cambria', 'Times New Roman', 'serif'],
       },
       boxShadow: {

@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DECENT Development | Building Better Futures</title>
+<!-- Tailwind CSS CDN with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Playfair Display for Serif, Inter for Sans-Serif -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'brand-gold': '#C5A059',
+            'brand-gold-light': '#D4B886',
+            'brand-dark': '#121212',
+            'brand-cream': '#F5F2EA',
+            'brand-grey': '#2A2A2A',
+          },
+          fontFamily: {
+            serif: ['"Playfair Display"', 'serif'],
+            sans: ['Inter', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+<style data-purpose="custom-typography">
+    h1, h2, h3, .font-serif {
+      font-family: 'Playfair Display', serif;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      scroll-behavior: smooth;
+    }
+  </style>
+<style data-purpose="ui-elements">
+    .gold-gradient-btn {
+      background: linear-gradient(135deg, #C5A059 0%, #E2C284 100%);
+      transition: all 0.3s ease;
+    }
+    .gold-gradient-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(197, 160, 89, 0.4);
+    }
+    .outline-btn {
+      border: 1px solid #C5A059;
+      transition: all 0.3s ease;
+    }
+    .outline-btn:hover {
+      background-color: rgba(197, 160, 89, 0.1);
+    }
+    .service-card {
+      background-color: #1A1A1A;
+      border: 1px solid #333;
+      transition: all 0.4s ease;
+    }
+    .service-card:hover {
+      border-color: #C5A059;
+      box-shadow: inset 0 0 20px rgba(197, 160, 89, 0.1);
+    }
+    .project-card {
+      position: relative;
+      overflow: hidden;
+    }
+    .project-overlay {
+      background: rgba(197, 160, 89, 0.85);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .project-card:hover .project-overlay {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body class="bg-brand-dark text-white antialiased">
+<!-- BEGIN: MainHeader -->
+<header class="absolute top-0 left-0 w-full z-50 px-8 py-6 flex justify-between items-center bg-transparent">
+<!-- Logo Section -->
+<div class="flex items-center space-x-2" data-purpose="header-logo">
+<div class="w-10 h-10 border-2 border-brand-gold flex items-center justify-center font-serif text-2xl font-bold">D</div>
+<div class="leading-none">
+<span class="block text-lg font-bold tracking-widest uppercase">DECENT</span>
+<span class="block text-[10px] tracking-[0.2em] text-gray-400">DEVELOPMENT</span>
+</div>
+</div>
+<!-- Navigation Menu -->
+<nav class="hidden md:flex items-center space-x-8 text-sm uppercase tracking-widest font-medium" data-purpose="main-nav">
+<a class="hover:text-brand-gold transition-colors" href="#">Home</a>
+<a class="hover:text-brand-gold transition-colors" href="#">About</a>
+<a class="hover:text-brand-gold transition-colors" href="#">Services</a>
+<a class="hover:text-brand-gold transition-colors" href="#">Projects</a>
+<a class="hover:text-brand-gold transition-colors" href="#">Team</a>
+<a class="hover:text-brand-gold transition-colors" href="#">Contact</a>
+</nav>
+<!-- Header Action Button -->
+<div>
+<a class="gold-gradient-btn px-6 py-3 rounded-sm text-brand-dark font-bold text-xs uppercase tracking-widest" href="#">
+        Get a Quote
+      </a>
+</div>
+</header>
+<!-- END: MainHeader -->
+<!-- BEGIN: HeroSection -->
+<section class="relative h-[870px] flex items-center overflow-hidden">
+<!-- Background Image with Overlay -->
+<div class="absolute inset-0 z-0">
+<img alt="Luxury Property" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxN84KRqNoB1qnw4xEbW5F2UTLlhG-TZzFk53q9De3vIkTpbx8Dis7aRCaO1Wf8TTRAPArSYc_toMAEJ5c-r3TbpStkB_SgWx_dmRr6K6PUf8a4nSph9MV66MlqmzAIyMJaizIRvxoIHjYzlULUOSuvB00HwyWIlIQvPGQDCcP6E4FprHp8uF8EI3jG8021yhNnaRHdwMdSw1DuS-Sd5tuH2PbuvvH9rWLOhEh1PL2QExfTMVqsuhX-Ovf_eouSN0zjrwOxrK2VWNF"/>
+<div class="absolute inset-0 bg-black/40"></div>
+</div>
+<!-- Content -->
+<div class="container mx-auto px-12 relative z-10">
+<div class="max-w-3xl">
+<h1 class="text-6xl md:text-8xl font-serif text-brand-gold mb-6 leading-tight">
+          BUILDING<br/>BETTER FUTURES
+        </h1>
+<p class="text-lg text-white/90 mb-10 max-w-xl font-light leading-relaxed">
+          Premium residential and commercial developments delivered with precision, accountability, and long-term value for a sophisticated clientele.
+        </p>
+<div class="flex space-x-4">
+<button class="gold-gradient-btn px-8 py-4 text-brand-dark font-bold uppercase tracking-widest flex items-center">
+            Get a Quote <span class="ml-2">→</span>
+</button>
+<button class="outline-btn px-8 py-4 text-white font-bold uppercase tracking-widest">
+            Our Story
+          </button>
+</div>
+</div>
+</div>
+<div class="absolute bottom-10 right-12 text-[10px] tracking-[0.3em] uppercase text-gray-400">
+      North Shore Construction and Development
+    </div>
+</section>
+<!-- END: HeroSection -->
+<!-- BEGIN: AboutSection -->
+<section class="bg-brand-cream px-12 py-16">
+<div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+<div>
+<h2 class="text-5xl font-serif text-brand-dark leading-snug">
+          About DECENT<br/>Development
+        </h2>
+</div>
+<div class="space-y-6 text-brand-dark/80 leading-relaxed font-light">
+<p class="font-semibold text-brand-dark">We are committed to excellence in property development.</p>
+<p>
+          DECENT Development is continuously striving for high-quality construction, commercial needs, and urban renewal even within town and country planning, and managed term projects providing relationships built on trust and reliability.
+        </p>
+<p>
+          We have also committed to reliable construction, property development, well-managed projects, and multi-purpose projects, with a strong focus on building long-term relationships through exceptional quality.
+        </p>
+</div>
+</div>
+</section>
+<!-- END: AboutSection -->
+<!-- BEGIN: ServicesSection -->
+<section class="bg-brand-dark px-12 py-16">
+<div class="container mx-auto flex flex-col lg:flex-row gap-12">
+<!-- Left Column: Intro -->
+<div class="lg:w-2/5 pr-12">
+<h2 class="text-4xl font-serif text-white mb-12 leading-tight">
+          Construction services built around control and certainty
+        </h2>
+<div class="grid grid-cols-3 gap-4">
+<div class="border border-brand-gold/30 p-6 text-center">
+<div class="mb-4 text-brand-gold text-2xl">🏆</div>
+<p class="text-[10px] uppercase tracking-widest text-gray-400">Accountable Delivery</p>
+</div>
+<div class="border border-brand-gold/30 p-6 text-center">
+<div class="mb-4 text-brand-gold text-2xl">🧠</div>
+<p class="text-[10px] uppercase tracking-widest text-gray-400">Deep Knowledge</p>
+</div>
+<div class="border border-brand-gold/30 p-6 text-center">
+<div class="mb-4 text-brand-gold text-2xl">🏗️</div>
+<p class="text-[10px] uppercase tracking-widest text-gray-400">End-to-End Excellence</p>
+</div>
+</div>
+</div>
+<!-- Right Column: Services Grid -->
+<div class="lg:w-3/5 grid grid-cols-2 md:grid-cols-3 gap-4">
+<!-- Service Card 1 -->
+<div class="service-card p-8 flex flex-col items-center text-center">
+<div class="w-12 h-12 mb-6 border border-brand-gold/50 flex items-center justify-center">🏠</div>
+<h3 class="text-xs font-bold uppercase tracking-widest">Residential Construction</h3>
+</div>
+<!-- Service Card 2 -->
+<div class="service-card p-8 flex flex-col items-center text-center">
+<div class="w-12 h-12 mb-6 border border-brand-gold/50 flex items-center justify-center">🏢</div>
+<h3 class="text-xs font-bold uppercase tracking-widest">Commercial Construction</h3>
+</div>
+<!-- Service Card 3 -->
+<div class="service-card p-8 flex flex-col items-center text-center">
+<div class="w-12 h-12 mb-6 border border-brand-gold/50 flex items-center justify-center">🏙️</div>
+<h3 class="text-xs font-bold uppercase tracking-widest">Property Development</h3>
+</div>
+<!-- Service Card 4 -->
+<div class="service-card p-8 flex flex-col items-center text-center">
+<div class="w-12 h-12 mb-6 border border-brand-gold/50 flex items-center justify-center">📋</div>
+<h3 class="text-xs font-bold uppercase tracking-widest">Project Management</h3>
+</div>
+<!-- Service Card 5 -->
+<div class="service-card p-8 flex flex-col items-center text-center">
+<div class="w-12 h-12 mb-6 border border-brand-gold/50 flex items-center justify-center">🛠️</div>
+<h3 class="text-xs font-bold uppercase tracking-widest">Renovations &amp; Extensions</h3>
+</div>
+<!-- Service Card 6 -->
+<div class="service-card p-8 flex flex-col items-center text-center">
+<div class="w-12 h-12 mb-6 border border-brand-gold/50 flex items-center justify-center">🏗️</div>
+<h3 class="text-xs font-bold uppercase tracking-widest">Building Consultation</h3>
+</div>
+</div>
+</div>
+</section>
+<!-- END: ServicesSection -->
+<!-- BEGIN: ProjectsSection -->
+<section class="bg-brand-cream px-12 py-16">
+<div class="container mx-auto">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-serif text-brand-dark">Premium project capability across<br/>key property sectors</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-x-8 gap-y-16">
+<!-- Project 1 -->
+<div class="group">
+<div class="project-card h-80 bg-gray-200 mb-6">
+<img alt="Residential Development" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVELNtA5Aoekj8TFS-Sc6ZEWddij1i3XhPLnswJ1VhqNWxEdBzPN3OtyZf7Fnb0aqdbJgjPrJ7TlvztENNMs-w_VrggL4D2TE-TvWwJ6zTdWYAIEYVZGx3wFv7hGTWj-f1WZ-iCUACQAJH62DVMa-uMXo1e7zpFnlzPAxDaPeaPJy6DxjLfWzKL0JKeNWQwS3goI3e8rgGxeP_EkL9vgLK-lPvYjneEN_ZtlbLEaUv4nmGI7wa63kQHCrPkFN8v3RHNKU05B4n8nNN"/>
+<div class="project-overlay absolute inset-0 flex items-center justify-center">
+<span class="border border-white px-6 py-2 text-white uppercase tracking-widest text-xs">View Project</span>
+</div>
+</div>
+<h3 class="text-xl font-serif text-brand-dark mb-2">Residential Development</h3>
+<p class="text-sm text-gray-600 font-light max-w-md">Luxury multi-unit developments and high-end family homes tailored for modern living.</p>
+</div>
+<!-- Project 2 -->
+<div class="group">
+<div class="project-card h-80 bg-gray-200 mb-6">
+<img alt="Commercial Fitout" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQIcGajSYpdpmhmdbgMfWBwl9CYUuawG2DVezJylSdIi5I8GZjxQobafhBp-DbTQiFhgud2-sNagVaQDMK29qBZgYvSIskqy3pgke3ADv8BHk6w-yXob9Vl-Zc52eMMGcLQV6Rtq4Q15x5-0Z8wqDqOMyhChpSNm9vvdaoIqKIo_NS8tbJXYksiSCcL92WrRtF7HsKFKzl2H5UNbsz1zmMc6FjYdkdA41TE4sbRM63XWpBsTUyMSkPYhGFQqgCnqrXbS_58iqZc1cy"/>
+<div class="project-overlay absolute inset-0 flex items-center justify-center">
+<span class="border border-white px-6 py-2 text-white uppercase tracking-widest text-xs">View Project</span>
+</div>
+</div>
+<h3 class="text-xl font-serif text-brand-dark mb-2">Commercial Fit-out</h3>
+<p class="text-sm text-gray-600 font-light max-w-md">State-of-the-art office spaces and retail environments designed for productivity.</p>
+</div>
+<!-- Project 3 -->
+<div class="group">
+<div class="project-card h-80 bg-gray-200 mb-6">
+<img alt="Multi-use Development" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtRO45Fc_Y2U1Mttt53DXm_N0xoj_tvg_zd0NgJTGygf6QJ0MrgGri5WFZX_pdLif38ga5FWNkB7_HogGxLHkDq1gnZlTuzfPauvDU5lfckGmmWemlgsfLUYWwN3LIiNO_65dPcVfa5UBiSdUt6b4TrkVMSyat-6tr3lA-ScCqMxuBubg4EMAsQkZmwNbKoGih1ATvkTLDeGrIg-IY4OzmRbHmWtTFpD0O91wRMbKCArjEuStWGKxLjfykMle0vk7pDSBH_ib7NsdG"/>
+<div class="project-overlay absolute inset-0 flex items-center justify-center">
+<span class="border border-white px-6 py-2 text-white uppercase tracking-widest text-xs">View Project</span>
+</div>
+</div>
+<h3 class="text-xl font-serif text-brand-dark mb-2">Multi-use Development</h3>
+<p class="text-sm text-gray-600 font-light max-w-md">Large scale developments integrating commercial, retail, and residential spaces.</p>
+</div>
+<!-- Project 4 -->
+<div class="group">
+<div class="project-card h-80 bg-gray-200 mb-6">
+<img alt="Modern Renovation" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLcId4ew2u6iioCkUumKjD3Fc60gqrSMY0Fm6ICk4q01cfN3XybyDPkNcT853VDUfW_kBc9G_Op_dCHzFhj0Al5OPDqVCnns27SF7mPvCh65lbJGv0vQwvuNWl18i_kvLujJPeg-0qhB3jwaYlsdAWK2-wGtz_7iRNzO2wuflwmLSrpUmbJhDhlU7xCjNlRE1Io6bd8RbbJKoueZTMbnTk5d9VLoV21ypX9xtPUBiWYJ9s6BdEPyH9d0u_LFP-92CyBvU_m606prRx"/>
+<div class="project-overlay absolute inset-0 flex items-center justify-center">
+<span class="border border-white px-6 py-2 text-white uppercase tracking-widest text-xs">View Project</span>
+</div>
+</div>
+<h3 class="text-xl font-serif text-brand-dark mb-2">Heritage Renovation</h3>
+<p class="text-sm text-gray-600 font-light max-w-md">Preserving the past while building for the future through expert restoration.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- END: ProjectsSection -->
+<!-- BEGIN: TeamSection -->
+<section class="bg-brand-cream border-t border-brand-dark/10 px-12 py-16">
+<div class="container mx-auto">
+<div class="text-center mb-16">
+<div class="flex justify-center space-x-12 mb-12">
+<div class="flex flex-col items-center">
+<div class="w-12 h-12 flex items-center justify-center mb-2">📐</div>
+<p class="text-[10px] uppercase tracking-widest font-bold">Construction Services</p>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-12 h-12 flex items-center justify-center mb-2">📋</div>
+<p class="text-[10px] uppercase tracking-widest font-bold">Project Management</p>
+</div>
+</div>
+<h2 class="text-4xl font-serif text-brand-dark">Specialist Project Managers</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Member 1 -->
+<div class="bg-white p-4 shadow-sm border border-gray-100 flex flex-col items-center">
+<img alt="Nelson Behari" class="w-full h-80 object-cover mb-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAS5_T7mvHfGYIJBa8kLbjus9Ewvp1GE7MDlh0oDNvEVzSQusiG-PX1o-4KliByHZ35pdaqJndBDbzXphYfIq1_QRdmUiWojlwepnSOjfe8LiuNYfsG6GZptXFm62HIDt48AIzGEhNwRao-0rxh6S8ckd_4C1JDhjOUmiFBa902KEQJOkcr7LI4gWD9AbuElQNh3j5wystRLIC42pY4nlVwBHHRhP7p6uq6ApySKrKD0j9PkKa6LbrNAWtBNXTbfxea5zq_sq3B01Cs"/>
+<h4 class="text-lg font-bold text-brand-dark">Nelson Behari</h4>
+<p class="text-xs uppercase tracking-widest text-gray-400">Project Manager</p>
+<div class="mt-4 flex space-x-3 text-brand-gold">
+<span>🔗</span> <span>📧</span>
+</div>
+</div>
+<!-- Member 2 -->
+<div class="bg-white p-4 shadow-sm border border-gray-100 transform -translate-y-4 flex flex-col items-center">
+<img alt="Muhammed Mubbini" class="w-full h-80 object-cover mb-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEqdwRMHqtsogdfRsz5Mw2HqESD399zp-CpFM89kP5hfEsdkTGrvRSfD-uGN1hhwbHy2PtY6cMo2LPpX1VDnFgMkqH5cGGLvBOP2SdYBzuCwWMRJOmli1lDzB6fTRYVE-4R9Wb2ql1E2-vuTJdpgCBeuO4zrjThi8-4bXVeCNJGH-a9gOIQYi5dUNk2Eb7475-jvYBSozYb_YmRHn7W1MzazLorgBH8ih4Q-TVRu9TTcW9ee_YwbWeGT-QPrYTulOQvmckExNJ1XgC"/>
+<h4 class="text-lg font-bold text-brand-dark">Muhammed Mubbini</h4>
+<p class="text-xs uppercase tracking-widest text-gray-400">Lead Architect</p>
+<div class="mt-4 flex space-x-3 text-brand-gold">
+<span>🔗</span> <span>📧</span>
+</div>
+</div>
+<!-- Member 3 -->
+<div class="bg-white p-4 shadow-sm border border-gray-100 flex flex-col items-center">
+<img alt="Hesperia Lafeti" class="w-full h-80 object-cover mb-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSSf2vtMQmc7aUQXt-h4TFs8KyPuMfBwaKCEZ4KkSPgxSOlj-jDOPVJ9topqs40FUpT5T5qJkZeyyKNt1JuWGaB8mZCCBLBzeEbfBZFtU6BFToGO2Wg6l-Us3xqZ-uwsxnM7D1_9EgdO1YU2esqd0Qck1NMuO_8uPjaT4BzlunG_A6YcpeKbgZ_37zK1m5DoKuQOEJOezrKXZyG_tGP6aMWWuKpIAFo2kNokqxn8PgmNgppV4OTojj5mjrz2I8nv-XBpoCIB_zuCBq"/>
+<h4 class="text-lg font-bold text-brand-dark">Hesperia Lafeti</h4>
+<p class="text-xs uppercase tracking-widest text-gray-400">Operations Director</p>
+<div class="mt-4 flex space-x-3 text-brand-gold">
+<span>🔗</span> <span>📧</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: TeamSection -->
+<!-- BEGIN: ContactFooter -->
+<footer class="bg-brand-dark text-white pt-24 pb-12 px-12">
+<div class="container mx-auto">
+<div class="flex flex-col lg:flex-row gap-20 mb-20">
+<!-- Contact Intro -->
+<div class="lg:w-1/2">
+<h2 class="text-5xl font-serif leading-tight mb-8">
+            Start a<br/>conversation<br/>about your<br/>next project.
+          </h2>
+<div class="space-y-4 mt-12">
+<div class="flex items-start space-x-4">
+<span class="text-brand-gold">📍</span>
+<p class="text-sm text-gray-400">Suite 5, 20-22 Grand Avenue,<br/>Camellia NSW 2142</p>
+</div>
+<div class="flex items-start space-x-4">
+<span class="text-brand-gold">📧</span>
+<p class="text-sm text-gray-400">info@decent.com.au</p>
+</div>
+<div class="flex items-start space-x-4">
+<span class="text-brand-gold">📞</span>
+<p class="text-sm text-gray-400">+61 2 9630 3000</p>
+</div>
+</div>
+</div>
+<!-- Contact Form -->
+<div class="lg:w-1/2">
+<form class="space-y-4" data-purpose="contact-form">
+<input class="w-full bg-transparent border-brand-gold/30 border p-4 focus:border-brand-gold outline-none" placeholder="Name" type="text"/>
+<input class="w-full bg-transparent border-brand-gold/30 border p-4 focus:border-brand-gold outline-none" placeholder="Email" type="email"/>
+<div class="grid grid-cols-2 gap-4">
+<input class="w-full bg-transparent border-brand-gold/30 border p-4 focus:border-brand-gold outline-none" placeholder="Phone" type="tel"/>
+<select class="w-full bg-transparent border-brand-gold/30 border p-4 focus:border-brand-gold outline-none text-gray-400">
+<option>Project Type</option>
+<option>Residential</option>
+<option>Commercial</option>
+</select>
+</div>
+<textarea class="w-full bg-transparent border-brand-gold/30 border p-4 focus:border-brand-gold outline-none" placeholder="Project Details" rows="4"></textarea>
+<button class="gold-gradient-btn w-full py-4 text-brand-dark font-bold uppercase tracking-widest" type="submit">
+              SUBMIT REQUEST ⚡
+            </button>
+</form>
+</div>
+</div>
+<!-- Bottom Bar -->
+<div class="border-t border-brand-grey pt-12 flex flex-col md:flex-row justify-between items-center">
+<div class="flex items-center space-x-2 mb-8 md:mb-0" data-purpose="footer-logo">
+<div class="w-8 h-8 border border-brand-gold flex items-center justify-center font-serif text-lg font-bold">D</div>
+<div class="leading-none">
+<span class="block text-sm font-bold tracking-widest uppercase">DECENT</span>
+<span class="block text-[8px] tracking-[0.2em] text-gray-400">DEVELOPMENT</span>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-12 text-[10px] uppercase tracking-widest text-gray-400">
+<div>
+<h5 class="text-white mb-4">Company</h5>
+<ul class="space-y-2">
+<li><a class="hover:text-brand-gold" href="#">About</a></li>
+<li><a class="hover:text-brand-gold" href="#">Services</a></li>
+<li><a class="hover:text-brand-gold" href="#">Projects</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-white mb-4">Services</h5>
+<ul class="space-y-2">
+<li><a class="hover:text-brand-gold" href="#">Residential</a></li>
+<li><a class="hover:text-brand-gold" href="#">Commercial</a></li>
+<li><a class="hover:text-brand-gold" href="#">Consulting</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-white mb-4">Connect</h5>
+<ul class="space-y-2">
+<li><a class="hover:text-brand-gold" href="#">LinkedIn</a></li>
+<li><a class="hover:text-brand-gold" href="#">Instagram</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="text-center mt-12 text-[10px] text-gray-600 uppercase tracking-widest">
+        © 2023 Decent Development Group. All Rights Reserved.
+      </div>
+</div>
+</footer>
+<!-- END: ContactFooter -->
+</body></html>
