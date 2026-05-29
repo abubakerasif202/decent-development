@@ -11,6 +11,7 @@ node_modules
 dist
 dist-ssr
 *.local
+stitch_decent_development_home_page_redesign/
 
 # Editor directories and files
 .vscode/*
