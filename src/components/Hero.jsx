@@ -2,17 +2,51 @@ import { motion, useReducedMotion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import heroBuilding from '../assets/stitch/hero-building.jpg'
 
+const heroTitleVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+}
+
+const heroTitleLineVariants = {
+  hidden: {
+    opacity: 0,
+    y: 34,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.72,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+}
+
+const ctaSpring = {
+  type: 'spring',
+  stiffness: 420,
+  damping: 24,
+  mass: 0.8,
+}
+
 export default function Hero({ company }) {
   const reducedMotion = useReducedMotion()
 
   return (
     <section id="home" className="relative isolate flex min-h-[760px] items-center overflow-hidden bg-ink lg:min-h-[870px]" aria-labelledby="hero-title">
-      <img
+      <motion.img
         src={heroBuilding}
         alt="Luxury residential development at sunset"
         className="hero-cinematic absolute inset-0 h-full w-full object-cover"
         decoding="async"
         fetchPriority="high"
+        initial={reducedMotion ? false : { scale: 1.1 }}
+        animate={reducedMotion ? undefined : { scale: 1 }}
+        transition={{ duration: 10, ease: 'easeOut' }}
       />
       <div className="absolute inset-0 bg-black/45" />
       <div className="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-black/70 via-black/30 to-transparent" />
@@ -22,15 +56,19 @@ export default function Hero({ company }) {
           <motion.h1
             id="hero-title"
             className="font-display text-6xl font-normal uppercase leading-[0.95] text-gold sm:text-7xl lg:text-8xl"
-            initial={reducedMotion ? false : { opacity: 0, y: 32 }}
-            animate={reducedMotion ? undefined : { opacity: 1, y: 0 }}
-            transition={{ duration: 0.75, ease: 'easeOut' }}
+            initial={reducedMotion ? false : 'hidden'}
+            animate={reducedMotion ? undefined : 'visible'}
+            variants={heroTitleVariants}
           >
-            Building
-            <br />
-            Better
-            <br />
-            Futures
+            <motion.span className="block" variants={heroTitleLineVariants}>
+              Building
+            </motion.span>
+            <motion.span className="block" variants={heroTitleLineVariants}>
+              Better
+            </motion.span>
+            <motion.span className="block" variants={heroTitleLineVariants}>
+              Futures
+            </motion.span>
           </motion.h1>
           <motion.div
             className="gold-divider mt-7 w-52"
@@ -55,19 +93,28 @@ export default function Hero({ company }) {
             animate={reducedMotion ? undefined : { opacity: 1, y: 0 }}
             transition={{ delay: 0.34, duration: 0.62, ease: 'easeOut' }}
           >
-            <a
+            <motion.a
               href="#contact"
               className="focus-ring gold-gradient-btn inline-flex min-h-12 items-center justify-center gap-2 px-7 py-3 text-xs font-bold uppercase"
+              whileHover={reducedMotion ? undefined : 'hover'}
+              whileTap={reducedMotion ? undefined : { scale: 0.97 }}
+              variants={{ hover: { scale: 1.04 } }}
+              transition={ctaSpring}
             >
               Get a Quote
-              <ArrowRight size={18} aria-hidden="true" />
-            </a>
-            <a
+              <motion.span variants={{ hover: { x: 5 } }} transition={ctaSpring} aria-hidden="true">
+                <ArrowRight size={18} />
+              </motion.span>
+            </motion.a>
+            <motion.a
               href="#about"
               className="focus-ring outline-gold-btn inline-flex min-h-12 items-center justify-center px-7 py-3 text-xs font-bold uppercase"
+              whileHover={reducedMotion ? undefined : { scale: 1.04 }}
+              whileTap={reducedMotion ? undefined : { scale: 0.97 }}
+              transition={ctaSpring}
             >
               Our Story
-            </a>
+            </motion.a>
           </motion.div>
         </div>
       </div>
