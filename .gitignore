@@ -23,3 +23,5 @@ stitch_decent_development_home_page_redesign/
 *.njsproj
 *.sln
 *.sw?
+
+.vercel
