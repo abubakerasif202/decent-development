@@ -1,13 +1,13 @@
-import About from './components/About.jsx'
-import Contact from './components/Contact.jsx'
+import { useEffect } from 'react'
+import { BrowserRouter, Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom'
+import ContactPage from './pages/ContactPage.jsx'
+import CompletedProjectsPage from './pages/CompletedProjectsPage.jsx'
+import HomePage from './pages/HomePage.jsx'
+import TeamPage from './pages/TeamPage.jsx'
 import Footer from './components/Footer.jsx'
 import Header from './components/Header.jsx'
-import Hero from './components/Hero.jsx'
 import IntroAnimation from './components/IntroAnimation.jsx'
-import Projects from './components/Projects.jsx'
-import Services from './components/Services.jsx'
-import Team from './components/Team.jsx'
-import logo from './assets/logo-optimized.webp'
+import logo from './assets/Logo.png'
 import teamHussain from './assets/team-hussain.webp'
 import teamMohammad from './assets/team-mohammad.webp'
 import teamNemat from './assets/team-nemat.webp'
@@ -31,21 +31,75 @@ const assets = {
   },
 }
 
+const legacyHashRoutes = {
+  '#home': { pathname: '/', hash: '' },
+  '#projects': { pathname: '/completed-projects', hash: '#attached-dwellings' },
+  '#team': { pathname: '/meet-the-team', hash: '#team' },
+  '#contact': { pathname: '/contact', hash: '#contact' },
+}
+
+function ScrollManager() {
+  const location = useLocation()
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => {
+      const legacyRoute = legacyHashRoutes[location.hash]
+
+      if (
+        legacyRoute &&
+        (location.pathname !== legacyRoute.pathname || location.hash !== legacyRoute.hash)
+      ) {
+        navigate(`${legacyRoute.pathname}${legacyRoute.hash}`, { replace: true })
+        return
+      }
+
+      if (location.hash) {
+        const element = document.querySelector(location.hash)
+
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }
+
+        return
+      }
+
+      window.scrollTo({ top: 0, behavior: 'auto' })
+    }, 0)
+
+    return () => window.clearTimeout(timer)
+  }, [location.hash, location.pathname, navigate])
+
+  return null
+}
+
+function AppRoutes() {
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage company={company} />} />
+      <Route path="/about" element={<Navigate to="/#about" replace />} />
+      <Route path="/services" element={<Navigate to="/#services" replace />} />
+      <Route path="/projects" element={<Navigate to="/completed-projects" replace />} />
+      <Route path="/team" element={<Navigate to="/meet-the-team" replace />} />
+      <Route path="/completed-projects" element={<CompletedProjectsPage company={company} />} />
+      <Route path="/meet-the-team" element={<TeamPage company={company} teamAssets={assets.team} />} />
+      <Route path="/contact" element={<ContactPage company={company} />} />
+      <Route path="*" element={<Navigate to="/" replace />} />
+    </Routes>
+  )
+}
+
 function App() {
   return (
-    <>
+    <BrowserRouter>
       <IntroAnimation logo={assets.logo} />
       <Header company={company} logo={assets.logo} />
       <main>
-        <Hero company={company} />
-        <About />
-        <Services />
-        <Projects />
-        <Team assets={assets.team} />
-        <Contact company={company} />
+        <ScrollManager />
+        <AppRoutes />
       </main>
       <Footer company={company} logo={assets.logo} />
-    </>
+    </BrowserRouter>
   )
 }
 

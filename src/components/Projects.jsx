@@ -1,90 +1,114 @@
+import { Link } from 'react-router-dom'
 import { motion, useReducedMotion } from 'framer-motion'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, LayoutGrid, Mail, Users2 } from 'lucide-react'
 import projectCommercial from '../assets/stitch/project-commercial.jpg'
 import projectMultiuse from '../assets/stitch/project-multiuse.jpg'
 import projectRenovation from '../assets/stitch/project-renovation.jpg'
-import projectResidential from '../assets/stitch/project-residential.jpg'
 
-const projects = [
+const destinations = [
   {
-    title: 'Residential Development',
-    copy: 'Contemporary residential delivery with a focus on planning clarity, quality finishes, and long-term owner value.',
-    image: projectResidential,
-  },
-  {
-    title: 'Commercial Fit-out',
-    copy: 'Efficient commercial fit-out coordination designed to reduce disruption and keep handover milestones clear.',
-    image: projectCommercial,
-  },
-  {
-    title: 'Multi-unit Development',
-    copy: 'Multi-dwelling project delivery supported by structured sequencing, consultant coordination, and site control.',
+    label: 'Portfolio',
+    title: 'See portfolio concepts presented with a premium finish',
+    copy: 'Explore the concept portfolio organised by dwelling type, with AI-generated visuals and a polished presentation style.',
+    to: '/completed-projects',
     image: projectMultiuse,
+    icon: LayoutGrid,
   },
   {
-    title: 'Renovation Project',
-    copy: 'Targeted renovations and extensions planned around existing structures, client priorities, and liveability gains.',
+    label: 'Meet the team',
+    title: 'Get to know the specialists who guide each build',
+    copy: 'Learn more about the people behind the construction, project management, and delivery approach.',
+    to: '/meet-the-team',
+    image: projectCommercial,
+    icon: Users2,
+  },
+  {
+    label: 'Contact',
+    title: 'Start the conversation about your next project',
+    copy: 'Reach out directly or use the form to discuss a duplex, triplex, or single dwelling in New South Wales.',
+    to: '/contact',
     image: projectRenovation,
+    icon: Mail,
   },
 ]
 
-export default function Projects() {
+function DestinationCard({ destination, index }) {
   const reducedMotion = useReducedMotion()
+  const Icon = destination.icon
 
   return (
-    <section id="projects" className="bg-porcelain py-16 text-ink sm:py-20" aria-labelledby="projects-title">
-      <div className="section-shell">
-        <motion.div
-          className="mx-auto max-w-3xl text-center"
-          initial={reducedMotion ? false : { opacity: 0, y: 24 }}
-          whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.35 }}
-          transition={{ duration: 0.55, ease: 'easeOut' }}
-        >
-          <h2 id="projects-title" className="font-display text-3xl font-normal leading-tight sm:text-4xl">
-            Premium project capability across
-            <br />
-            key property sectors
-          </h2>
-        </motion.div>
+    <motion.article
+      className="group relative isolate overflow-hidden rounded-[1.75rem] border border-ink/10 bg-ink shadow-[0_18px_38px_rgba(18,18,18,0.08)]"
+      style={{ transformStyle: 'preserve-3d' }}
+      initial={reducedMotion ? false : { opacity: 0, y: 24 }}
+      whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.28 }}
+      whileHover={reducedMotion ? undefined : { rotateX: -4, rotateY: 5, y: -6 }}
+      transition={{ duration: 0.55, delay: reducedMotion ? 0 : index * 0.06, ease: 'easeOut' }}
+    >
+      <div className="absolute inset-0">
+        <img
+          src={destination.image}
+          alt={destination.title}
+          className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.06]"
+          decoding="async"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/55 to-black/15" />
+      </div>
 
-        <div className="mt-12 grid gap-x-8 gap-y-14 md:grid-cols-2">
-          {projects.map(({ title, copy, image }, index) => (
-            <motion.article
-              key={title}
-              className="group"
-              initial={reducedMotion ? false : { opacity: 0, y: 24 }}
-              whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.25 }}
-              transition={{ duration: 0.5, delay: reducedMotion ? 0 : index * 0.05, ease: 'easeOut' }}
-            >
-              <div className="relative mb-6 aspect-[16/9] overflow-hidden bg-stone/20">
-                <img
-                  src={image}
-                  alt={`${title} example`}
-                  className="h-full w-full object-cover transition duration-700 group-hover:scale-110"
-                  loading="eager"
-                  decoding="async"
-                />
-                <a
-                  href="#contact"
-                  className="focus-ring absolute inset-0 flex items-center justify-center bg-gold/85 opacity-0 transition duration-300 group-hover:opacity-100"
-                >
-                  <span className="border border-white px-6 py-2 text-xs font-semibold uppercase text-white">
-                    Discuss Project
-                  </span>
-                </a>
-              </div>
-              <h3 className="font-display text-xl font-normal text-ink">{title}</h3>
-              <p className="mt-2 max-w-md text-sm font-light leading-6 text-graphite/70">{copy}</p>
-              <a
-                href="#contact"
-                className="focus-ring mt-4 inline-flex items-center gap-2 text-sm font-semibold text-bronze transition-colors duration-200 hover:text-ink"
-              >
-                Discuss a similar project
-                <ArrowRight size={16} aria-hidden="true" />
-              </a>
-            </motion.article>
+      <div className="relative z-10 flex h-full min-h-[420px] flex-col justify-between p-6 sm:p-7">
+        <div className="flex items-center justify-between gap-4">
+          <div className="rounded-full border border-white/15 bg-white/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.24em] text-ivory backdrop-blur">
+            {destination.label}
+          </div>
+          <Icon size={18} className="text-gold" aria-hidden="true" />
+        </div>
+
+        <div className="max-w-sm">
+          <h3 className="font-display text-2xl font-normal leading-tight text-ivory">{destination.title}</h3>
+          <p className="mt-3 text-sm leading-6 text-smoke">{destination.copy}</p>
+        </div>
+
+        <Link
+          to={destination.to}
+          className="focus-ring inline-flex w-fit items-center gap-2 rounded-full border border-gold/30 bg-black/35 px-4 py-2 text-xs font-bold uppercase tracking-[0.24em] text-ivory backdrop-blur transition duration-200 hover:border-gold hover:text-gold"
+        >
+          Explore
+          <ArrowRight size={16} aria-hidden="true" />
+        </Link>
+      </div>
+    </motion.article>
+  )
+}
+
+export default function Projects() {
+  return (
+    <section id="projects" className="bg-porcelain py-20 sm:py-28">
+      <div className="section-shell">
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+          <div className="max-w-2xl">
+            <p className="eyebrow">Explore the next step</p>
+            <h2 className="mt-4 font-display text-3xl font-normal leading-tight text-ink sm:text-4xl">
+              Take a closer look at the work, the people, and the presentation
+            </h2>
+            <p className="mt-4 max-w-xl text-base font-light leading-7 text-graphite/80">
+              The homepage now leads into a more refined experience: portfolio concepts, team profiles, and the
+              contact journey are all presented with a cohesive premium tone.
+            </p>
+          </div>
+
+          <Link
+            to="/completed-projects"
+            className="focus-ring inline-flex w-fit items-center gap-2 text-sm font-semibold uppercase tracking-[0.22em] text-bronze transition hover:text-ink"
+          >
+            View portfolio
+            <ArrowRight size={16} aria-hidden="true" />
+          </Link>
+        </div>
+
+        <div className="mt-10 grid gap-6 lg:grid-cols-3">
+          {destinations.map((destination, index) => (
+            <DestinationCard key={destination.label} destination={destination} index={index} />
           ))}
         </div>
       </div>

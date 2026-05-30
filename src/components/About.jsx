@@ -26,17 +26,14 @@ export default function About() {
           transition={{ duration: 0.55, delay: 0.08, ease: 'easeOut' }}
           className="space-y-6 text-base font-light leading-8 text-graphite/80"
         >
-          <p className="font-semibold text-ink">We are committed to excellence in property development.</p>
+          <p className="font-semibold text-ink">We deliver construction and development with a premium standard of care.</p>
           <p>
-            DECENT Development provides reliable construction and property development
-            solutions across New South Wales. The team works with owners, investors,
-            consultants, and trades to deliver well-managed projects with practical
-            planning, transparent communication, and a strong commitment to lasting value.
+            DECENT Development provides construction and property development solutions across New South Wales with
+            a focus on disciplined planning, strong coordination, and a refined delivery experience.
           </p>
           <p>
-            Every project is approached with disciplined sequencing, practical site
-            coordination, and transparent reporting so clients can make confident
-            decisions from early planning through final handover.
+            Every project is approached with practical sequencing, transparent communication, and a clear commitment
+            to quality so clients can move from early planning to final handover with confidence.
           </p>
         </motion.div>
       </div>

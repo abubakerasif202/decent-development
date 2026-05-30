@@ -5,21 +5,21 @@ const members = [
   {
     name: 'Nemat Haidari',
     role: 'Specialist Project Manager',
-    bio: '20 years of experience in construction.',
+    bio: 'Brings two decades of construction insight to disciplined project delivery.',
     assetKey: 'nemat',
     initials: 'NH',
   },
   {
     name: 'Mohammad Mohsini',
     role: 'Certified Builder & Specialist Project Manager',
-    bio: '10 years of construction experience and certified builder expertise.',
+    bio: 'Combines certified building expertise with a practical, client-focused approach.',
     assetKey: 'mohammad',
     initials: 'MM',
   },
   {
     name: 'Hussain Jafari',
     role: 'Home & Land Package Specialist',
-    bio: 'Specialist in home and land package projects.',
+    bio: 'Focuses on streamlined home-and-land package outcomes with a polished finish.',
     assetKey: 'hussain',
     initials: 'HJ',
   },
@@ -71,7 +71,7 @@ export default function Team({ assets }) {
             </div>
           </div>
           <h2 id="team-title" className="font-display text-3xl font-normal leading-tight text-ink sm:text-4xl">
-            Specialist Project Managers
+            Specialist project managers and building professionals
           </h2>
         </motion.div>
 

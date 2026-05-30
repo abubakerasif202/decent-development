@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { motion, useReducedMotion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import heroBuilding from '../assets/stitch/hero-building.jpg'
@@ -24,13 +25,6 @@ const heroTitleLineVariants = {
       ease: [0.22, 1, 0.36, 1],
     },
   },
-}
-
-const ctaSpring = {
-  type: 'spring',
-  stiffness: 420,
-  damping: 24,
-  mass: 0.8,
 }
 
 export default function Hero({ company }) {
@@ -83,8 +77,8 @@ export default function Hero({ company }) {
             animate={reducedMotion ? undefined : { opacity: 1, y: 0 }}
             transition={{ delay: 0.18, duration: 0.68, ease: 'easeOut' }}
           >
-            Premium construction and development solutions delivered with precision,
-            accountability, and long-term value.
+            Premium construction and development delivered with clarity, precision, and a commitment to long-term
+            value.
           </motion.p>
 
           <motion.div
@@ -93,28 +87,19 @@ export default function Hero({ company }) {
             animate={reducedMotion ? undefined : { opacity: 1, y: 0 }}
             transition={{ delay: 0.34, duration: 0.62, ease: 'easeOut' }}
           >
-            <motion.a
-              href="#contact"
+            <Link
+              to="/completed-projects"
               className="focus-ring gold-gradient-btn inline-flex min-h-12 items-center justify-center gap-2 px-7 py-3 text-xs font-bold uppercase"
-              whileHover={reducedMotion ? undefined : 'hover'}
-              whileTap={reducedMotion ? undefined : { scale: 0.97 }}
-              variants={{ hover: { scale: 1.04 } }}
-              transition={ctaSpring}
             >
-              Get a Quote
-              <motion.span variants={{ hover: { x: 5 } }} transition={ctaSpring} aria-hidden="true">
-                <ArrowRight size={18} />
-              </motion.span>
-            </motion.a>
-            <motion.a
-              href="#about"
+              View portfolio
+              <ArrowRight size={18} aria-hidden="true" />
+            </Link>
+            <Link
+              to="/contact"
               className="focus-ring outline-gold-btn inline-flex min-h-12 items-center justify-center px-7 py-3 text-xs font-bold uppercase"
-              whileHover={reducedMotion ? undefined : { scale: 1.04 }}
-              whileTap={reducedMotion ? undefined : { scale: 0.97 }}
-              transition={ctaSpring}
             >
-              Our Story
-            </motion.a>
+              Get in touch
+            </Link>
           </motion.div>
         </div>
       </div>

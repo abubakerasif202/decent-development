@@ -3,15 +3,15 @@ import { BadgeCheck, Brain, Building2, ClipboardCheck, Hammer, Home, Landmark, W
 
 const proofTiles = [
   {
-    title: 'Accountable delivery',
+    title: 'Premium delivery',
     icon: BadgeCheck,
   },
   {
-    title: 'Deep knowledge',
+    title: 'Technical insight',
     icon: Brain,
   },
   {
-    title: 'End-to-end excellence',
+    title: 'End-to-end control',
     icon: Hammer,
   },
 ]
@@ -19,27 +19,27 @@ const proofTiles = [
 const services = [
   {
     title: 'Residential Construction',
-    copy: 'New homes and residential builds managed with disciplined scheduling, site coordination, and quality control.',
+    copy: 'New homes and residential builds managed with disciplined scheduling, site coordination, and an unwavering focus on quality.',
     icon: Home,
   },
   {
     title: 'Commercial Construction',
-    copy: 'Commercial spaces delivered with practical staging, stakeholder communication, and reliable trade management.',
+    copy: 'Commercial spaces delivered with practical staging, clear stakeholder communication, and reliable trade management.',
     icon: Building2,
   },
   {
     title: 'Property Development',
-    copy: 'Development support from feasibility thinking through delivery planning and construction execution.',
+    copy: 'Development support from early feasibility thinking through delivery planning and construction execution.',
     icon: Landmark,
   },
   {
     title: 'Project Management',
-    copy: 'Specialist project management that keeps scope, time, budget, and reporting under control.',
+    copy: 'Specialist project management that keeps scope, time, budget, and reporting aligned from start to finish.',
     icon: ClipboardCheck,
   },
   {
     title: 'Renovations & Extensions',
-    copy: 'Careful upgrades and extensions that respect existing structures while improving liveability and value.',
+    copy: 'Careful upgrades and extensions that respect existing structures while enhancing liveability and value.',
     icon: Hammer,
   },
   {
@@ -94,7 +94,7 @@ export default function Services() {
           transition={{ duration: 0.55, ease: 'easeOut' }}
         >
           <h2 id="services-title" className="font-display text-3xl font-normal leading-tight sm:text-4xl">
-            Construction services built around control and certainty
+            Construction services built around control, certainty, and quality
           </h2>
           <motion.div
             className="mt-12 grid grid-cols-3 gap-3"

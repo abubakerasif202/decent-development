@@ -1,18 +1,17 @@
+import { Link } from 'react-router-dom'
 import { motion, useReducedMotion } from 'framer-motion'
 
 const quickLinks = [
-  ['Home', '#home'],
-  ['About', '#about'],
-  ['Services', '#services'],
-  ['Projects', '#projects'],
-  ['Team', '#team'],
-  ['Contact', '#contact'],
+  ['Home', '/'],
+  ['Portfolio', '/completed-projects'],
+  ['Meet the Team', '/meet-the-team'],
+  ['Contact', '/contact'],
 ]
 
 const serviceLinks = [
-  ['Residential', '#services'],
-  ['Commercial', '#services'],
-  ['Consulting', '#services'],
+  ['About', '/#about'],
+  ['Services', '/#services'],
+  ['Project Management', '/#services'],
 ]
 
 function BrandMark({ company, logo }) {
@@ -57,14 +56,14 @@ export default function Footer({ company, logo }) {
           <div>
             <p className="text-xs font-semibold uppercase text-ivory">Company</p>
             <nav className="mt-4 grid gap-2" aria-label="Footer company navigation">
-              {quickLinks.slice(1, 4).map(([label, href]) => (
-                <a
+              {quickLinks.map(([label, to]) => (
+                <Link
                   key={label}
-                  href={href}
+                  to={to}
                   className="focus-ring rounded-sm text-[11px] uppercase text-smoke transition-colors duration-200 hover:text-gold"
                 >
                   {label}
-                </a>
+                </Link>
               ))}
             </nav>
           </div>
@@ -72,14 +71,14 @@ export default function Footer({ company, logo }) {
           <div>
             <p className="text-xs font-semibold uppercase text-ivory">Services</p>
             <nav className="mt-4 grid gap-2" aria-label="Footer services navigation">
-              {serviceLinks.map(([label, href]) => (
-                <a
+              {serviceLinks.map(([label, to]) => (
+                <Link
                   key={label}
-                  href={href}
+                  to={to}
                   className="focus-ring rounded-sm text-[11px] uppercase text-smoke transition-colors duration-200 hover:text-gold"
                 >
                   {label}
-                </a>
+                </Link>
               ))}
             </nav>
           </div>

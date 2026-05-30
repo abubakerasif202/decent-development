@@ -47,8 +47,8 @@ export default function Contact({ company }) {
             next project.
           </h2>
           <p className="mt-8 max-w-xl text-base font-light leading-7 text-smoke">
-            Speak with DECENT Development about construction, property development,
-            renovations, extensions, or project management support across New South Wales.
+            Speak with DECENT Development about a new build, development opportunity, renovation, extension, or
+            project management engagement across New South Wales.
           </p>
           <div className="mt-12 space-y-4">
             <div className="flex items-start gap-4">
@@ -98,7 +98,7 @@ export default function Contact({ company }) {
                   autoComplete="name"
                   required
                   className="focus-ring min-h-12 w-full border border-gold/30 bg-transparent px-4 py-3 text-ivory placeholder:text-stone"
-                  placeholder="Name"
+                  placeholder="Full name"
                 />
               </div>
               <div>
@@ -112,7 +112,7 @@ export default function Contact({ company }) {
                   autoComplete="email"
                   required
                   className="focus-ring min-h-12 w-full border border-gold/30 bg-transparent px-4 py-3 text-ivory placeholder:text-stone"
-                  placeholder="Email"
+                  placeholder="Email address"
                 />
               </div>
             </div>
@@ -128,7 +128,7 @@ export default function Contact({ company }) {
                   type="tel"
                   autoComplete="tel"
                   className="focus-ring min-h-12 w-full border border-gold/30 bg-transparent px-4 py-3 text-ivory placeholder:text-stone"
-                  placeholder="Phone"
+                  placeholder="Phone number"
                 />
               </div>
               <div>
@@ -160,7 +160,7 @@ export default function Contact({ company }) {
                 required
                 rows="5"
                 className="focus-ring w-full resize-y border border-gold/30 bg-transparent px-4 py-3 text-ivory placeholder:text-stone"
-                placeholder="Project Details"
+                placeholder="Tell us a little about your project brief"
               />
             </div>
 
@@ -168,13 +168,13 @@ export default function Contact({ company }) {
               type="submit"
               className="focus-ring gold-gradient-btn inline-flex min-h-14 items-center justify-center gap-3 px-6 py-4 text-sm font-semibold uppercase"
             >
-              Submit Request
+              Submit enquiry
               <ArrowRight size={18} aria-hidden="true" />
             </button>
 
             {submitted ? (
               <p className="border border-gold/20 bg-gold/10 px-4 py-3 text-sm leading-6 text-smoke" role="status">
-                Your email draft has been prepared for DECENT Development.
+                Your enquiry draft has been prepared for DECENT Development.
               </p>
             ) : null}
           </form>
@@ -185,14 +185,14 @@ export default function Contact({ company }) {
               className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 border border-gold/30 px-4 py-3 text-sm font-semibold text-ivory transition duration-200 hover:-translate-y-0.5 hover:border-gold hover:text-gold"
             >
               <Phone size={17} aria-hidden="true" />
-              Call Now
+              Call now
             </a>
             <a
               href={`mailto:${company.email}`}
               className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 border border-gold/30 px-4 py-3 text-sm font-semibold text-ivory transition duration-200 hover:-translate-y-0.5 hover:border-gold hover:text-gold"
             >
               <Mail size={17} aria-hidden="true" />
-              Email Us
+              Email us
             </a>
             <a
               href={directionsUrl}
@@ -201,7 +201,7 @@ export default function Contact({ company }) {
               className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 border border-gold/30 px-4 py-3 text-sm font-semibold text-ivory transition duration-200 hover:-translate-y-0.5 hover:border-gold hover:text-gold"
             >
               <MapPin size={17} aria-hidden="true" />
-              Get Directions
+              Get directions
             </a>
           </div>
         </motion.div>

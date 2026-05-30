@@ -1,14 +1,15 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { ArrowRight, Menu, X } from 'lucide-react'
 
 const navItems = [
-  ['Home', '#home'],
-  ['About', '#about'],
-  ['Services', '#services'],
-  ['Projects', '#projects'],
-  ['Team', '#team'],
-  ['Contact', '#contact'],
+  ['Home', '/'],
+  ['About', '/#about'],
+  ['Services', '/#services'],
+  ['Portfolio', '/completed-projects'],
+  ['Meet the Team', '/meet-the-team'],
+  ['Contact', '/contact'],
 ]
 
 function BrandMark({ company, logo }) {
@@ -75,30 +76,30 @@ export default function Header({ company, logo }) {
     >
       <div className="section-shell">
         <div className="flex items-center justify-between gap-4">
-          <a href="#home" className="focus-ring rounded-sm" aria-label={`${company.name} home`}>
+          <Link to="/" className="focus-ring rounded-sm" aria-label={`${company.name} home`}>
             <BrandMark company={company} logo={logo} />
-          </a>
+          </Link>
 
           <nav className="hidden items-center gap-7 md:flex" aria-label="Primary navigation">
-            {navItems.map(([label, href]) => (
-              <a
+            {navItems.map(([label, to]) => (
+              <Link
                 key={label}
-                href={href}
+                to={to}
                 className="nav-link focus-ring rounded-sm text-xs font-semibold uppercase text-ivory transition-colors duration-200 hover:text-gold"
               >
                 {label}
-              </a>
+              </Link>
             ))}
           </nav>
 
           <div className="hidden items-center gap-3 md:flex">
-            <a
-              href="#contact"
+            <Link
+              to="/contact"
               className="focus-ring gold-gradient-btn inline-flex min-h-11 items-center gap-2 px-5 py-3 text-xs font-bold uppercase"
             >
-              Get a Quote
+              Get in touch
               <ArrowRight size={17} aria-hidden="true" />
-            </a>
+            </Link>
           </div>
 
           <button
@@ -139,29 +140,32 @@ export default function Header({ company, logo }) {
               </div>
 
               <nav className="flex flex-1 flex-col items-center justify-center gap-7" aria-label="Mobile navigation">
-                {navItems.map(([label, href], index) => (
-                  <motion.a
+                {navItems.map(([label, to], index) => (
+                  <motion.div
                     key={label}
-                    href={href}
-                    className="focus-ring rounded-sm font-display text-4xl font-semibold text-smoke transition-colors duration-200 hover:text-gold"
-                    onClick={() => setOpen(false)}
                     initial={reducedMotion ? false : { opacity: 0, y: 18 }}
                     animate={reducedMotion ? undefined : { opacity: 1, y: 0 }}
                     transition={{ delay: reducedMotion ? 0 : 0.05 + index * 0.04, duration: 0.28 }}
                   >
-                    {label}
-                  </motion.a>
+                    <Link
+                      to={to}
+                      className="focus-ring block rounded-sm font-display text-4xl font-semibold text-smoke transition-colors duration-200 hover:text-gold"
+                      onClick={() => setOpen(false)}
+                    >
+                      {label}
+                    </Link>
+                  </motion.div>
                 ))}
               </nav>
 
-              <a
-                href="#contact"
+              <Link
+                to="/contact"
                 className="focus-ring gold-gradient-btn inline-flex min-h-14 items-center justify-center gap-3 px-6 py-4 text-sm font-semibold uppercase"
                 onClick={() => setOpen(false)}
               >
-                Get a Quote
+                Get in touch
                 <ArrowRight size={18} aria-hidden="true" />
-              </a>
+              </Link>
               <p className="mt-8 border-t border-gold/15 pt-6 text-center text-xs uppercase text-stone">
                 DECENT Development
               </p>
