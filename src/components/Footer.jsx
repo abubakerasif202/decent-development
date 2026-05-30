@@ -17,7 +17,7 @@ const serviceLinks = [
 function BrandMark({ company, logo }) {
   return (
     <span className="flex items-center gap-4">
-      <span className="logo-frame h-14 w-[150px]">
+      <span className="logo-frame h-14 w-16">
         <img
           src={logo}
           alt="DECENT Development logo"

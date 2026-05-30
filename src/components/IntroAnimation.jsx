@@ -68,7 +68,7 @@ export default function IntroAnimation({ logo }) {
           >
             {logo ? (
               <motion.div
-                className="logo-frame mb-7 h-[110px] w-[min(82vw,430px)] shadow-premium sm:h-[142px]"
+                className="logo-frame mb-7 h-[110px] w-[min(42vw,150px)] sm:h-[142px] sm:w-[184px]"
                 initial={reducedMotion ? false : { scale: 0.94 }}
                 animate={reducedMotion ? undefined : { scale: 1.035 }}
                 transition={{ delay: 0.45, duration: 1.25, ease: [0.22, 1, 0.36, 1] }}

@@ -15,7 +15,7 @@ const navItems = [
 function BrandMark({ company, logo }) {
   return (
     <span className="flex items-center gap-3">
-      <span className="logo-frame h-12 w-[118px] sm:h-14 sm:w-[150px]">
+      <span className="logo-frame h-12 w-14 sm:h-14 sm:w-16">
         <img
           src={logo}
           alt="DECENT Development logo"
