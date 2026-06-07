@@ -38,13 +38,11 @@ export default function Contact({ company }) {
           transition={{ duration: 0.55, ease: 'easeOut' }}
         >
           <h2 id="contact-title" className="font-display text-4xl font-normal leading-tight sm:text-5xl">
-            Start a
+            Sydney Staging
             <br />
-            conversation
+            & Construction
             <br />
-            about your
-            <br />
-            next project.
+            Enquiry Portal
           </h2>
           <p className="mt-8 max-w-xl text-base font-light leading-7 text-smoke">
             Speak with DECENT Development about a new build, development opportunity, renovation, extension, or

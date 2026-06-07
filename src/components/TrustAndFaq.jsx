@@ -35,6 +35,11 @@ const faqs = [
       'Services include residential construction, commercial construction, property development, project management, renovations, extensions, and building consultation.',
   },
   {
+    question: 'Do you specialize in duplex and triplex developments in Sydney?',
+    answer:
+      'Yes, DECENT Development specializes in multi-residential developments, including attached duplex and triplex projects, ensuring optimal land utilization and premium architectural finishes under our NSW contractor licence.',
+  },
+  {
     question: 'How do project enquiries start?',
     answer:
       'Prospective clients can call, email, or submit the contact form with the project type, contact details, and a short brief.',

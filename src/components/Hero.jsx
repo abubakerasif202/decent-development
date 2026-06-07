@@ -71,15 +71,14 @@ export default function Hero({ company }) {
             transition={{ delay: 0.25, duration: 0.72, ease: [0.22, 1, 0.36, 1] }}
             style={{ transformOrigin: 'left' }}
           />
-          <motion.p
-            className="mt-8 max-w-xl text-base font-light leading-7 text-white/90 sm:text-lg"
+          <motion.blockquote
+            className="mt-8 max-w-xl border-l border-gold/40 pl-5 text-base font-light italic leading-7 text-white/95 sm:text-lg"
             initial={reducedMotion ? false : { opacity: 0, y: 24 }}
             animate={reducedMotion ? undefined : { opacity: 1, y: 0 }}
             transition={{ delay: 0.18, duration: 0.68, ease: 'easeOut' }}
           >
-            Premium construction and development delivered with clarity, precision, and a commitment to long-term
-            value.
-          </motion.p>
+            DECENT Development is a premium residential and commercial construction company based in North Sydney, NSW (Licence 476988C). We specialize in residential construction, property development, duplex/triplex builds, and project management across New South Wales.
+          </motion.blockquote>
 
           <motion.div
             className="mt-10 flex flex-col gap-4 sm:flex-row"

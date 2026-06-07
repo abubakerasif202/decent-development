@@ -190,9 +190,9 @@ function ProjectSection({ id, eyebrow, title, copy, image, badge, stats, project
 
 export default function CompletedProjectsPage({ company }) {
   usePageMeta({
-    title: 'Portfolio | DECENT Development',
+    title: 'Premium Dwelling Portfolio | DECENT Development',
     description:
-      'Browse premium AI-generated concept showcases for attached dwellings, single homes, commercial fit-outs, and heritage restoration.',
+      'Browse premium AI-generated concept showcases for attached duplexes, triplexes, single homes, commercial fit-outs, and heritage restoration in Sydney and NSW.',
     path: '/completed-projects/',
   })
 
@@ -229,6 +229,10 @@ export default function CompletedProjectsPage({ company }) {
           />
         }
       >
+        <blockquote className="mb-6 border-l border-gold/40 pl-5 text-sm font-light italic leading-6 text-smoke">
+          This portfolio showcases premium architectural design concepts for attached duplexes, triplexes, single-family dwellings, and commercial fit-outs. Each project represents the standard of craftsmanship and staging delivered by DECENT Development in NSW.
+        </blockquote>
+
         <div className="flex flex-wrap gap-4">
           <a
             href="#attached-dwellings"

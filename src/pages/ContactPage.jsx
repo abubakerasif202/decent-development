@@ -11,9 +11,9 @@ const directionsUrl =
 
 export default function ContactPage({ company }) {
   usePageMeta({
-    title: 'Contact | DECENT Development',
+    title: 'Contact DECENT Development | Sydney Construction Enquiries',
     description:
-      'Contact DECENT Development to discuss a premium construction, development, or project management brief in New South Wales.',
+      'Contact DECENT Development to discuss a premium construction, duplex/triplex development, or project management brief in Sydney and New South Wales.',
     path: '/contact/',
   })
 
@@ -78,6 +78,10 @@ export default function ContactPage({ company }) {
           </motion.div>
         }
       >
+        <blockquote className="mb-6 border-l border-gold/40 pl-5 text-sm font-light italic leading-6 text-smoke">
+          Connect with DECENT Development for premium residential construction and property development services in Sydney and wider NSW. Enquiries can be submitted via our secure portal, email (info@decentdevelopment.com.au), or phone (1800 008 883).
+        </blockquote>
+
         <div className="flex flex-wrap gap-4">
           <a
             href={company.phoneHref}
