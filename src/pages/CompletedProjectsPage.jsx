@@ -69,7 +69,7 @@ const singleDwellings = [
   },
 ]
 
-function VisualCard({ image, title, copy, badge, stats }) {
+function VisualCard({ image, title, copy, badge, stats, loading = 'lazy', fetchPriority }) {
   const reducedMotion = useReducedMotion()
 
   return (
@@ -83,7 +83,14 @@ function VisualCard({ image, title, copy, badge, stats }) {
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
     >
       <div className="relative overflow-hidden rounded-[1.5rem] border border-white/10 bg-ink">
-        <img src={image} alt={title} className="aspect-[4/5] h-full w-full object-cover" decoding="async" />
+        <img
+          src={image}
+          alt={title}
+          className="aspect-[4/5] h-full w-full object-cover"
+          decoding="async"
+          loading={loading}
+          fetchPriority={fetchPriority}
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
         <div className="absolute left-5 top-5 rounded-full border border-white/20 bg-black/30 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.24em] text-ivory backdrop-blur">
           {badge}
@@ -186,7 +193,7 @@ export default function CompletedProjectsPage({ company }) {
     title: 'Portfolio | DECENT Development',
     description:
       'Browse premium AI-generated concept showcases for attached dwellings, single homes, commercial fit-outs, and heritage restoration.',
-    path: '/completed-projects',
+    path: '/completed-projects/',
   })
 
   return (
@@ -212,6 +219,8 @@ export default function CompletedProjectsPage({ company }) {
             title="Portfolio concept overview"
             copy="A cinematic portfolio presentation designed to communicate quality, scale, and delivery confidence."
             badge="AI-generated concept"
+            loading="eager"
+            fetchPriority="high"
             stats={[
               { label: 'Residential', value: '4' },
               { label: 'Commercial', value: '2' },
@@ -284,7 +293,13 @@ export default function CompletedProjectsPage({ company }) {
               className="overflow-hidden rounded-[2rem] border border-ink/10 bg-white shadow-[0_18px_38px_rgba(18,18,18,0.08)]"
               initial={false}
             >
-              <img src={projectCommercial} alt="AI-generated commercial concept render" className="h-72 w-full object-cover" />
+              <img
+                src={projectCommercial}
+                alt="AI-generated commercial concept render"
+                className="h-72 w-full object-cover"
+                decoding="async"
+                loading="lazy"
+              />
               <div className="p-6">
                 <p className="eyebrow">Commercial fit-out</p>
                 <h3 className="mt-3 font-display text-2xl font-normal text-ink">Workspace concept showcase</h3>
@@ -299,7 +314,13 @@ export default function CompletedProjectsPage({ company }) {
               className="overflow-hidden rounded-[2rem] border border-ink/10 bg-white shadow-[0_18px_38px_rgba(18,18,18,0.08)]"
               initial={false}
             >
-              <img src={projectRenovation} alt="AI-generated heritage concept render" className="h-72 w-full object-cover" />
+              <img
+                src={projectRenovation}
+                alt="AI-generated heritage concept render"
+                className="h-72 w-full object-cover"
+                decoding="async"
+                loading="lazy"
+              />
               <div className="p-6">
                 <p className="eyebrow">Heritage renovation</p>
                 <h3 className="mt-3 font-display text-2xl font-normal text-ink">Restoration concept showcase</h3>
@@ -323,6 +344,7 @@ export default function CompletedProjectsPage({ company }) {
               alt="Abstract AI-generated architectural artwork"
               className="absolute inset-0 h-full w-full object-cover opacity-35"
               decoding="async"
+              loading="lazy"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/70 to-black/35" />
             <div className="relative z-10 grid gap-8 p-8 lg:grid-cols-[1fr_auto] lg:items-center lg:p-10">

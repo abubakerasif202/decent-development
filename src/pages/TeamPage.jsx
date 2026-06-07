@@ -11,7 +11,7 @@ export default function TeamPage({ company, teamAssets }) {
     title: 'Meet the Team | DECENT Development',
     description:
       'Meet the specialist project managers and building professionals behind DECENT Development’s premium delivery approach.',
-    path: '/meet-the-team',
+    path: '/meet-the-team/',
   })
 
   return (

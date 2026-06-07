@@ -2,6 +2,7 @@ import About from '../components/About.jsx'
 import Hero from '../components/Hero.jsx'
 import Projects from '../components/Projects.jsx'
 import Services from '../components/Services.jsx'
+import TrustAndFaq from '../components/TrustAndFaq.jsx'
 import usePageMeta from '../hooks/usePageMeta.js'
 
 export default function HomePage({ company }) {
@@ -18,6 +19,7 @@ export default function HomePage({ company }) {
       <About />
       <Services />
       <Projects />
+      <TrustAndFaq company={company} />
     </>
   )
 }

@@ -17,8 +17,8 @@ export default {
         bronze: '#8a6a35',
       },
       fontFamily: {
-        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'Segoe UI', 'Arial', 'sans-serif'],
-        display: ['Playfair Display', 'Georgia', 'Cambria', 'Times New Roman', 'serif'],
+        sans: ['ui-sans-serif', 'system-ui', 'Segoe UI', 'Arial', 'sans-serif'],
+        display: ['Georgia', 'Cambria', 'Times New Roman', 'serif'],
       },
       boxShadow: {
         premium: '0 28px 80px rgba(11, 9, 7, 0.34)',

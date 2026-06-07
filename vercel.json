@@ -1,5 +1,34 @@
 {
+  "redirects": [
+    {
+      "source": "/completed-projects",
+      "destination": "/completed-projects/",
+      "permanent": true
+    },
+    {
+      "source": "/meet-the-team",
+      "destination": "/meet-the-team/",
+      "permanent": true
+    },
+    {
+      "source": "/contact",
+      "destination": "/contact/",
+      "permanent": true
+    }
+  ],
   "rewrites": [
+    {
+      "source": "/completed-projects/",
+      "destination": "/completed-projects/index.html"
+    },
+    {
+      "source": "/meet-the-team/",
+      "destination": "/meet-the-team/index.html"
+    },
+    {
+      "source": "/contact/",
+      "destination": "/contact/index.html"
+    },
     {
       "source": "/(.*)",
       "destination": "/index.html"

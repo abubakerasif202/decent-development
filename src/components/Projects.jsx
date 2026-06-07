@@ -52,6 +52,7 @@ function DestinationCard({ destination, index }) {
           alt={destination.title}
           className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.06]"
           decoding="async"
+          loading="lazy"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/55 to-black/15" />
       </div>

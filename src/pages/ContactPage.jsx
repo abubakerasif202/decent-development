@@ -14,7 +14,7 @@ export default function ContactPage({ company }) {
     title: 'Contact | DECENT Development',
     description:
       'Contact DECENT Development to discuss a premium construction, development, or project management brief in New South Wales.',
-    path: '/contact',
+    path: '/contact/',
   })
 
   return (

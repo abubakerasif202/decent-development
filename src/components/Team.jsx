@@ -33,7 +33,7 @@ function TeamImage({ member, src }) {
         alt={`${member.name}, ${member.role} at DECENT Development`}
         className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
         decoding="async"
-        loading="eager"
+        loading="lazy"
       />
     )
   }
