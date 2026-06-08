@@ -292,8 +292,8 @@ for (const project of projects) {
   routes.push({
     path: `/projects/${project.slug}/`,
     priority: '0.7',
-    title: `${project.title} | Decent Development Sydney`,
-    description: `${project.summary} View this completed residential project by Decent Development across Sydney and NSW.`,
+    title: project.seoTitle,
+    description: project.seoDescription,
     h1: project.title,
     body: [
       project.story,
@@ -302,7 +302,7 @@ for (const project of projects) {
     subheadings: [
       {
         title: 'Project Highlights',
-        text: project.highlights.join('. '),
+        text: project.features.join('. '),
       },
       {
         title: 'Sydney Residential Construction',

@@ -20,6 +20,9 @@ export default function ProjectCard({ project, index = 0, featured = false }) {
         <ProjectImage
           src={project.heroImage}
           alt={`${project.title} exterior at ${project.suburb}`}
+          placeholderTitle={project.title}
+          placeholderSubtitle={`${project.address} • ${project.type}`}
+          placeholderLabel={project.status}
           className={`w-full object-cover transition duration-700 group-hover:scale-[1.055] ${
             featured ? 'h-full min-h-[360px] lg:min-h-[520px]' : 'aspect-[4/3]'
           }`}
@@ -43,7 +46,9 @@ export default function ProjectCard({ project, index = 0, featured = false }) {
         </p>
         <h3 className="mt-3 font-display text-2xl font-normal leading-tight text-ink">{project.title}</h3>
         <p className="mt-2 text-sm font-semibold leading-6 text-graphite">{project.address}</p>
-        <p className="mt-4 flex-1 text-sm font-light leading-7 text-graphite/78">{project.summary}</p>
+        <p className="mt-4 flex-1 text-sm font-light leading-7 text-graphite/78">
+          {project.shortDescription || project.summary}
+        </p>
 
         <Link
           to={`/projects/${project.slug}/`}

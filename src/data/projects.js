@@ -1,6 +1,14 @@
 const projectImage = (folder, filename) => `/projects/${folder}/${filename}`
 
-const highlightSets = {
+const shotLabels = {
+  front: 'Front Exterior',
+  side: 'Side View',
+  rear: 'Rear View',
+  interior: 'Kitchen / Living',
+  detail: 'Detail Shot',
+}
+
+const baseFeatures = {
   duplex: [
     'Two-residence development',
     'Contemporary street presence',
@@ -24,169 +32,207 @@ const highlightSets = {
   ],
 }
 
-export const projects = [
+const createPlaceholderShots = (project) =>
+  Object.entries(shotLabels).map(([key, label]) => ({
+    key,
+    label,
+    src: null,
+    alt: `${project.title} ${label} placeholder`,
+    placeholderTitle: project.address,
+    placeholderSubtitle: project.type,
+    placeholderLabel: label,
+  }))
+
+const createRealShots = (folder, project) => [
   {
-    id: 'auburn-34-antwerp',
-    slug: 'auburn-duplex-development',
-    title: 'Auburn Duplex Development',
-    address: '34 Antwerp Street, Auburn NSW 2144',
-    suburb: 'Auburn',
-    type: 'Duplex Development',
-    category: 'duplex',
-    status: 'Completed',
-    featured: true,
-    summary:
-      'A contemporary duplex development showcasing modern architectural design, refined street presence and quality residential construction.',
-    story:
-      'A contemporary duplex development showcasing modern architectural design, refined street presence and quality residential construction. The project features a strong modern facade, premium stone detailing, clean geometric forms and a family-focused layout designed for comfortable modern living.',
-    folder: 'auburn',
-    heroImage: projectImage('auburn', 'hero.webp'),
-    images: [
-      projectImage('auburn', 'hero.webp'),
-      projectImage('auburn', 'street.webp'),
-      projectImage('auburn', 'detail.webp'),
-      projectImage('auburn', 'gallery-1.webp'),
-      projectImage('auburn', 'gallery-2.webp'),
-      projectImage('auburn', 'gallery-3.webp'),
-    ],
-    tags: ['duplex development Sydney', 'Auburn', 'residential construction Sydney'],
-    highlights: highlightSets.duplex,
+    key: 'front',
+    label: shotLabels.front,
+    src: projectImage(folder, `front.${project.shotExtension || 'png'}`),
+    alt: `${project.title} front exterior`,
   },
   {
-    id: 'regents-park-21-lewis',
-    slug: 'regents-park-residential-development',
-    title: 'Regents Park Residential Development',
-    address: '21 Lewis Street, Regents Park NSW 2143',
+    key: 'side',
+    label: shotLabels.side,
+    src: projectImage(folder, `side.${project.shotExtension || 'png'}`),
+    alt: `${project.title} side view`,
+  },
+  {
+    key: 'rear',
+    label: shotLabels.rear,
+    src: projectImage(folder, `rear.${project.shotExtension || 'png'}`),
+    alt: `${project.title} rear view`,
+  },
+  {
+    key: 'interior',
+    label: shotLabels.interior,
+    src: projectImage(folder, `interior.${project.shotExtension || 'png'}`),
+    alt: `${project.title} kitchen and living area`,
+  },
+  {
+    key: 'detail',
+    label: shotLabels.detail,
+    src: projectImage(folder, `detail.${project.shotExtension || 'png'}`),
+    alt: `${project.title} premium detail shot`,
+  },
+]
+
+const createProject = ({
+  slug,
+  title,
+  address,
+  suburb,
+  postcode,
+  type,
+  status = 'Completed',
+  category,
+  folder,
+  realPhotography = false,
+  shotExtension = 'png',
+  featured = false,
+  shortDescription,
+  story,
+  mapQuery,
+  tags,
+}) => {
+  const project = {
+    slug,
+    title,
+    address,
+    suburb,
+    postcode,
+    type,
+    status,
+    featured,
+    category,
+    shortDescription,
+    summary: shortDescription,
+    story,
+    mapQuery,
+    tags,
+    features: baseFeatures[category] || [],
+    shotExtension,
+  }
+
+  project.shots = realPhotography ? createRealShots(folder, project) : createPlaceholderShots(project)
+  project.heroImage = project.shots[0]?.src || null
+  project.heroShot = project.shots[0]
+  project.galleryImages = project.shots.map((shot) => shot.src)
+  project.seoTitle = `${project.address} | ${project.type} Project | Decent Development`
+  project.seoDescription = `Explore Decent Development’s ${project.type.toLowerCase()} project at ${project.address}, showcasing premium residential construction and property development in Sydney, NSW.`
+
+  return project
+}
+
+export const projects = [
+  createProject({
+    slug: '34-antwerp-street-auburn',
+    title: '34 Antwerp Street Duplex',
+    address: '34 Antwerp Street, Auburn, NSW 2144',
+    suburb: 'Auburn',
+    postcode: '2144',
+    type: 'Duplex',
+    category: 'duplex',
+    folder: 'auburn-34-antwerp',
+    realPhotography: true,
+    featured: true,
+    shortDescription:
+      'A premium duplex project presented with a clean, restrained residential finish and strong street presence.',
+    story:
+      'A premium duplex project presented with a clean, restrained residential finish and strong street presence. The project is positioned as a completed residential development with practical planning, refined exterior composition and a clear focus on long-term family value.',
+    mapQuery: '34 Antwerp Street, Auburn NSW 2144',
+    tags: ['duplex development Sydney', 'Auburn', 'residential construction NSW'],
+  }),
+  createProject({
+    slug: '21-lewis-street-regents-park',
+    title: '21 Lewis Street Residential Development',
+    address: '21 Lewis Street, Regents Park, NSW 2143',
     suburb: 'Regents Park',
+    postcode: '2143',
     type: 'Residential Development',
     category: 'residential',
-    status: 'Completed',
+    folder: 'regents-park-21-lewis',
+    realPhotography: true,
     featured: false,
-    summary:
-      'A completed residential development focused on practical family living, quality construction and efficient use of land.',
+    shortDescription:
+      'A completed residential development focused on practical living, quality construction and efficient land use.',
     story:
-      'A completed residential development focused on practical family living, quality construction and efficient use of land. Designed to suit the established character of Regents Park while delivering modern comfort, functionality and long-term value.',
-    folder: 'regents-park',
-    heroImage: projectImage('regents-park', 'hero.webp'),
-    images: [
-      projectImage('regents-park', 'hero.webp'),
-      projectImage('regents-park', 'street.webp'),
-      projectImage('regents-park', 'detail.webp'),
-      projectImage('regents-park', 'gallery-1.webp'),
-      projectImage('regents-park', 'gallery-2.webp'),
-      projectImage('regents-park', 'gallery-3.webp'),
-    ],
-    tags: ['completed residential projects', 'Regents Park', 'construction and property development NSW'],
-    highlights: highlightSets.residential,
-  },
-  {
-    id: 'rouse-hill-10-dorian',
-    slug: 'rouse-hill-duplex-development',
-    title: 'Rouse Hill Duplex Development',
-    address: '10 Dorian Street, Rouse Hill NSW 2155',
+      'A completed residential development focused on practical living, quality construction and efficient land use. The project sits comfortably within the suburb while maintaining a premium, well-resolved presentation for the portfolio.',
+    mapQuery: '21 Lewis Street, Regents Park NSW 2143',
+    tags: ['completed residential projects', 'Regents Park', 'property development NSW'],
+  }),
+  createProject({
+    slug: '10-dorian-street-rouse-hill',
+    title: '10 Dorian Street Duplex',
+    address: '10 Dorian Street, Rouse Hill, NSW 2155',
     suburb: 'Rouse Hill',
-    type: 'Duplex Development',
+    postcode: '2155',
+    type: 'Duplex',
     category: 'duplex',
-    status: 'Completed',
+    folder: 'rouse-hill-10-dorian',
+    realPhotography: true,
+    shotExtension: 'webp',
     featured: true,
-    summary:
-      'A modern duplex development in Rouse Hill delivering contemporary family living with strong street appeal.',
+    shortDescription:
+      'A modern duplex in Rouse Hill with strong street appeal, clean materials and a premium family-focused outcome.',
     story:
-      "A modern duplex development in Rouse Hill delivering contemporary family living with strong street appeal. The project combines brickwork, rendered finishes, balcony detailing and clean architectural lines to create a premium residential outcome in one of Sydney's growing family suburbs.",
-    folder: 'rouse-hill',
-    heroImage: projectImage('rouse-hill', 'hero.webp'),
-    images: [
-      projectImage('rouse-hill', 'hero.webp'),
-      projectImage('rouse-hill', 'street.webp'),
-      projectImage('rouse-hill', 'detail.webp'),
-      projectImage('rouse-hill', 'gallery-1.webp'),
-      projectImage('rouse-hill', 'gallery-2.webp'),
-      projectImage('rouse-hill', 'gallery-3.webp'),
-    ],
+      "A modern duplex in Rouse Hill with strong street appeal, clean materials and a premium family-focused outcome. The real project photography gives the portfolio its most complete residential presentation and supports the site's more editorial style.",
+    mapQuery: '10 Dorian Street, Rouse Hill NSW 2155',
     tags: ['duplex development Sydney', 'Rouse Hill', 'completed residential projects'],
-    highlights: highlightSets.duplex,
-  },
-  {
-    id: 'canley-vale-24-the-avenue',
-    slug: 'canley-vale-triplex-development-24-the-avenue',
-    title: 'Canley Vale Triplex Development',
-    address: '24 The Avenue, Canley Vale NSW 2166',
+  }),
+  createProject({
+    slug: '24-the-avenue-canley-vale',
+    title: '24 The Avenue Triplex',
+    address: '24 The Avenue, Canley Vale, NSW 2166',
     suburb: 'Canley Vale',
-    type: 'Triplex Development',
+    postcode: '2166',
+    type: 'Triplex',
     category: 'triplex',
-    status: 'Completed',
+    folder: 'canley-vale-24-the-avenue',
+    realPhotography: true,
     featured: true,
-    summary:
-      'A premium triplex development delivering three modern residences with a strong streetscape presence.',
+    shortDescription:
+      'A triplex development presented as a clean, high-value multi-dwelling project with a clear residential identity.',
     story:
-      "A premium triplex development delivering three modern residences with a strong streetscape presence. The project highlights Decent Development's capability in multi-dwelling residential construction, with contemporary facade treatments, glass balconies, detailed brickwork and practical family-oriented layouts.",
-    folder: 'canley-vale-24',
-    heroImage: projectImage('canley-vale-24', 'hero.webp'),
-    images: [
-      projectImage('canley-vale-24', 'hero.webp'),
-      projectImage('canley-vale-24', 'street.webp'),
-      projectImage('canley-vale-24', 'detail.webp'),
-      projectImage('canley-vale-24', 'gallery-1.webp'),
-      projectImage('canley-vale-24', 'gallery-2.webp'),
-      projectImage('canley-vale-24', 'gallery-3.webp'),
-    ],
-    tags: ['triplex development Sydney', 'Canley Vale', 'multi-dwelling residential construction'],
-    highlights: highlightSets.triplex,
-  },
-  {
-    id: 'canley-vale-87-the-avenue',
-    slug: 'canley-vale-triplex-development-87-the-avenue',
-    title: 'The Avenue Triplex Collection',
-    address: '87 The Avenue, Canley Vale NSW 2166',
+      'A triplex development presented as a clean, high-value multi-dwelling project with a clear residential identity. The project is shown as a premium portfolio entry while waiting for a fuller photography set.',
+    mapQuery: '24 The Avenue, Canley Vale NSW 2166',
+    tags: ['triplex development Sydney', 'Canley Vale', 'multi-dwelling construction'],
+  }),
+  createProject({
+    slug: '87-the-avenue-canley-vale',
+    title: '87 The Avenue Triplex',
+    address: '87 The Avenue, Canley Vale, NSW 2166',
     suburb: 'Canley Vale',
-    type: 'Triplex Development',
+    postcode: '2166',
+    type: 'Triplex',
     category: 'triplex',
-    status: 'Completed',
+    folder: 'canley-vale-87-the-avenue',
+    realPhotography: true,
     featured: false,
-    summary:
-      'A completed triplex project designed to maximise land potential while maintaining a clean, modern residential presentation.',
+    shortDescription:
+      'A triplex project with a premium but understated presence, designed to show scale without visual clutter.',
     story:
-      "A completed triplex project designed to maximise land potential while maintaining a clean, modern residential presentation. With multiple residences, landscaped street frontage and contemporary architectural form, this project demonstrates Decent Development's experience in delivering quality multi-unit developments.",
-    folder: 'canley-vale-87',
-    heroImage: projectImage('canley-vale-87', 'hero.webp'),
-    images: [
-      projectImage('canley-vale-87', 'hero.webp'),
-      projectImage('canley-vale-87', 'street.webp'),
-      projectImage('canley-vale-87', 'detail.webp'),
-      projectImage('canley-vale-87', 'gallery-1.webp'),
-      projectImage('canley-vale-87', 'gallery-2.webp'),
-      projectImage('canley-vale-87', 'gallery-3.webp'),
-    ],
+      'A triplex project with a premium but understated presence, designed to show scale without visual clutter. The gallery remains intentionally placeholder-led until the proper photo set is supplied.',
+    mapQuery: '87 The Avenue, Canley Vale NSW 2166',
     tags: ['triplex development Sydney', 'Canley Vale', 'Sydney property developer'],
-    highlights: highlightSets.triplex,
-  },
-  {
-    id: 'canley-heights-23-mittiamo',
-    slug: 'canley-heights-duplex-development',
-    title: 'Canley Heights Duplex Development',
-    address: '23 Mittiamo Street, Canley Heights NSW 2166',
+  }),
+  createProject({
+    slug: '23-mittiamo-street-canley-heights',
+    title: '23 Mittiamo Street Duplex',
+    address: '23 Mittiamo Street, Canley Heights, NSW 2166',
     suburb: 'Canley Heights',
-    type: 'Duplex Development',
+    postcode: '2166',
+    type: 'Duplex',
     category: 'duplex',
-    status: 'Completed',
+    folder: 'canley-heights-23-mittiamo',
+    realPhotography: true,
     featured: false,
-    summary:
-      'A modern duplex development built for practical family living with a contemporary facade and quality exterior finishes.',
+    shortDescription:
+      'A duplex development shown with a calm, clean portfolio presentation to keep the completed-projects page cohesive.',
     story:
-      "A modern duplex development built for practical family living with a contemporary facade, quality exterior finishes and a strong suburban streetscape presence. The project reflects Decent Development's attention to detail across design, construction and presentation.",
-    folder: 'canley-heights',
-    heroImage: projectImage('canley-heights', 'hero.webp'),
-    images: [
-      projectImage('canley-heights', 'hero.webp'),
-      projectImage('canley-heights', 'street.webp'),
-      projectImage('canley-heights', 'detail.webp'),
-      projectImage('canley-heights', 'gallery-1.webp'),
-      projectImage('canley-heights', 'gallery-2.webp'),
-      projectImage('canley-heights', 'gallery-3.webp'),
-    ],
+      'A duplex development shown with a calm, clean portfolio presentation to keep the completed-projects page cohesive. The page treatment prioritizes consistency and clear project information over speculative imagery.',
+    mapQuery: '23 Mittiamo Street, Canley Heights NSW 2166',
     tags: ['duplex development Sydney', 'Canley Heights', 'residential construction Sydney'],
-    highlights: highlightSets.duplex,
-  },
+  }),
 ]
 
 export const featuredProjects = projects.filter((project) => project.featured)

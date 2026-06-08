@@ -13,7 +13,7 @@ const filters = [
   ['residential', 'Residential'],
 ]
 
-function PortfolioVisual() {
+function PortfolioVisual({ counts }) {
   const reducedMotion = useReducedMotion()
 
   return (
@@ -51,11 +51,7 @@ function PortfolioVisual() {
             </p>
           </div>
           <div className="grid gap-2 sm:grid-cols-3">
-            {[
-              { label: 'Duplex', value: '1' },
-              { label: 'Triplex', value: '3' },
-              { label: 'Residential', value: '2' },
-            ].map((stat) => (
+            {counts.map((stat) => (
               <div key={stat.label} className="rounded-2xl border border-white/10 bg-black/35 px-3 py-3 backdrop-blur">
                 <div className="text-[10px] font-semibold uppercase tracking-[0.24em] text-smoke">{stat.label}</div>
                 <div className="mt-1 text-sm font-semibold text-ivory">{stat.value}</div>
@@ -87,6 +83,15 @@ export default function ProjectsPage() {
     [activeFilter],
   )
 
+  const portfolioCounts = useMemo(
+    () => [
+      { label: 'Projects', value: `${projects.length}` },
+      { label: 'Duplex', value: `${projects.filter((project) => project.category === 'duplex').length}` },
+      { label: 'Triplex', value: `${projects.filter((project) => project.category === 'triplex').length}` },
+    ],
+    [],
+  )
+
   return (
     <>
       <PageHero
@@ -99,7 +104,7 @@ export default function ProjectsPage() {
           { label: 'Region', value: 'Sydney NSW' },
         ]}
         visual={
-          <PortfolioVisual />
+          <PortfolioVisual counts={portfolioCounts} />
         }
       >
         <p className="max-w-2xl text-sm leading-7 text-smoke">

@@ -11,11 +11,9 @@ export default function ProjectDetailPage() {
   const project = getProjectBySlug(slug)
 
   usePageMeta({
-    title: project
-      ? `${project.title} | Decent Development Sydney`
-      : 'Project Not Found | Decent Development Sydney',
+    title: project ? project.seoTitle : 'Project Not Found | Decent Development Sydney',
     description: project
-      ? `${project.summary} View this completed residential project by Decent Development, a Sydney property developer delivering duplex, triplex and residential construction Sydney work.`
+      ? project.seoDescription
       : 'The requested Decent Development project could not be found.',
     path: project ? `/projects/${project.slug}/` : '/projects/',
   })
@@ -72,7 +70,7 @@ export default function ProjectDetailPage() {
             <p className="mt-6 text-base font-light leading-8 text-smoke">{project.story}</p>
 
             <div className="mt-10 grid gap-4 sm:grid-cols-2">
-              {project.highlights.map((highlight) => (
+              {project.features.map((highlight) => (
                 <div key={highlight} className="flex gap-3 border border-gold/16 bg-white/5 p-4">
                   <CheckCircle2 className="mt-0.5 shrink-0 text-gold" size={18} aria-hidden="true" />
                   <span className="text-sm leading-6 text-smoke">{highlight}</span>
@@ -102,6 +100,14 @@ export default function ProjectDetailPage() {
                 Contact Decent Development
                 <ArrowRight size={16} aria-hidden="true" />
               </Link>
+              <a
+                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(project.mapQuery)}`}
+                target="_blank"
+                rel="noreferrer"
+                className="focus-ring outline-gold-btn inline-flex min-h-12 items-center justify-center px-6 py-3 text-xs font-bold uppercase"
+              >
+                Open in Google Maps
+              </a>
               <Link
                 to="/projects/"
                 className="focus-ring outline-gold-btn inline-flex min-h-12 items-center justify-center px-6 py-3 text-xs font-bold uppercase"

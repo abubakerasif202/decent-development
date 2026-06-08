@@ -9,6 +9,9 @@ export default function ProjectHero({ project }) {
         <ProjectImage
           src={project.heroImage}
           alt={`${project.title} exterior project image`}
+          placeholderTitle={project.title}
+          placeholderSubtitle={project.address}
+          placeholderLabel={project.type}
           className="h-full w-full object-cover"
           fallbackClassName="h-full min-h-[82svh]"
           loading="eager"

@@ -1,6 +1,7 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import { Building2, FileBadge2, Users2 } from 'lucide-react'
 import hzHomesLogo from '../assets/collaboration/hz-homes.png'
+import milestoneDevelopmentLogo from '../assets/collaboration/milestone-live/logo.svg'
 import jufajaHomesLogo from '../assets/collaboration/jufaja-homes.png'
 
 const collaborators = [
@@ -20,6 +21,8 @@ const collaborators = [
   },
   {
     name: 'Milestone Construction and Development Pty Ltd',
+    logo: milestoneDevelopmentLogo,
+    logoAlt: 'Milestone Development logo',
     details: ['ACN 697 166 715', 'Collaborative delivery partner', 'For larger and more complicated projects'],
     surface: 'bg-charcoal',
   },
@@ -41,7 +44,7 @@ function CollaboratorCard({ collaborator, index }) {
           <img
             src={collaborator.logo}
             alt={collaborator.logoAlt}
-            className="max-h-44 w-full max-w-[240px] object-contain"
+            className="max-h-44 w-full max-w-[300px] object-contain drop-shadow-[0_0_24px_rgba(240,219,117,0.16)]"
             loading="lazy"
             decoding="async"
           />
