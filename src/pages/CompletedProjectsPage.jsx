@@ -4,8 +4,8 @@ import { ArrowRight, CheckCircle2, Home as HomeIcon, Sparkles } from 'lucide-rea
 import PageHero from '../components/PageHero.jsx'
 import usePageMeta from '../hooks/usePageMeta.js'
 import heroBuilding from '../assets/stitch/hero-building.jpg'
+import projectDuplex from '../assets/stitch/project-duplex.png'
 import projectCommercial from '../assets/stitch/project-commercial.jpg'
-import projectMultiuse from '../assets/stitch/project-multiuse.jpg'
 import projectResidential from '../assets/stitch/project-residential.jpg'
 import projectRenovation from '../assets/stitch/project-renovation.jpg'
 
@@ -97,7 +97,9 @@ function VisualCard({ image, title, copy, badge, stats, loading = 'lazy', fetchP
         </div>
         <div className="absolute bottom-5 left-5 right-5 space-y-3">
           <div className="max-w-sm">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.26em] text-gold-soft">AI-generated render</p>
+            <p className="text-[10px] font-semibold uppercase tracking-[0.26em] text-gold-soft">
+              Premium architectural imagery
+            </p>
             <h2 className="mt-2 font-display text-2xl font-normal text-ivory">{title}</h2>
             <p className="mt-2 text-sm leading-6 text-smoke">{copy}</p>
           </div>
@@ -139,9 +141,9 @@ function ProjectCard({ project, index }) {
       <p className="mt-4 text-sm leading-6 text-graphite/75">{project.copy}</p>
       <div className="mt-4 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-stone">
         <HomeIcon size={14} aria-hidden="true" />
-        Concept showcase
+        Residential showcase
       </div>
-    </motion.article>
+      </motion.article>
   )
 }
 
@@ -192,7 +194,7 @@ export default function CompletedProjectsPage({ company }) {
   usePageMeta({
     title: 'Premium Dwelling Portfolio | DECENT Development',
     description:
-      'Browse premium AI-generated concept showcases for attached duplexes, triplexes, single homes, commercial fit-outs, and heritage restoration in Sydney and NSW.',
+      'Browse premium architectural imagery for attached duplexes, triplexes, single homes, commercial fit-outs, and heritage restoration in Sydney and NSW.',
     path: '/completed-projects/',
   })
 
@@ -204,21 +206,21 @@ export default function CompletedProjectsPage({ company }) {
           <>
             Attached and single dwellings
             <br />
-            presented as concept showcases
+            presented as premium showcases
           </>
         }
-        copy="This curated portfolio uses AI-generated concept imagery and sample project details to showcase the DECENT Development standard in a polished, client-ready format."
+        copy="This curated portfolio uses premium architectural imagery and sample project details to showcase the DECENT Development standard in a polished, client-ready format."
         stats={[
-          { label: 'Attached concepts', value: '6' },
-          { label: 'Single concepts', value: '3' },
+          { label: 'Attached images', value: '6' },
+          { label: 'Single images', value: '3' },
           { label: 'Portfolio showcases', value: '9' },
         ]}
         visual={
           <VisualCard
             image={heroBuilding}
-            title="Portfolio concept overview"
+            title="Portfolio overview"
             copy="A cinematic portfolio presentation designed to communicate quality, scale, and delivery confidence."
-            badge="AI-generated concept"
+            badge="Premium imagery"
             loading="eager"
             fetchPriority="high"
             stats={[
@@ -230,7 +232,7 @@ export default function CompletedProjectsPage({ company }) {
         }
       >
         <blockquote className="mb-6 border-l border-gold/40 pl-5 text-sm font-light italic leading-6 text-smoke">
-          This portfolio showcases premium architectural design concepts for attached duplexes, triplexes, single-family dwellings, and commercial fit-outs. Each project represents the standard of craftsmanship and staging delivered by DECENT Development in NSW.
+          This portfolio showcases premium architectural visuals for attached duplexes, triplexes, single-family dwellings, and commercial fit-outs. Each project represents the standard of craftsmanship and staging delivered by DECENT Development in NSW.
         </blockquote>
 
         <div className="flex flex-wrap gap-4">
@@ -255,17 +257,17 @@ export default function CompletedProjectsPage({ company }) {
           </Link>
         </div>
         <p className="mt-4 max-w-2xl text-xs uppercase tracking-[0.24em] text-smoke">
-          Imagery is illustrative only and uses AI-generated presentation renders.
+          Imagery is illustrative only and uses premium architectural presentation imagery.
         </p>
       </PageHero>
 
       <ProjectSection
         id="attached-dwellings"
         eyebrow="Attached dwellings"
-        title="Duplex and triplex concept presentation"
-        copy="The attached-dwelling showcase pairs elegant concept imagery with sample locations to reflect how DECENT Development presents premium multi-residential work."
-        image={projectMultiuse}
-        badge="AI concept"
+        title="Duplex and triplex presentation"
+        copy="The attached-dwelling showcase pairs elegant residential imagery with sample locations to reflect how DECENT Development presents premium multi-residential work."
+        image={projectDuplex}
+        badge="Premium imagery"
         stats={[
           { label: 'Scope', value: 'Attached' },
           { label: 'Type', value: 'Duplex + triplex' },
@@ -277,10 +279,10 @@ export default function CompletedProjectsPage({ company }) {
       <ProjectSection
         id="single-dwellings"
         eyebrow="Single dwellings"
-        title="Free-standing home concept presentation"
-        copy="The detached-home showcase uses AI-generated imagery and brochure-style copy to deliver a polished and memorable portfolio section."
+        title="Free-standing home presentation"
+        copy="The detached-home showcase uses refined architectural imagery and brochure-style copy to deliver a polished and memorable portfolio section."
         image={projectResidential}
-        badge="AI concept"
+        badge="Premium imagery"
         stats={[
           { label: 'Scope', value: 'Free-standing' },
           { label: 'Type', value: 'Single homes' },
@@ -299,7 +301,7 @@ export default function CompletedProjectsPage({ company }) {
             >
               <img
                 src={projectCommercial}
-                alt="AI-generated commercial concept render"
+                alt="Commercial presentation image"
                 className="h-72 w-full object-cover"
                 decoding="async"
                 loading="lazy"
@@ -320,7 +322,7 @@ export default function CompletedProjectsPage({ company }) {
             >
               <img
                 src={projectRenovation}
-                alt="AI-generated heritage concept render"
+                alt="Heritage restoration presentation image"
                 className="h-72 w-full object-cover"
                 decoding="async"
                 loading="lazy"
@@ -345,7 +347,7 @@ export default function CompletedProjectsPage({ company }) {
           >
             <img
               src={projectRenovation}
-              alt="Abstract AI-generated architectural artwork"
+              alt="Abstract architectural artwork"
               className="absolute inset-0 h-full w-full object-cover opacity-35"
               decoding="async"
               loading="lazy"

@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import PageHero from '../components/PageHero.jsx'
 import ProjectCard from '../components/projects/ProjectCard.jsx'
-import ProjectImage from '../components/projects/ProjectImage.jsx'
+import projectDuplex from '../assets/stitch/project-duplex.png'
 import { projects } from '../data/projects.js'
 import usePageMeta from '../hooks/usePageMeta.js'
 
@@ -13,10 +13,64 @@ const filters = [
   ['residential', 'Residential'],
 ]
 
+function PortfolioVisual() {
+  const reducedMotion = useReducedMotion()
+
+  return (
+    <motion.div
+      className="relative mx-auto max-w-xl rounded-[2rem] border border-gold/20 bg-white/5 p-4 shadow-premium backdrop-blur-sm"
+      style={{ transformStyle: 'preserve-3d' }}
+      initial={reducedMotion ? false : { opacity: 0, y: 28, rotateY: -8 }}
+      whileInView={reducedMotion ? undefined : { opacity: 1, y: 0, rotateY: 0 }}
+      viewport={{ once: true, amount: 0.35 }}
+      whileHover={reducedMotion ? undefined : { rotateY: -5, rotateX: 4, y: -6 }}
+      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+    >
+      <div className="relative overflow-hidden rounded-[1.5rem] border border-white/10 bg-ink">
+        <img
+          src={projectDuplex}
+          alt="Premium duplex exterior"
+          className="aspect-[4/5] h-full w-full object-cover"
+          decoding="async"
+          loading="eager"
+          fetchPriority="high"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/82 via-black/22 to-transparent" />
+        <div className="absolute left-5 top-5 rounded-full border border-white/20 bg-black/35 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.24em] text-ivory backdrop-blur">
+          Editorial selection
+        </div>
+        <div className="absolute bottom-5 left-5 right-5 space-y-3">
+          <div className="max-w-sm">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.26em] text-gold-soft">
+              Duplex, triplex, and single dwellings
+            </p>
+            <h2 className="mt-2 font-display text-2xl font-normal text-ivory">Premium residential imagery</h2>
+            <p className="mt-2 text-sm leading-6 text-smoke">
+              A polished editorial frame that introduces the completed-projects portfolio with a darker, more
+              luxurious presentation.
+            </p>
+          </div>
+          <div className="grid gap-2 sm:grid-cols-3">
+            {[
+              { label: 'Duplex', value: '1' },
+              { label: 'Triplex', value: '3' },
+              { label: 'Residential', value: '2' },
+            ].map((stat) => (
+              <div key={stat.label} className="rounded-2xl border border-white/10 bg-black/35 px-3 py-3 backdrop-blur">
+                <div className="text-[10px] font-semibold uppercase tracking-[0.24em] text-smoke">{stat.label}</div>
+                <div className="mt-1 text-sm font-semibold text-ivory">{stat.value}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  )
+}
+
 export default function ProjectsPage() {
   const [activeFilter, setActiveFilter] = useState('all')
   const reducedMotion = useReducedMotion()
-  const heroProject = projects.find((project) => project.slug === 'canley-vale-triplex-development-24-the-avenue') ?? projects[0]
 
   usePageMeta({
     title: 'Completed Projects | Decent Development Sydney',
@@ -45,16 +99,7 @@ export default function ProjectsPage() {
           { label: 'Region', value: 'Sydney NSW' },
         ]}
         visual={
-          <div className="overflow-hidden border border-gold/20 bg-charcoal p-3 shadow-premium">
-            <ProjectImage
-              src={heroProject.heroImage}
-              alt={`${heroProject.title} completed residential project`}
-              className="aspect-[4/5] w-full object-cover"
-              fallbackClassName="aspect-[4/5]"
-              loading="eager"
-              fetchPriority="high"
-            />
-          </div>
+          <PortfolioVisual />
         }
       >
         <p className="max-w-2xl text-sm leading-7 text-smoke">
