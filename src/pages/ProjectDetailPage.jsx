@@ -10,40 +10,68 @@ export default function ProjectDetailPage() {
   const { slug } = useParams()
   const project = getProjectBySlug(slug)
 
+  const detailSchemas = project
+    ? [
+        {
+          '@context': 'https://schema.org',
+          '@type': 'BreadcrumbList',
+          'itemListElement': [
+            {
+              '@type': 'ListItem',
+              'position': 1,
+              'name': 'Home',
+              'item': 'https://decentdevelopment.com.au/',
+            },
+            {
+              '@type': 'ListItem',
+              'position': 2,
+              'name': 'Completed Projects',
+              'item': 'https://decentdevelopment.com.au/projects/',
+            },
+            {
+              '@type': 'ListItem',
+              'position': 3,
+              'name': project.title,
+              'item': `https://decentdevelopment.com.au/projects/${project.slug}/`,
+            },
+          ],
+        },
+        {
+          '@context': 'https://schema.org',
+          '@type': 'CreativeWork',
+          'name': project.title,
+          'description': project.story,
+          'url': `https://decentdevelopment.com.au/projects/${project.slug}/`,
+          'about': project.type,
+          'spatialCoverage': {
+            '@type': 'Place',
+            'name': project.address,
+            'address': project.address,
+          },
+          'provider': {
+            '@type': 'Organization',
+            'name': 'DECENT Development',
+            'url': 'https://decentdevelopment.com.au/',
+          },
+        },
+      ]
+    : []
+
   usePageMeta({
     title: project ? project.seoTitle : 'Project Not Found | Decent Development Sydney',
     description: project
       ? project.seoDescription
       : 'The requested Decent Development project could not be found.',
     path: project ? `/projects/${project.slug}/` : '/projects/',
+    schemas: detailSchemas,
   })
 
   if (!project) {
     return <Navigate to="/projects/" replace />
   }
 
-  const projectSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'CreativeWork',
-    name: project.title,
-    description: project.story,
-    url: `https://decentdevelopment.com.au/projects/${project.slug}/`,
-    about: project.type,
-    spatialCoverage: {
-      '@type': 'Place',
-      name: project.address,
-      address: project.address,
-    },
-    provider: {
-      '@type': 'Organization',
-      name: 'Decent Development',
-      url: 'https://decentdevelopment.com.au/',
-    },
-  }
-
   return (
     <>
-      <script type="application/ld+json">{JSON.stringify(projectSchema)}</script>
       <ProjectHero project={project} />
 
       <section className="bg-ink py-16 text-ivory sm:py-20">

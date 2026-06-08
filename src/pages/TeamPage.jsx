@@ -7,11 +7,80 @@ import usePageMeta from '../hooks/usePageMeta.js'
 import projectCommercial from '../assets/stitch/project-commercial.jpg'
 
 export default function TeamPage({ company, teamAssets }) {
+  const teamSchemas = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      'itemListElement': [
+        {
+          '@type': 'ListItem',
+          'position': 1,
+          'name': 'Home',
+          'item': 'https://decentdevelopment.com.au/',
+        },
+        {
+          '@type': 'ListItem',
+          'position': 2,
+          'name': 'Meet the Team',
+          'item': 'https://decentdevelopment.com.au/meet-the-team/',
+        },
+      ],
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'AboutPage',
+      'name': 'Meet the Team | DECENT Development',
+      'description':
+        'Meet the specialist project managers and building professionals behind DECENT Development’s premium delivery approach.',
+      'url': 'https://decentdevelopment.com.au/meet-the-team/',
+      'mainEntity': {
+        '@type': 'ItemList',
+        'name': 'DECENT Development Team Members',
+        'itemListElement': [
+          {
+            '@type': 'Person',
+            'name': 'Nemat Haidari',
+            'jobTitle': 'Specialist Project Manager',
+            'description': 'Brings two decades of construction insight to disciplined project delivery.',
+            'worksFor': {
+              '@type': 'Organization',
+              'name': 'DECENT Development',
+              'url': 'https://decentdevelopment.com.au/',
+            },
+          },
+          {
+            '@type': 'Person',
+            'name': 'Mohammad Mohsini',
+            'jobTitle': 'Certified Builder & Specialist Project Manager',
+            'description': 'Combines certified building expertise with a practical, client-focused approach.',
+            'worksFor': {
+              '@type': 'Organization',
+              'name': 'DECENT Development',
+              'url': 'https://decentdevelopment.com.au/',
+            },
+          },
+          {
+            '@type': 'Person',
+            'name': 'Hussain Jafari',
+            'jobTitle': 'Home & Land Package Specialist',
+            'description': 'Focuses on streamlined home-and-land package outcomes with a polished finish.',
+            'worksFor': {
+              '@type': 'Organization',
+              'name': 'DECENT Development',
+              'url': 'https://decentdevelopment.com.au/',
+            },
+          },
+        ],
+      },
+    },
+  ]
+
   usePageMeta({
     title: 'Meet the Team | DECENT Development',
     description:
       'Meet the specialist project managers and building professionals behind DECENT Development’s premium delivery approach.',
     path: '/meet-the-team/',
+    schemas: teamSchemas,
   })
 
   return (

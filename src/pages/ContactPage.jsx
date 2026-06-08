@@ -10,11 +10,54 @@ const directionsUrl =
   'https://www.google.com/maps/search/?api=1&query=Level%2014%20275%20Alfred%20St%20North%20North%20Sydney%20NSW%202060'
 
 export default function ContactPage({ company }) {
+  const contactSchemas = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      'itemListElement': [
+        {
+          '@type': 'ListItem',
+          'position': 1,
+          'name': 'Home',
+          'item': 'https://decentdevelopment.com.au/',
+        },
+        {
+          '@type': 'ListItem',
+          'position': 2,
+          'name': 'Contact',
+          'item': 'https://decentdevelopment.com.au/contact/',
+        },
+      ],
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'ContactPage',
+      'name': 'Contact DECENT Development | Sydney Construction Enquiries',
+      'description':
+        'Contact DECENT Development to discuss a premium construction, duplex/triplex development, or project management brief in Sydney and New South Wales.',
+      'url': 'https://decentdevelopment.com.au/contact/',
+      'mainEntity': {
+        '@type': 'Organization',
+        'name': 'DECENT Development',
+        'telephone': '1800 008 883',
+        'email': 'info@decentdevelopment.com.au',
+        'contactPoint': {
+          '@type': 'ContactPoint',
+          'telephone': '+611800008883',
+          'contactType': 'customer service',
+          'areaServed': 'AU',
+          'availableLanguage': 'English',
+        },
+      },
+    },
+  ]
+
   usePageMeta({
     title: 'Contact DECENT Development | Sydney Construction Enquiries',
     description:
       'Contact DECENT Development to discuss a premium construction, duplex/triplex development, or project management brief in Sydney and New South Wales.',
     path: '/contact/',
+    schemas: contactSchemas,
   })
 
   return (

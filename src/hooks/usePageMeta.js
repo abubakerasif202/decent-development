@@ -10,7 +10,9 @@ function updateNode(selector, value, attribute = 'content') {
   node.setAttribute(attribute, value)
 }
 
-export default function usePageMeta({ title, description, path = '/' }) {
+export default function usePageMeta({ title, description, path = '/', schemas = [] }) {
+  const schemasStr = JSON.stringify(schemas)
+
   useEffect(() => {
     document.title = title
 
@@ -26,5 +28,28 @@ export default function usePageMeta({ title, description, path = '/' }) {
     updateNode('meta[name="twitter:title"]', title)
     updateNode('meta[name="twitter:description"]', description)
     updateNode('link[rel="canonical"]', `${SITE_URL}${normalizedPath}`, 'href')
-  }, [description, path, title])
+
+    // Handle dynamic schema injection
+    const existingScripts = document.querySelectorAll('script[data-schema-dynamic]')
+    existingScripts.forEach((script) => script.remove())
+
+    if (schemasStr) {
+      const parsedSchemas = JSON.parse(schemasStr)
+      if (Array.isArray(parsedSchemas) && parsedSchemas.length > 0) {
+        parsedSchemas.forEach((schemaObj) => {
+          const script = document.createElement('script')
+          script.type = 'application/ld+json'
+          script.setAttribute('data-schema-dynamic', 'true')
+          script.textContent = JSON.stringify(schemaObj)
+          document.head.appendChild(script)
+        })
+      }
+    }
+
+    return () => {
+      // Clean up dynamic schemas on unmount
+      const existingScriptsOnCleanup = document.querySelectorAll('script[data-schema-dynamic]')
+      existingScriptsOnCleanup.forEach((script) => script.remove())
+    }
+  }, [description, path, title, schemasStr])
 }

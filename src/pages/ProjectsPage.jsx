@@ -68,11 +68,45 @@ export default function ProjectsPage() {
   const [activeFilter, setActiveFilter] = useState('all')
   const reducedMotion = useReducedMotion()
 
+  const projectsSchemas = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      'itemListElement': [
+        {
+          '@type': 'ListItem',
+          'position': 1,
+          'name': 'Home',
+          'item': 'https://decentdevelopment.com.au/',
+        },
+        {
+          '@type': 'ListItem',
+          'position': 2,
+          'name': 'Completed Projects',
+          'item': 'https://decentdevelopment.com.au/projects/',
+        },
+      ],
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      'name': 'DECENT Development Completed Projects',
+      'description':
+        'Portfolio of completed duplex, triplex and residential developments across New South Wales.',
+      'itemListElement': projects.map((project, index) => ({
+        '@type': 'ListItem',
+        'position': index + 1,
+        'url': `https://decentdevelopment.com.au/projects/${project.slug}/`,
+      })),
+    },
+  ]
+
   usePageMeta({
     title: 'Completed Projects | Decent Development Sydney',
     description:
       'Explore completed duplex, triplex and residential development projects by Decent Development across Auburn, Rouse Hill, Canley Vale, Canley Heights and Regents Park.',
     path: '/projects/',
+    schemas: projectsSchemas,
   })
 
   const visibleProjects = useMemo(
