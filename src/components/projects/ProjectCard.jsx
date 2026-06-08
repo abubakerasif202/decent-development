@@ -18,7 +18,7 @@ export default function ProjectCard({ project, index = 0, featured = false }) {
     >
       <Link to={`/projects/${project.slug}/`} className="focus-ring block overflow-hidden bg-ink">
         <ProjectImage
-          src={project.heroImage}
+          src={project.thumbnailImage || project.heroImage}
           alt={`${project.title} exterior at ${project.suburb}`}
           placeholderTitle={project.title}
           placeholderSubtitle={`${project.address} • ${project.type}`}

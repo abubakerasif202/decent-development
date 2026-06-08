@@ -1,4 +1,5 @@
 const projectImage = (folder, filename) => `/projects/${folder}/${filename}`
+const projectThumbnail = (filename) => `/projects/thumbnails/${filename}`
 
 const shotLabels = {
   front: 'Front Exterior',
@@ -89,6 +90,7 @@ const createProject = ({
   realPhotography = false,
   shotExtension = 'png',
   featured = false,
+  thumbnailImage,
   shortDescription,
   story,
   mapQuery,
@@ -103,6 +105,7 @@ const createProject = ({
     type,
     status,
     featured,
+    thumbnailImage,
     category,
     shortDescription,
     summary: shortDescription,
@@ -135,6 +138,7 @@ export const projects = [
     folder: 'auburn-34-antwerp',
     realPhotography: true,
     featured: true,
+    thumbnailImage: projectThumbnail('34-antwerp-street-auburn.webp'),
     shortDescription:
       'A premium duplex project presented with a clean, restrained residential finish and strong street presence.',
     story:
@@ -172,6 +176,7 @@ export const projects = [
     realPhotography: true,
     shotExtension: 'webp',
     featured: true,
+    thumbnailImage: projectThumbnail('10-dorian-street-rouse-hill.webp'),
     shortDescription:
       'A modern duplex in Rouse Hill with strong street appeal, clean materials and a premium family-focused outcome.',
     story:
@@ -190,6 +195,7 @@ export const projects = [
     folder: 'canley-vale-24-the-avenue',
     realPhotography: true,
     featured: true,
+    thumbnailImage: projectThumbnail('24-the-avenue-canley-vale.webp'),
     shortDescription:
       'A triplex development presented as a clean, high-value multi-dwelling project with a clear residential identity.',
     story:
@@ -208,6 +214,7 @@ export const projects = [
     folder: 'canley-vale-87-the-avenue',
     realPhotography: true,
     featured: false,
+    thumbnailImage: projectThumbnail('87-the-avenue-canley-vale.webp'),
     shortDescription:
       'A triplex project with a premium but understated presence, designed to show scale without visual clutter.',
     story:
@@ -226,6 +233,7 @@ export const projects = [
     folder: 'canley-heights-23-mittiamo',
     realPhotography: true,
     featured: false,
+    thumbnailImage: projectThumbnail('23-mittiamo-street-canley-heights.webp'),
     shortDescription:
       'A duplex development shown with a calm, clean portfolio presentation to keep the completed-projects page cohesive.',
     story:
