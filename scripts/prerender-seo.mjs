@@ -156,6 +156,16 @@ const routes = [
       'DECENT Development delivers residential construction, commercial construction, property development, renovations, extensions, building consultation, and project management.',
       'The company operates from North Sydney and publishes licence, ACN, contact, team, and service information for transparent project enquiries.',
     ],
+    subheadings: [
+      {
+        title: 'Premium Residential Construction & Duplex Developments in NSW',
+        text: 'DECENT Development specializes in high-end residential construction, custom homes, duplex and triplex developments, and heritage renovations across Sydney and New South Wales. We build with exceptional craftsmanship and architectural integrity.',
+      },
+      {
+        title: 'Professional Project Management & Building Consultation',
+        text: 'Our certified builders and project managers oversee every phase of development from planning to handover. We maintain strict compliance, quality control, and transparency, ensuring your project is completed on time and within budget.',
+      },
+    ],
     schemas: [organizationSchema, websiteSchema, serviceSchema, faqSchema],
   },
   {
@@ -168,6 +178,16 @@ const routes = [
     body: [
       'The portfolio presents attached dwelling, single dwelling, commercial fit-out, and heritage renovation concept showcases.',
       'Imagery is clearly disclosed as AI-generated concept presentation, keeping the portfolio transparent for prospective clients.',
+    ],
+    subheadings: [
+      {
+        title: 'Attached & Single Dwelling Concept Showcases',
+        text: 'Explore our portfolio of premium concepts for luxury duplexes, multi-residential attached dwellings, and modern single homes. Each concept is designed to maximize spatial efficiency and aesthetic appeal.',
+      },
+      {
+        title: 'Commercial Fit-Outs & Heritage Restorations',
+        text: 'Review our design concepts for sophisticated commercial spaces and detailed heritage restorations. We combine modern functionality with historical preservation to create timeless architectural assets.',
+      },
     ],
     schemas: [organizationSchema, breadcrumb('/completed-projects/', 'Portfolio')],
   },
@@ -182,6 +202,16 @@ const routes = [
       'DECENT Development brings together specialist project managers, certified building knowledge, and home-and-land package experience.',
       'Team profiles identify the people responsible for construction services, project management, and client guidance.',
     ],
+    subheadings: [
+      {
+        title: 'Certified Builders & Specialist Project Managers',
+        text: 'Our leadership team brings together decades of hands-on building experience and rigorous project management. We combine technical construction expertise with strategic coordination to deliver outstanding results.',
+      },
+      {
+        title: 'Dedicated Client Guidance & Quality Assurance',
+        text: 'From initial consultation to final inspection, our professionals guide you through every milestone. We prioritize open communication, safety, and attention to detail, maintaining the high reputation of DECENT Development.',
+      },
+    ],
     schemas: [organizationSchema, breadcrumb('/meet-the-team/', 'Meet the Team'), teamSchema],
   },
   {
@@ -194,6 +224,16 @@ const routes = [
     body: [
       'Contact DECENT Development by phone on 1800 008 883, by email at info@decentdevelopment.com.au, or from Level 14, 275 Alfred St North, North Sydney NSW 2060.',
       'The contact page supports project enquiries for residential construction, commercial construction, property development, renovations, extensions, and building consultation.',
+    ],
+    subheadings: [
+      {
+        title: 'Start a Conversation on Your Next NSW Project',
+        text: 'Get in touch with DECENT Development to discuss your building plans, duplex development, or commercial fit-out. We offer comprehensive consultation services to help realize your architectural vision.',
+      },
+      {
+        title: 'Request a Detailed Project Enquiry & Consultation',
+        text: 'Submit your brief or construction documents to our North Sydney office. Our team will review your requirements and provide professional guidance on project feasibility, timelines, and licensing compliance.',
+      },
     ],
     schemas: [organizationSchema, breadcrumb('/contact/', 'Contact')],
   },
@@ -235,7 +275,17 @@ function escapeScriptJson(value) {
 function staticBody(route) {
   const paragraphs = route.body.map((copy) => `<p>${escapeHtml(copy)}</p>`).join('')
 
-  return `<main aria-label="${escapeHtml(route.h1)}" style="background:#121212;color:#fffaf2;font-family:ui-sans-serif,system-ui,Segoe UI,Arial,sans-serif;min-height:100vh;padding:6rem 1.25rem 4rem"><section style="max-width:760px;margin:0 auto"><p style="color:#c5a059;text-transform:uppercase;letter-spacing:.18em;font-size:.75rem;font-weight:700">DECENT Development</p><h1 style="font-family:Georgia,Cambria,Times New Roman,serif;font-size:clamp(2.5rem,8vw,5rem);line-height:.95;margin:1rem 0 1.5rem">${escapeHtml(route.h1)}</h1><div style="display:grid;gap:1rem;color:#c9c3b8;font-size:1rem;line-height:1.8">${paragraphs}</div><p style="margin-top:2rem;color:#c5a059;font-size:.875rem">Licence ${company.licence} &middot; ACN ${company.acn}</p></section></main>`
+  let subheadingsHtml = ''
+  if (route.subheadings) {
+    subheadingsHtml = route.subheadings
+      .map(
+        (sub) =>
+          `<h2 style="font-family:Georgia,Cambria,Times New Roman,serif;font-size:1.5rem;color:#c5a059;margin-top:1.5rem;margin-bottom:0.5rem">${escapeHtml(sub.title)}</h2><p>${escapeHtml(sub.text)}</p>`,
+      )
+      .join('')
+  }
+
+  return `<main aria-label="${escapeHtml(route.h1)}" style="background:#121212;color:#fffaf2;font-family:ui-sans-serif,system-ui,Segoe UI,Arial,sans-serif;min-height:100vh;padding:6rem 1.25rem 4rem"><section style="max-width:760px;margin:0 auto"><p style="color:#c5a059;text-transform:uppercase;letter-spacing:.18em;font-size:.75rem;font-weight:700">DECENT Development</p><h1 style="font-family:Georgia,Cambria,Times New Roman,serif;font-size:clamp(2.5rem,8vw,5rem);line-height:.95;margin:1rem 0 1.5rem">${escapeHtml(route.h1)}</h1><div style="display:grid;gap:1rem;color:#c9c3b8;font-size:1rem;line-height:1.8">${paragraphs}${subheadingsHtml}</div><p style="margin-top:2rem;color:#c5a059;font-size:.875rem">Licence ${company.licence} &middot; ACN ${company.acn}</p></section></main>`
 }
 
 function applyHead(baseHtml, route) {

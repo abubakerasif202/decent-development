@@ -33,9 +33,9 @@ const assets = {
 
 const legacyHashRoutes = {
   '#home': { pathname: '/', hash: '' },
-  '#projects': { pathname: '/completed-projects', hash: '#attached-dwellings' },
-  '#team': { pathname: '/meet-the-team', hash: '#team' },
-  '#contact': { pathname: '/contact', hash: '#contact' },
+  '#projects': { pathname: '/completed-projects/', hash: '#attached-dwellings' },
+  '#team': { pathname: '/meet-the-team/', hash: '#team' },
+  '#contact': { pathname: '/contact/', hash: '#contact' },
 }
 
 function ScrollManager() {
@@ -77,22 +77,33 @@ function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<HomePage company={company} />} />
-      <Route path="/about" element={<Navigate to="/#about" replace />} />
-      <Route path="/services" element={<Navigate to="/#services" replace />} />
-      <Route path="/projects" element={<Navigate to="/completed-projects" replace />} />
-      <Route path="/team" element={<Navigate to="/meet-the-team" replace />} />
-      <Route path="/completed-projects" element={<CompletedProjectsPage company={company} />} />
-      <Route path="/meet-the-team" element={<TeamPage company={company} teamAssets={assets.team} />} />
-      <Route path="/contact" element={<ContactPage company={company} />} />
+      <Route path="/projects" element={<Navigate to="/completed-projects/" replace />} />
+      <Route path="/team" element={<Navigate to="/meet-the-team/" replace />} />
+      <Route path="/completed-projects/" element={<CompletedProjectsPage company={company} />} />
+      <Route path="/meet-the-team/" element={<TeamPage company={company} teamAssets={assets.team} />} />
+      <Route path="/contact/" element={<ContactPage company={company} />} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   )
 }
 
 function App() {
+  const showIntro = (() => {
+    if (typeof window === 'undefined') return false
+    try {
+      if (!window.sessionStorage.getItem('decent_intro_seen')) {
+        window.sessionStorage.setItem('decent_intro_seen', 'true')
+        return true
+      }
+    } catch {
+      return false
+    }
+    return false
+  })()
+
   return (
     <BrowserRouter>
-      <IntroAnimation logo={assets.logo} />
+      {showIntro && <IntroAnimation logo={assets.logo} />}
       <Header company={company} logo={assets.logo} />
       <main>
         <ScrollManager />

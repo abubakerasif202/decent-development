@@ -7,9 +7,9 @@ const navItems = [
   ['Home', '/'],
   ['About', '/#about'],
   ['Services', '/#services'],
-  ['Portfolio', '/completed-projects'],
-  ['Meet the Team', '/meet-the-team'],
-  ['Contact', '/contact'],
+  ['Portfolio', '/completed-projects/'],
+  ['Meet the Team', '/meet-the-team/'],
+  ['Contact', '/contact/'],
 ]
 
 function BrandMark({ company, logo }) {
@@ -94,7 +94,7 @@ export default function Header({ company, logo }) {
 
           <div className="hidden items-center gap-3 md:flex">
             <Link
-              to="/contact"
+              to="/contact/"
               className="focus-ring gold-gradient-btn inline-flex min-h-11 items-center gap-2 px-5 py-3 text-xs font-bold uppercase"
             >
               Get in touch
@@ -159,7 +159,7 @@ export default function Header({ company, logo }) {
               </nav>
 
               <Link
-                to="/contact"
+                to="/contact/"
                 className="focus-ring gold-gradient-btn inline-flex min-h-14 items-center justify-center gap-3 px-6 py-4 text-sm font-semibold uppercase"
                 onClick={() => setOpen(false)}
               >

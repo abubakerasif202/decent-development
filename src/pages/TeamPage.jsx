@@ -68,14 +68,14 @@ export default function TeamPage({ company, teamAssets }) {
       >
         <div className="flex flex-wrap gap-4">
           <Link
-            to="/contact"
+            to="/contact/"
             className="focus-ring gold-gradient-btn inline-flex min-h-12 items-center gap-2 px-6 py-3 text-xs font-bold uppercase"
           >
             Discuss your project
             <ArrowRight size={17} aria-hidden="true" />
           </Link>
           <Link
-            to="/completed-projects"
+            to="/completed-projects/"
             className="focus-ring outline-gold-btn inline-flex min-h-12 items-center gap-2 px-6 py-3 text-xs font-bold uppercase"
           >
             View portfolio concepts

@@ -3,9 +3,9 @@ import { motion, useReducedMotion } from 'framer-motion'
 
 const quickLinks = [
   ['Home', '/'],
-  ['Portfolio', '/completed-projects'],
-  ['Meet the Team', '/meet-the-team'],
-  ['Contact', '/contact'],
+  ['Portfolio', '/completed-projects/'],
+  ['Meet the Team', '/meet-the-team/'],
+  ['Contact', '/contact/'],
 ]
 
 const serviceLinks = [

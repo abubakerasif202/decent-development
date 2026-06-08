@@ -248,7 +248,7 @@ export default function CompletedProjectsPage({ company }) {
             Single dwellings
           </a>
           <Link
-            to="/contact"
+            to="/contact/"
             className="focus-ring inline-flex min-h-12 items-center gap-2 border border-gold/30 px-6 py-3 text-xs font-bold uppercase text-ivory transition duration-200 hover:border-gold hover:text-gold"
           >
             Start a project
@@ -363,7 +363,7 @@ export default function CompletedProjectsPage({ company }) {
                 </p>
               </div>
               <Link
-                to="/contact"
+                to="/contact/"
                 className="focus-ring gold-gradient-btn inline-flex min-h-14 items-center justify-center gap-3 px-6 py-4 text-sm font-semibold uppercase"
               >
                 Contact DECENT Development

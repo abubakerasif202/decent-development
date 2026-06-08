@@ -10,7 +10,7 @@ const destinations = [
     label: 'Portfolio',
     title: 'See portfolio concepts presented with a premium finish',
     copy: 'Explore the concept portfolio organised by dwelling type, with AI-generated visuals and a polished presentation style.',
-    to: '/completed-projects',
+    to: '/completed-projects/',
     image: projectMultiuse,
     icon: LayoutGrid,
   },
@@ -18,7 +18,7 @@ const destinations = [
     label: 'Meet the team',
     title: 'Get to know the specialists who guide each build',
     copy: 'Learn more about the people behind the construction, project management, and delivery approach.',
-    to: '/meet-the-team',
+    to: '/meet-the-team/',
     image: projectCommercial,
     icon: Users2,
   },
@@ -26,7 +26,7 @@ const destinations = [
     label: 'Contact',
     title: 'Start the conversation about your next project',
     copy: 'Reach out directly or use the form to discuss a duplex, triplex, or single dwelling in New South Wales.',
-    to: '/contact',
+    to: '/contact/',
     image: projectRenovation,
     icon: Mail,
   },
@@ -99,7 +99,7 @@ export default function Projects() {
           </div>
 
           <Link
-            to="/completed-projects"
+            to="/completed-projects/"
             className="focus-ring inline-flex w-fit items-center gap-2 text-sm font-semibold uppercase tracking-[0.22em] text-bronze transition hover:text-ink"
           >
             View portfolio

@@ -87,14 +87,14 @@ export default function Hero({ company }) {
             transition={{ delay: 0.34, duration: 0.62, ease: 'easeOut' }}
           >
             <Link
-              to="/completed-projects"
+              to="/completed-projects/"
               className="focus-ring gold-gradient-btn inline-flex min-h-12 items-center justify-center gap-2 px-7 py-3 text-xs font-bold uppercase"
             >
               View portfolio
               <ArrowRight size={18} aria-hidden="true" />
             </Link>
             <Link
-              to="/contact"
+              to="/contact/"
               className="focus-ring outline-gold-btn inline-flex min-h-12 items-center justify-center px-7 py-3 text-xs font-bold uppercase"
             >
               Get in touch
