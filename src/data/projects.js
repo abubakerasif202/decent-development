@@ -137,6 +137,7 @@ export const projects = [
     category: 'duplex',
     folder: 'auburn-34-antwerp',
     realPhotography: true,
+    shotExtension: 'webp',
     featured: true,
     thumbnailImage: projectThumbnail('34-antwerp-street-auburn.webp'),
     shortDescription:
