@@ -1,5 +1,6 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import path from 'node:path'
+import { projects } from '../src/data/projects.js'
 
 const siteUrl = 'https://decentdevelopment.com.au'
 const lastmod = '2026-06-08'
@@ -144,6 +145,31 @@ const faqSchema = {
   ],
 }
 
+const projectListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  '@id': `${siteUrl}/projects/#completed-projects`,
+  name: 'Completed residential projects',
+  itemListElement: projects.map((project, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    item: {
+      '@type': 'CreativeWork',
+      name: project.title,
+      description: project.summary,
+      url: `${siteUrl}/projects/${project.slug}/`,
+      about: project.type,
+      provider: {
+        '@id': `${siteUrl}/#organization`,
+      },
+      spatialCoverage: {
+        '@type': 'Place',
+        name: project.address,
+      },
+    },
+  })),
+}
+
 const routes = [
   {
     path: '/',
@@ -170,26 +196,49 @@ const routes = [
   },
   {
     path: '/completed-projects/',
-    priority: '0.8',
-    title: 'Portfolio | DECENT Development',
+    priority: '0.7',
+    title: 'Completed Projects | Decent Development Sydney',
     description:
-      'Browse premium concept showcases for attached dwellings, single homes, commercial fit-outs, and heritage restoration by DECENT Development.',
-    h1: 'DECENT Development portfolio concepts',
+      'Explore completed duplex, triplex and residential development projects by Decent Development across Auburn, Rouse Hill, Canley Vale, Canley Heights and Regents Park.',
+    h1: 'Recently completed residential projects',
     body: [
-      'The portfolio presents attached dwelling, single dwelling, commercial fit-out, and heritage renovation concept showcases.',
-      'Imagery is clearly disclosed as AI-generated concept presentation, keeping the portfolio transparent for prospective clients.',
+      'Decent Development presents completed residential projects across Sydney, including duplex, triplex and residential development work.',
+      'The portfolio focuses on exterior project imagery, verified locations, project type and clear completed-project summaries.',
     ],
     subheadings: [
       {
-        title: 'Attached & Single Dwelling Concept Showcases',
-        text: 'Explore our portfolio of premium concepts for luxury duplexes, multi-residential attached dwellings, and modern single homes. Each concept is designed to maximize spatial efficiency and aesthetic appeal.',
+        title: 'Duplex, Triplex and Residential Developments',
+        text: 'Explore completed residential projects across Auburn, Regents Park, Rouse Hill, Canley Vale and Canley Heights, with a focus on street presence, exterior finishes and long-term value.',
       },
       {
-        title: 'Commercial Fit-Outs & Heritage Restorations',
-        text: 'Review our design concepts for sophisticated commercial spaces and detailed heritage restorations. We combine modern functionality with historical preservation to create timeless architectural assets.',
+        title: 'Construction and Property Development NSW',
+        text: 'The portfolio supports Sydney property developer, duplex development Sydney, triplex development Sydney and residential construction Sydney searches with honest project copy and completed-project context.',
       },
     ],
-    schemas: [organizationSchema, breadcrumb('/completed-projects/', 'Portfolio')],
+    schemas: [organizationSchema, breadcrumb('/completed-projects/', 'Completed Projects'), projectListSchema],
+  },
+  {
+    path: '/projects/',
+    priority: '0.9',
+    title: 'Completed Projects | Decent Development Sydney',
+    description:
+      'Explore completed duplex, triplex and residential development projects by Decent Development across Auburn, Rouse Hill, Canley Vale, Canley Heights and Regents Park.',
+    h1: 'Recently completed projects',
+    body: [
+      'Decent Development is a Sydney property developer presenting completed residential projects across Auburn, Regents Park, Rouse Hill, Canley Vale and Canley Heights.',
+      'The project portfolio includes duplex development Sydney work, triplex development Sydney work and broader residential construction Sydney projects.',
+    ],
+    subheadings: [
+      {
+        title: 'Completed Residential Projects Across Sydney',
+        text: 'Browse completed duplex, triplex and residential development projects with project type, status, suburb, address and concise project stories.',
+      },
+      {
+        title: 'Premium Residential Construction Presentation',
+        text: 'Each project page keeps the copy specific to exterior work, street presence, quality finishes and construction and property development NSW capability.',
+      },
+    ],
+    schemas: [organizationSchema, breadcrumb('/projects/', 'Projects'), projectListSchema],
   },
   {
     path: '/meet-the-team/',
@@ -238,6 +287,50 @@ const routes = [
     schemas: [organizationSchema, breadcrumb('/contact/', 'Contact')],
   },
 ]
+
+for (const project of projects) {
+  routes.push({
+    path: `/projects/${project.slug}/`,
+    priority: '0.7',
+    title: `${project.title} | Decent Development Sydney`,
+    description: `${project.summary} View this completed residential project by Decent Development across Sydney and NSW.`,
+    h1: project.title,
+    body: [
+      project.story,
+      `${project.address} is listed as a ${project.status.toLowerCase()} ${project.type.toLowerCase()} in the Decent Development project portfolio.`,
+    ],
+    subheadings: [
+      {
+        title: 'Project Highlights',
+        text: project.highlights.join('. '),
+      },
+      {
+        title: 'Sydney Residential Construction',
+        text: `${project.title} supports Decent Development project experience in completed residential projects, residential construction Sydney and construction and property development NSW.`,
+      },
+    ],
+    schemas: [
+      organizationSchema,
+      breadcrumb(`/projects/${project.slug}/`, project.title),
+      {
+        '@context': 'https://schema.org',
+        '@type': 'CreativeWork',
+        '@id': `${siteUrl}/projects/${project.slug}/#project`,
+        name: project.title,
+        description: project.story,
+        url: `${siteUrl}/projects/${project.slug}/`,
+        about: project.type,
+        provider: {
+          '@id': `${siteUrl}/#organization`,
+        },
+        spatialCoverage: {
+          '@type': 'Place',
+          name: project.address,
+        },
+      },
+    ],
+  })
+}
 
 function breadcrumb(routePath, name) {
   return {

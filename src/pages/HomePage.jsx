@@ -1,5 +1,6 @@
 import About from '../components/About.jsx'
 import Hero from '../components/Hero.jsx'
+import FeaturedProjects from '../components/projects/FeaturedProjects.jsx'
 import Projects from '../components/Projects.jsx'
 import Services from '../components/Services.jsx'
 import TrustAndFaq from '../components/TrustAndFaq.jsx'
@@ -17,6 +18,7 @@ export default function HomePage({ company }) {
     <>
       <Hero company={company} />
       <About />
+      <FeaturedProjects />
       <Services />
       <Projects />
       <TrustAndFaq company={company} />

@@ -8,9 +8,9 @@ import projectRenovation from '../assets/stitch/project-renovation.jpg'
 const destinations = [
   {
     label: 'Portfolio',
-    title: 'See portfolio concepts presented with a premium finish',
-    copy: 'Explore the concept portfolio organised by dwelling type, with AI-generated visuals and a polished presentation style.',
-    to: '/completed-projects/',
+    title: 'See completed projects presented with a premium finish',
+    copy: 'Explore completed duplex, triplex, and residential developments organised by project type and Sydney suburb.',
+    to: '/projects/',
     image: projectMultiuse,
     icon: LayoutGrid,
   },
@@ -93,13 +93,13 @@ export default function Projects() {
               Take a closer look at the work, the people, and the presentation
             </h2>
             <p className="mt-4 max-w-xl text-base font-light leading-7 text-graphite/80">
-              The homepage now leads into a more refined experience: portfolio concepts, team profiles, and the
-              contact journey are all presented with a cohesive premium tone.
+              The homepage now leads into completed residential projects, team profiles, and the contact journey
+              with a cohesive premium tone.
             </p>
           </div>
 
           <Link
-            to="/completed-projects/"
+            to="/projects/"
             className="focus-ring inline-flex w-fit items-center gap-2 text-sm font-semibold uppercase tracking-[0.22em] text-bronze transition hover:text-ink"
           >
             View portfolio

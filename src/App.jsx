@@ -1,8 +1,9 @@
 import { useEffect } from 'react'
 import { BrowserRouter, Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 import ContactPage from './pages/ContactPage.jsx'
-import CompletedProjectsPage from './pages/CompletedProjectsPage.jsx'
 import HomePage from './pages/HomePage.jsx'
+import ProjectDetailPage from './pages/ProjectDetailPage.jsx'
+import ProjectsPage from './pages/ProjectsPage.jsx'
 import TeamPage from './pages/TeamPage.jsx'
 import Footer from './components/Footer.jsx'
 import Header from './components/Header.jsx'
@@ -33,7 +34,7 @@ const assets = {
 
 const legacyHashRoutes = {
   '#home': { pathname: '/', hash: '' },
-  '#projects': { pathname: '/completed-projects/', hash: '#attached-dwellings' },
+  '#projects': { pathname: '/projects/', hash: '#recently-completed' },
   '#team': { pathname: '/meet-the-team/', hash: '#team' },
   '#contact': { pathname: '/contact/', hash: '#contact' },
 }
@@ -77,9 +78,12 @@ function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<HomePage company={company} />} />
-      <Route path="/projects" element={<Navigate to="/completed-projects/" replace />} />
+      <Route path="/projects" element={<ProjectsPage company={company} />} />
+      <Route path="/projects/" element={<ProjectsPage company={company} />} />
+      <Route path="/projects/:slug" element={<ProjectDetailPage company={company} />} />
+      <Route path="/projects/:slug/" element={<ProjectDetailPage company={company} />} />
       <Route path="/team" element={<Navigate to="/meet-the-team/" replace />} />
-      <Route path="/completed-projects/" element={<CompletedProjectsPage company={company} />} />
+      <Route path="/completed-projects/" element={<ProjectsPage company={company} />} />
       <Route path="/meet-the-team/" element={<TeamPage company={company} teamAssets={assets.team} />} />
       <Route path="/contact/" element={<ContactPage company={company} />} />
       <Route path="*" element={<Navigate to="/" replace />} />
