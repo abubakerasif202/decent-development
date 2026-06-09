@@ -119,7 +119,7 @@ export default function ProjectsPage() {
 
   const portfolioCounts = useMemo(
     () => [
-      { label: 'Projects', value: `${projects.length}` },
+      { label: 'Total projects', value: '28+' },
       { label: 'Duplex', value: `${projects.filter((project) => project.category === 'duplex').length}` },
       { label: 'Triplex', value: `${projects.filter((project) => project.category === 'triplex').length}` },
     ],
@@ -131,9 +131,9 @@ export default function ProjectsPage() {
       <PageHero
         eyebrow="Our Projects"
         title="Recently Completed Projects"
-        copy="Explore completed residential projects by Decent Development across Sydney's established and growing communities, including duplex development Sydney, triplex development Sydney and quality residential construction Sydney."
+        copy="Explore recently completed work including 34 Antwerp Street in Auburn, 10 Dorian Street in Rouse Hill, 24 and 87 The Avenue in Canley Vale, 23 Mittiamo Street in Canley Heights, and 21 Lewis Street in Regents Park."
         stats={[
-          { label: 'Projects', value: `${projects.length}` },
+          { label: 'Total projects', value: '28+' },
           { label: 'Focus', value: 'Residential' },
           { label: 'Region', value: 'Sydney NSW' },
         ]}
@@ -142,8 +142,8 @@ export default function ProjectsPage() {
         }
       >
         <p className="max-w-2xl text-sm leading-7 text-smoke">
-          As a Sydney property developer and construction and property development NSW team, Decent Development keeps
-          project presentation clear, specific and grounded in completed exterior work.
+          These featured case studies represent recent work from a growing portfolio of 28+ completed residential
+          projects delivered with clear planning, disciplined construction and quality-focused finishes.
         </p>
       </PageHero>
 

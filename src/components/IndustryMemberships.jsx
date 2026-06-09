@@ -4,21 +4,24 @@ import logo from '../assets/Logo.png'
 const memberships = [
   {
     name: 'Master Builders Association',
-    subtitle: 'Industry Guidance',
+    subtitle: 'Member',
     logo: '/assets/trust/master-builders-member.png',
     alt: 'Master Builders Association member logo',
+    logoSurface: 'bg-white',
   },
   {
     name: 'Housing Industry Association',
     subtitle: 'Industry Guidance',
     logo: '/assets/trust/hia-member.png',
     alt: 'Housing Industry Association member logo',
+    logoSurface: 'bg-white',
   },
   {
     name: 'SafeWork NSW',
     subtitle: 'Safety-led project delivery',
     logo: '/assets/trust/safework-nsw.png',
     alt: 'SafeWork NSW logo',
+    logoSurface: 'bg-black',
   },
 ]
 
@@ -67,16 +70,18 @@ export default function IndustryMemberships() {
               key={membership.name}
               className="group flex h-[350px] flex-col border border-gold/45 bg-charcoal/70 px-6 py-7 text-center shadow-[0_22px_60px_rgba(0,0,0,0.42),0_0_28px_rgba(197,160,89,0.06)] transition duration-300 hover:-translate-y-1 hover:border-gold/75 hover:shadow-[0_26px_70px_rgba(0,0,0,0.5),0_0_34px_rgba(197,160,89,0.11)] sm:px-8"
             >
-              <div className="flex h-44 items-center justify-center border-b border-gold/20 px-4 pb-7">
-                <img
-                  src={membership.logo}
-                  alt={membership.alt}
-                  className="h-full max-h-32 w-full object-contain"
-                  loading="lazy"
-                  decoding="async"
-                  width="640"
-                  height="320"
-                />
+              <div className="flex h-44 items-center justify-center border-b border-gold/20 px-2 pb-7">
+                <div
+                  className={`flex h-32 w-full items-center justify-center overflow-hidden border border-white/10 p-2 shadow-[0_12px_28px_rgba(0,0,0,0.28)] ${membership.logoSurface}`}
+                >
+                  <img
+                    src={membership.logo}
+                    alt={membership.alt}
+                    className="h-full w-full object-contain"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
               </div>
               <div className="flex flex-1 flex-col items-center justify-center pt-7">
                 <h3 className="font-display text-2xl leading-tight text-gold-soft">{membership.name}</h3>

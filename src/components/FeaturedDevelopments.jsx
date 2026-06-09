@@ -19,16 +19,17 @@ export default function FeaturedDevelopments() {
       <div className="section-shell">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-2xl">
-            <p className="eyebrow text-gold">Featured Developments</p>
+            <p className="eyebrow text-gold">Recently Completed Work</p>
             <h2
               id="featured-developments-title"
               className="mt-4 font-display text-3xl font-normal leading-tight text-ivory sm:text-4xl"
             >
-              A curated look at the latest completed project work
+              Recent residential projects delivered across Sydney
             </h2>
             <p className="mt-4 max-w-xl text-base font-light leading-7 text-smoke">
-              A concise showcase of premium duplex, triplex, and residential development work, presented in a
-              consistent editorial format.
+              Recent work includes the 10 Dorian Street duplex in Rouse Hill, the 24 The Avenue triplex in Canley
+              Vale, and the 34 Antwerp Street duplex in Auburn. Explore these projects and more from a growing
+              portfolio of 28+ completed developments.
             </p>
           </div>
 
