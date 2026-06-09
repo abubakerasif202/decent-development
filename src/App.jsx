@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { BrowserRouter, Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 import ContactPage from './pages/ContactPage.jsx'
+import CollaborationPage from './pages/CollaborationPage.jsx'
 import HomePage from './pages/HomePage.jsx'
 import ProjectDetailPage from './pages/ProjectDetailPage.jsx'
 import ProjectsPage from './pages/ProjectsPage.jsx'
@@ -87,6 +88,7 @@ function AppRoutes() {
       <Route path="/completed-projects/" element={<Navigate to="/projects/" replace />} />
       <Route path="/meet-the-team/" element={<TeamPage company={company} teamAssets={assets.team} />} />
       <Route path="/contact/" element={<ContactPage company={company} />} />
+      <Route path="/collaboration/" element={<CollaborationPage />} />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   )
