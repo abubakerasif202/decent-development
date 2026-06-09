@@ -1,6 +1,26 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import logo from '../assets/Logo.png'
-import industryLogos from '../assets/memberships/industry-recognised-logos.webp'
+
+const memberships = [
+  {
+    name: 'Master Builders Association',
+    subtitle: 'Industry Guidance',
+    logo: '/assets/trust/master-builders-member.png',
+    alt: 'Master Builders Association member logo',
+  },
+  {
+    name: 'Housing Industry Association',
+    subtitle: 'Industry Guidance',
+    logo: '/assets/trust/hia-member.png',
+    alt: 'Housing Industry Association member logo',
+  },
+  {
+    name: 'SafeWork NSW',
+    subtitle: 'Safety-led project delivery',
+    logo: '/assets/trust/safework-nsw.png',
+    alt: 'SafeWork NSW logo',
+  },
+]
 
 export default function IndustryMemberships() {
   const reducedMotion = useReducedMotion()
@@ -35,23 +55,38 @@ export default function IndustryMemberships() {
           <div className="mx-auto mt-7 h-px w-24 bg-[#C9A227]" aria-hidden="true" />
         </motion.header>
 
-        <motion.figure
-          className="mx-auto mt-12 max-w-6xl overflow-hidden border border-[#C9A227]/35 bg-white/[0.025] p-2 shadow-[0_24px_70px_rgba(0,0,0,0.42)] sm:p-3"
+        <motion.div
+          className="mx-auto mt-12 grid max-w-6xl gap-5 md:grid-cols-2 lg:grid-cols-3"
           initial={reducedMotion ? false : { opacity: 0, y: 18 }}
           whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.55, ease: 'easeOut' }}
         >
-          <img
-            src={industryLogos}
-            alt="Master Builders Association member logo, Housing Industry Association member logo, and SafeWork NSW safety logo"
-            className="aspect-[3/2] w-full object-cover"
-            loading="lazy"
-            decoding="async"
-            width="1536"
-            height="1024"
-          />
-        </motion.figure>
+          {memberships.map((membership) => (
+            <article
+              key={membership.name}
+              className="group flex h-[350px] flex-col border border-gold/45 bg-charcoal/70 px-6 py-7 text-center shadow-[0_22px_60px_rgba(0,0,0,0.42),0_0_28px_rgba(197,160,89,0.06)] transition duration-300 hover:-translate-y-1 hover:border-gold/75 hover:shadow-[0_26px_70px_rgba(0,0,0,0.5),0_0_34px_rgba(197,160,89,0.11)] sm:px-8"
+            >
+              <div className="flex h-44 items-center justify-center border-b border-gold/20 px-4 pb-7">
+                <img
+                  src={membership.logo}
+                  alt={membership.alt}
+                  className="h-full max-h-32 w-full object-contain"
+                  loading="lazy"
+                  decoding="async"
+                  width="640"
+                  height="320"
+                />
+              </div>
+              <div className="flex flex-1 flex-col items-center justify-center pt-7">
+                <h3 className="font-display text-2xl leading-tight text-gold-soft">{membership.name}</h3>
+                <p className="mt-3 text-xs font-semibold uppercase tracking-[0.2em] text-smoke">
+                  {membership.subtitle}
+                </p>
+              </div>
+            </article>
+          ))}
+        </motion.div>
 
         <motion.p
           className="mx-auto mt-10 max-w-3xl text-center text-sm font-light leading-7 text-smoke sm:text-base"
