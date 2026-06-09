@@ -218,6 +218,29 @@ const routes = [
     schemas: [organizationSchema, breadcrumb('/projects/', 'Projects'), projectListSchema],
   },
   {
+    path: '/collaboration/',
+    priority: '0.8',
+    title: 'Construction Collaboration Partners | DECENT Development',
+    description:
+      'Meet the trusted construction partners DECENT Development collaborates with to deliver larger and more complex residential projects across NSW.',
+    h1: 'Trusted construction collaboration partners',
+    body: [
+      'DECENT Development collaborates with established building companies when a project needs additional capacity, specialist expertise, or broader technical coordination.',
+      'The collaboration model supports larger and more complex residential projects across New South Wales.',
+    ],
+    subheadings: [
+      {
+        title: 'Shared Expertise for Larger Projects',
+        text: 'Trusted delivery partners contribute additional building capability and specialist coordination when project scale or complexity requires it.',
+      },
+      {
+        title: 'Clear and Coordinated Delivery',
+        text: 'Collaborative project delivery maintains a clear focus on responsibilities, communication, construction quality, and client outcomes.',
+      },
+    ],
+    schemas: [organizationSchema, breadcrumb('/collaboration/', 'Collaboration Partners')],
+  },
+  {
     path: '/meet-the-team/',
     priority: '0.8',
     title: 'Meet the Team | DECENT Development',

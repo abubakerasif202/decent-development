@@ -39,6 +39,10 @@
     {
       "source": "/contact/",
       "destination": "/contact/index.html"
+    },
+    {
+      "source": "/collaboration/",
+      "destination": "/collaboration/index.html"
     }
   ]
 }
