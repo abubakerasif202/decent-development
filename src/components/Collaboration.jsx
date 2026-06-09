@@ -9,14 +9,14 @@ const collaborators = [
     name: 'H & Z Homes Pty Ltd',
     logo: hzHomesLogo,
     logoAlt: 'H & Z Homes logo',
-    details: ['Licence 376134C', 'ACN 652 322 739', '15 years of experience'],
+    details: ['Licence 376134C', 'ACN 652 322 739', 'Collaborative delivery partner'],
     surface: 'bg-white',
   },
   {
     name: 'JUFAJA Homes Pty Ltd',
     logo: jufajaHomesLogo,
     logoAlt: 'JUFAJA Homes logo',
-    details: ['Licence 346427C', 'ACN 636 488 910', '12 years of experience'],
+    details: ['Licence 346427C', 'ACN 636 488 910', 'Collaborative delivery partner'],
     surface: 'bg-black',
   },
   {
@@ -101,7 +101,7 @@ export default function Collaboration() {
             <div className="mt-7 grid gap-3 sm:grid-cols-3">
               <div className="border border-gold/20 bg-white/5 p-4">
                 <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-smoke">Completed projects</p>
-                <p className="mt-2 font-display text-3xl font-normal text-ivory">28+</p>
+                <p className="mt-2 font-display text-3xl font-normal text-ivory">Residential</p>
               </div>
               <div className="border border-gold/20 bg-white/5 p-4">
                 <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-smoke">Scope</p>

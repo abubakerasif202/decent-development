@@ -163,7 +163,7 @@ export const projects = [
     shortDescription:
       'A premium residential development in Regents Park, displaying highly functional layouts, modern styling, and clean craftsmanship.',
     story:
-      'This completed residential development in Regents Park sets a benchmark for modern suburban living. Boasting a striking architectural profile, refined space optimization, and hand-selected modern fixtures, the project offers a seamless flow, quality finishes, and long-term family utility.',
+      'This residential development in Regents Park presents a modern suburban design. With a clear architectural profile, practical use of space, and contemporary fixtures, the project offers connected living areas, considered finishes, and long-term family utility.',
     mapQuery: '21 Lewis Street, Regents Park NSW 2143',
     tags: ['completed residential projects', 'Regents Park', 'property development NSW'],
   }),
@@ -183,7 +183,7 @@ export const projects = [
     shortDescription:
       'A modern duplex in Rouse Hill showcasing strong street presence, premium materials, and a refined family-focused layout.',
     story:
-      'This architectural duplex in Rouse Hill exemplifies sophisticated design and smart space planning. Built to the highest standards with premium external finishes and bright, spacious interiors, the project delivers modern family luxury and strong street appeal, establishing a standout benchmark in the area.',
+      'This architectural duplex in Rouse Hill presents considered design and practical space planning. External finishes and bright interiors support modern family living and a strong street presence.',
     mapQuery: '10 Dorian Street, Rouse Hill NSW 2155',
     tags: ['duplex development Sydney', 'Rouse Hill', 'completed residential projects'],
   }),
@@ -222,7 +222,7 @@ export const projects = [
     shortDescription:
       'A premium triplex development in Canley Vale, showcasing architectural refinement, smart space utilization, and quality modern finishes.',
     story:
-      'This modern triplex development at Canley Vale delivers clean architectural style and functional living. Designed for optimal land use and high-end aesthetics, the project boasts strong street appeal, premium detailing, and beautifully resolved interiors built to exceptional standards.',
+      'This modern triplex development at Canley Vale presents a clean architectural style and functional living. The design uses the site efficiently and combines strong street presence with considered detailing and resolved interiors.',
     mapQuery: '87 The Avenue, Canley Vale NSW 2166',
     tags: ['triplex development Sydney', 'Canley Vale', 'Sydney property developer'],
   }),
@@ -242,7 +242,7 @@ export const projects = [
     shortDescription:
       'A premium duplex development in Canley Heights featuring a striking contemporary design, clean lines, and high-end residential finishes.',
     story:
-      'A modern duplex development that showcases architectural excellence and modern family living in Canley Heights. Built with precision and premium materials, the project features a commanding front presence, spacious and light-filled interiors, and a seamless connection to the private outdoor spaces, designed to stand the test of time.',
+      'A modern duplex development designed for family living in Canley Heights. The project features a strong front presence, spacious and light-filled interiors, and a clear connection to private outdoor spaces.',
     mapQuery: '23 Mittiamo Street, Canley Heights NSW 2166',
     tags: ['duplex development Sydney', 'Canley Heights', 'residential construction Sydney'],
   }),

@@ -166,13 +166,14 @@ export default function Contact({ company }) {
               type="submit"
               className="focus-ring gold-gradient-btn inline-flex min-h-14 items-center justify-center gap-3 px-6 py-4 text-sm font-semibold uppercase"
             >
-              Submit enquiry
+              Prepare email enquiry
               <ArrowRight size={18} aria-hidden="true" />
             </button>
 
             {submitted ? (
               <p className="border border-gold/20 bg-gold/10 px-4 py-3 text-sm leading-6 text-smoke" role="status">
-                Your enquiry draft has been prepared for DECENT Development.
+                Your email application has opened with the enquiry details. Send it from your email application to
+                deliver the enquiry.
               </p>
             ) : null}
           </form>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { ArrowRight, Menu, X } from 'lucide-react'
@@ -35,6 +35,8 @@ function BrandMark({ company, logo }) {
 export default function Header({ company, logo }) {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const menuButtonRef = useRef(null)
+  const closeButtonRef = useRef(null)
   const reducedMotion = useReducedMotion()
 
   useEffect(() => {
@@ -56,10 +58,25 @@ export default function Header({ company, logo }) {
 
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : ''
+    if (open) closeButtonRef.current?.focus()
 
     return () => {
       document.body.style.overflow = ''
     }
+  }, [open])
+
+  useEffect(() => {
+    if (!open) return undefined
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setOpen(false)
+        menuButtonRef.current?.focus()
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
   }, [open])
 
   return (
@@ -103,6 +120,7 @@ export default function Header({ company, logo }) {
           </div>
 
           <button
+            ref={menuButtonRef}
             type="button"
             className="focus-ring inline-flex min-h-11 min-w-11 items-center justify-center border border-gold/45 bg-ink/40 text-ivory transition-colors duration-200 hover:border-gold hover:text-gold md:hidden"
             aria-controls="mobile-menu"
@@ -130,10 +148,14 @@ export default function Header({ company, logo }) {
               <div className="flex items-center justify-between gap-4">
                 <BrandMark company={company} logo={logo} />
                 <button
+                  ref={closeButtonRef}
                   type="button"
                   className="focus-ring inline-flex min-h-11 min-w-11 items-center justify-center border border-gold/25 text-ivory"
                   aria-label="Close navigation menu"
-                  onClick={() => setOpen(false)}
+                  onClick={() => {
+                    setOpen(false)
+                    menuButtonRef.current?.focus()
+                  }}
                 >
                   <X size={22} aria-hidden="true" />
                 </button>

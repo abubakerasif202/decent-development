@@ -1,5 +1,6 @@
 import About from '../components/About.jsx'
 import Hero from '../components/Hero.jsx'
+import IndustryMemberships from '../components/IndustryMemberships.jsx'
 import Services from '../components/Services.jsx'
 import TrustAndFaq from '../components/TrustAndFaq.jsx'
 import usePageMeta from '../hooks/usePageMeta.js'
@@ -65,6 +66,7 @@ export default function HomePage({ company }) {
       <Hero company={company} />
       <About />
       <Services />
+      <IndustryMemberships />
       <TrustAndFaq company={company} />
     </>
   )

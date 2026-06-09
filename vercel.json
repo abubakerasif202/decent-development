@@ -12,7 +12,12 @@
     },
     {
       "source": "/completed-projects",
-      "destination": "/completed-projects/",
+      "destination": "/projects/",
+      "permanent": true
+    },
+    {
+      "source": "/completed-projects/",
+      "destination": "/projects/",
       "permanent": true
     },
     {
@@ -28,20 +33,12 @@
   ],
   "rewrites": [
     {
-      "source": "/completed-projects/",
-      "destination": "/completed-projects/index.html"
-    },
-    {
       "source": "/meet-the-team/",
       "destination": "/meet-the-team/index.html"
     },
     {
       "source": "/contact/",
       "destination": "/contact/index.html"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
     }
   ]
 }

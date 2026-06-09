@@ -144,7 +144,7 @@ export default function TeamPage({ company, teamAssets }) {
             <ArrowRight size={17} aria-hidden="true" />
           </Link>
           <Link
-            to="/completed-projects/"
+              to="/projects/"
             className="focus-ring outline-gold-btn inline-flex min-h-12 items-center gap-2 px-6 py-3 text-xs font-bold uppercase"
           >
             View portfolio concepts

@@ -148,7 +148,7 @@ export default function ContactPage({ company }) {
             Get directions
           </a>
           <Link
-            to="/completed-projects/"
+              to="/projects/"
             className="focus-ring inline-flex min-h-12 items-center gap-2 border border-gold/30 px-6 py-3 text-xs font-bold uppercase text-ivory transition duration-200 hover:border-gold hover:text-gold"
           >
             View portfolio concepts

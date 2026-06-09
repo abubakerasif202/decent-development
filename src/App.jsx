@@ -5,6 +5,7 @@ import HomePage from './pages/HomePage.jsx'
 import ProjectDetailPage from './pages/ProjectDetailPage.jsx'
 import ProjectsPage from './pages/ProjectsPage.jsx'
 import TeamPage from './pages/TeamPage.jsx'
+import NotFoundPage from './pages/NotFoundPage.jsx'
 import Footer from './components/Footer.jsx'
 import Header from './components/Header.jsx'
 import IntroAnimation from './components/IntroAnimation.jsx'
@@ -83,10 +84,10 @@ function AppRoutes() {
       <Route path="/projects/:slug" element={<ProjectDetailPage company={company} />} />
       <Route path="/projects/:slug/" element={<ProjectDetailPage company={company} />} />
       <Route path="/team" element={<Navigate to="/meet-the-team/" replace />} />
-      <Route path="/completed-projects/" element={<ProjectsPage company={company} />} />
+      <Route path="/completed-projects/" element={<Navigate to="/projects/" replace />} />
       <Route path="/meet-the-team/" element={<TeamPage company={company} teamAssets={assets.team} />} />
       <Route path="/contact/" element={<ContactPage company={company} />} />
-      <Route path="*" element={<Navigate to="/" replace />} />
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   )
 }

@@ -33,7 +33,7 @@ export default function FeaturedDevelopments() {
           </div>
 
           <Link
-            to="/completed-projects/"
+            to="/projects/"
             className="focus-ring inline-flex w-fit items-center gap-2 text-sm font-semibold uppercase tracking-[0.22em] text-gold transition hover:text-gold-soft"
           >
             View portfolio

@@ -47,7 +47,15 @@ export default function Footer({ company, logo }) {
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
     >
-      <div className="section-shell border-t border-graphite py-12">
+      <div className="border-y border-gold/20 bg-white/[0.025]">
+        <div className="section-shell flex flex-col items-center justify-between gap-3 py-5 text-center sm:flex-row sm:text-left">
+          <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-gold">Industry standards</p>
+          <p className="text-xs font-medium uppercase tracking-[0.16em] text-smoke">
+            Quality. Safety. Compliance. Trusted Outcomes.
+          </p>
+        </div>
+      </div>
+      <div className="section-shell py-12">
         <div className="grid gap-10 md:grid-cols-[1fr_0.7fr_0.7fr_0.9fr] md:items-start">
           <div>
             <BrandMark company={company} logo={logo} />
