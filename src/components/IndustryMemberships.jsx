@@ -1,27 +1,6 @@
 import { motion, useReducedMotion } from 'framer-motion'
-import { Building2, HardHat, ShieldCheck } from 'lucide-react'
 import logo from '../assets/Logo.png'
-
-const memberships = [
-  {
-    name: 'Master Builders Association',
-    label: 'Industry guidance',
-    alt: 'Master Builders Association member logo',
-    icon: Building2,
-  },
-  {
-    name: 'Housing Industry Association',
-    label: 'Industry guidance',
-    alt: 'Housing Industry Association member logo',
-    icon: HardHat,
-  },
-  {
-    name: 'SafeWork NSW',
-    label: 'Committed to workplace safety',
-    alt: 'SafeWork NSW safety logo',
-    icon: ShieldCheck,
-  },
-]
+import industryLogos from '../assets/memberships/industry-recognised-logos.webp'
 
 export default function IndustryMemberships() {
   const reducedMotion = useReducedMotion()
@@ -56,28 +35,23 @@ export default function IndustryMemberships() {
           <div className="mx-auto mt-7 h-px w-24 bg-[#C9A227]" aria-hidden="true" />
         </motion.header>
 
-        <div className="mt-12 grid gap-5 md:grid-cols-3">
-          {memberships.map(({ name, label, alt, icon: Icon }, index) => (
-            <motion.article
-              key={name}
-              className="group flex min-h-64 flex-col items-center justify-center border border-[#C9A227]/35 bg-white/[0.025] px-6 py-9 text-center shadow-[0_20px_55px_rgba(0,0,0,0.35)] transition duration-300 hover:border-[#C9A227]/70 hover:bg-white/[0.045] hover:shadow-[0_20px_60px_rgba(201,162,39,0.10)]"
-              initial={reducedMotion ? false : { opacity: 0, y: 18 }}
-              whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.25 }}
-              transition={{ duration: 0.45, delay: reducedMotion ? 0 : index * 0.08, ease: 'easeOut' }}
-            >
-              <div
-                role="img"
-                aria-label={alt}
-                className="flex h-20 w-20 items-center justify-center border border-[#C9A227]/40 bg-[#C9A227]/[0.06] text-[#C9A227] shadow-[0_0_30px_rgba(201,162,39,0.08)]"
-              >
-                <Icon size={38} strokeWidth={1.25} aria-hidden="true" />
-              </div>
-              <h3 className="mt-6 font-display text-2xl font-normal leading-tight text-white">{name}</h3>
-              <p className="mt-4 text-[0.68rem] font-bold uppercase tracking-[0.2em] text-[#C9A227]">{label}</p>
-            </motion.article>
-          ))}
-        </div>
+        <motion.figure
+          className="mx-auto mt-12 max-w-6xl overflow-hidden border border-[#C9A227]/35 bg-white/[0.025] p-2 shadow-[0_24px_70px_rgba(0,0,0,0.42)] sm:p-3"
+          initial={reducedMotion ? false : { opacity: 0, y: 18 }}
+          whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.55, ease: 'easeOut' }}
+        >
+          <img
+            src={industryLogos}
+            alt="Master Builders Association member logo, Housing Industry Association member logo, and SafeWork NSW safety logo"
+            className="aspect-[3/2] w-full object-cover"
+            loading="lazy"
+            decoding="async"
+            width="1536"
+            height="1024"
+          />
+        </motion.figure>
 
         <motion.p
           className="mx-auto mt-10 max-w-3xl text-center text-sm font-light leading-7 text-smoke sm:text-base"
