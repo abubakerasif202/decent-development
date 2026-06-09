@@ -1,4 +1,5 @@
 import About from '../components/About.jsx'
+import Collaboration from '../components/Collaboration.jsx'
 import Hero from '../components/Hero.jsx'
 import IndustryMemberships from '../components/IndustryMemberships.jsx'
 import Services from '../components/Services.jsx'
@@ -67,6 +68,7 @@ export default function HomePage({ company }) {
       <About />
       <Services />
       <IndustryMemberships />
+      <Collaboration />
       <TrustAndFaq company={company} />
     </>
   )

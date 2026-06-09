@@ -101,7 +101,7 @@ export default function Collaboration() {
             <div className="mt-7 grid gap-3 sm:grid-cols-3">
               <div className="border border-gold/20 bg-white/5 p-4">
                 <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-smoke">Completed projects</p>
-                <p className="mt-2 font-display text-3xl font-normal text-ivory">Residential</p>
+                <p className="mt-2 font-display text-3xl font-normal text-ivory">28+</p>
               </div>
               <div className="border border-gold/20 bg-white/5 p-4">
                 <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-smoke">Scope</p>
