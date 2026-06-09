@@ -11,7 +11,7 @@ export default function ProjectGallery({ project }) {
         <div className="max-w-2xl">
           <p className="eyebrow">Gallery</p>
           <h2 className="mt-4 font-display text-3xl font-normal leading-tight text-ink sm:text-4xl">
-            Five-shot project gallery
+            Project gallery
           </h2>
         </div>
 

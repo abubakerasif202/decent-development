@@ -3,8 +3,8 @@ const projectThumbnail = (filename) => `/projects/thumbnails/${filename}`
 
 const shotLabels = {
   front: 'Front Exterior',
+  rear: 'Back Exterior',
   side: 'Side View',
-  rear: 'Rear View',
   interior: 'Kitchen / Living',
   detail: 'Detail Shot',
 }
@@ -44,38 +44,27 @@ const createPlaceholderShots = (project) =>
     placeholderLabel: label,
   }))
 
-const createRealShots = (folder, project) => [
-  {
-    key: 'front',
-    label: shotLabels.front,
-    src: projectImage(folder, `front.${project.shotExtension || 'png'}`),
-    alt: `${project.title} front exterior`,
-  },
-  {
-    key: 'side',
-    label: shotLabels.side,
-    src: projectImage(folder, `side.${project.shotExtension || 'png'}`),
-    alt: `${project.title} side view`,
-  },
-  {
-    key: 'rear',
-    label: shotLabels.rear,
-    src: projectImage(folder, `rear.${project.shotExtension || 'png'}`),
-    alt: `${project.title} rear view`,
-  },
-  {
-    key: 'interior',
-    label: shotLabels.interior,
-    src: projectImage(folder, `interior.${project.shotExtension || 'png'}`),
-    alt: `${project.title} kitchen and living area`,
-  },
-  {
-    key: 'detail',
-    label: shotLabels.detail,
-    src: projectImage(folder, `detail.${project.shotExtension || 'png'}`),
-    alt: `${project.title} premium detail shot`,
-  },
-]
+const defaultShotOrder = ['front', 'rear', 'side', 'interior', 'detail']
+
+const createRealShots = (folder, project, shotOverrides = {}) =>
+  defaultShotOrder
+    .map((key) => {
+      const override = shotOverrides[key]
+
+      if (override === false) return null
+
+      const filename = override?.filename || `${key}.${project.shotExtension || 'png'}`
+      const label = override?.label || shotLabels[key]
+      const altDescription = override?.altDescription || label.toLowerCase()
+
+      return {
+        key,
+        label,
+        src: projectImage(folder, filename),
+        alt: `${project.title} ${altDescription}`,
+      }
+    })
+    .filter(Boolean)
 
 const createProject = ({
   slug,
@@ -89,6 +78,7 @@ const createProject = ({
   folder,
   realPhotography = false,
   shotExtension = 'png',
+  shotOverrides,
   featured = false,
   thumbnailImage,
   shortDescription,
@@ -116,9 +106,10 @@ const createProject = ({
     shotExtension,
   }
 
-  project.shots = realPhotography ? createRealShots(folder, project) : createPlaceholderShots(project)
+  project.shots = realPhotography ? createRealShots(folder, project, shotOverrides) : createPlaceholderShots(project)
   project.heroImage = project.shots[0]?.src || null
   project.heroShot = project.shots[0]
+  project.thumbnailImage = project.heroImage
   project.galleryImages = project.shots.map((shot) => shot.src)
   project.seoTitle = `${project.address} | ${project.type} Project | Decent Development`
   project.seoDescription = `Explore Decent Development’s ${project.type.toLowerCase()} project at ${project.address}, showcasing premium residential construction and property development in Sydney, NSW.`
@@ -158,6 +149,12 @@ export const projects = [
     folder: 'regents-park-21-lewis',
     realPhotography: true,
     shotExtension: 'jpg',
+    shotOverrides: {
+      front: { filename: 'rear.jpg' },
+      rear: { filename: 'side.jpg' },
+      side: { filename: 'front.jpg', label: 'Front Balcony', altDescription: 'front balcony' },
+      detail: { filename: 'detail.jpg', label: 'Backyard', altDescription: 'backyard' },
+    },
     featured: true,
     thumbnailImage: projectThumbnail('21-lewis-street-regents-park.jpg'),
     shortDescription:
@@ -178,6 +175,11 @@ export const projects = [
     folder: 'rouse-hill-10-dorian',
     realPhotography: true,
     shotExtension: 'jpg',
+    shotOverrides: {
+      rear: false,
+      side: false,
+      detail: false,
+    },
     featured: true,
     thumbnailImage: projectThumbnail('10-dorian-street-rouse-hill.jpg'),
     shortDescription:
@@ -197,6 +199,12 @@ export const projects = [
     category: 'triplex',
     folder: 'canley-vale-24-the-avenue',
     realPhotography: true,
+    shotOverrides: {
+      rear: false,
+      side: { filename: 'side.png' },
+      interior: { filename: 'interior.png', label: 'Living Area', altDescription: 'living area' },
+      detail: { filename: 'rear.png', label: 'Kitchen / Dining', altDescription: 'kitchen and dining area' },
+    },
     featured: true,
     thumbnailImage: projectThumbnail('24-the-avenue-canley-vale.webp'),
     shortDescription:
@@ -217,6 +225,12 @@ export const projects = [
     folder: 'canley-vale-87-the-avenue',
     realPhotography: true,
     shotExtension: 'jpg',
+    shotOverrides: {
+      rear: { filename: 'rear.jpg', label: 'Back Patio', altDescription: 'back patio and yard' },
+      side: { filename: 'side.jpg', label: 'Living Area', altDescription: 'living area' },
+      interior: { filename: 'interior.jpg', label: 'Upper Hallway', altDescription: 'upper hallway' },
+      detail: { filename: 'detail.jpg', label: 'Bathroom Detail', altDescription: 'bathroom detail' },
+    },
     featured: true,
     thumbnailImage: projectThumbnail('87-the-avenue-canley-vale.jpg'),
     shortDescription:
@@ -237,6 +251,12 @@ export const projects = [
     folder: 'canley-heights-23-mittiamo',
     realPhotography: true,
     shotExtension: 'jpg',
+    shotOverrides: {
+      rear: { filename: 'detail.jpg', label: 'Back Exterior', altDescription: 'back exterior and patio' },
+      side: false,
+      interior: { filename: 'rear.jpg', label: 'Living Area', altDescription: 'living area' },
+      detail: { filename: 'interior.jpg', label: 'Bedroom', altDescription: 'bedroom' },
+    },
     featured: true,
     thumbnailImage: projectThumbnail('23-mittiamo-street-canley-heights.jpg'),
     shortDescription:
