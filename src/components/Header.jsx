@@ -94,7 +94,7 @@ export default function Header({ company, logo }) {
     >
       <div className="section-shell">
         <div className="flex items-center justify-between gap-4">
-          <Link to="/" className="focus-ring rounded-sm" aria-label={`${company.name} home`}>
+          <Link to="/" className="focus-ring rounded-sm" aria-label={company.name}>
             <BrandMark company={company} logo={logo} />
           </Link>
 
