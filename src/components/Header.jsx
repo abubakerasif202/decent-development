@@ -19,9 +19,10 @@ function BrandMark({ company, logo }) {
       <span className="logo-frame h-12 w-14 sm:h-14 sm:w-16">
         <img
           src={logo}
-          alt="DECENT Development logo"
+          alt=""
           className="h-full w-full object-contain"
           decoding="async"
+          aria-hidden="true"
         />
       </span>
       <span className="hidden leading-none sm:block">
