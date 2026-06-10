@@ -25,7 +25,7 @@ function BrandMark({ company, logo }) {
           aria-hidden="true"
         />
       </span>
-      <span className="hidden leading-none sm:block">
+      <span className="hidden leading-none sm:block" aria-hidden="true">
         <span className="block text-sm font-bold uppercase text-ivory">DECENT</span>
         <span className="block text-[10px] font-semibold uppercase text-smoke">Development</span>
       </span>
@@ -95,7 +95,7 @@ export default function Header({ company, logo }) {
     >
       <div className="section-shell">
         <div className="flex items-center justify-between gap-4">
-          <Link to="/" className="focus-ring rounded-sm" aria-label={company.name}>
+          <Link to="/" className="focus-ring rounded-sm">
             <BrandMark company={company} logo={logo} />
           </Link>
 
