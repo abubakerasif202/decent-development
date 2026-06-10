@@ -200,8 +200,8 @@ export const projects = [
     folder: 'canley-vale-24-the-avenue',
     realPhotography: true,
     shotOverrides: {
-      rear: false,
-      side: { filename: 'side.png' },
+      rear: { filename: 'detail.png', label: 'Aerial Site View', altDescription: 'aerial view of the triplex site' },
+      side: { filename: 'side.png', label: 'Frontage Detail', altDescription: 'front exterior and landscaping' },
       interior: { filename: 'interior.png', label: 'Living Area', altDescription: 'living area' },
       detail: { filename: 'rear.png', label: 'Kitchen / Dining', altDescription: 'kitchen and dining area' },
     },
@@ -226,8 +226,8 @@ export const projects = [
     realPhotography: true,
     shotExtension: 'jpg',
     shotOverrides: {
-      rear: { filename: 'rear.jpg', label: 'Back Patio', altDescription: 'back patio and yard' },
-      side: { filename: 'side.jpg', label: 'Living Area', altDescription: 'living area' },
+      rear: { filename: 'rear.jpg', label: 'Twilight Exterior', altDescription: 'front exterior at twilight' },
+      side: { filename: 'side.jpg', label: 'Entry Detail', altDescription: 'front entry and landscaped path' },
       interior: { filename: 'interior.jpg', label: 'Upper Hallway', altDescription: 'upper hallway' },
       detail: { filename: 'detail.jpg', label: 'Bathroom Detail', altDescription: 'bathroom detail' },
     },
