@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { motion, useReducedMotion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
-import heroBuilding from '../assets/stitch/hero-building.jpg'
+import heroBuilding from '../assets/stitch/hero-building.webp'
 
 const heroTitleVariants = {
   hidden: {},

@@ -3,7 +3,7 @@ import path from 'node:path'
 import { projects } from '../src/data/projects.js'
 
 const siteUrl = 'https://decentdevelopment.com.au'
-const lastmod = '2026-06-08'
+const lastmod = new Date().toISOString().split('T')[0]
 
 const company = {
   name: 'DECENT Development',
@@ -29,7 +29,7 @@ const company = {
 
 const organizationSchema = {
   '@context': 'https://schema.org',
-  '@type': ['Organization', 'LocalBusiness', 'GeneralContractor'],
+  '@type': 'GeneralContractor',
   '@id': `${siteUrl}/#organization`,
   name: company.name,
   url: company.url,
@@ -123,7 +123,7 @@ const faqSchema = {
       name: 'What areas does DECENT Development service?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'DECENT Development works across New South Wales with an office in North Sydney.',
+        text: 'DECENT Development works across New South Wales from its North Sydney office.',
       },
     },
     {
@@ -131,15 +131,23 @@ const faqSchema = {
       name: 'What construction services are available?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Services include residential construction, commercial construction, property development, project management, renovations and extensions, and building consultation.',
+        text: 'Services include residential construction, commercial construction, property development, project management, renovations, extensions, and building consultation.',
       },
     },
     {
       '@type': 'Question',
-      name: 'How can I contact DECENT Development?',
+      name: 'Do you specialize in duplex and triplex developments in Sydney?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'You can call 1800 008 883, email info@decentdevelopment.com.au, or use the website contact form.',
+        text: 'Yes, DECENT Development specializes in multi-residential developments, including attached duplex and triplex projects, ensuring optimal land utilization and premium architectural finishes under our NSW contractor licence.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How do project enquiries start?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Prospective clients can call, email, or submit the contact form with the project type, contact details, and a short brief.',
       },
     },
   ],
@@ -266,9 +274,9 @@ const routes = [
   {
     path: '/contact/',
     priority: '0.8',
-    title: 'Contact | DECENT Development',
+    title: 'Contact DECENT Development | Sydney Construction Enquiries',
     description:
-      'Contact DECENT Development to discuss a premium construction, development, renovation, or project management brief in New South Wales.',
+      'Contact DECENT Development to discuss a premium construction, duplex/triplex development, or project management brief in Sydney and New South Wales.',
     h1: 'Contact DECENT Development',
     body: [
       'Contact DECENT Development by phone on 1800 008 883, by email at info@decentdevelopment.com.au, or from Level 14, 275 Alfred St North, North Sydney NSW 2060.',
@@ -311,7 +319,7 @@ for (const project of projects) {
     ],
     schemas: [
       organizationSchema,
-      breadcrumb(`/projects/${project.slug}/`, project.title),
+      projectBreadcrumb(`/projects/${project.slug}/`, project.title),
       {
         '@context': 'https://schema.org',
         '@type': 'CreativeWork',
@@ -346,6 +354,33 @@ function breadcrumb(routePath, name) {
       {
         '@type': 'ListItem',
         position: 2,
+        name,
+        item: `${siteUrl}${routePath}`,
+      },
+    ],
+  }
+}
+
+function projectBreadcrumb(routePath, name) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: `${siteUrl}/`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Completed Projects',
+        item: `${siteUrl}/projects/`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
         name,
         item: `${siteUrl}${routePath}`,
       },

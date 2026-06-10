@@ -3,10 +3,11 @@ import { ArrowRight } from 'lucide-react'
 import usePageMeta from '../hooks/usePageMeta.js'
 
 export default function NotFoundPage() {
+  const path = typeof window !== 'undefined' ? window.location.pathname : '/404/'
   usePageMeta({
     title: 'Page Not Found | DECENT Development',
     description: 'The requested page could not be found.',
-    path: window.location.pathname,
+    path,
   })
 
   return (

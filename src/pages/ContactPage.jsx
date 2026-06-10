@@ -4,7 +4,7 @@ import { ArrowRight, Mail, MapPin, Phone } from 'lucide-react'
 import Contact from '../components/Contact.jsx'
 import PageHero from '../components/PageHero.jsx'
 import usePageMeta from '../hooks/usePageMeta.js'
-import heroBuilding from '../assets/stitch/hero-building.jpg'
+import heroBuilding from '../assets/stitch/hero-building.webp'
 
 const directionsUrl =
   'https://www.google.com/maps/search/?api=1&query=Level%2014%20275%20Alfred%20St%20North%20North%20Sydney%20NSW%202060'

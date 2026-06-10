@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import PageHero from '../components/PageHero.jsx'
 import ProjectCard from '../components/projects/ProjectCard.jsx'
-import projectDuplex from '../assets/stitch/project-duplex.png'
+import projectDuplex from '../assets/stitch/project-duplex.webp'
 import { projects } from '../data/projects.js'
 import usePageMeta from '../hooks/usePageMeta.js'
 

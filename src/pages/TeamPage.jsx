@@ -4,7 +4,7 @@ import { ArrowRight, Building2, ClipboardCheck } from 'lucide-react'
 import PageHero from '../components/PageHero.jsx'
 import Team from '../components/Team.jsx'
 import usePageMeta from '../hooks/usePageMeta.js'
-import projectCommercial from '../assets/stitch/project-commercial.jpg'
+import projectCommercial from '../assets/stitch/project-commercial.webp'
 
 export default function TeamPage({ company, teamAssets }) {
   const teamSchemas = [

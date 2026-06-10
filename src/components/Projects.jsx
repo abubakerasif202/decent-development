@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
 import { motion, useReducedMotion } from 'framer-motion'
 import { ArrowRight, LayoutGrid, Mail, Users2 } from 'lucide-react'
-import projectCommercial from '../assets/stitch/project-commercial.jpg'
-import projectMultiuse from '../assets/stitch/project-multiuse.jpg'
-import projectRenovation from '../assets/stitch/project-renovation.jpg'
+import projectCommercial from '../assets/stitch/project-commercial.webp'
+import projectMultiuse from '../assets/stitch/project-multiuse.webp'
+import projectRenovation from '../assets/stitch/project-renovation.webp'
 
 const destinations = [
   {
