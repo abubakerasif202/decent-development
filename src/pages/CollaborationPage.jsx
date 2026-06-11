@@ -1,6 +1,6 @@
 import Collaboration from '../components/Collaboration.jsx'
 import PageHero from '../components/PageHero.jsx'
-import milestoneDevelopmentLogo from '../assets/collaboration/milestone-live/logo.svg'
+import milestoneDevelopmentLogo from '../assets/collaboration/milestone-live/logo-mark.svg'
 import usePageMeta from '../hooks/usePageMeta.js'
 
 export default function CollaborationPage() {

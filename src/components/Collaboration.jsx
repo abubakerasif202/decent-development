@@ -1,7 +1,6 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import { Building2, FileBadge2, Users2 } from 'lucide-react'
 import hzHomesLogo from '../assets/collaboration/hz-homes.png'
-import milestoneDevelopmentLogo from '../assets/collaboration/milestone-live/logo.svg'
 import jufajaHomesLogo from '../assets/collaboration/jufaja-homes.png'
 
 const collaborators = [
@@ -18,13 +17,6 @@ const collaborators = [
     logoAlt: 'JUFAJA Homes logo',
     details: ['Licence 346427C', 'ACN 636 488 910', 'Collaborative delivery partner'],
     surface: 'bg-black',
-  },
-  {
-    name: 'Milestone Construction and Development Pty Ltd',
-    logo: milestoneDevelopmentLogo,
-    logoAlt: 'Milestone Development logo',
-    details: ['ACN 697 166 715', 'Collaborative delivery partner', 'For larger and more complicated projects'],
-    surface: 'bg-charcoal',
   },
 ]
 
