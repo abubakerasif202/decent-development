@@ -12,6 +12,7 @@ import Footer from './components/Footer.jsx'
 import Header from './components/Header.jsx'
 import IntroAnimation from './components/IntroAnimation.jsx'
 import logo from './assets/Logo.png'
+import logoDark from './assets/Logo-dark.png'
 import teamHussain from './assets/team-hussain.webp'
 import teamMohammad from './assets/team-mohammad.webp'
 import teamNemat from './assets/team-nemat.webp'
@@ -28,6 +29,7 @@ const company = {
 
 const assets = {
   logo,
+  logoDark,
   team: {
     nemat: teamNemat,
     mohammad: teamMohammad,
@@ -113,7 +115,7 @@ function App() {
   return (
     <BrowserRouter>
       {showIntro && <IntroAnimation logo={assets.logo} />}
-      <Header company={company} logo={assets.logo} />
+      <Header company={company} logo={assets.logoDark} />
       <main>
         <ScrollManager />
         <AppRoutes />
