@@ -1,6 +1,5 @@
 import Collaboration from '../components/Collaboration.jsx'
 import PageHero from '../components/PageHero.jsx'
-import milestoneDevelopmentLogo from '../assets/collaboration/milestone-live/logo.svg'
 import usePageMeta from '../hooks/usePageMeta.js'
 
 export default function CollaborationPage() {
@@ -22,15 +21,6 @@ export default function CollaborationPage() {
           { label: 'Delivery model', value: 'Collaborative' },
           { label: 'Project focus', value: 'Larger builds' },
         ]}
-        visual={
-          <div className="flex min-h-80 items-center justify-center border border-brand-border bg-neutral-900 rounded-[1.5rem] p-8 premium-shadow">
-            <img
-              src={milestoneDevelopmentLogo}
-              alt="Milestone Development partner logo"
-              className="max-h-64 w-full max-w-md object-contain"
-            />
-          </div>
-        }
       />
       <Collaboration />
     </>
