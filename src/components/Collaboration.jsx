@@ -2,7 +2,7 @@ import { motion, useReducedMotion } from 'framer-motion'
 import { ArrowUpRight, Building2, FileBadge2, Users2 } from 'lucide-react'
 import hzHomesLogo from '../assets/collaboration/hz-homes.png'
 import jufajaHomesLogo from '../assets/collaboration/jufaja-homes.png'
-import milestoneDevelopmentLogo from '../assets/collaboration/milestone-live/logo.svg'
+import milestoneDevelopmentLogo from '../assets/collaboration/milestone-card.png'
 
 const collaborators = [
   {
@@ -26,7 +26,7 @@ const collaborators = [
     description:
       'A certified-builder-led construction and property development partner supporting projects from early planning through construction and handover.',
     details: ['10+ years of construction experience', 'Residential, commercial and industrial delivery', 'Design and construct, renovations and project management'],
-    surface: 'bg-neutral-950',
+    surface: 'bg-[#00452f]',
     href: 'https://milestonedevelopment.com.au/',
   },
 ]
