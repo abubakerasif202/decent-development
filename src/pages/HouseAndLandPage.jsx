@@ -1,15 +1,18 @@
 import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { motion, useReducedMotion } from 'framer-motion'
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import {
   ArrowRight,
   Bath,
   BedDouble,
   Building2,
   Car,
+  ChevronDown,
   ClipboardCheck,
   DraftingCompass,
+  Home,
   KeyRound,
+  Layers3,
   MapPin,
   Ruler,
   SearchCheck,
@@ -28,11 +31,31 @@ import {
 const siteUrl = 'https://decentdevelopment.com.au'
 
 const processSteps = [
-  { title: 'Site & brief review', icon: SearchCheck },
-  { title: 'Feasibility guidance', icon: ClipboardCheck },
-  { title: 'Concept and planning support', icon: DraftingCompass },
-  { title: 'Construction pathway', icon: Building2 },
-  { title: 'Project delivery support', icon: KeyRound },
+  {
+    title: 'Site & brief review',
+    icon: SearchCheck,
+    description: 'We start by understanding your goals, preferred location, project type, budget direction, and any land or property details you already have. This helps establish whether the opportunity is best suited to a family home, duplex, triplex, or multi-residential pathway.'
+  },
+  {
+    title: 'Feasibility guidance',
+    icon: ClipboardCheck,
+    description: 'Our team considers practical construction factors, site conditions, access, potential constraints, planning direction, and delivery expectations. The goal is to help you understand the project pathway before committing to major decisions.'
+  },
+  {
+    title: 'Concept and planning support',
+    icon: DraftingCompass,
+    description: 'Once the project direction is clearer, we help shape the concept around lifestyle goals, land potential, construction efficiency, and finish expectations. This stage supports better decision-making before approvals and build planning progress.'
+  },
+  {
+    title: 'Construction pathway',
+    icon: Building2,
+    description: 'DECENT Development helps clients understand the construction process, likely sequencing, required documentation, consultant coordination, and the steps needed to move from planning into delivery.'
+  },
+  {
+    title: 'Project delivery support',
+    icon: KeyRound,
+    description: 'From preparation through to construction delivery, our focus is on communication, quality control, safety, and practical project management so clients can move forward with confidence.'
+  },
 ]
 
 const locations = [
@@ -64,7 +87,7 @@ function PackageCard({ packageItem, index, reducedMotion }) {
 
   return (
     <motion.article
-      className="group flex h-full flex-col overflow-hidden border border-gold/25 bg-charcoal transition-colors duration-300 hover:border-gold"
+      className="group flex h-full flex-col overflow-hidden border border-brand-border bg-white rounded-2xl transition-colors duration-300 hover:border-brand-gold hover:shadow-premium"
       initial={reducedMotion ? false : { opacity: 0, y: 24 }}
       whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.15 }}
@@ -79,46 +102,46 @@ function PackageCard({ packageItem, index, reducedMotion }) {
           decoding="async"
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
-        <div className="absolute left-4 top-4 border border-gold/40 bg-ink/85 px-3 py-2 text-[9px] font-bold uppercase tracking-[0.18em] text-gold backdrop-blur">
+        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent" />
+        <div className="absolute left-4 top-4 border border-brand-gold/30 bg-white/95 px-3 py-2 text-[9px] font-bold uppercase tracking-[0.18em] text-brand-gold backdrop-blur shadow-sm">
           {packageItem.status}
         </div>
         <div className="absolute bottom-4 left-4 right-4">
           <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-gold-soft">
             {packageItem.suburb} · {packageItem.region}
           </p>
-          <h3 className="mt-2 font-display text-2xl font-normal leading-tight text-ivory">{packageItem.title}</h3>
+          <h3 className="mt-2 font-display text-2xl font-normal leading-tight text-white">{packageItem.title}</h3>
         </div>
       </div>
 
       <div className="flex flex-1 flex-col p-5 sm:p-6">
         <div className="flex flex-wrap items-center justify-between gap-3">
-          <span className="border border-gold/25 px-3 py-2 text-[9px] font-bold uppercase tracking-[0.16em] text-smoke">
+          <span className="border border-brand-border px-3 py-2 text-[9px] font-bold uppercase tracking-[0.16em] text-brand-muted">
             {packageItem.packageType}
           </span>
-          <span className="text-xs font-bold uppercase tracking-[0.14em] text-gold">{packageItem.priceLabel}</span>
+          <span className="text-xs font-bold uppercase tracking-[0.14em] text-brand-gold">{packageItem.priceLabel}</span>
         </div>
 
-        <dl className="mt-5 grid grid-cols-4 border-y border-white/10 py-4">
+        <dl className="mt-5 grid grid-cols-4 border-y border-brand-border py-4">
           {specifications.map(({ label, value, icon: Icon }) => (
-            <div key={label} className="border-r border-white/10 px-2 text-center last:border-r-0">
-              <Icon className="mx-auto text-gold" size={17} aria-hidden="true" />
-              <dd className="mt-2 text-sm font-semibold text-ivory">{value}</dd>
-              <dt className="mt-1 text-[8px] font-semibold uppercase tracking-[0.12em] text-stone">{label}</dt>
+            <div key={label} className="border-r border-brand-border px-2 text-center last:border-r-0">
+              <Icon className="mx-auto text-brand-gold" size={17} aria-hidden="true" />
+              <dd className="mt-2 text-sm font-semibold text-brand-charcoal">{value}</dd>
+              <dt className="mt-1 text-[8px] font-semibold uppercase tracking-[0.12em] text-brand-muted">{label}</dt>
             </div>
           ))}
         </dl>
 
-        <div className="mt-5 flex items-center gap-2 text-xs text-smoke">
-          <Ruler className="text-gold" size={16} aria-hidden="true" />
+        <div className="mt-5 flex items-center gap-2 text-xs text-brand-charcoal">
+          <Ruler className="text-brand-gold" size={16} aria-hidden="true" />
           <span>{packageItem.landSize}</span>
         </div>
-        <p className="mt-4 text-sm font-light leading-6 text-smoke">{packageItem.description}</p>
+        <p className="mt-4 text-sm font-light leading-6 text-brand-muted">{packageItem.description}</p>
 
         <ul className="mt-5 grid gap-2" aria-label={`${packageItem.title} features`}>
           {packageItem.features.map((feature) => (
-            <li key={feature} className="flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.12em] text-stone">
-              <span className="h-px w-4 bg-gold" aria-hidden="true" />
+            <li key={feature} className="flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.12em] text-brand-charcoal">
+              <span className="h-px w-4 bg-brand-gold" aria-hidden="true" />
               {feature}
             </li>
           ))}
@@ -142,7 +165,7 @@ function HouseAndLandVisual() {
 
   return (
     <motion.div
-      className="relative mx-auto max-w-xl overflow-hidden rounded-[2rem] border border-gold/20 bg-white/5 p-4 shadow-premium backdrop-blur-sm"
+      className="relative mx-auto max-w-xl overflow-hidden rounded-[2rem] border border-brand-border bg-brand-surface p-4 premium-shadow backdrop-blur-sm"
       style={{ transformStyle: 'preserve-3d' }}
       initial={reducedMotion ? false : { opacity: 0, y: 24, rotateY: -8 }}
       whileInView={reducedMotion ? undefined : { opacity: 1, y: 0, rotateY: 0 }}
@@ -150,7 +173,7 @@ function HouseAndLandVisual() {
       whileHover={reducedMotion ? undefined : { rotateY: -4, rotateX: 3, y: -6 }}
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
     >
-      <div className="relative overflow-hidden rounded-[1.5rem] border border-white/10 bg-ink">
+      <div className="relative overflow-hidden rounded-[1.5rem] border border-brand-border bg-brand-surface">
         <img
           src={projectResidential}
           alt="Illustrative premium residential house and land concept"
@@ -159,22 +182,22 @@ function HouseAndLandVisual() {
           loading="eager"
           fetchPriority="high"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
-        <div className="absolute left-5 top-5 rounded-full border border-white/20 bg-black/35 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.24em] text-ivory backdrop-blur">
+        <div className="absolute inset-0 bg-gradient-to-t from-white/95 via-white/30 to-transparent" />
+        <div className="absolute left-5 top-5 rounded-full border border-brand-border bg-white/80 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.24em] text-brand-charcoal backdrop-blur">
           Illustrative opportunity
         </div>
-        <div className="absolute bottom-5 left-5 right-5">
-          <p className="text-[10px] font-semibold uppercase tracking-[0.26em] text-gold-soft">
+        <div className="absolute bottom-5 left-5 right-5 rounded-2xl border border-brand-border bg-white/90 p-5 backdrop-blur shadow-sm">
+          <p className="text-[10px] font-semibold uppercase tracking-[0.26em] text-brand-gold">
             From land review to delivery
           </p>
-          <h2 className="mt-2 font-display text-2xl font-normal text-ivory">
+          <h2 className="mt-2 font-display text-xl font-normal text-brand-charcoal leading-tight">
             A clearer pathway to a premium residential project
           </h2>
-          <div className="mt-4 grid gap-2 sm:grid-cols-3">
+          <div className="mt-4 grid gap-2 grid-cols-3">
             {['Family homes', 'Duplexes', 'Triplexes'].map((label) => (
               <div
                 key={label}
-                className="border border-white/10 bg-black/40 px-3 py-3 text-center text-[10px] font-semibold uppercase tracking-[0.18em] text-smoke backdrop-blur"
+                className="border border-brand-border bg-brand-surface px-3 py-2 text-center text-[10px] font-semibold uppercase tracking-[0.18em] text-brand-charcoal"
               >
                 {label}
               </div>
@@ -186,9 +209,49 @@ function HouseAndLandVisual() {
   )
 }
 
+function FAQItem({ question, answer, isOpen, onClick, reducedMotion }) {
+  return (
+    <div className="border-b border-brand-border last:border-b-0 py-5">
+      <button
+        type="button"
+        onClick={onClick}
+        className="flex w-full items-center justify-between gap-4 text-left font-display text-lg font-normal text-brand-charcoal hover:text-brand-gold transition-colors duration-250 py-2"
+        aria-expanded={isOpen}
+      >
+        <span className="pr-4">{question}</span>
+        <motion.span
+          animate={{ rotate: isOpen ? 180 : 0 }}
+          transition={{ duration: 0.2, ease: 'easeInOut' }}
+          className="text-brand-gold flex-shrink-0"
+        >
+          <ChevronDown size={20} aria-hidden="true" />
+        </motion.span>
+      </button>
+      <AnimatePresence initial={false}>
+        {isOpen && (
+          <motion.div
+            key="content"
+            initial={reducedMotion ? { opacity: 1, height: 'auto' } : { opacity: 0, height: 0 }}
+            animate={reducedMotion ? { opacity: 1, height: 'auto' } : { opacity: 1, height: 'auto' }}
+            exit={reducedMotion ? { opacity: 0, height: 0 } : { opacity: 0, height: 0 }}
+            transition={{ duration: 0.28, ease: [0.04, 0.62, 0.23, 0.98] }}
+            className="overflow-hidden"
+          >
+            <p className="mt-2 text-sm font-light leading-7 text-brand-muted pb-2 pr-6">
+              {answer}
+            </p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  )
+}
+
 export default function HouseAndLandPage() {
   const reducedMotion = useReducedMotion()
   const [filters, setFilters] = useState(initialFilters)
+  const [openFaqIndex, setOpenFaqIndex] = useState(null)
+
   const pageUrl = `${siteUrl}/house-and-land-packages/`
   const description =
     'Explore premium house and land package opportunities with DECENT Development across Sydney and New South Wales. Enquire about residential builds, duplexes, triplexes, and development-ready land options.'
@@ -265,9 +328,9 @@ export default function HouseAndLandPage() {
   return (
     <>
       <PageHero
-        eyebrow="House & Land Packages"
+        eyebrow="Premium Residential Opportunities"
         title="House & Land Packages"
-        copy="Premium residential opportunities across Sydney and New South Wales."
+        copy="Architecturally crafted, development-ready residential packages across Sydney and New South Wales."
         stats={[
           { label: 'Project types', value: 'Homes to triplexes' },
           { label: 'Guidance', value: 'Land to delivery' },
@@ -275,84 +338,218 @@ export default function HouseAndLandPage() {
         ]}
         visual={<HouseAndLandVisual />}
       >
-        <p className="max-w-2xl text-sm font-light leading-7 text-smoke">
-          DECENT Development helps clients explore house and land package opportunities, from family homes to
-          duplex and triplex development-ready sites. Our team brings construction knowledge, project planning, and
-          local NSW experience to help clients move from enquiry to build-ready confidence.
+        <p className="max-w-2xl text-sm font-light leading-7 text-brand-muted">
+          Our NSW residential development solutions provide clients with premium house and land packages designed for modern living. From bespoke custom homes to high-yield duplex and triplex projects, we combine strategic site acquisition, custom architectural drafting, and professional project management under our NSW contractor licence to streamline your path to a premium property.
         </p>
         <div className="mt-6 flex flex-wrap gap-4">
           <a
             href="#opportunities"
             className="focus-ring gold-gradient-btn inline-flex min-h-12 items-center gap-2 px-6 py-3 text-xs font-bold uppercase"
           >
-            View opportunities
+            View Opportunities
             <ArrowRight size={17} aria-hidden="true" />
           </a>
           <Link
             to="/contact/"
             className="focus-ring outline-gold-btn inline-flex min-h-12 items-center gap-2 px-6 py-3 text-xs font-bold uppercase"
           >
-            Start an enquiry
+            Start an Enquiry
           </Link>
         </div>
       </PageHero>
 
-      <section className="bg-porcelain py-16 text-ink sm:py-20" aria-labelledby="house-land-intro-title">
-        <div className="section-shell grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
-          <motion.div
-            initial={reducedMotion ? false : { opacity: 0, y: 24 }}
-            whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.35 }}
-            transition={{ duration: 0.55, ease: 'easeOut' }}
-          >
-            <p className="eyebrow">Land to completion</p>
-            <h2 id="house-land-intro-title" className="mt-4 font-display text-3xl font-normal leading-tight sm:text-4xl">
-              Build with confidence from land to completion
-            </h2>
-          </motion.div>
-          <motion.p
-            className="max-w-3xl text-base font-light leading-8 text-graphite/80"
-            initial={reducedMotion ? false : { opacity: 0, y: 24 }}
-            whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.35 }}
-            transition={{ duration: 0.55, delay: reducedMotion ? 0 : 0.08, ease: 'easeOut' }}
-          >
-            DECENT Development helps clients explore house and land package opportunities, from new family homes to
-            duplex and triplex development-ready sites. Our team provides practical construction knowledge, project
-            planning, and NSW development experience to help clients move from enquiry to build-ready confidence.
-          </motion.p>
+      <section className="bg-porcelain py-16 text-brand-charcoal sm:py-20" aria-labelledby="house-land-intro-title">
+        <div className="section-shell">
+          <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+            <motion.div
+              initial={reducedMotion ? false : { opacity: 0, y: 24 }}
+              whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.35 }}
+              transition={{ duration: 0.55, ease: 'easeOut' }}
+            >
+              <p className="eyebrow text-brand-gold">Land to completion</p>
+              <h2 id="house-land-intro-title" className="mt-4 font-display text-3xl font-normal leading-tight sm:text-4xl text-brand-charcoal">
+                Build with confidence from land to completion
+              </h2>
+            </motion.div>
+            <motion.div
+              className="space-y-6 max-w-3xl text-base font-light leading-8 text-brand-muted"
+              initial={reducedMotion ? false : { opacity: 0, y: 24 }}
+              whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.35 }}
+              transition={{ duration: 0.55, delay: reducedMotion ? 0 : 0.08, ease: 'easeOut' }}
+            >
+              <p>
+                DECENT Development delivers high-end residential construction Sydney and NSW-wide, providing a transparent, end-to-end pathway for discerning homeowners and property investors. Our experience in custom home builder North Sydney projects and extensive property development NSW portfolio allows us to navigate planning controls and site challenges with ease.
+              </p>
+              <p>
+                Whether you are looking to build a luxury custom residence or unlock the value of your block through duplex development Sydney or triplex development NSW options, we offer tailored construction solutions that preserve capital and enhance asset value.
+              </p>
+            </motion.div>
+          </div>
+
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              {
+                title: 'Strategic Site Evaluation',
+                description: 'We analyze zoning, planning constraints, and construction feasibility to ensure your land supports your project goals.',
+                icon: SearchCheck,
+              },
+              {
+                title: 'Tailored Design & Drafting',
+                description: 'Customized architectural concepts that optimize space, natural light, and structural efficiency.',
+                icon: DraftingCompass,
+              },
+              {
+                title: 'Fixed-Price Certainty',
+                description: 'Clear, transparent contracts with detailed specifications, protecting your investment from unexpected budget overruns.',
+                icon: ClipboardCheck,
+              },
+              {
+                title: 'Licensed Construction Quality',
+                description: 'Built to the highest standards by our experienced NSW contractor team using premium, durable materials.',
+                icon: Building2,
+              },
+            ].map(({ title, description: desc, icon: Icon }, index) => (
+              <motion.div
+                key={title}
+                className="border border-brand-border bg-white rounded-2xl p-6 shadow-sm hover:border-brand-gold hover:shadow-premium transition-all duration-300"
+                initial={reducedMotion ? false : { opacity: 0, y: 20 }}
+                whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.25 }}
+                transition={{ duration: 0.45, delay: reducedMotion ? 0 : index * 0.05, ease: 'easeOut' }}
+              >
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-surface border border-brand-border text-brand-gold">
+                  <Icon size={24} aria-hidden="true" />
+                </div>
+                <h3 className="mt-5 text-sm font-bold uppercase tracking-[0.12em] text-brand-charcoal">{title}</h3>
+                <p className="mt-3 text-xs font-light leading-6 text-brand-muted">{desc}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section id="opportunities" className="bg-ink py-16 text-ivory sm:py-24" aria-labelledby="opportunities-title">
+      <section className="bg-white py-16 text-brand-charcoal sm:py-24 border-t border-brand-border" aria-labelledby="package-options-title">
+        <div className="section-shell">
+          <div className="text-center max-w-3xl mx-auto">
+            <p className="eyebrow text-brand-gold">Flexible Build Options</p>
+            <h2 id="package-options-title" className="mt-4 font-display text-3xl font-normal leading-tight text-brand-charcoal sm:text-4xl">
+              Tailored NSW Residential Development Solutions
+            </h2>
+            <p className="mt-4 text-base font-light leading-7 text-brand-muted">
+              We provide structured yet highly flexible package options to suit varied property development NSW objectives, from private luxury living to high-density investment outcomes.
+            </p>
+          </div>
+
+          <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              {
+                title: 'Bespoke Custom Homes',
+                label: 'Single & Double Storey',
+                description: 'Tailored architectural designs created to match your unique lifestyle requirements, local council regulations, and aesthetic preferences.',
+                icon: Home,
+                features: [
+                  'Bespoke floorplans & elevation design',
+                  'Premium high-end luxury finishes',
+                  'NSW residential construction compliance',
+                  'Energy-efficient architectural orientation',
+                ],
+              },
+              {
+                title: 'Duplex Developments',
+                label: 'Dual Occupancy Solutions',
+                description: 'Maximize your land potential and rental yield with architecturally integrated attached or detached duplex designs in high-growth areas.',
+                icon: Building2,
+                features: [
+                  'Optimal block utilization layouts',
+                  'Dual income or multi-generation living',
+                  'Sydney council zoning compliance',
+                  'Independent services & access planning',
+                ],
+              },
+              {
+                title: 'Triplex & Multi-Residential',
+                label: 'High-Yield Portfolios',
+                description: 'Sophisticated multi-dwelling construction options designed to maximize property development NSW opportunities while minimizing structural footprint.',
+                icon: Layers3,
+                features: [
+                  'Feasibility & site yield analysis',
+                  'NSW planning code configuration',
+                  'Architectural coordination & approvals',
+                  'Investor-focused finish specifications',
+                ],
+              },
+              {
+                title: 'Turnkey Development Packages',
+                label: 'Ready to Occupy',
+                description: 'Complete, build-ready house and land packages Sydney and NSW-wide, including site works, landscaping, and premium inclusions.',
+                icon: DraftingCompass,
+                features: [
+                  'Fixed-price construction contract',
+                  'Complete internal & external fit-out',
+                  'Approved DA/CDC planning pathways',
+                  'Comprehensive structural guarantees',
+                ],
+              },
+            ].map(({ title, label, description: desc, icon: Icon, features }, index) => (
+              <motion.div
+                key={title}
+                className="flex flex-col border border-brand-border bg-brand-bg rounded-2xl p-6 shadow-sm hover:border-brand-gold hover:shadow-premium transition-all duration-300"
+                initial={reducedMotion ? false : { opacity: 0, y: 24 }}
+                whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.15 }}
+                transition={{ duration: 0.48, delay: reducedMotion ? 0 : index * 0.04, ease: 'easeOut' }}
+              >
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white border border-brand-border text-brand-gold">
+                  <Icon size={24} aria-hidden="true" />
+                </div>
+                <h3 className="mt-5 font-display text-xl font-normal text-brand-charcoal">{title}</h3>
+                <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-brand-gold">{label}</p>
+                <p className="mt-4 text-xs font-light leading-6 text-brand-muted flex-1">{desc}</p>
+                <ul className="mt-6 space-y-2 border-t border-brand-border pt-5" aria-label={`${title} features`}>
+                  {features.map((feature) => (
+                    <li key={feature} className="flex items-start gap-2 text-[10px] font-semibold uppercase tracking-[0.15em] text-brand-charcoal">
+                      <span className="mt-1.5 h-1 w-3 bg-brand-gold flex-shrink-0" aria-hidden="true" />
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="opportunities" className="bg-brand-bg py-16 text-brand-charcoal sm:py-24" aria-labelledby="opportunities-title">
         <div className="section-shell">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-2xl">
-              <p className="eyebrow">Residential inventory</p>
-              <h2 id="opportunities-title" className="mt-4 font-display text-3xl font-normal leading-tight sm:text-4xl">
+              <p className="eyebrow text-brand-gold">Residential inventory</p>
+              <h2 id="opportunities-title" className="mt-4 font-display text-3xl font-normal leading-tight text-brand-charcoal sm:text-4xl">
                 Current Opportunities
               </h2>
-              <p className="mt-5 text-base font-light leading-7 text-smoke">
+              <p className="mt-5 text-base font-light leading-7 text-brand-muted">
                 Explore illustrative Decent package pathways for family homes, duplex development in Sydney,
                 triplex development in NSW, and broader multi-residential opportunities.
               </p>
             </div>
-            <div className="border border-gold/25 bg-charcoal px-5 py-4">
-              <p className="text-[9px] font-semibold uppercase tracking-[0.18em] text-stone">Showing opportunities</p>
-              <p className="mt-2 font-display text-3xl text-gold">{visiblePackages.length}</p>
+            <div className="border border-brand-border bg-white rounded-xl px-5 py-4 shadow-sm">
+              <p className="text-[9px] font-semibold uppercase tracking-[0.18em] text-brand-muted">Showing opportunities</p>
+              <p className="mt-2 font-display text-3xl text-brand-gold">{visiblePackages.length}</p>
             </div>
           </div>
 
-          <div className="mt-10 border border-gold/20 bg-charcoal p-5 sm:p-6">
+          <div className="mt-10 border border-brand-border bg-white rounded-2xl p-5 sm:p-6 shadow-sm">
             <div className="flex items-center justify-between gap-4">
               <div className="flex items-center gap-3">
-                <SlidersHorizontal className="text-gold" size={20} aria-hidden="true" />
-                <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-ivory">Filter opportunities</h3>
+                <SlidersHorizontal className="text-brand-gold" size={20} aria-hidden="true" />
+                <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-brand-charcoal">Filter opportunities</h3>
               </div>
               {filtersActive ? (
                 <button
                   type="button"
-                  className="focus-ring inline-flex min-h-11 items-center gap-2 text-[10px] font-bold uppercase tracking-[0.16em] text-gold transition hover:text-gold-soft"
+                  className="focus-ring inline-flex min-h-11 items-center gap-2 text-[10px] font-bold uppercase tracking-[0.16em] text-brand-gold transition hover:text-brand-gold/80"
                   onClick={() => setFilters(initialFilters)}
                 >
                   Clear filters
@@ -368,12 +565,12 @@ export default function HouseAndLandPage() {
                 { name: 'bedrooms', label: 'Bedrooms', options: [initialFilters.bedrooms, '4', '6', '8', '9'] },
                 { name: 'storeys', label: 'Storeys', options: [initialFilters.storeys, '1', '2'] },
               ].map(({ name, label, options }) => (
-                <label key={name} className="grid gap-2 text-[9px] font-semibold uppercase tracking-[0.18em] text-stone">
+                <label key={name} className="grid gap-2 text-[9px] font-semibold uppercase tracking-[0.18em] text-brand-muted">
                   {label}
                   <select
                     value={filters[name]}
                     onChange={(event) => updateFilter(name, event.target.value)}
-                    className="focus-ring min-h-12 w-full border border-gold/25 bg-ink px-4 py-3 text-xs font-semibold uppercase tracking-[0.1em] text-ivory"
+                    className="focus-ring min-h-12 w-full border border-brand-border bg-brand-bg rounded-lg px-4 py-3 text-xs font-semibold uppercase tracking-[0.1em] text-brand-charcoal"
                   >
                     {options.map((option) => (
                       <option key={option} value={option}>
@@ -398,9 +595,9 @@ export default function HouseAndLandPage() {
               ))}
             </div>
           ) : (
-            <div className="mt-8 border border-gold/25 bg-charcoal px-6 py-14 text-center">
-              <p className="font-display text-2xl text-ivory">No opportunities match those filters.</p>
-              <p className="mt-3 text-sm text-smoke">Clear the filters or start an enquiry for a tailored project discussion.</p>
+            <div className="mt-8 border border-brand-border bg-white rounded-2xl px-6 py-14 text-center shadow-sm">
+              <p className="font-display text-2xl text-brand-charcoal">No opportunities match those filters.</p>
+              <p className="mt-3 text-sm text-brand-muted">Clear the filters or start an enquiry for a tailored project discussion.</p>
               <button
                 type="button"
                 className="focus-ring outline-gold-btn mt-6 inline-flex min-h-12 items-center gap-2 px-6 py-3 text-xs font-bold uppercase"
@@ -412,51 +609,52 @@ export default function HouseAndLandPage() {
             </div>
           )}
 
-          <p className="mt-6 text-xs font-light leading-6 text-stone">
+          <p className="mt-6 text-xs font-light leading-6 text-brand-muted">
             Opportunities shown are illustrative package pathways and remain subject to site availability, planning,
             feasibility, design development, approvals, and a formal project enquiry.
           </p>
         </div>
       </section>
 
-      <section className="bg-porcelain py-16 text-ink sm:py-24" aria-labelledby="house-land-process-title">
+      <section className="bg-porcelain py-16 text-brand-charcoal sm:py-24" aria-labelledby="house-land-process-title">
         <div className="section-shell">
           <div className="grid gap-8 lg:grid-cols-[0.75fr_1.25fr] lg:items-end">
             <div>
-              <p className="eyebrow">A considered pathway</p>
-              <h2 id="house-land-process-title" className="mt-4 font-display text-3xl font-normal leading-tight sm:text-4xl">
+              <p className="eyebrow text-brand-gold">A considered pathway</p>
+              <h2 id="house-land-process-title" className="mt-4 font-display text-3xl font-normal leading-tight sm:text-4xl text-brand-charcoal">
                 Our house and land process
               </h2>
             </div>
-            <p className="max-w-3xl text-base font-light leading-8 text-graphite/80">
+            <p className="max-w-3xl text-base font-light leading-8 text-brand-muted">
               We help clients understand the project pathway before major decisions are made, giving clearer
               expectations around design, timing, approvals, construction, and delivery.
             </p>
           </div>
 
           <ol className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-            {processSteps.map(({ title, icon: Icon }, index) => (
+            {processSteps.map(({ title, icon: Icon, description }, index) => (
               <motion.li
                 key={title}
-                className="border border-ink/10 bg-white p-5 shadow-[0_18px_38px_rgba(18,18,18,0.07)]"
+                className="border border-brand-border bg-white rounded-2xl p-5 shadow-sm flex flex-col h-full"
                 initial={reducedMotion ? false : { opacity: 0, y: 18 }}
                 whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.25 }}
                 transition={{ duration: 0.45, delay: reducedMotion ? 0 : index * 0.05, ease: 'easeOut' }}
               >
                 <div className="flex items-center justify-between gap-4">
-                  <Icon className="text-gold" size={21} aria-hidden="true" />
-                  <span className="font-display text-3xl text-gold/60">0{index + 1}</span>
+                  <Icon className="text-brand-gold" size={21} aria-hidden="true" />
+                  <span className="font-display text-3xl text-brand-gold/60">0{index + 1}</span>
                 </div>
-                <h3 className="mt-7 text-xs font-bold uppercase leading-5 tracking-[0.16em] text-graphite">{title}</h3>
+                <h3 className="mt-7 text-xs font-bold uppercase leading-5 tracking-[0.16em] text-brand-charcoal">{title}</h3>
+                <p className="mt-3 text-[11px] font-light leading-5 text-brand-muted flex-1">{description}</p>
               </motion.li>
             ))}
           </ol>
         </div>
       </section>
 
-      <section className="relative isolate overflow-hidden bg-charcoal py-16 text-ivory sm:py-24" aria-labelledby="locations-title">
-        <div className="absolute inset-0 architecture-grid opacity-20" aria-hidden="true" />
+      <section className="relative isolate overflow-hidden bg-brand-bg py-16 text-brand-charcoal sm:py-24" aria-labelledby="locations-title">
+        <div className="absolute inset-0 architecture-grid opacity-40" aria-hidden="true" />
         <div className="section-shell relative z-10 grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <motion.div
             initial={reducedMotion ? false : { opacity: 0, y: 24 }}
@@ -464,12 +662,12 @@ export default function HouseAndLandPage() {
             viewport={{ once: true, amount: 0.35 }}
             transition={{ duration: 0.55, ease: 'easeOut' }}
           >
-            <MapPin className="text-gold" size={28} aria-hidden="true" />
-            <p className="eyebrow mt-7">Local NSW experience</p>
-            <h2 id="locations-title" className="mt-4 font-display text-3xl font-normal leading-tight sm:text-4xl">
+            <MapPin className="text-brand-gold" size={28} aria-hidden="true" />
+            <p className="eyebrow mt-7 text-brand-gold">Local NSW experience</p>
+            <h2 id="locations-title" className="mt-4 font-display text-3xl font-normal leading-tight text-brand-charcoal sm:text-4xl">
               Focused across Sydney and NSW
             </h2>
-            <p className="mt-5 max-w-2xl text-base font-light leading-8 text-smoke">
+            <p className="mt-5 max-w-2xl text-base font-light leading-8 text-brand-muted">
               DECENT Development works across New South Wales from its North Sydney office, with project experience
               across Auburn, Regents Park, Rouse Hill, Canley Vale, Canley Heights, and surrounding Sydney suburbs.
             </p>
@@ -479,7 +677,7 @@ export default function HouseAndLandPage() {
             {locations.map((location, index) => (
               <motion.span
                 key={location}
-                className="border border-gold/30 bg-ink/50 px-4 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-smoke"
+                className="border border-brand-border bg-white rounded-lg px-4 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-brand-charcoal shadow-sm"
                 initial={reducedMotion ? false : { opacity: 0, scale: 0.96 }}
                 whileInView={reducedMotion ? undefined : { opacity: 1, scale: 1 }}
                 viewport={{ once: true, amount: 0.25 }}
@@ -492,22 +690,118 @@ export default function HouseAndLandPage() {
         </div>
       </section>
 
-      <section className="bg-ink py-16 text-ivory sm:py-24" aria-labelledby="house-land-cta-title">
+      <section className="bg-porcelain py-16 text-brand-charcoal sm:py-24 border-t border-brand-border" aria-labelledby="why-choose-title">
+        <div className="section-shell">
+          <div className="text-center max-w-3xl mx-auto">
+            <p className="eyebrow text-brand-gold">The Decent Difference</p>
+            <h2 id="why-choose-title" className="mt-4 font-display text-3xl font-normal leading-tight text-brand-charcoal sm:text-4xl">
+              Why Choose DECENT Development
+            </h2>
+            <p className="mt-4 text-base font-light leading-7 text-brand-muted">
+              We stand apart through our commitment to quality, risk mitigation, and architectural integrity in every project we execute.
+            </p>
+          </div>
+
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              {
+                title: 'NSW Licensed Contractor',
+                description: 'Fully licensed and insured builder operating under strict compliance with NSW building codes and consumer protections.',
+              },
+              {
+                title: 'Architectural Distinction',
+                description: 'We do not build generic project homes; every package represents a considered, premium architectural layout designed for the site.',
+              },
+              {
+                title: 'Clear Project Management',
+                description: 'Direct access to online portal updates, scheduling milestones, and quality control checks for complete peace of mind.',
+              },
+              {
+                title: 'Transparent Feasibility',
+                description: 'Honest upfront assessments of slope, soil classification, easements, and council setbacks before you sign or pay a deposit.',
+              },
+            ].map(({ title, description: desc }, index) => (
+              <motion.div
+                key={title}
+                className="border border-brand-border bg-white rounded-2xl p-6 shadow-sm hover:border-brand-gold hover:shadow-premium transition-all duration-300"
+                initial={reducedMotion ? false : { opacity: 0, y: 20 }}
+                whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.25 }}
+                transition={{ duration: 0.45, delay: reducedMotion ? 0 : index * 0.05, ease: 'easeOut' }}
+              >
+                <span className="text-xs font-bold text-brand-gold uppercase tracking-[0.2em] block">0{index + 1}</span>
+                <h3 className="mt-3 text-sm font-bold uppercase tracking-[0.12em] text-brand-charcoal">{title}</h3>
+                <p className="mt-3 text-xs font-light leading-6 text-brand-muted">{desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-brand-bg py-16 text-brand-charcoal sm:py-24 border-t border-brand-border" aria-labelledby="house-land-faq-title">
+        <div className="section-shell max-w-4xl">
+          <div className="text-center">
+            <p className="eyebrow text-brand-gold">Common Queries</p>
+            <h2 id="house-land-faq-title" className="mt-4 font-display text-3xl font-normal leading-tight text-brand-charcoal sm:text-4xl">
+              Frequently Asked Questions
+            </h2>
+            <p className="mt-4 text-base font-light leading-7 text-brand-muted">
+              Find answers to the most common questions about our property development and residential construction options in NSW.
+            </p>
+          </div>
+
+          <div className="mt-12 border border-brand-border bg-white rounded-2xl p-6 sm:p-8 shadow-sm">
+            {[
+              {
+                question: 'How do I verify the feasibility of a duplex development on my land?',
+                answer: 'We review the NSW State Environmental Planning Policy (SEPP), local council Local Environmental Plans (LEPs), and land zoning (e.g., R2 or R3) to check if your site meets the minimum frontage and area requirements for duplex development Sydney-wide.',
+              },
+              {
+                question: 'Are the prices of your house and land packages fixed?',
+                answer: 'Yes, our packages are structured with fixed-price building contracts. We include site costs, BASIX requirements, and premium inclusions upfront to prevent unexpected changes during the NSW residential development construction process.',
+              },
+              {
+                question: 'Can I customize the architectural design of a package?',
+                answer: 'Absolutely. As a premium custom home builder North Sydney and Greater Sydney trust, we specialize in tailoring layouts, facade options, and luxury fixtures to suit your lifestyle or investment goals.',
+              },
+              {
+                question: 'What approvals are required for a triplex development NSW?',
+                answer: 'Triplex developments typically require Development Application (DA) approval through your local council, or in some instances, fast-tracked approval via the NSW Housing Code under Complying Development (CDC) rules if specific criteria are met.',
+              },
+              {
+                question: 'How long does the residential construction process take?',
+                answer: 'Typically, custom residential construction Sydney projects take between 8 to 12 months from slab pour to completion, depending on design complexity, site conditions, council requirements, and build scale.',
+              },
+            ].map(({ question, answer }, index) => (
+              <FAQItem
+                key={question}
+                question={question}
+                answer={answer}
+                isOpen={openFaqIndex === index}
+                onClick={() => setOpenFaqIndex(openFaqIndex === index ? null : index)}
+                reducedMotion={reducedMotion}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-brand-bg py-16 text-brand-charcoal sm:py-24 border-t border-brand-border" aria-labelledby="house-land-cta-title">
         <div className="section-shell">
           <motion.div
-            className="relative overflow-hidden border border-gold/30 bg-charcoal px-6 py-12 text-center shadow-premium sm:px-10 sm:py-16"
+            className="relative overflow-hidden border border-brand-border bg-white rounded-3xl px-6 py-12 text-center premium-shadow sm:px-10 sm:py-16"
             initial={reducedMotion ? false : { opacity: 0, y: 24 }}
             whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.35 }}
             transition={{ duration: 0.55, ease: 'easeOut' }}
           >
-            <div className="absolute inset-0 architecture-grid opacity-15" aria-hidden="true" />
+            <div className="absolute inset-0 architecture-grid opacity-30" aria-hidden="true" />
             <div className="relative z-10 mx-auto max-w-3xl">
-              <p className="eyebrow">Start the conversation</p>
-              <h2 id="house-land-cta-title" className="mt-4 font-display text-3xl font-normal leading-tight sm:text-4xl">
+              <p className="eyebrow text-brand-gold">Start the conversation</p>
+              <h2 id="house-land-cta-title" className="mt-4 font-display text-3xl font-normal leading-tight text-brand-charcoal sm:text-4xl">
                 Looking for a house and land opportunity?
               </h2>
-              <p className="mx-auto mt-5 max-w-2xl text-base font-light leading-8 text-smoke">
+              <p className="mx-auto mt-5 max-w-2xl text-base font-light leading-8 text-brand-muted">
                 Speak with DECENT Development about your goals, preferred location, budget direction, and project
                 type. Our team can help you understand the next steps.
               </p>

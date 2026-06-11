@@ -23,7 +23,7 @@ export default function CollaborationPage() {
           { label: 'Project focus', value: 'Larger builds' },
         ]}
         visual={
-          <div className="flex min-h-80 items-center justify-center border border-gold/20 bg-charcoal p-8 shadow-[0_30px_70px_rgba(0,0,0,0.35)]">
+          <div className="flex min-h-80 items-center justify-center border border-brand-border bg-neutral-900 rounded-[1.5rem] p-8 premium-shadow">
             <img
               src={milestoneDevelopmentLogo}
               alt="Milestone Development partner logo"

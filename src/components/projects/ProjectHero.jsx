@@ -17,7 +17,7 @@ export default function ProjectHero({ project }) {
           loading="eager"
           fetchPriority="high"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/52 to-black/15" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/35 to-transparent" />
       </div>
 
       <div className="section-shell relative z-10 flex min-h-[calc(82svh-7rem)] flex-col justify-end pb-14">

@@ -31,7 +31,7 @@ export const houseLandPackages = [
     priceLabel: 'Enquire for pricing',
     status: 'Expressions of interest',
     description:
-      'A refined family residence pathway for clients seeking considered planning, premium finishes, and a well-managed build.',
+      'A premium residential pathway suited to clients seeking a high-quality home build supported by professional planning, construction guidance, and a refined finish standard.',
     features: ['Custom design pathway', 'Premium finish direction', 'North Sydney consultation'],
     image: '/projects/thumbnails/87-the-avenue-canley-vale.jpg',
     slug: 'north-sydney-premium-residence',
@@ -50,7 +50,7 @@ export const houseLandPackages = [
     priceLabel: 'Development enquiry',
     status: 'Feasibility enquiries open',
     description:
-      'An attached duplex opportunity focused on practical land utilisation, clear construction planning, and long-term residential value.',
+      'A duplex-focused opportunity for clients exploring attached residential development in Sydney’s established western suburbs, with emphasis on practical planning and long-term value.',
     features: ['Attached duplex concept', 'Feasibility guidance', 'Delivery planning'],
     image: '/projects/thumbnails/34-antwerp-street-auburn.webp',
     slug: 'auburn-duplex-opportunity',
@@ -69,7 +69,7 @@ export const houseLandPackages = [
     priceLabel: 'From $POA',
     status: 'Enquiries open',
     description:
-      'A contemporary family-home pathway balancing generous living, practical layouts, and premium residential construction.',
+      'A family-focused residential option suited to clients seeking a modern home design, strong street presence, and practical everyday living across Sydney’s growing north-west.',
     features: ['Family-focused layout', 'Two-storey option', 'Construction guidance'],
     image: '/projects/thumbnails/10-dorian-street-rouse-hill.jpg',
     slug: 'rouse-hill-family-home-package',
@@ -88,7 +88,7 @@ export const houseLandPackages = [
     priceLabel: 'Development enquiry',
     status: 'Feasibility enquiries open',
     description:
-      'A triplex development pathway for clients considering higher-yield residential outcomes and disciplined project sequencing.',
+      'A multi-residential development pathway for clients exploring triplex construction, efficient land use, and premium project delivery in an established Sydney suburb.',
     features: ['Triplex concept pathway', 'Planning support', 'Construction sequencing'],
     image: '/projects/thumbnails/24-the-avenue-canley-vale.webp',
     slug: 'canley-vale-triplex-opportunity',
@@ -107,7 +107,7 @@ export const houseLandPackages = [
     priceLabel: 'Enquire for pricing',
     status: 'Enquiries open',
     description:
-      'A premium duplex pathway shaped around efficient site use, strong street presence, and clear delivery expectations.',
+      'A duplex development option focused on modern residential design, construction planning, and practical delivery support for clients seeking a dual occupancy outcome.',
     features: ['Dual-residence planning', 'Premium facade direction', 'Project management'],
     image: '/projects/thumbnails/23-mittiamo-street-canley-heights.jpg',
     slug: 'canley-heights-duplex-package',
@@ -126,7 +126,7 @@ export const houseLandPackages = [
     priceLabel: 'From $POA',
     status: 'Expressions of interest',
     description:
-      'A quality residential opportunity for clients seeking a tailored home with practical planning and a polished finish.',
+      'A residential opportunity suited to clients looking for a balanced home build or development pathway in a connected Sydney location.',
     features: ['Tailored residence', 'Buildability guidance', 'Premium finish direction'],
     image: '/projects/thumbnails/21-lewis-street-regents-park.jpg',
     slug: 'regents-park-residential-package',
@@ -145,7 +145,7 @@ export const houseLandPackages = [
     priceLabel: 'Enquire for pricing',
     status: 'Location matching available',
     description:
-      'A flexible house and land option for clients exploring suitable locations and a practical pathway to a new family home.',
+      'A flexible house and land pathway for clients searching across Greater Sydney and considering different residential construction opportunities.',
     features: ['Location guidance', 'Single-storey option', 'Family-home planning'],
     image: '/projects/canley-vale-24/hero.webp',
     slug: 'greater-sydney-house-land-option',
@@ -164,7 +164,7 @@ export const houseLandPackages = [
     priceLabel: 'Development enquiry',
     status: 'Project discussions open',
     description:
-      'A multi-residential pathway for clients assessing development potential, coordinated planning, and construction delivery across NSW.',
+      'A development-focused option for clients considering attached dwellings, triplex projects, or multi-residential planning across New South Wales.',
     features: ['Multi-residential planning', 'Development guidance', 'Delivery coordination'],
     image: '/projects/rouse-hill/hero.webp',
     slug: 'nsw-multi-residential-opportunity',

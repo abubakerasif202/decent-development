@@ -18,7 +18,7 @@ function PortfolioVisual({ counts }) {
 
   return (
     <motion.div
-      className="relative mx-auto max-w-xl rounded-[2rem] border border-gold/20 bg-white/5 p-4 shadow-premium backdrop-blur-sm"
+      className="relative mx-auto max-w-xl rounded-[2rem] border border-brand-border bg-brand-surface p-4 shadow-premium"
       style={{ transformStyle: 'preserve-3d' }}
       initial={reducedMotion ? false : { opacity: 0, y: 28, rotateY: -8 }}
       whileInView={reducedMotion ? undefined : { opacity: 1, y: 0, rotateY: 0 }}
@@ -26,7 +26,7 @@ function PortfolioVisual({ counts }) {
       whileHover={reducedMotion ? undefined : { rotateY: -5, rotateX: 4, y: -6 }}
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
     >
-      <div className="relative overflow-hidden rounded-[1.5rem] border border-white/10 bg-ink">
+      <div className="relative overflow-hidden rounded-[1.5rem] border border-brand-border bg-brand-bg">
         <img
           src={projectDuplex}
           alt="Premium duplex exterior"
@@ -36,7 +36,7 @@ function PortfolioVisual({ counts }) {
           fetchPriority="high"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/82 via-black/22 to-transparent" />
-        <div className="absolute left-5 top-5 rounded-full border border-white/20 bg-black/35 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.24em] text-ivory backdrop-blur">
+        <div className="absolute left-5 top-5 rounded-full border border-white/20 bg-black/35 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.24em] text-white backdrop-blur">
           Editorial selection
         </div>
         <div className="absolute bottom-5 left-5 right-5 space-y-3">
@@ -44,17 +44,16 @@ function PortfolioVisual({ counts }) {
             <p className="text-[10px] font-semibold uppercase tracking-[0.26em] text-gold-soft">
               Duplex, triplex, and single dwellings
             </p>
-            <h2 className="mt-2 font-display text-2xl font-normal text-ivory">Premium residential imagery</h2>
-            <p className="mt-2 text-sm leading-6 text-smoke">
-              A polished editorial frame that introduces the completed-projects portfolio with a darker, more
-              luxurious presentation.
+            <h2 className="mt-2 font-display text-2xl font-normal text-white">Premium residential imagery</h2>
+            <p className="mt-2 text-sm leading-6 text-neutral-200">
+              A polished editorial frame that introduces the completed-projects portfolio with a premium, bright luxury presentation.
             </p>
           </div>
           <div className="grid gap-2 sm:grid-cols-3">
             {counts.map((stat) => (
-              <div key={stat.label} className="rounded-2xl border border-white/10 bg-black/35 px-3 py-3 backdrop-blur">
-                <div className="text-[10px] font-semibold uppercase tracking-[0.24em] text-smoke">{stat.label}</div>
-                <div className="mt-1 text-sm font-semibold text-ivory">{stat.value}</div>
+              <div key={stat.label} className="rounded-xl border border-brand-border bg-brand-surface px-3 py-3 shadow-sm">
+                <div className="text-[10px] font-semibold uppercase tracking-[0.24em] text-brand-muted">{stat.label}</div>
+                <div className="mt-1 text-sm font-semibold text-brand-gold">{stat.value}</div>
               </div>
             ))}
           </div>
@@ -141,18 +140,18 @@ export default function ProjectsPage() {
           <PortfolioVisual counts={portfolioCounts} />
         }
       >
-        <p className="max-w-2xl text-sm leading-7 text-smoke">
+        <p className="max-w-2xl text-sm leading-7 text-brand-muted">
           These featured case studies represent recent work from a growing portfolio of 28+ completed residential
           projects delivered with clear planning, disciplined construction and quality-focused finishes.
         </p>
       </PageHero>
 
-      <section className="bg-porcelain py-16 text-ink sm:py-20">
+      <section className="bg-brand-bg py-16 text-brand-charcoal sm:py-20">
         <div className="section-shell">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-2xl">
-              <p className="eyebrow">Project Index</p>
-              <h2 className="mt-4 font-display text-3xl font-normal leading-tight text-ink sm:text-4xl">
+              <p className="eyebrow text-brand-gold">Project Index</p>
+              <h2 className="mt-4 font-display text-3xl font-normal leading-tight text-brand-charcoal sm:text-4xl">
                 Duplex, triplex and residential developments
               </h2>
             </div>
@@ -162,10 +161,10 @@ export default function ProjectsPage() {
                 <button
                   key={value}
                   type="button"
-                  className={`focus-ring min-h-11 border px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] transition ${
+                  className={`focus-ring min-h-11 border px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] rounded-lg transition duration-200 ${
                     activeFilter === value
-                      ? 'border-ink bg-ink text-ivory'
-                      : 'border-ink/15 bg-white text-graphite hover:border-gold hover:text-bronze'
+                      ? 'border-brand-charcoal bg-brand-charcoal text-white shadow-sm'
+                      : 'border-brand-border bg-brand-surface text-brand-charcoal hover:border-brand-gold hover:text-brand-gold'
                   }`}
                   onClick={() => setActiveFilter(value)}
                 >

@@ -11,11 +11,11 @@ export default function NotFoundPage() {
   })
 
   return (
-    <section className="flex min-h-[72vh] items-center bg-ink py-28 text-ivory">
+    <section className="flex min-h-[72vh] items-center bg-brand-bg py-28 text-brand-charcoal">
       <div className="section-shell">
-        <p className="eyebrow">404</p>
+        <p className="eyebrow text-brand-gold">404</p>
         <h1 className="mt-4 max-w-3xl font-display text-5xl font-normal leading-tight sm:text-7xl">Page not found</h1>
-        <p className="mt-6 max-w-xl text-base font-light leading-7 text-smoke">
+        <p className="mt-6 max-w-xl text-base font-light leading-7 text-brand-muted">
           The page may have moved or the address may be incorrect.
         </p>
         <Link

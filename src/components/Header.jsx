@@ -27,8 +27,8 @@ function BrandMark({ company, logo }) {
         />
       </span>
       <span className="hidden leading-none sm:block" aria-hidden="true">
-        <span className="block text-sm font-bold uppercase text-ivory">DECENT</span>
-        <span className="block text-[10px] font-semibold uppercase text-smoke">Development</span>
+        <span className="block text-sm font-bold uppercase text-brand-charcoal">DECENT</span>
+        <span className="block text-[10px] font-semibold uppercase text-brand-muted">Development</span>
       </span>
       <span className="sr-only">{company.name}</span>
     </span>
@@ -83,17 +83,20 @@ export default function Header({ company, logo }) {
   }, [open])
 
   return (
-    <motion.header
-      className="fixed left-0 top-0 z-50 w-full px-0 py-3 transition-shadow duration-300 sm:py-4"
-      initial={false}
-      animate={{
-        backgroundColor: scrolled || open ? 'rgba(18, 18, 18, 0.9)' : 'rgba(18, 18, 18, 0)',
-        backdropFilter: scrolled || open ? 'blur(18px)' : 'blur(0px)',
-        borderBottomColor: scrolled || open ? 'rgba(197, 160, 89, 0.18)' : 'rgba(197, 160, 89, 0)',
-      }}
-      transition={{ duration: reducedMotion ? 0.01 : 0.28, ease: 'easeOut' }}
-      style={{ borderBottomWidth: 1, borderBottomStyle: 'solid' }}
+    <header
+      className={`fixed left-0 top-0 z-50 w-full px-0 py-3 transition-shadow duration-300 sm:py-4 ${scrolled ? 'shadow-[0_4px_20px_-2px_rgba(17,24,39,0.05)]' : ''}`}
     >
+      <motion.div
+        className="absolute inset-0 -z-10"
+        initial={false}
+        animate={{
+          backgroundColor: scrolled || open ? 'rgba(255, 255, 255, 0.95)' : 'rgba(250, 248, 242, 0.85)',
+          backdropFilter: 'blur(18px)',
+          borderBottomColor: scrolled || open ? 'rgba(201, 162, 39, 0.15)' : 'rgba(201, 162, 39, 0.05)',
+        }}
+        transition={{ duration: reducedMotion ? 0.01 : 0.28, ease: 'easeOut' }}
+        style={{ borderBottomWidth: 1, borderBottomStyle: 'solid' }}
+      />
       <div className="section-shell">
         <div className="flex items-center justify-between gap-4">
           <Link to="/" className="focus-ring rounded-sm">
@@ -105,7 +108,7 @@ export default function Header({ company, logo }) {
               <Link
                 key={label}
                 to={to}
-                className="nav-link focus-ring rounded-sm text-xs font-semibold uppercase text-ivory transition-colors duration-200 hover:text-gold"
+                className="nav-link focus-ring rounded-sm text-xs font-semibold uppercase text-brand-charcoal transition-colors duration-200 hover:text-brand-gold"
               >
                 {label}
               </Link>
@@ -125,7 +128,7 @@ export default function Header({ company, logo }) {
           <button
             ref={menuButtonRef}
             type="button"
-            className="focus-ring inline-flex min-h-11 min-w-11 items-center justify-center border border-gold/45 bg-ink/40 text-ivory transition-colors duration-200 hover:border-gold hover:text-gold lg:hidden"
+            className="focus-ring inline-flex min-h-11 min-w-11 items-center justify-center border border-brand-gold/45 bg-brand-surface/80 text-brand-charcoal transition-colors duration-200 hover:border-brand-gold hover:text-brand-gold lg:hidden"
             aria-controls="mobile-menu"
             aria-expanded={open}
             aria-label="Toggle navigation menu"
@@ -139,7 +142,7 @@ export default function Header({ company, logo }) {
           {open ? (
             <motion.div
               id="mobile-menu"
-              className="fixed inset-0 z-[60] flex flex-col bg-ink px-5 py-6 lg:hidden"
+              className="fixed inset-0 z-[60] flex flex-col bg-brand-surface px-5 py-6 lg:hidden"
               role="dialog"
               aria-modal="true"
               aria-label="Mobile navigation"
@@ -153,7 +156,7 @@ export default function Header({ company, logo }) {
                 <button
                   ref={closeButtonRef}
                   type="button"
-                  className="focus-ring inline-flex min-h-11 min-w-11 items-center justify-center border border-gold/25 text-ivory"
+                  className="focus-ring inline-flex min-h-11 min-w-11 items-center justify-center border border-brand-gold/25 text-brand-charcoal"
                   aria-label="Close navigation menu"
                   onClick={() => {
                     setOpen(false)
@@ -174,7 +177,7 @@ export default function Header({ company, logo }) {
                   >
                     <Link
                       to={to}
-                      className="focus-ring block rounded-sm font-display text-4xl font-semibold text-smoke transition-colors duration-200 hover:text-gold"
+                      className="focus-ring block rounded-sm font-display text-4xl font-semibold text-brand-charcoal transition-colors duration-200 hover:text-brand-gold"
                       onClick={() => setOpen(false)}
                     >
                       {label}
@@ -191,13 +194,13 @@ export default function Header({ company, logo }) {
                 Get in touch
                 <ArrowRight size={18} aria-hidden="true" />
               </Link>
-              <p className="mt-8 border-t border-gold/15 pt-6 text-center text-xs uppercase text-stone">
+              <p className="mt-8 border-t border-brand-border pt-6 text-center text-xs uppercase text-brand-muted">
                 DECENT Development
               </p>
             </motion.div>
           ) : null}
         </AnimatePresence>
       </div>
-    </motion.header>
+    </header>
   )
 }

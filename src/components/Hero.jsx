@@ -42,8 +42,8 @@ export default function Hero({ company }) {
         animate={reducedMotion ? undefined : { scale: 1 }}
         transition={{ duration: 10, ease: 'easeOut' }}
       />
-      <div className="absolute inset-0 bg-black/45" />
-      <div className="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-black/70 via-black/30 to-transparent" />
+      <div className="absolute inset-0 bg-black/30" />
+      <div className="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-black/60 via-black/20 to-transparent" />
 
       <div className="section-shell relative z-10 pt-24">
         <div className="max-w-3xl">

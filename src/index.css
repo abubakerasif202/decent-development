@@ -4,10 +4,10 @@
 
 @layer base {
   :root {
-    color-scheme: dark;
+    color-scheme: light;
     font-family: ui-sans-serif, system-ui, Segoe UI, Arial, sans-serif;
-    background: #121212;
-    color: #fffaf2;
+    background: #FAF8F2;
+    color: #111827;
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
@@ -28,7 +28,7 @@
     min-width: 320px;
     min-height: 100svh;
     overflow-x: hidden;
-    background: #121212;
+    background: #FAF8F2;
   }
 
   a {
@@ -73,24 +73,67 @@
   }
 
   .eyebrow {
-    @apply text-xs font-semibold uppercase text-gold;
+    @apply text-xs font-semibold uppercase text-brand-gold tracking-[0.2em];
+  }
+
+  .eyebrow-gold {
+    @apply text-xs font-semibold uppercase text-brand-gold tracking-[0.2em];
   }
 
   .gold-gradient-btn {
-    @apply bg-gradient-to-r from-gold to-gold-soft text-ink shadow-gold transition duration-300;
+    @apply bg-gradient-to-r from-brand-gold to-gold-soft text-brand-charcoal transition duration-300;
+    box-shadow: 0 4px 14px rgba(201, 162, 39, 0.15);
   }
 
   .gold-gradient-btn:hover {
     @apply -translate-y-0.5;
-    box-shadow: 0 14px 34px rgba(197, 160, 89, 0.3);
+    box-shadow: 0 10px 25px rgba(201, 162, 39, 0.25);
   }
 
   .outline-gold-btn {
-    @apply border border-gold text-ivory transition duration-300;
+    @apply border border-brand-gold text-brand-gold bg-transparent transition duration-300;
   }
 
   .outline-gold-btn:hover {
-    @apply -translate-y-0.5 bg-gold/10 text-gold;
+    @apply -translate-y-0.5 bg-brand-gold/5 text-brand-gold;
+  }
+
+  /* Requested Classes */
+  .section-light {
+    @apply bg-brand-bg text-brand-charcoal;
+  }
+
+  .card-light {
+    @apply bg-brand-surface border border-brand-border shadow-[0_4px_20px_rgba(0,0,0,0.02)] transition-all duration-300;
+  }
+
+  .card-light:hover {
+    @apply -translate-y-1 border-brand-gold shadow-[0_10px_30px_rgba(201,162,39,0.08)];
+  }
+
+  .btn-primary {
+    @apply bg-brand-gold text-white font-bold uppercase transition duration-300;
+  }
+
+  .btn-primary:hover {
+    @apply -translate-y-0.5 bg-brand-gold/90;
+    box-shadow: 0 10px 25px rgba(201, 162, 39, 0.2);
+  }
+
+  .btn-secondary {
+    @apply border border-brand-gold text-brand-gold bg-transparent font-bold uppercase transition duration-300;
+  }
+
+  .btn-secondary:hover {
+    @apply -translate-y-0.5 bg-brand-gold/5 text-brand-gold;
+  }
+
+  .soft-border {
+    @apply border border-brand-border;
+  }
+
+  .premium-shadow {
+    @apply shadow-[0_12px_40px_rgba(17,24,39,0.05)];
   }
 
   .logo-frame {
@@ -99,7 +142,7 @@
     justify-content: center;
     overflow: visible;
     background: transparent;
-    filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.34));
+    filter: drop-shadow(0 4px 12px rgba(17, 24, 39, 0.08));
   }
 
   .nav-link {
@@ -113,7 +156,7 @@
     left: 0;
     height: 1px;
     content: '';
-    background: linear-gradient(90deg, transparent, #d4b886, transparent);
+    background: linear-gradient(90deg, transparent, #C9A227, transparent);
     opacity: 0;
     transform: scaleX(0);
     transition: opacity 180ms ease, transform 220ms ease;
@@ -129,33 +172,33 @@
     position: relative;
     height: 1px;
     overflow: hidden;
-    background: rgba(198, 161, 91, 0.24);
+    background: rgba(201, 162, 39, 0.24);
   }
 
   .gold-divider::after {
     position: absolute;
     inset: 0;
     content: '';
-    background: linear-gradient(90deg, transparent, #fff1bf, #c6a15b, transparent);
+    background: linear-gradient(90deg, transparent, #fff1bf, #C9A227, transparent);
     transform: translateX(-100%);
     animation: gold-line-sweep 2.7s ease-in-out infinite;
   }
 
   .architecture-grid {
     background-image:
-      linear-gradient(rgba(255, 250, 242, 0.045) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 250, 242, 0.045) 1px, transparent 1px),
-      linear-gradient(135deg, transparent 0%, transparent 48%, rgba(198, 161, 91, 0.14) 49%, transparent 50%);
+      linear-gradient(rgba(17, 24, 39, 0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(17, 24, 39, 0.02) 1px, transparent 1px),
+      linear-gradient(135deg, transparent 0%, transparent 48%, rgba(201, 162, 39, 0.06) 49%, transparent 50%);
     background-size: 46px 46px, 46px 46px, 190px 190px;
   }
 
   .project-blueprint {
     background:
-      radial-gradient(circle at 22% 12%, rgba(234, 210, 155, 0.18), transparent 18rem),
-      linear-gradient(135deg, rgba(198, 161, 91, 0.16), transparent 42%),
-      linear-gradient(90deg, rgba(255, 250, 242, 0.065) 1px, transparent 1px),
-      linear-gradient(rgba(255, 250, 242, 0.065) 1px, transparent 1px),
-      #15110d;
+      radial-gradient(circle at 22% 12%, rgba(201, 162, 39, 0.06), transparent 18rem),
+      linear-gradient(135deg, rgba(201, 162, 39, 0.04), transparent 42%),
+      linear-gradient(90deg, rgba(17, 24, 39, 0.02) 1px, transparent 1px),
+      linear-gradient(rgba(17, 24, 39, 0.02) 1px, transparent 1px),
+      #FAF8F2;
     background-size: auto, 34px 34px, 34px 34px, auto;
   }
 

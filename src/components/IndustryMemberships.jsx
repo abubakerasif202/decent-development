@@ -27,11 +27,11 @@ export default function IndustryMemberships() {
 
   return (
     <section
-      className="relative overflow-hidden border-y border-[#C9A227]/20 bg-[#0d0d0d] py-20 text-white sm:py-24"
+      className="relative overflow-hidden border-y border-brand-border bg-brand-bg py-20 text-brand-charcoal sm:py-24"
       aria-labelledby="industry-recognised-title"
     >
       <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(201,162,39,0.11),transparent_42%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(201,162,39,0.05),transparent_42%)]"
         aria-hidden="true"
       />
       <div className="section-shell relative">
@@ -42,17 +42,17 @@ export default function IndustryMemberships() {
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.55, ease: 'easeOut' }}
         >
-          <img src={logo} alt="DECENT Development" className="mx-auto h-12 w-auto object-contain sm:h-14" />
-          <p className="mt-7 text-xs font-semibold uppercase tracking-[0.32em] text-[#C9A227]">
+          <img src={logo} alt="DECENT Development" className="mx-auto h-12 w-auto object-contain sm:h-14 brightness-75" />
+          <p className="mt-7 text-xs font-semibold uppercase tracking-[0.32em] text-brand-gold">
             Industry recognised
           </p>
           <h2
             id="industry-recognised-title"
-            className="mt-5 font-display text-3xl font-normal leading-tight text-white sm:text-4xl lg:text-5xl"
+            className="mt-5 font-display text-3xl font-normal leading-tight text-brand-charcoal sm:text-4xl lg:text-5xl"
           >
             Building with recognised industry guidance and a safety-first mindset.
           </h2>
-          <div className="mx-auto mt-7 h-px w-24 bg-[#C9A227]" aria-hidden="true" />
+          <div className="mx-auto mt-7 h-px w-24 bg-brand-gold" aria-hidden="true" />
         </motion.header>
 
         <motion.div
@@ -65,20 +65,20 @@ export default function IndustryMemberships() {
           {memberships.map((membership) => (
             <article
               key={membership.name}
-              className="group flex h-[350px] flex-col border border-gold/45 bg-charcoal/70 px-6 py-7 text-center shadow-[0_22px_60px_rgba(0,0,0,0.42),0_0_28px_rgba(197,160,89,0.06)] transition duration-300 hover:-translate-y-1 hover:border-gold/75 hover:shadow-[0_26px_70px_rgba(0,0,0,0.5),0_0_34px_rgba(197,160,89,0.11)] sm:px-8"
+              className="group flex h-[350px] flex-col border border-brand-border bg-brand-surface p-5 text-center shadow-sm transition duration-300 hover:-translate-y-1 hover:border-brand-gold hover:shadow-premium rounded-xl"
             >
-              <div className="flex h-44 items-center justify-center border-b border-gold/20 px-2 pb-7">
+              <div className="flex h-40 items-center justify-center rounded-xl bg-neutral-900 p-6 shadow-inner">
                 <img
                   src={membership.logo}
                   alt={membership.alt}
-                  className="h-full w-full object-contain drop-shadow-[0_12px_24px_rgba(0,0,0,0.38)]"
+                  className="max-h-full max-w-full object-contain"
                   loading="lazy"
                   decoding="async"
                 />
               </div>
-              <div className="flex flex-1 flex-col items-center justify-center pt-7">
-                <h3 className="font-display text-2xl leading-tight text-gold-soft">{membership.name}</h3>
-                <p className="mt-3 text-xs font-semibold uppercase tracking-[0.2em] text-smoke">
+              <div className="flex flex-1 flex-col items-center justify-center pt-5">
+                <h3 className="font-display text-2xl leading-tight text-brand-charcoal">{membership.name}</h3>
+                <p className="mt-2 text-xs font-semibold uppercase tracking-[0.2em] text-brand-gold">
                   {membership.subtitle}
                 </p>
               </div>
@@ -87,7 +87,7 @@ export default function IndustryMemberships() {
         </motion.div>
 
         <motion.p
-          className="mx-auto mt-10 max-w-3xl text-center text-sm font-light leading-7 text-smoke sm:text-base"
+          className="mx-auto mt-10 max-w-3xl text-center text-sm font-light leading-7 text-brand-muted sm:text-base"
           initial={reducedMotion ? false : { opacity: 0, y: 14 }}
           whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}

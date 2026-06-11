@@ -50,7 +50,7 @@ export default function TrustAndFaq({ company }) {
   const reducedMotion = useReducedMotion()
 
   return (
-    <section className="bg-porcelain py-16 text-ink sm:py-20" aria-labelledby="trust-title">
+    <section className="bg-brand-bg py-16 text-brand-charcoal sm:py-20" aria-labelledby="trust-title">
       <div className="section-shell grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
         <motion.div
           initial={reducedMotion ? false : { opacity: 0, y: 24 }}
@@ -58,30 +58,30 @@ export default function TrustAndFaq({ company }) {
           viewport={{ once: true, amount: 0.35 }}
           transition={{ duration: 0.55, ease: 'easeOut' }}
         >
-          <p className="eyebrow">Trust signals</p>
-          <h2 id="trust-title" className="mt-4 font-display text-3xl font-normal leading-tight text-ink sm:text-4xl">
+          <p className="eyebrow text-brand-gold">Trust signals</p>
+          <h2 id="trust-title" className="mt-4 font-display text-3xl font-normal leading-tight text-brand-charcoal sm:text-4xl">
             Clear business details before the first conversation
           </h2>
-          <p className="mt-5 max-w-xl text-base font-light leading-7 text-graphite/80">
+          <p className="mt-5 max-w-xl text-base font-light leading-7 text-brand-muted">
             DECENT Development publishes its licence, company registration, location, and direct contact details so
             clients can assess the business before making an enquiry.
           </p>
-          <p className="mt-6 text-xs font-semibold uppercase tracking-[0.22em] text-stone">Last updated 8 June 2026</p>
+          <p className="mt-6 text-xs font-semibold uppercase tracking-[0.22em] text-brand-muted">Last updated 8 June 2026</p>
         </motion.div>
 
         <div className="grid gap-4 sm:grid-cols-2">
           {trustItems.map(({ label, getValue, icon: Icon }, index) => (
             <motion.article
               key={label}
-              className="border border-ink/10 bg-white p-5 shadow-[0_18px_38px_rgba(18,18,18,0.08)]"
+              className="border border-brand-border bg-brand-surface p-5 shadow-sm rounded-xl transition duration-300 hover:border-brand-gold hover:shadow-premium hover:-translate-y-0.5"
               initial={reducedMotion ? false : { opacity: 0, y: 18 }}
               whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.25 }}
               transition={{ duration: 0.45, delay: reducedMotion ? 0 : index * 0.05, ease: 'easeOut' }}
             >
-              <Icon className="text-gold" size={20} aria-hidden="true" />
-              <h3 className="mt-4 text-xs font-bold uppercase tracking-[0.2em] text-bronze">{label}</h3>
-              <p className="mt-3 text-sm leading-6 text-graphite">{getValue(company)}</p>
+              <Icon className="text-brand-gold" size={20} aria-hidden="true" />
+              <h3 className="mt-4 text-xs font-bold uppercase tracking-[0.2em] text-brand-gold">{label}</h3>
+              <p className="mt-3 text-sm leading-6 text-brand-charcoal">{getValue(company)}</p>
             </motion.article>
           ))}
         </div>
@@ -91,15 +91,15 @@ export default function TrustAndFaq({ company }) {
             {faqs.map(({ question, answer }, index) => (
               <motion.article
                 key={question}
-                className="border border-ink/10 bg-white p-5 shadow-[0_18px_38px_rgba(18,18,18,0.08)]"
+                className="border border-brand-border bg-brand-surface p-5 shadow-sm rounded-xl transition duration-300 hover:border-brand-gold hover:shadow-premium hover:-translate-y-0.5"
                 initial={reducedMotion ? false : { opacity: 0, y: 18 }}
                 whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.25 }}
                 transition={{ duration: 0.45, delay: reducedMotion ? 0 : index * 0.05, ease: 'easeOut' }}
               >
-                <HelpCircle className="text-gold" size={20} aria-hidden="true" />
-                <h3 className="mt-4 font-display text-xl font-normal leading-tight text-ink">{question}</h3>
-                <p className="mt-3 text-sm leading-6 text-graphite/80">{answer}</p>
+                <HelpCircle className="text-brand-gold" size={20} aria-hidden="true" />
+                <h3 className="mt-4 font-display text-xl font-normal leading-tight text-brand-charcoal">{question}</h3>
+                <p className="mt-3 text-sm leading-6 text-brand-muted">{answer}</p>
               </motion.article>
             ))}
           </div>

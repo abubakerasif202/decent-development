@@ -29,7 +29,7 @@ export default function Contact({ company }) {
   }
 
   return (
-    <section id="contact" className="bg-ink py-20 text-ivory sm:py-24" aria-labelledby="contact-title">
+    <section id="contact" className="bg-brand-bg py-20 text-brand-charcoal sm:py-24" aria-labelledby="contact-title">
       <div className="section-shell grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
         <motion.div
           initial={reducedMotion ? false : { opacity: 0, y: 24 }}
@@ -37,37 +37,37 @@ export default function Contact({ company }) {
           viewport={{ once: true, amount: 0.35 }}
           transition={{ duration: 0.55, ease: 'easeOut' }}
         >
-          <h2 id="contact-title" className="font-display text-4xl font-normal leading-tight sm:text-5xl">
+          <h2 id="contact-title" className="font-display text-4xl font-normal leading-tight text-brand-charcoal sm:text-5xl">
             Sydney Staging
             <br />
-            & Construction
+            &amp; Construction
             <br />
             Enquiry Portal
           </h2>
-          <p className="mt-8 max-w-xl text-base font-light leading-7 text-smoke">
+          <p className="mt-8 max-w-xl text-base font-light leading-7 text-brand-muted">
             Speak with DECENT Development about a new build, development opportunity, renovation, extension, or
             project management engagement across New South Wales.
           </p>
           <div className="mt-12 space-y-4">
             <div className="flex items-start gap-4">
-              <MapPin className="mt-1 shrink-0 text-gold" size={18} aria-hidden="true" />
-              <p className="text-sm leading-6 text-smoke">{company.address}</p>
+              <MapPin className="mt-1 shrink-0 text-brand-gold" size={18} aria-hidden="true" />
+              <p className="text-sm leading-6 text-brand-muted">{company.address}</p>
             </div>
             <div className="flex items-start gap-4">
-              <Mail className="mt-1 shrink-0 text-gold" size={18} aria-hidden="true" />
-              <a className="focus-ring rounded-sm text-sm text-smoke hover:text-gold" href={`mailto:${company.email}`}>
+              <Mail className="mt-1 shrink-0 text-brand-gold" size={18} aria-hidden="true" />
+              <a className="focus-ring rounded-sm text-sm text-brand-muted hover:text-brand-gold" href={`mailto:${company.email}`}>
                 {company.email}
               </a>
             </div>
             <div className="flex items-start gap-4">
-              <Phone className="mt-1 shrink-0 text-gold" size={18} aria-hidden="true" />
-              <a className="focus-ring rounded-sm text-sm text-smoke hover:text-gold" href={company.phoneHref}>
+              <Phone className="mt-1 shrink-0 text-brand-gold" size={18} aria-hidden="true" />
+              <a className="focus-ring rounded-sm text-sm text-brand-muted hover:text-brand-gold" href={company.phoneHref}>
                 {company.phone}
               </a>
             </div>
             <div className="flex items-start gap-4">
-              <BadgeCheck className="mt-1 shrink-0 text-gold" size={18} aria-hidden="true" />
-              <p className="text-sm leading-6 text-smoke">
+              <BadgeCheck className="mt-1 shrink-0 text-brand-gold" size={18} aria-hidden="true" />
+              <p className="text-sm leading-6 text-brand-muted">
                 Licence Number: {company.licence}
                 <br />
                 ACN: {company.acn}
@@ -95,7 +95,7 @@ export default function Contact({ company }) {
                   type="text"
                   autoComplete="name"
                   required
-                  className="focus-ring min-h-12 w-full border border-gold/30 bg-transparent px-4 py-3 text-ivory placeholder:text-stone"
+                  className="focus-ring min-h-12 w-full border border-brand-border bg-brand-surface px-4 py-3 text-brand-charcoal placeholder:text-neutral-400 rounded-lg focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition duration-200"
                   placeholder="Full name"
                 />
               </div>
@@ -109,7 +109,7 @@ export default function Contact({ company }) {
                   type="email"
                   autoComplete="email"
                   required
-                  className="focus-ring min-h-12 w-full border border-gold/30 bg-transparent px-4 py-3 text-ivory placeholder:text-stone"
+                  className="focus-ring min-h-12 w-full border border-brand-border bg-brand-surface px-4 py-3 text-brand-charcoal placeholder:text-neutral-400 rounded-lg focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition duration-200"
                   placeholder="Email address"
                 />
               </div>
@@ -125,7 +125,7 @@ export default function Contact({ company }) {
                   name="phone"
                   type="tel"
                   autoComplete="tel"
-                  className="focus-ring min-h-12 w-full border border-gold/30 bg-transparent px-4 py-3 text-ivory placeholder:text-stone"
+                  className="focus-ring min-h-12 w-full border border-brand-border bg-brand-surface px-4 py-3 text-brand-charcoal placeholder:text-neutral-400 rounded-lg focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition duration-200"
                   placeholder="Phone number"
                 />
               </div>
@@ -136,14 +136,14 @@ export default function Contact({ company }) {
                 <select
                   id="quote-project-type"
                   name="projectType"
-                  className="focus-ring min-h-12 w-full border border-gold/30 bg-transparent px-4 py-3 text-smoke"
+                  className="focus-ring min-h-12 w-full border border-brand-border bg-brand-surface px-4 py-3 text-brand-charcoal rounded-lg focus:border-brand-gold transition duration-200"
                   defaultValue="Residential Construction"
                 >
-                  <option className="bg-ink text-ivory">Residential Construction</option>
-                  <option className="bg-ink text-ivory">Commercial Construction</option>
-                  <option className="bg-ink text-ivory">Property Development</option>
-                  <option className="bg-ink text-ivory">Renovations & Extensions</option>
-                  <option className="bg-ink text-ivory">Building Consultation</option>
+                  <option className="bg-brand-surface text-brand-charcoal">Residential Construction</option>
+                  <option className="bg-brand-surface text-brand-charcoal">Commercial Construction</option>
+                  <option className="bg-brand-surface text-brand-charcoal">Property Development</option>
+                  <option className="bg-brand-surface text-brand-charcoal">Renovations &amp; Extensions</option>
+                  <option className="bg-brand-surface text-brand-charcoal">Building Consultation</option>
                 </select>
               </div>
             </div>
@@ -157,7 +157,7 @@ export default function Contact({ company }) {
                 name="message"
                 required
                 rows="5"
-                className="focus-ring w-full resize-y border border-gold/30 bg-transparent px-4 py-3 text-ivory placeholder:text-stone"
+                className="focus-ring w-full resize-y border border-brand-border bg-brand-surface px-4 py-3 text-brand-charcoal placeholder:text-neutral-400 rounded-lg focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition duration-200"
                 placeholder="Tell us a little about your project brief"
               />
             </div>
@@ -171,7 +171,7 @@ export default function Contact({ company }) {
             </button>
 
             {submitted ? (
-              <p className="border border-gold/20 bg-gold/10 px-4 py-3 text-sm leading-6 text-smoke" role="status">
+              <p className="border border-brand-gold/30 bg-brand-gold/10 px-4 py-3 text-sm leading-6 text-brand-charcoal rounded-lg" role="status">
                 Your email application has opened with the enquiry details. Send it from your email application to
                 deliver the enquiry.
               </p>
@@ -181,14 +181,14 @@ export default function Contact({ company }) {
           <div className="mt-8 grid gap-3 sm:grid-cols-3">
             <a
               href={company.phoneHref}
-              className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 border border-gold/30 px-4 py-3 text-sm font-semibold text-ivory transition duration-200 hover:-translate-y-0.5 hover:border-gold hover:text-gold"
+              className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 border border-brand-border bg-brand-surface px-4 py-3 text-sm font-semibold text-brand-charcoal rounded-lg shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-brand-gold hover:text-brand-gold"
             >
               <Phone size={17} aria-hidden="true" />
               Call now
             </a>
             <a
               href={`mailto:${company.email}`}
-              className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 border border-gold/30 px-4 py-3 text-sm font-semibold text-ivory transition duration-200 hover:-translate-y-0.5 hover:border-gold hover:text-gold"
+              className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 border border-brand-border bg-brand-surface px-4 py-3 text-sm font-semibold text-brand-charcoal rounded-lg shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-brand-gold hover:text-brand-gold"
             >
               <Mail size={17} aria-hidden="true" />
               Email us
@@ -197,7 +197,7 @@ export default function Contact({ company }) {
               href={directionsUrl}
               target="_blank"
               rel="noreferrer"
-              className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 border border-gold/30 px-4 py-3 text-sm font-semibold text-ivory transition duration-200 hover:-translate-y-0.5 hover:border-gold hover:text-gold"
+              className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 border border-brand-border bg-brand-surface px-4 py-3 text-sm font-semibold text-brand-charcoal rounded-lg shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-brand-gold hover:text-brand-gold"
             >
               <MapPin size={17} aria-hidden="true" />
               Get directions

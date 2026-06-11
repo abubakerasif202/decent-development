@@ -79,7 +79,7 @@ export default function ContactPage({ company }) {
         ]}
         visual={
           <motion.div
-            className="relative mx-auto max-w-xl overflow-hidden rounded-[2rem] border border-gold/20 bg-white/5 p-4 shadow-premium backdrop-blur-sm"
+            className="relative mx-auto max-w-xl overflow-hidden rounded-[2rem] border border-brand-border bg-brand-surface/80 p-4 premium-shadow backdrop-blur-sm"
             style={{ transformStyle: 'preserve-3d' }}
             initial={{ opacity: 0, y: 24, rotateY: 8 }}
             whileInView={{ opacity: 1, y: 0, rotateY: 0 }}
@@ -87,33 +87,45 @@ export default function ContactPage({ company }) {
             whileHover={{ rotateY: 4, rotateX: 3, y: -6 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="relative overflow-hidden rounded-[1.5rem] border border-white/10 bg-ink">
+            <div className="relative overflow-hidden rounded-[1.5rem] border border-brand-border bg-brand-surface">
               <img
                 src={heroBuilding}
                 alt="AI-generated architectural render used for the contact page visual"
                 className="aspect-[4/5] h-full w-full object-cover"
                 decoding="async"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-              <div className="absolute left-5 top-5 rounded-full border border-white/20 bg-black/30 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.24em] text-ivory backdrop-blur">
+              <div className="absolute inset-0 bg-gradient-to-t from-white/95 via-white/30 to-transparent" />
+              <div className="absolute left-5 top-5 rounded-full border border-brand-border bg-white/80 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.24em] text-brand-charcoal backdrop-blur">
                 Direct contact
               </div>
-              <div className="absolute bottom-5 left-5 right-5 rounded-[1.5rem] border border-white/10 bg-black/35 p-4 backdrop-blur">
-                <div className="grid gap-3 sm:grid-cols-3">
-                  <div>
-                    <Mail className="text-gold" size={18} aria-hidden="true" />
-                    <p className="mt-3 text-[10px] font-semibold uppercase tracking-[0.24em] text-smoke">Email</p>
-                    <p className="mt-2 text-sm font-semibold text-ivory">{company.email}</p>
+              <div className="absolute bottom-5 left-5 right-5 rounded-[1.5rem] border border-brand-border bg-white/90 p-5 backdrop-blur shadow-sm">
+                <div className="flex flex-col gap-4">
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand-gold/10 text-brand-gold">
+                      <Mail size={16} aria-hidden="true" />
+                    </div>
+                    <div>
+                      <p className="text-[9px] font-semibold uppercase tracking-[0.24em] text-brand-muted">Email</p>
+                      <p className="mt-0.5 text-sm font-semibold text-brand-charcoal break-all">{company.email}</p>
+                    </div>
                   </div>
-                  <div>
-                    <Phone className="text-gold" size={18} aria-hidden="true" />
-                    <p className="mt-3 text-[10px] font-semibold uppercase tracking-[0.24em] text-smoke">Phone</p>
-                    <p className="mt-2 text-sm font-semibold text-ivory">{company.phone}</p>
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand-gold/10 text-brand-gold">
+                      <Phone size={16} aria-hidden="true" />
+                    </div>
+                    <div>
+                      <p className="text-[9px] font-semibold uppercase tracking-[0.24em] text-brand-muted">Phone</p>
+                      <p className="mt-0.5 text-sm font-semibold text-brand-charcoal">{company.phone}</p>
+                    </div>
                   </div>
-                  <div>
-                    <MapPin className="text-gold" size={18} aria-hidden="true" />
-                    <p className="mt-3 text-[10px] font-semibold uppercase tracking-[0.24em] text-smoke">Office</p>
-                    <p className="mt-2 text-sm font-semibold text-ivory">North Sydney</p>
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand-gold/10 text-brand-gold">
+                      <MapPin size={16} aria-hidden="true" />
+                    </div>
+                    <div>
+                      <p className="text-[9px] font-semibold uppercase tracking-[0.24em] text-brand-muted">Office</p>
+                      <p className="mt-0.5 text-sm font-semibold text-brand-charcoal">North Sydney</p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -121,7 +133,7 @@ export default function ContactPage({ company }) {
           </motion.div>
         }
       >
-        <blockquote className="mb-6 border-l border-gold/40 pl-5 text-sm font-light italic leading-6 text-smoke">
+        <blockquote className="mb-6 border-l border-brand-gold/40 pl-5 text-sm font-light italic leading-6 text-brand-muted">
           Connect with DECENT Development for premium residential construction and property development services in Sydney and wider NSW. Enquiries can be submitted via our secure portal, email (info@decentdevelopment.com.au), or phone (1800 008 883).
         </blockquote>
 
@@ -143,13 +155,13 @@ export default function ContactPage({ company }) {
             href={directionsUrl}
             target="_blank"
             rel="noreferrer"
-            className="focus-ring inline-flex min-h-12 items-center gap-2 border border-gold/30 px-6 py-3 text-xs font-bold uppercase text-ivory transition duration-200 hover:border-gold hover:text-gold"
+            className="focus-ring inline-flex min-h-12 items-center gap-2 border border-brand-gold/30 px-6 py-3 text-xs font-bold uppercase text-brand-charcoal transition duration-200 hover:border-brand-gold hover:text-brand-gold"
           >
             Get directions
           </a>
           <Link
-              to="/projects/"
-            className="focus-ring inline-flex min-h-12 items-center gap-2 border border-gold/30 px-6 py-3 text-xs font-bold uppercase text-ivory transition duration-200 hover:border-gold hover:text-gold"
+            to="/projects/"
+            className="focus-ring inline-flex min-h-12 items-center gap-2 border border-brand-gold/30 px-6 py-3 text-xs font-bold uppercase text-brand-charcoal transition duration-200 hover:border-brand-gold hover:text-brand-gold"
           >
             View portfolio concepts
             <ArrowRight size={17} aria-hidden="true" />

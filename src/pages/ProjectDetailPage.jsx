@@ -74,7 +74,7 @@ export default function ProjectDetailPage() {
     <>
       <ProjectHero project={project} />
 
-      <section className="bg-ink py-16 text-ivory sm:py-20">
+      <section className="bg-brand-bg py-16 text-brand-charcoal sm:py-20">
         <div className="section-shell grid gap-10 lg:grid-cols-[0.78fr_1.22fr]">
           <aside>
             <ProjectStats project={project} />
@@ -82,7 +82,7 @@ export default function ProjectDetailPage() {
               {project.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="border border-gold/18 bg-white/5 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-gold-soft"
+                  className="border border-brand-border bg-brand-surface px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-brand-gold rounded-lg shadow-sm"
                 >
                   {tag}
                 </span>
@@ -91,17 +91,17 @@ export default function ProjectDetailPage() {
           </aside>
 
           <div>
-            <p className="eyebrow">Project Story</p>
-            <h2 className="mt-4 font-display text-3xl font-normal leading-tight text-ivory sm:text-4xl">
+            <p className="eyebrow text-brand-gold">Project Story</p>
+            <h2 className="mt-4 font-display text-3xl font-normal leading-tight text-brand-charcoal sm:text-4xl">
               Completed residential construction with refined street presence
             </h2>
-            <p className="mt-6 text-base font-light leading-8 text-smoke">{project.story}</p>
+            <p className="mt-6 text-base font-light leading-8 text-brand-muted">{project.story}</p>
 
             <div className="mt-10 grid gap-4 sm:grid-cols-2">
               {project.features.map((highlight) => (
-                <div key={highlight} className="flex gap-3 border border-gold/16 bg-white/5 p-4">
-                  <CheckCircle2 className="mt-0.5 shrink-0 text-gold" size={18} aria-hidden="true" />
-                  <span className="text-sm leading-6 text-smoke">{highlight}</span>
+                <div key={highlight} className="flex gap-3 border border-brand-border bg-brand-surface p-4 rounded-xl shadow-sm">
+                  <CheckCircle2 className="mt-0.5 shrink-0 text-brand-gold" size={18} aria-hidden="true" />
+                  <span className="text-sm leading-6 text-brand-muted">{highlight}</span>
                 </div>
               ))}
             </div>
@@ -111,12 +111,12 @@ export default function ProjectDetailPage() {
 
       <ProjectGallery project={project} />
 
-      <section className="bg-charcoal py-16 text-ivory sm:py-20">
+      <section className="bg-brand-bg py-16 text-brand-charcoal sm:py-20">
         <div className="section-shell">
-          <div className="grid gap-8 border border-gold/18 bg-ink p-8 shadow-premium lg:grid-cols-[1fr_auto] lg:items-center lg:p-10">
+          <div className="grid gap-8 border border-brand-border bg-brand-surface p-8 shadow-premium rounded-2xl lg:grid-cols-[1fr_auto] lg:items-center lg:p-10">
             <div>
-              <p className="eyebrow">Planning your next development?</p>
-              <h2 className="mt-4 max-w-2xl font-display text-3xl font-normal leading-tight text-ivory sm:text-4xl">
+              <p className="eyebrow text-brand-gold">Planning your next development?</p>
+              <h2 className="mt-4 max-w-2xl font-display text-3xl font-normal leading-tight text-brand-charcoal sm:text-4xl">
                 Talk to Decent Development about a duplex, triplex or residential development in Sydney.
               </h2>
             </div>

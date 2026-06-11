@@ -38,7 +38,7 @@ function DestinationCard({ destination, index }) {
 
   return (
     <motion.article
-      className="group relative isolate overflow-hidden rounded-[1.75rem] border border-ink/10 bg-ink shadow-[0_18px_38px_rgba(18,18,18,0.08)]"
+      className="group relative isolate overflow-hidden rounded-[1.75rem] border border-brand-border bg-brand-surface shadow-sm"
       style={{ transformStyle: 'preserve-3d' }}
       initial={reducedMotion ? false : { opacity: 0, y: 24 }}
       whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
@@ -59,20 +59,20 @@ function DestinationCard({ destination, index }) {
 
       <div className="relative z-10 flex h-full min-h-[420px] flex-col justify-between p-6 sm:p-7">
         <div className="flex items-center justify-between gap-4">
-          <div className="rounded-full border border-white/15 bg-white/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.24em] text-ivory backdrop-blur">
+          <div className="rounded-full border border-white/15 bg-white/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.24em] text-white backdrop-blur">
             {destination.label}
           </div>
-          <Icon size={18} className="text-gold" aria-hidden="true" />
+          <Icon size={18} className="text-brand-gold" aria-hidden="true" />
         </div>
 
         <div className="max-w-sm">
-          <h3 className="font-display text-2xl font-normal leading-tight text-ivory">{destination.title}</h3>
-          <p className="mt-3 text-sm leading-6 text-smoke">{destination.copy}</p>
+          <h3 className="font-display text-2xl font-normal leading-tight text-white">{destination.title}</h3>
+          <p className="mt-3 text-sm leading-6 text-neutral-200">{destination.copy}</p>
         </div>
 
         <Link
           to={destination.to}
-          className="focus-ring inline-flex w-fit items-center gap-2 rounded-full border border-gold/30 bg-black/35 px-4 py-2 text-xs font-bold uppercase tracking-[0.24em] text-ivory backdrop-blur transition duration-200 hover:border-gold hover:text-gold"
+          className="focus-ring inline-flex w-fit items-center gap-2 rounded-full border border-brand-gold/30 bg-black/35 px-4 py-2 text-xs font-bold uppercase tracking-[0.24em] text-white backdrop-blur transition duration-200 hover:border-brand-gold hover:text-brand-gold"
         >
           Explore
           <ArrowRight size={16} aria-hidden="true" />
@@ -84,15 +84,15 @@ function DestinationCard({ destination, index }) {
 
 export default function Projects() {
   return (
-    <section id="projects" className="bg-porcelain py-20 sm:py-28">
+    <section id="projects" className="bg-brand-bg py-20 sm:py-28">
       <div className="section-shell">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-2xl">
-            <p className="eyebrow">Explore the next step</p>
-            <h2 className="mt-4 font-display text-3xl font-normal leading-tight text-ink sm:text-4xl">
+            <p className="eyebrow text-brand-gold">Explore the next step</p>
+            <h2 className="mt-4 font-display text-3xl font-normal leading-tight text-brand-charcoal sm:text-4xl">
               Take a closer look at the work, the people, and the presentation
             </h2>
-            <p className="mt-4 max-w-xl text-base font-light leading-7 text-graphite/80">
+            <p className="mt-4 max-w-xl text-base font-light leading-7 text-brand-muted">
               The homepage now leads into completed residential projects, team profiles, and the contact journey
               with a cohesive premium tone.
             </p>
@@ -100,7 +100,7 @@ export default function Projects() {
 
           <Link
             to="/projects/"
-            className="focus-ring inline-flex w-fit items-center gap-2 text-sm font-semibold uppercase tracking-[0.22em] text-bronze transition hover:text-ink"
+            className="focus-ring inline-flex w-fit items-center gap-2 text-sm font-semibold uppercase tracking-[0.22em] text-brand-gold transition hover:text-brand-charcoal"
           >
             View portfolio
             <ArrowRight size={16} aria-hidden="true" />

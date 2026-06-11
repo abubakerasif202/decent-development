@@ -28,8 +28,8 @@ function BrandMark({ company, logo }) {
         />
       </span>
       <span className="leading-none">
-        <span className="block text-sm font-bold uppercase text-ivory">DECENT</span>
-        <span className="block text-[10px] font-semibold uppercase text-smoke">Development</span>
+        <span className="block text-sm font-bold uppercase text-white">DECENT</span>
+        <span className="block text-[10px] font-semibold uppercase text-brand-gold">Development</span>
       </span>
       <span className="sr-only">{company.name}</span>
     </span>
@@ -42,16 +42,16 @@ export default function Footer({ company, logo }) {
 
   return (
     <motion.footer
-      className="bg-ink text-ivory"
+      className="bg-[#111827] text-white border-t border-brand-gold/15"
       initial={reducedMotion ? false : { opacity: 0, y: 20 }}
       whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
     >
-      <div className="border-y border-gold/20 bg-white/[0.025]">
+      <div className="border-y border-brand-gold/15 bg-white/[0.01]">
         <div className="section-shell flex flex-col items-center justify-between gap-3 py-5 text-center sm:flex-row sm:text-left">
-          <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-gold">Industry standards</p>
-          <p className="text-xs font-medium uppercase tracking-[0.16em] text-smoke">
+          <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-brand-gold">Industry standards</p>
+          <p className="text-xs font-medium uppercase tracking-[0.16em] text-neutral-300">
             Quality. Safety. Compliance. Trusted Outcomes.
           </p>
         </div>
@@ -63,13 +63,13 @@ export default function Footer({ company, logo }) {
           </div>
 
           <div>
-            <p className="text-xs font-semibold uppercase text-ivory">Company</p>
+            <p className="text-xs font-semibold uppercase text-white">Company</p>
             <nav className="mt-4 grid gap-2" aria-label="Footer company navigation">
               {quickLinks.map(([label, to]) => (
                 <Link
                   key={label}
                   to={to}
-                  className="focus-ring rounded-sm text-[11px] uppercase text-smoke transition-colors duration-200 hover:text-gold"
+                  className="focus-ring rounded-sm text-[11px] uppercase text-neutral-400 transition-colors duration-200 hover:text-brand-gold"
                 >
                   {label}
                 </Link>
@@ -78,13 +78,13 @@ export default function Footer({ company, logo }) {
           </div>
 
           <div>
-            <p className="text-xs font-semibold uppercase text-ivory">Services</p>
+            <p className="text-xs font-semibold uppercase text-white">Services</p>
             <nav className="mt-4 grid gap-2" aria-label="Footer services navigation">
               {serviceLinks.map(([label, to]) => (
                 <Link
                   key={label}
                   to={to}
-                  className="focus-ring rounded-sm text-[11px] uppercase text-smoke transition-colors duration-200 hover:text-gold"
+                  className="focus-ring rounded-sm text-[11px] uppercase text-neutral-400 transition-colors duration-200 hover:text-brand-gold"
                 >
                   {label}
                 </Link>
@@ -93,15 +93,15 @@ export default function Footer({ company, logo }) {
           </div>
 
           <div>
-            <p className="text-xs font-semibold uppercase text-ivory">Connect</p>
-            <address className="mt-4 not-italic text-[11px] leading-6 text-smoke">
+            <p className="text-xs font-semibold uppercase text-white">Connect</p>
+            <address className="mt-4 not-italic text-[11px] leading-6 text-neutral-400">
               {company.address}
               <br />
-              <a className="focus-ring rounded-sm hover:text-gold" href={company.phoneHref}>
+              <a className="focus-ring rounded-sm hover:text-brand-gold" href={company.phoneHref}>
                 {company.phone}
               </a>
               <br />
-              <a className="focus-ring rounded-sm hover:text-gold" href={`mailto:${company.email}`}>
+              <a className="focus-ring rounded-sm hover:text-brand-gold" href={`mailto:${company.email}`}>
                 {company.email}
               </a>
               <br />
@@ -113,7 +113,7 @@ export default function Footer({ company, logo }) {
         </div>
       </div>
 
-      <div className="pb-8 text-center text-[10px] uppercase text-stone">
+      <div className="pb-8 text-center text-[10px] uppercase text-neutral-500">
         &copy; {year} {company.name}. All rights reserved.
       </div>
     </motion.footer>

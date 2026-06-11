@@ -84,7 +84,7 @@ export default function Services() {
   const reducedMotion = useReducedMotion()
 
   return (
-    <section id="services" className="bg-ink py-16 text-ivory sm:py-20" aria-labelledby="services-title">
+    <section id="services" className="bg-brand-bg py-16 text-brand-charcoal sm:py-20" aria-labelledby="services-title">
       <div className="section-shell flex flex-col gap-12 lg:flex-row">
         <motion.div
           className="lg:w-2/5 lg:pr-10"
@@ -93,7 +93,7 @@ export default function Services() {
           viewport={{ once: true, amount: 0.35 }}
           transition={{ duration: 0.55, ease: 'easeOut' }}
         >
-          <h2 id="services-title" className="font-display text-3xl font-normal leading-tight sm:text-4xl">
+          <h2 id="services-title" className="font-display text-3xl font-normal leading-tight text-brand-charcoal sm:text-4xl">
             Construction services built around control, certainty, and quality
           </h2>
           <motion.div
@@ -104,9 +104,9 @@ export default function Services() {
             variants={proofGridVariants}
           >
             {proofTiles.map(({ title, icon: Icon }) => (
-              <motion.div key={title} className="border border-gold/30 p-4 text-center sm:p-5" variants={proofTileVariants}>
-                <Icon className="mx-auto mb-4 text-gold" size={22} aria-hidden="true" />
-                <p className="text-[10px] font-semibold uppercase text-smoke">{title}</p>
+              <motion.div key={title} className="border border-brand-border bg-brand-surface p-4 text-center shadow-sm sm:p-5 rounded-lg" variants={proofTileVariants}>
+                <Icon className="mx-auto mb-4 text-brand-gold" size={22} aria-hidden="true" />
+                <p className="text-[10px] font-semibold uppercase text-brand-muted">{title}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -116,7 +116,7 @@ export default function Services() {
           {services.map(({ title, copy, icon: Icon }, index) => (
             <motion.article
               key={title}
-              className="group flex min-h-52 flex-col items-center justify-center border border-graphite bg-charcoal p-6 text-center hover:border-gold hover:shadow-[inset_0_0_24px_rgba(197,160,89,0.12)]"
+              className="group flex min-h-52 flex-col items-center justify-center border border-brand-border bg-brand-surface p-6 text-center hover:border-brand-gold hover:shadow-[0_10px_30px_rgba(201,162,39,0.08)] rounded-xl transition-all duration-300"
               initial={reducedMotion ? false : { opacity: 0, y: 22 }}
               whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.25 }}
@@ -130,7 +130,7 @@ export default function Services() {
                 },
               }}
             >
-              <div className="mb-6 inline-flex h-12 w-12 items-center justify-center border border-gold/50 bg-ink text-gold transition-colors duration-200 group-hover:bg-gold group-hover:text-ink">
+              <div className="mb-6 inline-flex h-12 w-12 items-center justify-center border border-brand-gold/50 bg-brand-bg text-brand-gold transition-colors duration-200 group-hover:bg-brand-gold group-hover:text-white rounded-lg">
                 <motion.span
                   className="block"
                   variants={{
@@ -144,8 +144,8 @@ export default function Services() {
                   <Icon size={24} />
                 </motion.span>
               </div>
-              <h3 className="text-xs font-bold uppercase text-ivory">{title}</h3>
-              <p className="mt-4 text-xs font-light leading-5 text-smoke">{copy}</p>
+              <h3 className="text-xs font-bold uppercase text-brand-charcoal">{title}</h3>
+              <p className="mt-4 text-xs font-light leading-5 text-brand-muted">{copy}</p>
             </motion.article>
           ))}
         </div>
