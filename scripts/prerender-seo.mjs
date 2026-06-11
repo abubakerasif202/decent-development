@@ -1,5 +1,6 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import path from 'node:path'
+import { houseLandPackages } from '../src/data/houseLandPackages.js'
 import { projects } from '../src/data/projects.js'
 
 const siteUrl = 'https://decentdevelopment.com.au'
@@ -198,6 +199,30 @@ const houseAndLandServiceSchema = {
   ],
 }
 
+const houseAndLandInventorySchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  '@id': `${siteUrl}/house-and-land-packages/#opportunities`,
+  name: 'DECENT Development house and land opportunities',
+  description:
+    'Illustrative house and land package pathways for family homes, duplex developments, triplex developments, and multi-residential projects across Sydney and New South Wales.',
+  itemListElement: houseLandPackages.map((packageItem, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    item: {
+      '@type': 'Service',
+      name: packageItem.title,
+      description: packageItem.description,
+      serviceType: packageItem.packageType,
+      areaServed: packageItem.region,
+      provider: {
+        '@id': `${siteUrl}/#organization`,
+      },
+      url: `${siteUrl}/house-and-land-packages/#opportunities`,
+    },
+  })),
+}
+
 const routes = [
   {
     path: '/',
@@ -269,11 +294,16 @@ const routes = [
         title: 'House and land opportunities across Sydney and NSW',
         text: 'DECENT Development works from North Sydney with project experience across Auburn, Regents Park, Rouse Hill, Canley Vale, Canley Heights, and surrounding Sydney suburbs.',
       },
+      {
+        title: 'Current House & Land Opportunities',
+        text: 'Explore illustrative Decent package pathways for family homes, duplex development Sydney projects, triplex development NSW projects, and broader multi-residential opportunities.',
+      },
     ],
     schemas: [
       organizationSchema,
       breadcrumb('/house-and-land-packages/', 'House & Land Packages'),
       houseAndLandServiceSchema,
+      houseAndLandInventorySchema,
     ],
   },
   {

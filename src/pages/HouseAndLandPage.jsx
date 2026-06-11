@@ -1,39 +1,31 @@
+import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useReducedMotion } from 'framer-motion'
 import {
   ArrowRight,
+  Bath,
+  BedDouble,
   Building2,
+  Car,
   ClipboardCheck,
   DraftingCompass,
-  Home,
   KeyRound,
-  Layers3,
   MapPin,
+  Ruler,
   SearchCheck,
+  SlidersHorizontal,
+  X,
 } from 'lucide-react'
 import PageHero from '../components/PageHero.jsx'
 import usePageMeta from '../hooks/usePageMeta.js'
 import projectResidential from '../assets/stitch/project-residential.webp'
+import {
+  houseLandPackages,
+  packageRegions,
+  packageTypes,
+} from '../data/houseLandPackages.js'
 
 const siteUrl = 'https://decentdevelopment.com.au'
-
-const packages = [
-  {
-    title: 'Family House & Land',
-    copy: 'Suitable for clients looking to build a quality new home with practical layouts, premium finishes, and long-term value.',
-    icon: Home,
-  },
-  {
-    title: 'Duplex Opportunities',
-    copy: 'Designed for clients exploring attached duplex projects, land utilisation, residential construction, and development potential.',
-    icon: Building2,
-  },
-  {
-    title: 'Triplex & Multi-Residential',
-    copy: 'For clients considering higher-yield residential projects with efficient planning, construction sequencing, and premium project outcomes.',
-    icon: Layers3,
-  },
-]
 
 const processSteps = [
   { title: 'Site & brief review', icon: SearchCheck },
@@ -53,6 +45,97 @@ const locations = [
   'Greater Sydney',
   'NSW',
 ]
+
+const initialFilters = {
+  region: 'All regions',
+  packageType: 'All package types',
+  bedrooms: 'Any bedrooms',
+  storeys: 'Any storeys',
+}
+
+function PackageCard({ packageItem, index, reducedMotion }) {
+  const enquiryPath = `/contact/?package=${encodeURIComponent(packageItem.title)}`
+  const specifications = [
+    { label: 'Beds', value: packageItem.beds, icon: BedDouble },
+    { label: 'Baths', value: packageItem.baths, icon: Bath },
+    { label: 'Cars', value: packageItem.cars, icon: Car },
+    { label: 'Storeys', value: packageItem.storeys, icon: Building2 },
+  ]
+
+  return (
+    <motion.article
+      className="group flex h-full flex-col overflow-hidden border border-gold/25 bg-charcoal transition-colors duration-300 hover:border-gold"
+      initial={reducedMotion ? false : { opacity: 0, y: 24 }}
+      whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.15 }}
+      whileHover={reducedMotion ? undefined : { y: -7 }}
+      transition={{ duration: 0.48, delay: reducedMotion ? 0 : (index % 3) * 0.04, ease: 'easeOut' }}
+    >
+      <div className="relative overflow-hidden">
+        <img
+          src={packageItem.image}
+          alt={`${packageItem.title} illustrative residential opportunity`}
+          className="aspect-[16/10] h-full w-full object-cover transition duration-500 group-hover:scale-[1.04]"
+          decoding="async"
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+        <div className="absolute left-4 top-4 border border-gold/40 bg-ink/85 px-3 py-2 text-[9px] font-bold uppercase tracking-[0.18em] text-gold backdrop-blur">
+          {packageItem.status}
+        </div>
+        <div className="absolute bottom-4 left-4 right-4">
+          <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-gold-soft">
+            {packageItem.suburb} · {packageItem.region}
+          </p>
+          <h3 className="mt-2 font-display text-2xl font-normal leading-tight text-ivory">{packageItem.title}</h3>
+        </div>
+      </div>
+
+      <div className="flex flex-1 flex-col p-5 sm:p-6">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <span className="border border-gold/25 px-3 py-2 text-[9px] font-bold uppercase tracking-[0.16em] text-smoke">
+            {packageItem.packageType}
+          </span>
+          <span className="text-xs font-bold uppercase tracking-[0.14em] text-gold">{packageItem.priceLabel}</span>
+        </div>
+
+        <dl className="mt-5 grid grid-cols-4 border-y border-white/10 py-4">
+          {specifications.map(({ label, value, icon: Icon }) => (
+            <div key={label} className="border-r border-white/10 px-2 text-center last:border-r-0">
+              <Icon className="mx-auto text-gold" size={17} aria-hidden="true" />
+              <dd className="mt-2 text-sm font-semibold text-ivory">{value}</dd>
+              <dt className="mt-1 text-[8px] font-semibold uppercase tracking-[0.12em] text-stone">{label}</dt>
+            </div>
+          ))}
+        </dl>
+
+        <div className="mt-5 flex items-center gap-2 text-xs text-smoke">
+          <Ruler className="text-gold" size={16} aria-hidden="true" />
+          <span>{packageItem.landSize}</span>
+        </div>
+        <p className="mt-4 text-sm font-light leading-6 text-smoke">{packageItem.description}</p>
+
+        <ul className="mt-5 grid gap-2" aria-label={`${packageItem.title} features`}>
+          {packageItem.features.map((feature) => (
+            <li key={feature} className="flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.12em] text-stone">
+              <span className="h-px w-4 bg-gold" aria-hidden="true" />
+              {feature}
+            </li>
+          ))}
+        </ul>
+
+        <Link
+          to={enquiryPath}
+          className="focus-ring gold-gradient-btn mt-6 inline-flex min-h-12 items-center justify-center gap-2 px-5 py-3 text-xs font-bold uppercase"
+          aria-label={`Enquire about ${packageItem.title}`}
+        >
+          Enquire about this package
+          <ArrowRight size={16} aria-hidden="true" />
+        </Link>
+      </div>
+    </motion.article>
+  )
+}
 
 function HouseAndLandVisual() {
   const reducedMotion = useReducedMotion()
@@ -105,6 +188,7 @@ function HouseAndLandVisual() {
 
 export default function HouseAndLandPage() {
   const reducedMotion = useReducedMotion()
+  const [filters, setFilters] = useState(initialFilters)
   const pageUrl = `${siteUrl}/house-and-land-packages/`
   const description =
     'Explore premium house and land package opportunities with DECENT Development across Sydney and New South Wales. Enquire about residential builds, duplexes, triplexes, and development-ready land options.'
@@ -158,6 +242,25 @@ export default function HouseAndLandPage() {
     path: '/house-and-land-packages/',
     schemas,
   })
+
+  const visiblePackages = useMemo(
+    () =>
+      houseLandPackages.filter((packageItem) => {
+        const matchesRegion = filters.region === initialFilters.region || packageItem.region === filters.region
+        const matchesType =
+          filters.packageType === initialFilters.packageType || packageItem.packageType === filters.packageType
+        const matchesBedrooms =
+          filters.bedrooms === initialFilters.bedrooms || packageItem.beds === Number(filters.bedrooms)
+        const matchesStoreys =
+          filters.storeys === initialFilters.storeys || packageItem.storeys === Number(filters.storeys)
+
+        return matchesRegion && matchesType && matchesBedrooms && matchesStoreys
+      }),
+    [filters],
+  )
+
+  const filtersActive = Object.entries(initialFilters).some(([key, value]) => filters[key] !== value)
+  const updateFilter = (name, value) => setFilters((current) => ({ ...current, [name]: value }))
 
   return (
     <>
@@ -214,52 +317,105 @@ export default function HouseAndLandPage() {
             viewport={{ once: true, amount: 0.35 }}
             transition={{ duration: 0.55, delay: reducedMotion ? 0 : 0.08, ease: 'easeOut' }}
           >
-            Whether you are planning a new family residence, attached duplex, triplex, or investment-focused
-            residential project, DECENT Development provides practical guidance across design, feasibility,
-            construction planning, and delivery.
+            DECENT Development helps clients explore house and land package opportunities, from new family homes to
+            duplex and triplex development-ready sites. Our team provides practical construction knowledge, project
+            planning, and NSW development experience to help clients move from enquiry to build-ready confidence.
           </motion.p>
         </div>
       </section>
 
       <section id="opportunities" className="bg-ink py-16 text-ivory sm:py-24" aria-labelledby="opportunities-title">
         <div className="section-shell">
-          <div className="max-w-2xl">
-            <p className="eyebrow">Residential opportunities</p>
-            <h2 id="opportunities-title" className="mt-4 font-display text-3xl font-normal leading-tight sm:text-4xl">
-              House and land pathways shaped around your goals
-            </h2>
-            <p className="mt-5 text-base font-light leading-7 text-smoke">
-              Explore a considered starting point for a new home, duplex development in Sydney, or a
-              multi-residential project across NSW.
-            </p>
+          <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+            <div className="max-w-2xl">
+              <p className="eyebrow">Residential inventory</p>
+              <h2 id="opportunities-title" className="mt-4 font-display text-3xl font-normal leading-tight sm:text-4xl">
+                Current Opportunities
+              </h2>
+              <p className="mt-5 text-base font-light leading-7 text-smoke">
+                Explore illustrative Decent package pathways for family homes, duplex development in Sydney,
+                triplex development in NSW, and broader multi-residential opportunities.
+              </p>
+            </div>
+            <div className="border border-gold/25 bg-charcoal px-5 py-4">
+              <p className="text-[9px] font-semibold uppercase tracking-[0.18em] text-stone">Showing opportunities</p>
+              <p className="mt-2 font-display text-3xl text-gold">{visiblePackages.length}</p>
+            </div>
           </div>
 
-          <div className="mt-10 grid gap-5 lg:grid-cols-3">
-            {packages.map(({ title, copy, icon: Icon }, index) => (
-              <motion.article
-                key={title}
-                className="group flex min-h-80 flex-col border border-gold/25 bg-charcoal p-7 transition-colors duration-300 hover:border-gold hover:bg-[#1d1b18]"
-                initial={reducedMotion ? false : { opacity: 0, y: 24 }}
-                whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.25 }}
-                whileHover={reducedMotion ? undefined : { y: -8 }}
-                transition={{ duration: 0.5, delay: reducedMotion ? 0 : index * 0.06, ease: 'easeOut' }}
-              >
-                <div className="inline-flex h-12 w-12 items-center justify-center border border-gold/45 bg-ink text-gold transition-colors duration-300 group-hover:bg-gold group-hover:text-ink">
-                  <Icon size={23} aria-hidden="true" />
-                </div>
-                <h3 className="mt-8 font-display text-2xl font-normal leading-tight text-ivory">{title}</h3>
-                <p className="mt-4 flex-1 text-sm font-light leading-7 text-smoke">{copy}</p>
-                <Link
-                  to="/contact/"
-                  className="focus-ring mt-8 inline-flex w-fit items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-gold transition hover:text-gold-soft"
+          <div className="mt-10 border border-gold/20 bg-charcoal p-5 sm:p-6">
+            <div className="flex items-center justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <SlidersHorizontal className="text-gold" size={20} aria-hidden="true" />
+                <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-ivory">Filter opportunities</h3>
+              </div>
+              {filtersActive ? (
+                <button
+                  type="button"
+                  className="focus-ring inline-flex min-h-11 items-center gap-2 text-[10px] font-bold uppercase tracking-[0.16em] text-gold transition hover:text-gold-soft"
+                  onClick={() => setFilters(initialFilters)}
                 >
-                  Enquire now
-                  <ArrowRight size={16} aria-hidden="true" />
-                </Link>
-              </motion.article>
-            ))}
+                  Clear filters
+                  <X size={15} aria-hidden="true" />
+                </button>
+              ) : null}
+            </div>
+
+            <div className="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+              {[
+                { name: 'region', label: 'Region', options: [initialFilters.region, ...packageRegions] },
+                { name: 'packageType', label: 'Package type', options: [initialFilters.packageType, ...packageTypes] },
+                { name: 'bedrooms', label: 'Bedrooms', options: [initialFilters.bedrooms, '4', '6', '8', '9'] },
+                { name: 'storeys', label: 'Storeys', options: [initialFilters.storeys, '1', '2'] },
+              ].map(({ name, label, options }) => (
+                <label key={name} className="grid gap-2 text-[9px] font-semibold uppercase tracking-[0.18em] text-stone">
+                  {label}
+                  <select
+                    value={filters[name]}
+                    onChange={(event) => updateFilter(name, event.target.value)}
+                    className="focus-ring min-h-12 w-full border border-gold/25 bg-ink px-4 py-3 text-xs font-semibold uppercase tracking-[0.1em] text-ivory"
+                  >
+                    {options.map((option) => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+              ))}
+            </div>
           </div>
+
+          {visiblePackages.length ? (
+            <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+              {visiblePackages.map((packageItem, index) => (
+                <PackageCard
+                  key={packageItem.id}
+                  packageItem={packageItem}
+                  index={index}
+                  reducedMotion={reducedMotion}
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="mt-8 border border-gold/25 bg-charcoal px-6 py-14 text-center">
+              <p className="font-display text-2xl text-ivory">No opportunities match those filters.</p>
+              <p className="mt-3 text-sm text-smoke">Clear the filters or start an enquiry for a tailored project discussion.</p>
+              <button
+                type="button"
+                className="focus-ring outline-gold-btn mt-6 inline-flex min-h-12 items-center gap-2 px-6 py-3 text-xs font-bold uppercase"
+                onClick={() => setFilters(initialFilters)}
+              >
+                Clear filters
+                <X size={16} aria-hidden="true" />
+              </button>
+            </div>
+          )}
+
+          <p className="mt-6 text-xs font-light leading-6 text-stone">
+            Opportunities shown are illustrative package pathways and remain subject to site availability, planning,
+            feasibility, design development, approvals, and a formal project enquiry.
+          </p>
         </div>
       </section>
 
