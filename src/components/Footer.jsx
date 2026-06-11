@@ -11,6 +11,7 @@ const quickLinks = [
 const serviceLinks = [
   ['About', '/#about'],
   ['Services', '/#services'],
+  ['House & Land Packages', '/house-and-land-packages/'],
   ['Project Management', '/#services'],
 ]
 

@@ -178,6 +178,26 @@ const projectListSchema = {
   })),
 }
 
+const houseAndLandServiceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': `${siteUrl}/house-and-land-packages/#service`,
+  name: 'House & Land Packages',
+  description:
+    'Premium house and land package opportunities across Sydney and New South Wales, including family homes, duplexes, triplexes, and development-ready residential sites.',
+  url: `${siteUrl}/house-and-land-packages/`,
+  provider: {
+    '@id': `${siteUrl}/#organization`,
+  },
+  areaServed: company.areaServed,
+  serviceType: [
+    'House and land packages',
+    'Residential construction',
+    'Duplex development',
+    'Triplex development',
+  ],
+}
+
 const routes = [
   {
     path: '/',
@@ -198,6 +218,10 @@ const routes = [
       {
         title: 'Professional Project Management & Building Consultation',
         text: 'Our certified builders and project managers oversee every phase of development from planning to handover. We maintain strict compliance, quality control, and transparency, ensuring your project is completed on time and within budget.',
+      },
+      {
+        title: 'House & Land Packages Across Sydney and NSW',
+        text: 'Explore premium family home, duplex, and triplex opportunities with practical guidance across land review, feasibility, construction planning, and project delivery.',
       },
     ],
     schemas: [organizationSchema, websiteSchema, serviceSchema, faqSchema],
@@ -224,6 +248,33 @@ const routes = [
       },
     ],
     schemas: [organizationSchema, breadcrumb('/projects/', 'Projects'), projectListSchema],
+  },
+  {
+    path: '/house-and-land-packages/',
+    priority: '0.8',
+    title: 'House & Land Packages | DECENT Development',
+    description:
+      'Explore premium house and land package opportunities with DECENT Development across Sydney and New South Wales. Enquire about residential builds, duplexes, triplexes, and development-ready land options.',
+    h1: 'House & Land Packages',
+    body: [
+      'DECENT Development helps clients explore premium house and land packages across Sydney and New South Wales, from family homes to duplex and triplex development-ready sites.',
+      'The team provides practical guidance across design, feasibility, construction planning, approvals, and delivery to help clients move from enquiry to build-ready confidence.',
+    ],
+    subheadings: [
+      {
+        title: 'Build with confidence from land to completion',
+        text: 'Plan a family residence, attached duplex, triplex, or investment-focused residential project with practical guidance across design, feasibility, construction planning, and delivery.',
+      },
+      {
+        title: 'House and land opportunities across Sydney and NSW',
+        text: 'DECENT Development works from North Sydney with project experience across Auburn, Regents Park, Rouse Hill, Canley Vale, Canley Heights, and surrounding Sydney suburbs.',
+      },
+    ],
+    schemas: [
+      organizationSchema,
+      breadcrumb('/house-and-land-packages/', 'House & Land Packages'),
+      houseAndLandServiceSchema,
+    ],
   },
   {
     path: '/collaboration/',

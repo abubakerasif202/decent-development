@@ -3,6 +3,7 @@ import { BrowserRouter, Navigate, Route, Routes, useLocation, useNavigate } from
 import ContactPage from './pages/ContactPage.jsx'
 import CollaborationPage from './pages/CollaborationPage.jsx'
 import HomePage from './pages/HomePage.jsx'
+import HouseAndLandPage from './pages/HouseAndLandPage.jsx'
 import ProjectDetailPage from './pages/ProjectDetailPage.jsx'
 import ProjectsPage from './pages/ProjectsPage.jsx'
 import TeamPage from './pages/TeamPage.jsx'
@@ -84,6 +85,7 @@ function AppRoutes() {
       <Route path="/projects/" element={<ProjectsPage company={company} />} />
       <Route path="/projects/:slug" element={<ProjectDetailPage company={company} />} />
       <Route path="/projects/:slug/" element={<ProjectDetailPage company={company} />} />
+      <Route path="/house-and-land-packages/" element={<HouseAndLandPage />} />
       <Route path="/team" element={<Navigate to="/meet-the-team/" replace />} />
       <Route path="/completed-projects/" element={<Navigate to="/projects/" replace />} />
       <Route path="/meet-the-team/" element={<TeamPage company={company} teamAssets={assets.team} />} />

@@ -7,6 +7,7 @@ const navItems = [
   ['Home', '/'],
   ['About', '/#about'],
   ['Services', '/#services'],
+  ['House & Land', '/house-and-land-packages/'],
   ['Projects', '/projects/'],
   ['Partners', '/collaboration/'],
   ['Meet the Team', '/meet-the-team/'],
@@ -51,7 +52,7 @@ export default function Header({ company, logo }) {
 
   useEffect(() => {
     const closeOnWideScreen = () => {
-      if (window.innerWidth >= 768) setOpen(false)
+      if (window.innerWidth >= 1024) setOpen(false)
     }
 
     window.addEventListener('resize', closeOnWideScreen)
@@ -99,7 +100,7 @@ export default function Header({ company, logo }) {
             <BrandMark company={company} logo={logo} />
           </Link>
 
-          <nav className="hidden items-center gap-7 md:flex" aria-label="Primary navigation">
+          <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary navigation">
             {navItems.map(([label, to]) => (
               <Link
                 key={label}
@@ -111,7 +112,7 @@ export default function Header({ company, logo }) {
             ))}
           </nav>
 
-          <div className="hidden items-center gap-3 md:flex">
+          <div className="hidden items-center gap-3 lg:flex">
             <Link
               to="/contact/"
               className="focus-ring gold-gradient-btn inline-flex min-h-11 items-center gap-2 px-5 py-3 text-xs font-bold uppercase"
@@ -124,7 +125,7 @@ export default function Header({ company, logo }) {
           <button
             ref={menuButtonRef}
             type="button"
-            className="focus-ring inline-flex min-h-11 min-w-11 items-center justify-center border border-gold/45 bg-ink/40 text-ivory transition-colors duration-200 hover:border-gold hover:text-gold md:hidden"
+            className="focus-ring inline-flex min-h-11 min-w-11 items-center justify-center border border-gold/45 bg-ink/40 text-ivory transition-colors duration-200 hover:border-gold hover:text-gold lg:hidden"
             aria-controls="mobile-menu"
             aria-expanded={open}
             aria-label="Toggle navigation menu"
@@ -138,7 +139,7 @@ export default function Header({ company, logo }) {
           {open ? (
             <motion.div
               id="mobile-menu"
-              className="fixed inset-0 z-[60] flex flex-col bg-ink px-5 py-6 md:hidden"
+              className="fixed inset-0 z-[60] flex flex-col bg-ink px-5 py-6 lg:hidden"
               role="dialog"
               aria-modal="true"
               aria-label="Mobile navigation"

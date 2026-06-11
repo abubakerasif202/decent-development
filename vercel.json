@@ -36,6 +36,11 @@
       "permanent": true
     },
     {
+      "source": "/house-and-land-packages",
+      "destination": "/house-and-land-packages/",
+      "permanent": true
+    },
+    {
       "source": "/projects/:slug",
       "destination": "/projects/:slug/",
       "permanent": true
@@ -53,6 +58,10 @@
     {
       "source": "/collaboration/",
       "destination": "/collaboration/index.html"
+    },
+    {
+      "source": "/house-and-land-packages/",
+      "destination": "/house-and-land-packages/index.html"
     },
     {
       "source": "/(.*)",
