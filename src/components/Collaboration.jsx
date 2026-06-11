@@ -1,7 +1,8 @@
 import { motion, useReducedMotion } from 'framer-motion'
-import { Building2, FileBadge2, Users2 } from 'lucide-react'
+import { ArrowUpRight, Building2, FileBadge2, Users2 } from 'lucide-react'
 import hzHomesLogo from '../assets/collaboration/hz-homes.png'
 import jufajaHomesLogo from '../assets/collaboration/jufaja-homes.png'
+import milestoneDevelopmentLogo from '../assets/collaboration/milestone-live/logo.svg'
 
 const collaborators = [
   {
@@ -17,6 +18,16 @@ const collaborators = [
     logoAlt: 'JUFAJA Homes logo',
     details: ['Licence 346427C', 'ACN 636 488 910', 'Collaborative delivery partner'],
     surface: 'bg-black',
+  },
+  {
+    name: 'Milestone Development',
+    logo: milestoneDevelopmentLogo,
+    logoAlt: 'Milestone Development logo',
+    description:
+      'A certified-builder-led construction and property development partner supporting projects from early planning through construction and handover.',
+    details: ['10+ years of construction experience', 'Residential, commercial and industrial delivery', 'Design and construct, renovations and project management'],
+    surface: 'bg-neutral-950',
+    href: 'https://milestonedevelopment.com.au/',
   },
 ]
 
@@ -51,6 +62,9 @@ function CollaboratorCard({ collaborator, index }) {
       </div>
       <div className="flex flex-1 flex-col p-6 text-brand-charcoal">
         <h3 className="font-display text-2xl font-normal leading-tight text-brand-charcoal">{collaborator.name}</h3>
+        {collaborator.description && (
+          <p className="mt-3 text-sm leading-6 text-brand-muted">{collaborator.description}</p>
+        )}
         <div className="mt-5 space-y-3 text-sm leading-6 text-brand-muted">
           {collaborator.details.map((detail, index) => {
             const Icon = index === 0 ? FileBadge2 : index === 1 ? Users2 : Building2
@@ -63,6 +77,17 @@ function CollaboratorCard({ collaborator, index }) {
             )
           })}
         </div>
+        {collaborator.href && (
+          <a
+            href={collaborator.href}
+            target="_blank"
+            rel="noreferrer"
+            className="focus-ring mt-6 inline-flex w-fit items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-brand-gold transition hover:text-brand-charcoal"
+          >
+            Visit Milestone Development
+            <ArrowUpRight size={15} aria-hidden="true" />
+          </a>
+        )}
       </div>
     </motion.article>
   )
