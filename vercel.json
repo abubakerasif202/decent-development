@@ -21,6 +21,11 @@
       "permanent": true
     },
     {
+      "source": "/projects",
+      "destination": "/projects/",
+      "permanent": true
+    },
+    {
       "source": "/meet-the-team",
       "destination": "/meet-the-team/",
       "permanent": true

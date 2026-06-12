@@ -19,13 +19,13 @@ export default function ContactPage({ company }) {
           '@type': 'ListItem',
           'position': 1,
           'name': 'Home',
-          'item': 'https://decentdevelopment.com.au/',
+          'item': 'https://www.decentdevelopment.com.au/',
         },
         {
           '@type': 'ListItem',
           'position': 2,
           'name': 'Contact',
-          'item': 'https://decentdevelopment.com.au/contact/',
+          'item': 'https://www.decentdevelopment.com.au/contact/',
         },
       ],
     },
@@ -35,7 +35,7 @@ export default function ContactPage({ company }) {
       'name': 'Contact DECENT Development | Sydney Construction Enquiries',
       'description':
         'Contact DECENT Development to discuss a premium construction, duplex/triplex development, or project management brief in Sydney and New South Wales.',
-      'url': 'https://decentdevelopment.com.au/contact/',
+      'url': 'https://www.decentdevelopment.com.au/contact/',
       'mainEntity': {
         '@type': 'Organization',
         'name': 'DECENT Development',

@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 
-const SITE_URL = 'https://decentdevelopment.com.au'
+const SITE_URL = 'https://www.decentdevelopment.com.au'
 
 function updateNode(selector, value, attribute = 'content') {
   const node = document.head.querySelector(selector)

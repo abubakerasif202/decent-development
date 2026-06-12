@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://decentdevelopment.com.au/sitemap.xml
+Sitemap: https://www.decentdevelopment.com.au/sitemap.xml

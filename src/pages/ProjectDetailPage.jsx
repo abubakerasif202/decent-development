@@ -20,19 +20,19 @@ export default function ProjectDetailPage() {
               '@type': 'ListItem',
               'position': 1,
               'name': 'Home',
-              'item': 'https://decentdevelopment.com.au/',
+              'item': 'https://www.decentdevelopment.com.au/',
             },
             {
               '@type': 'ListItem',
               'position': 2,
               'name': 'Completed Projects',
-              'item': 'https://decentdevelopment.com.au/projects/',
+              'item': 'https://www.decentdevelopment.com.au/projects/',
             },
             {
               '@type': 'ListItem',
               'position': 3,
               'name': project.title,
-              'item': `https://decentdevelopment.com.au/projects/${project.slug}/`,
+              'item': `https://www.decentdevelopment.com.au/projects/${project.slug}/`,
             },
           ],
         },
@@ -41,7 +41,7 @@ export default function ProjectDetailPage() {
           '@type': 'CreativeWork',
           'name': project.title,
           'description': project.story,
-          'url': `https://decentdevelopment.com.au/projects/${project.slug}/`,
+          'url': `https://www.decentdevelopment.com.au/projects/${project.slug}/`,
           'about': project.type,
           'spatialCoverage': {
             '@type': 'Place',
@@ -51,7 +51,7 @@ export default function ProjectDetailPage() {
           'provider': {
             '@type': 'Organization',
             'name': 'DECENT Development',
-            'url': 'https://decentdevelopment.com.au/',
+            'url': 'https://www.decentdevelopment.com.au/',
           },
         },
       ]

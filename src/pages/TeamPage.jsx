@@ -16,13 +16,13 @@ export default function TeamPage({ company, teamAssets }) {
           '@type': 'ListItem',
           'position': 1,
           'name': 'Home',
-          'item': 'https://decentdevelopment.com.au/',
+          'item': 'https://www.decentdevelopment.com.au/',
         },
         {
           '@type': 'ListItem',
           'position': 2,
           'name': 'Meet the Team',
-          'item': 'https://decentdevelopment.com.au/meet-the-team/',
+          'item': 'https://www.decentdevelopment.com.au/meet-the-team/',
         },
       ],
     },
@@ -32,7 +32,7 @@ export default function TeamPage({ company, teamAssets }) {
       'name': 'Meet the Team | DECENT Development',
       'description':
         'Meet the specialist project managers and building professionals behind DECENT Development’s premium delivery approach.',
-      'url': 'https://decentdevelopment.com.au/meet-the-team/',
+      'url': 'https://www.decentdevelopment.com.au/meet-the-team/',
       'mainEntity': {
         '@type': 'ItemList',
         'name': 'DECENT Development Team Members',
@@ -45,7 +45,7 @@ export default function TeamPage({ company, teamAssets }) {
             'worksFor': {
               '@type': 'Organization',
               'name': 'DECENT Development',
-              'url': 'https://decentdevelopment.com.au/',
+              'url': 'https://www.decentdevelopment.com.au/',
             },
           },
           {
@@ -56,7 +56,7 @@ export default function TeamPage({ company, teamAssets }) {
             'worksFor': {
               '@type': 'Organization',
               'name': 'DECENT Development',
-              'url': 'https://decentdevelopment.com.au/',
+              'url': 'https://www.decentdevelopment.com.au/',
             },
           },
           {
@@ -67,7 +67,7 @@ export default function TeamPage({ company, teamAssets }) {
             'worksFor': {
               '@type': 'Organization',
               'name': 'DECENT Development',
-              'url': 'https://decentdevelopment.com.au/',
+              'url': 'https://www.decentdevelopment.com.au/',
             },
           },
         ],

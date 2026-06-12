@@ -11,7 +11,7 @@ export default function HomePage({ company }) {
       '@context': 'https://schema.org',
       '@type': 'WebSite',
       'name': 'DECENT Development',
-      'url': 'https://decentdevelopment.com.au/',
+      'url': 'https://www.decentdevelopment.com.au/',
     },
     {
       '@context': 'https://schema.org',

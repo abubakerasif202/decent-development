@@ -28,7 +28,7 @@ import {
   packageTypes,
 } from '../data/houseLandPackages.js'
 
-const siteUrl = 'https://decentdevelopment.com.au'
+const siteUrl = 'https://www.decentdevelopment.com.au'
 
 const processSteps = [
   {

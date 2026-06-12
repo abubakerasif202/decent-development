@@ -3,7 +3,7 @@ import path from 'node:path'
 import { houseLandPackages } from '../src/data/houseLandPackages.js'
 import { projects } from '../src/data/projects.js'
 
-const siteUrl = 'https://decentdevelopment.com.au'
+const siteUrl = 'https://www.decentdevelopment.com.au'
 const lastmod = new Date().toISOString().split('T')[0]
 
 const company = {
