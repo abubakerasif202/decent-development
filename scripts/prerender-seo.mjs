@@ -218,7 +218,7 @@ const houseAndLandInventorySchema = {
       provider: {
         '@id': `${siteUrl}/#organization`,
       },
-      url: `${siteUrl}/house-and-land-packages/#opportunities`,
+      url: `${siteUrl}/house-and-land-packages/${packageItem.slug}/`,
     },
   })),
 }
@@ -302,6 +302,15 @@ const routes = [
     schemas: [
       organizationSchema,
       breadcrumb('/house-and-land-packages/', 'House & Land Packages'),
+      {
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        '@id': `${siteUrl}/house-and-land-packages/#webpage`,
+        name: 'House & Land Packages',
+        description:
+          'Explore premium house and land package opportunities with DECENT Development across Sydney and New South Wales.',
+        url: `${siteUrl}/house-and-land-packages/`,
+      },
       houseAndLandServiceSchema,
       houseAndLandInventorySchema,
     ],
@@ -421,6 +430,49 @@ for (const project of projects) {
   })
 }
 
+for (const packageItem of houseLandPackages) {
+  const routePath = `/house-and-land-packages/${packageItem.slug}/`
+
+  routes.push({
+    path: routePath,
+    priority: '0.7',
+    title: packageItem.seoTitle,
+    description: packageItem.seoDescription,
+    h1: packageItem.title,
+    body: [
+      packageItem.description,
+      `${packageItem.title} is an illustrative ${packageItem.packageType.toLowerCase()} pathway for ${packageItem.region}. Pricing, availability, inclusions, and site suitability are confirmed during enquiry.`,
+    ],
+    subheadings: [
+      {
+        title: 'Opportunity highlights',
+        text: [...packageItem.features, ...packageItem.highlights].join('. '),
+      },
+      {
+        title: `Residential development in ${packageItem.region}`,
+        text: `${packageItem.locationNotes} ${packageItem.enquiryNotes}`,
+      },
+    ],
+    schemas: [
+      organizationSchema,
+      packageBreadcrumb(routePath, packageItem.title),
+      {
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        '@id': `${siteUrl}${routePath}#webpage`,
+        name: packageItem.title,
+        description: packageItem.seoDescription,
+        url: `${siteUrl}${routePath}`,
+        about: packageItem.packageType,
+        spatialCoverage: {
+          '@type': 'Place',
+          name: packageItem.region,
+        },
+      },
+    ],
+  })
+}
+
 function breadcrumb(routePath, name) {
   return {
     '@context': 'https://schema.org',
@@ -458,6 +510,33 @@ function projectBreadcrumb(routePath, name) {
         position: 2,
         name: 'Completed Projects',
         item: `${siteUrl}/projects/`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name,
+        item: `${siteUrl}${routePath}`,
+      },
+    ],
+  }
+}
+
+function packageBreadcrumb(routePath, name) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: `${siteUrl}/`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'House & Land Packages',
+        item: `${siteUrl}/house-and-land-packages/`,
       },
       {
         '@type': 'ListItem',

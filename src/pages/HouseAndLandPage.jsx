@@ -77,7 +77,7 @@ const initialFilters = {
 }
 
 function PackageCard({ packageItem, index, reducedMotion }) {
-  const enquiryPath = `/contact/?package=${encodeURIComponent(packageItem.title)}`
+  const detailPath = `/house-and-land-packages/${packageItem.slug}/`
   const specifications = [
     { label: 'Beds', value: packageItem.beds, icon: BedDouble },
     { label: 'Baths', value: packageItem.baths, icon: Bath },
@@ -94,7 +94,7 @@ function PackageCard({ packageItem, index, reducedMotion }) {
       whileHover={reducedMotion ? undefined : { y: -7 }}
       transition={{ duration: 0.48, delay: reducedMotion ? 0 : (index % 3) * 0.04, ease: 'easeOut' }}
     >
-      <div className="relative overflow-hidden">
+      <Link to={detailPath} className="focus-ring relative block overflow-hidden" aria-label={`View ${packageItem.title} details`}>
         <img
           src={packageItem.image}
           alt={`${packageItem.title} illustrative residential opportunity`}
@@ -112,7 +112,7 @@ function PackageCard({ packageItem, index, reducedMotion }) {
           </p>
           <h3 className="mt-2 font-display text-2xl font-normal leading-tight text-white">{packageItem.title}</h3>
         </div>
-      </div>
+      </Link>
 
       <div className="flex flex-1 flex-col p-5 sm:p-6">
         <div className="flex flex-wrap items-center justify-between gap-3">
@@ -136,7 +136,7 @@ function PackageCard({ packageItem, index, reducedMotion }) {
           <Ruler className="text-brand-gold" size={16} aria-hidden="true" />
           <span>{packageItem.landSize}</span>
         </div>
-        <p className="mt-4 text-sm font-light leading-6 text-brand-muted">{packageItem.description}</p>
+        <p className="mt-4 line-clamp-2 text-sm font-light leading-6 text-brand-muted">{packageItem.summary}</p>
 
         <ul className="mt-5 grid gap-2" aria-label={`${packageItem.title} features`}>
           {packageItem.features.map((feature) => (
@@ -147,14 +147,22 @@ function PackageCard({ packageItem, index, reducedMotion }) {
           ))}
         </ul>
 
-        <Link
-          to={enquiryPath}
-          className="focus-ring gold-gradient-btn mt-6 inline-flex min-h-12 items-center justify-center gap-2 px-5 py-3 text-xs font-bold uppercase"
-          aria-label={`Enquire about ${packageItem.title}`}
-        >
-          Enquire about this package
-          <ArrowRight size={16} aria-hidden="true" />
-        </Link>
+        <div className="mt-auto grid gap-3 pt-6 sm:grid-cols-2">
+          <Link
+            to={detailPath}
+            className="focus-ring gold-gradient-btn inline-flex min-h-12 items-center justify-center gap-2 px-4 py-3 text-center text-[10px] font-bold uppercase"
+          >
+            View Package Details
+            <ArrowRight className="transition-transform group-hover:translate-x-1" size={15} aria-hidden="true" />
+          </Link>
+          <Link
+            to="/contact/"
+            className="focus-ring outline-gold-btn inline-flex min-h-12 items-center justify-center px-4 py-3 text-center text-[10px] font-bold uppercase"
+            aria-label={`Start enquiry about ${packageItem.title}`}
+          >
+            Start Enquiry
+          </Link>
+        </div>
       </div>
     </motion.article>
   )
@@ -277,25 +285,10 @@ export default function HouseAndLandPage() {
     },
     {
       '@context': 'https://schema.org',
-      '@type': 'Service',
+      '@type': 'WebPage',
       'name': 'House & Land Packages',
       'description': description,
       'url': pageUrl,
-      'provider': {
-        '@type': 'GeneralContractor',
-        'name': 'DECENT Development',
-        'url': `${siteUrl}/`,
-      },
-      'areaServed': {
-        '@type': 'AdministrativeArea',
-        'name': 'New South Wales',
-      },
-      'serviceType': [
-        'House and land packages',
-        'Residential construction',
-        'Duplex development',
-        'Triplex development',
-      ],
     },
   ]
 
@@ -330,7 +323,7 @@ export default function HouseAndLandPage() {
       <PageHero
         eyebrow="Premium Residential Opportunities"
         title="House & Land Packages"
-        copy="Architecturally crafted, development-ready residential packages across Sydney and New South Wales."
+        copy="Premium house and land package opportunities across Sydney and New South Wales, backed by practical construction knowledge and end-to-end development guidance."
         stats={[
           { label: 'Project types', value: 'Homes to triplexes' },
           { label: 'Guidance', value: 'Land to delivery' },
@@ -339,7 +332,7 @@ export default function HouseAndLandPage() {
         visual={<HouseAndLandVisual />}
       >
         <p className="max-w-2xl text-sm font-light leading-7 text-brand-muted">
-          Our NSW residential development solutions provide clients with premium house and land packages designed for modern living. From bespoke custom homes to high-yield duplex and triplex projects, we combine strategic site acquisition, custom architectural drafting, and professional project management under our NSW contractor licence to streamline your path to a premium property.
+          DECENT Development helps clients explore residential opportunities with confidence, from new family homes to duplex, triplex, and multi-residential development-ready sites. Our team supports early feasibility, design direction, construction planning, and project delivery so clients can understand the full pathway before committing to their next move.
         </p>
         <div className="mt-6 flex flex-wrap gap-4">
           <a
@@ -380,10 +373,10 @@ export default function HouseAndLandPage() {
               transition={{ duration: 0.55, delay: reducedMotion ? 0 : 0.08, ease: 'easeOut' }}
             >
               <p>
-                DECENT Development delivers high-end residential construction Sydney and NSW-wide, providing a transparent, end-to-end pathway for discerning homeowners and property investors. Our experience in custom home builder North Sydney projects and extensive property development NSW portfolio allows us to navigate planning controls and site challenges with ease.
+                A successful house and land package starts long before construction begins. It requires the right site, a suitable design direction, realistic planning, and a builder who understands how to turn an idea into a practical build pathway. DECENT Development works with clients to review project goals, site suitability, design intent, construction requirements, and delivery expectations.
               </p>
               <p>
-                Whether you are looking to build a luxury custom residence or unlock the value of your block through duplex development Sydney or triplex development NSW options, we offer tailored construction solutions that preserve capital and enhance asset value.
+                Whether you are looking for a family residence, investment-focused duplex, triplex development, or a multi-residential opportunity, our role is to help you make informed decisions from the earliest stage.
               </p>
             </motion.div>
           </div>
@@ -391,23 +384,23 @@ export default function HouseAndLandPage() {
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {[
               {
-                title: 'Strategic Site Evaluation',
-                description: 'We analyze zoning, planning constraints, and construction feasibility to ensure your land supports your project goals.',
+                title: 'Site-aware planning',
+                description: 'Early review of the site, project goals, constraints, and practical construction pathway.',
                 icon: SearchCheck,
               },
               {
-                title: 'Tailored Design & Drafting',
-                description: 'Customized architectural concepts that optimize space, natural light, and structural efficiency.',
+                title: 'Residential construction experience',
+                description: 'Practical guidance shaped by real residential construction and project-delivery considerations.',
                 icon: DraftingCompass,
               },
               {
-                title: 'Fixed-Price Certainty',
-                description: 'Clear, transparent contracts with detailed specifications, protecting your investment from unexpected budget overruns.',
+                title: 'Duplex and triplex development guidance',
+                description: 'Relevant support for attached, dual occupancy, triplex, and multi-residential pathways.',
                 icon: ClipboardCheck,
               },
               {
-                title: 'Licensed Construction Quality',
-                description: 'Built to the highest standards by our experienced NSW contractor team using premium, durable materials.',
+                title: 'Clear communication from enquiry to delivery',
+                description: 'A considered process that keeps decisions, expectations, and next steps clear.',
                 icon: Building2,
               },
             ].map(({ title, description: desc, icon: Icon }, index) => (
@@ -438,61 +431,65 @@ export default function HouseAndLandPage() {
               Tailored NSW Residential Development Solutions
             </h2>
             <p className="mt-4 text-base font-light leading-7 text-brand-muted">
-              We provide structured yet highly flexible package options to suit varied property development NSW objectives, from private luxury living to high-density investment outcomes.
+              Explore residential pathways suited to families, investors, landowners, and development-focused clients.
             </p>
           </div>
 
           <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {[
               {
-                title: 'Bespoke Custom Homes',
-                label: 'Single & Double Storey',
-                description: 'Tailored architectural designs created to match your unique lifestyle requirements, local council regulations, and aesthetic preferences.',
+                title: 'Family House & Land',
+                label: 'New Home Opportunity',
+                bestFor: 'Families and owner-occupiers',
+                description: 'A practical pathway for clients looking to build a quality new home with strong street presence, functional layouts, and long-term value.',
                 icon: Home,
                 features: [
-                  'Bespoke floorplans & elevation design',
-                  'Premium high-end luxury finishes',
-                  'NSW residential construction compliance',
-                  'Energy-efficient architectural orientation',
+                  'Practical family layouts',
+                  'Quality finishes',
+                  'Strong street presence',
+                  'Long-term liveability',
                 ],
               },
               {
-                title: 'Duplex Developments',
-                label: 'Dual Occupancy Solutions',
-                description: 'Maximize your land potential and rental yield with architecturally integrated attached or detached duplex designs in high-growth areas.',
+                title: 'Duplex Opportunities',
+                label: 'Attached Residential Development',
+                bestFor: 'Investors, landowners, and dual occupancy projects',
+                description: 'A development-focused option for clients exploring attached duplex projects across Sydney and NSW, from early feasibility through delivery expectations.',
                 icon: Building2,
                 features: [
-                  'Optimal block utilization layouts',
-                  'Dual income or multi-generation living',
-                  'Sydney council zoning compliance',
-                  'Independent services & access planning',
+                  'Dual occupancy potential',
+                  'Better land utilisation',
+                  'Residential investment pathway',
+                  'Duplex development guidance',
                 ],
               },
               {
                 title: 'Triplex & Multi-Residential',
-                label: 'High-Yield Portfolios',
-                description: 'Sophisticated multi-dwelling construction options designed to maximize property development NSW opportunities while minimizing structural footprint.',
+                label: 'Higher-Yield Residential Projects',
+                bestFor: 'Development-focused clients',
+                description: 'A premium pathway for clients considering triplex or multi-residential opportunities requiring careful planning, sequencing, access coordination, and finish control.',
                 icon: Layers3,
                 features: [
-                  'Feasibility & site yield analysis',
-                  'NSW planning code configuration',
-                  'Architectural coordination & approvals',
-                  'Investor-focused finish specifications',
+                  'Triplex planning',
+                  'Multi-residential construction',
+                  'Efficient sequencing',
+                  'Premium project outcomes',
                 ],
               },
               {
-                title: 'Turnkey Development Packages',
-                label: 'Ready to Occupy',
-                description: 'Complete, build-ready house and land packages Sydney and NSW-wide, including site works, landscaping, and premium inclusions.',
+                title: 'Custom Build Pathways',
+                label: 'Tailored Residential Projects',
+                bestFor: 'Clients with land or a specific build vision',
+                description: 'For clients who already own land or want a more tailored construction pathway, DECENT Development can help shape the project from concept to build-ready planning.',
                 icon: DraftingCompass,
                 features: [
-                  'Fixed-price construction contract',
-                  'Complete internal & external fit-out',
-                  'Approved DA/CDC planning pathways',
-                  'Comprehensive structural guarantees',
+                  'Site-specific planning',
+                  'Custom home direction',
+                  'Construction feasibility',
+                  'Build-ready support',
                 ],
               },
-            ].map(({ title, label, description: desc, icon: Icon, features }, index) => (
+            ].map(({ title, label, bestFor, description: desc, icon: Icon, features }, index) => (
               <motion.div
                 key={title}
                 className="flex flex-col border border-brand-border bg-brand-bg rounded-2xl p-6 shadow-sm hover:border-brand-gold hover:shadow-premium transition-all duration-300"
@@ -506,6 +503,7 @@ export default function HouseAndLandPage() {
                 </div>
                 <h3 className="mt-5 font-display text-xl font-normal text-brand-charcoal">{title}</h3>
                 <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-brand-gold">{label}</p>
+                <p className="mt-3 text-xs font-semibold leading-5 text-brand-charcoal">Best suited for: {bestFor}</p>
                 <p className="mt-4 text-xs font-light leading-6 text-brand-muted flex-1">{desc}</p>
                 <ul className="mt-6 space-y-2 border-t border-brand-border pt-5" aria-label={`${title} features`}>
                   {features.map((feature) => (
@@ -515,6 +513,9 @@ export default function HouseAndLandPage() {
                     </li>
                   ))}
                 </ul>
+                <a href="#opportunities" className="focus-ring mt-6 inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.16em] text-brand-gold">
+                  Enquire Now <ArrowRight size={14} aria-hidden="true" />
+                </a>
               </motion.div>
             ))}
           </div>
@@ -530,8 +531,10 @@ export default function HouseAndLandPage() {
                 Current Opportunities
               </h2>
               <p className="mt-5 text-base font-light leading-7 text-brand-muted">
-                Explore illustrative Decent package pathways for family homes, duplex development in Sydney,
-                triplex development in NSW, and broader multi-residential opportunities.
+                A curated selection of residential package pathways and development-ready opportunities.
+              </p>
+              <p className="mt-4 text-sm font-light leading-7 text-brand-muted">
+                The opportunities listed below are designed to help clients understand the types of projects DECENT Development can support. Availability, pricing, inclusions, site suitability, and delivery timelines are confirmed during enquiry and consultation.
               </p>
             </div>
             <div className="border border-brand-border bg-white rounded-xl px-5 py-4 shadow-sm">
@@ -565,9 +568,12 @@ export default function HouseAndLandPage() {
                 { name: 'bedrooms', label: 'Bedrooms', options: [initialFilters.bedrooms, '4', '6', '8', '9'] },
                 { name: 'storeys', label: 'Storeys', options: [initialFilters.storeys, '1', '2'] },
               ].map(({ name, label, options }) => (
-                <label key={name} className="grid gap-2 text-[9px] font-semibold uppercase tracking-[0.18em] text-brand-muted">
+                <label htmlFor={`house-land-filter-${name}`} key={name} className="grid gap-2 text-[9px] font-semibold uppercase tracking-[0.18em] text-brand-muted">
                   {label}
                   <select
+                    id={`house-land-filter-${name}`}
+                    name={name}
+                    autoComplete="off"
                     value={filters[name]}
                     onChange={(event) => updateFilter(name, event.target.value)}
                     className="focus-ring min-h-12 w-full border border-brand-border bg-brand-bg rounded-lg px-4 py-3 text-xs font-semibold uppercase tracking-[0.1em] text-brand-charcoal"
@@ -626,8 +632,7 @@ export default function HouseAndLandPage() {
               </h2>
             </div>
             <p className="max-w-3xl text-base font-light leading-8 text-brand-muted">
-              We help clients understand the project pathway before major decisions are made, giving clearer
-              expectations around design, timing, approvals, construction, and delivery.
+              A clearer pathway from early enquiry to build-ready confidence.
             </p>
           </div>
 
@@ -668,8 +673,7 @@ export default function HouseAndLandPage() {
               Focused across Sydney and NSW
             </h2>
             <p className="mt-5 max-w-2xl text-base font-light leading-8 text-brand-muted">
-              DECENT Development works across New South Wales from its North Sydney office, with project experience
-              across Auburn, Regents Park, Rouse Hill, Canley Vale, Canley Heights, and surrounding Sydney suburbs.
+              DECENT Development works across New South Wales from its North Sydney office, with project experience and residential development interest across established and growing Sydney suburbs. Our house and land package enquiries may include family home builds, duplex development, triplex development, and multi-residential opportunities across Sydney and surrounding NSW locations.
             </p>
           </motion.div>
 
@@ -695,30 +699,30 @@ export default function HouseAndLandPage() {
           <div className="text-center max-w-3xl mx-auto">
             <p className="eyebrow text-brand-gold">The Decent Difference</p>
             <h2 id="why-choose-title" className="mt-4 font-display text-3xl font-normal leading-tight text-brand-charcoal sm:text-4xl">
-              Why Choose DECENT Development
+              Why choose DECENT Development?
             </h2>
             <p className="mt-4 text-base font-light leading-7 text-brand-muted">
-              We stand apart through our commitment to quality, risk mitigation, and architectural integrity in every project we execute.
+              Practical construction knowledge, relevant residential experience, and a considered approach to every enquiry.
             </p>
           </div>
 
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {[
               {
-                title: 'NSW Licensed Contractor',
-                description: 'Fully licensed and insured builder operating under strict compliance with NSW building codes and consumer protections.',
+                title: 'Construction-first guidance',
+                description: 'We approach opportunities with practical construction knowledge, helping clients understand buildability, sequencing, materials, and delivery considerations before major commitments are made.',
               },
               {
-                title: 'Architectural Distinction',
-                description: 'We do not build generic project homes; every package represents a considered, premium architectural layout designed for the site.',
+                title: 'Duplex and triplex experience',
+                description: 'Our project portfolio includes residential development work across duplex and triplex-style projects, giving clients relevant guidance for attached and multi-residential pathways.',
               },
               {
-                title: 'Clear Project Management',
-                description: 'Direct access to online portal updates, scheduling milestones, and quality control checks for complete peace of mind.',
+                title: 'Premium finish focus',
+                description: 'We focus on quality finishes, strong street presence, practical layouts, and long-term value rather than generic package outcomes.',
               },
               {
-                title: 'Transparent Feasibility',
-                description: 'Honest upfront assessments of slope, soil classification, easements, and council setbacks before you sign or pay a deposit.',
+                title: 'NSW project knowledge',
+                description: 'Based in North Sydney, DECENT Development works with clients across Sydney and New South Wales, supporting project enquiries with local construction and development awareness.',
               },
             ].map(({ title, description: desc }, index) => (
               <motion.div
@@ -746,31 +750,31 @@ export default function HouseAndLandPage() {
               Frequently Asked Questions
             </h2>
             <p className="mt-4 text-base font-light leading-7 text-brand-muted">
-              Find answers to the most common questions about our property development and residential construction options in NSW.
+              Practical answers to common house and land package enquiries.
             </p>
           </div>
 
           <div className="mt-12 border border-brand-border bg-white rounded-2xl p-6 sm:p-8 shadow-sm">
             {[
               {
-                question: 'How do I verify the feasibility of a duplex development on my land?',
-                answer: 'We review the NSW State Environmental Planning Policy (SEPP), local council Local Environmental Plans (LEPs), and land zoning (e.g., R2 or R3) to check if your site meets the minimum frontage and area requirements for duplex development Sydney-wide.',
+                question: 'Do you offer fixed house and land package prices?',
+                answer: 'Package pricing depends on location, land details, design requirements, inclusions, approvals, and construction scope. DECENT Development provides pricing guidance after reviewing the project brief and opportunity details.',
               },
               {
-                question: 'Are the prices of your house and land packages fixed?',
-                answer: 'Yes, our packages are structured with fixed-price building contracts. We include site costs, BASIX requirements, and premium inclusions upfront to prevent unexpected changes during the NSW residential development construction process.',
+                question: 'Can you help with duplex or triplex development?',
+                answer: 'Yes. DECENT Development supports clients exploring duplex, triplex, and multi-residential development pathways across Sydney and New South Wales.',
               },
               {
-                question: 'Can I customize the architectural design of a package?',
-                answer: 'Absolutely. As a premium custom home builder North Sydney and Greater Sydney trust, we specialize in tailoring layouts, facade options, and luxury fixtures to suit your lifestyle or investment goals.',
+                question: 'Do I need to already own land?',
+                answer: 'No. Clients can enquire with or without secured land. If land is already available, we can help review the project direction and construction pathway. If land is not secured, we can discuss the type of opportunity that may suit your goals.',
               },
               {
-                question: 'What approvals are required for a triplex development NSW?',
-                answer: 'Triplex developments typically require Development Application (DA) approval through your local council, or in some instances, fast-tracked approval via the NSW Housing Code under Complying Development (CDC) rules if specific criteria are met.',
+                question: 'What areas do you service?',
+                answer: 'DECENT Development works across New South Wales from its North Sydney office, with project interest across Sydney suburbs including Auburn, Regents Park, Rouse Hill, Canley Vale, Canley Heights, and surrounding areas.',
               },
               {
-                question: 'How long does the residential construction process take?',
-                answer: 'Typically, custom residential construction Sydney projects take between 8 to 12 months from slab pour to completion, depending on design complexity, site conditions, council requirements, and build scale.',
+                question: 'How do I start a house and land enquiry?',
+                answer: 'You can start by contacting DECENT Development with your preferred location, project type, budget direction, and any land or property details. Our team will review the enquiry and guide you on the next steps.',
               },
             ].map(({ question, answer }, index) => (
               <FAQItem
@@ -802,8 +806,7 @@ export default function HouseAndLandPage() {
                 Looking for a house and land opportunity?
               </h2>
               <p className="mx-auto mt-5 max-w-2xl text-base font-light leading-8 text-brand-muted">
-                Speak with DECENT Development about your goals, preferred location, budget direction, and project
-                type. Our team can help you understand the next steps.
+                Speak with DECENT Development about your preferred location, project goals, budget direction, and residential development plans. Whether you are considering a family home, duplex, triplex, or multi-residential project, our team can help you understand the next step.
               </p>
               <Link
                 to="/contact/"
