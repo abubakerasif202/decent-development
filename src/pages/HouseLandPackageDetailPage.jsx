@@ -13,6 +13,7 @@ import {
   Ruler,
 } from 'lucide-react'
 import { getHouseLandPackageBySlug } from '../data/houseLandPackages.js'
+import { getHomeDesignByName, roomPlanningHighlights } from '../data/homeDesignOptions.js'
 import usePageMeta from '../hooks/usePageMeta.js'
 
 const siteUrl = 'https://www.decentdevelopment.com.au'
@@ -92,6 +93,7 @@ export default function HouseLandPackageDetailPage() {
   ]
 
   const enquiryPath = `/contact/?package=${encodeURIComponent(packageItem.title)}`
+  const suggestedDesigns = packageItem.suggestedDesigns.map(getHomeDesignByName).filter(Boolean)
 
   return (
     <>
@@ -173,6 +175,43 @@ export default function HouseLandPackageDetailPage() {
                 <span className="text-sm leading-6 text-brand-muted">{feature}</span>
               </RevealCard>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white py-16 sm:py-24">
+        <div className="section-shell">
+          <p className="eyebrow">Suggested Design Pathways</p>
+          <h2 className="mt-4 max-w-3xl font-display text-3xl font-normal leading-tight text-brand-charcoal sm:text-4xl">Explore a site-responsive starting point</h2>
+          <p className="mt-5 max-w-3xl text-sm font-light leading-7 text-brand-muted">These indicative design pathways help frame the discussion. Final layouts, inclusions, and construction scope are confirmed during consultation and remain subject to site review and planning requirements.</p>
+          <div className="mt-10 grid gap-6 lg:grid-cols-2">
+            {suggestedDesigns.map((design, index) => (
+              <RevealCard key={design.id} index={index} className="flex h-full flex-col p-6 sm:p-8">
+                <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-brand-gold">{design.bestFor}</p>
+                <h3 className="mt-3 font-display text-3xl font-normal text-brand-charcoal">{design.name}</h3>
+                <dl className="mt-6 grid grid-cols-4 border-y border-brand-border py-4 text-center">
+                  {[['Beds', design.beds], ['Baths', design.baths], ['Cars', design.cars], ['Storeys', design.storeys]].map(([label, value]) => (
+                    <div key={label} className="border-r border-brand-border px-1 last:border-r-0"><dd className="text-xs font-semibold text-brand-charcoal">{value}</dd><dt className="mt-1 text-[8px] uppercase tracking-[0.12em] text-brand-muted">{label}</dt></div>
+                  ))}
+                </dl>
+                <p className="mt-5 text-xs font-semibold text-brand-charcoal">Suitable block width: {design.blockWidth}</p>
+                <p className="mt-5 text-[10px] font-bold uppercase tracking-[0.16em] text-brand-gold">Key rooms</p>
+                <p className="mt-2 text-xs leading-6 text-brand-muted">{design.rooms.slice(0, 4).join(' · ')}</p>
+                <p className="mt-5 text-[10px] font-bold uppercase tracking-[0.16em] text-brand-gold">Facade options</p>
+                <p className="mt-2 text-xs leading-6 text-brand-muted">{design.facadeOptions.slice(0, 4).join(' · ')}</p>
+                <Link to={enquiryPath} className="focus-ring gold-gradient-btn mt-6 inline-flex min-h-12 items-center justify-center gap-2 px-5 py-3 text-xs font-bold uppercase">Start Design Enquiry <ArrowRight size={16} aria-hidden="true" /></Link>
+              </RevealCard>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-brand-bg py-16 sm:py-24">
+        <div className="section-shell">
+          <p className="eyebrow">Room Planning Highlights</p>
+          <h2 className="mt-4 max-w-3xl font-display text-3xl font-normal leading-tight text-brand-charcoal sm:text-4xl">Spaces planned around daily use</h2>
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {roomPlanningHighlights.map((highlight, index) => <RevealCard key={highlight} index={index} className="flex gap-3 p-5"><CheckCircle2 className="mt-0.5 shrink-0 text-brand-gold" size={18} aria-hidden="true" /><span className="text-sm leading-6 text-brand-muted">{highlight}</span></RevealCard>)}
           </div>
         </div>
       </section>

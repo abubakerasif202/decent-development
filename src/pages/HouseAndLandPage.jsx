@@ -27,6 +27,7 @@ import {
   packageRegions,
   packageTypes,
 } from '../data/houseLandPackages.js'
+import { homeDesignOptions } from '../data/homeDesignOptions.js'
 
 const siteUrl = 'https://www.decentdevelopment.com.au'
 
@@ -517,6 +518,50 @@ export default function HouseAndLandPage() {
                   Enquire Now <ArrowRight size={14} aria-hidden="true" />
                 </a>
               </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-porcelain py-16 text-brand-charcoal sm:py-24 border-t border-brand-border" aria-labelledby="home-design-options-title">
+        <div className="section-shell">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="eyebrow text-brand-gold">Indicative Design Pathways</p>
+            <h2 id="home-design-options-title" className="mt-4 font-display text-3xl font-normal leading-tight sm:text-4xl">Home Design Options</h2>
+            <p className="mt-4 text-base font-light leading-7 text-brand-muted">Indicative residential design pathways for family homes, duplexes, triplexes, and multi-residential projects.</p>
+            <p className="mt-4 text-sm font-light leading-7 text-brand-muted">Every site requires its own review. Final layouts, inclusions, and construction scope are confirmed after site assessment, planning review, and project consultation.</p>
+          </div>
+          <div className="mt-12 grid gap-6 md:grid-cols-2">
+            {homeDesignOptions.map((design, index) => (
+              <motion.article
+                key={design.id}
+                className="group flex h-full flex-col rounded-2xl border border-brand-border bg-white p-6 shadow-sm transition-all duration-300 hover:border-brand-gold hover:shadow-premium sm:p-8"
+                initial={reducedMotion ? false : { opacity: 0, y: 24 }}
+                whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                whileHover={reducedMotion ? undefined : { y: -6 }}
+                transition={{ duration: 0.5, delay: reducedMotion ? 0 : index * 0.05, ease: 'easeOut' }}
+              >
+                <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-brand-gold">{design.bestFor}</p>
+                <h3 className="mt-3 font-display text-3xl font-normal text-brand-charcoal">{design.name}</h3>
+                <p className="mt-4 text-sm font-light leading-7 text-brand-muted">{design.summary}</p>
+                <dl className="mt-6 grid grid-cols-4 border-y border-brand-border py-4 text-center">
+                  {[['Beds', design.beds], ['Baths', design.baths], ['Cars', design.cars], ['Storeys', design.storeys]].map(([label, value]) => (
+                    <div key={label} className="border-r border-brand-border px-1 last:border-r-0">
+                      <dd className="text-sm font-semibold text-brand-charcoal">{value}</dd>
+                      <dt className="mt-1 text-[8px] font-semibold uppercase tracking-[0.12em] text-brand-muted">{label}</dt>
+                    </div>
+                  ))}
+                </dl>
+                <p className="mt-5 text-xs font-semibold text-brand-charcoal">Suitable block width: {design.blockWidth}</p>
+                <ul className="mt-5 grid gap-2 sm:grid-cols-2">
+                  {design.features.slice(0, 4).map((feature) => <li key={feature} className="flex gap-2 text-xs leading-5 text-brand-muted"><span className="mt-2 h-px w-4 shrink-0 bg-brand-gold" aria-hidden="true" />{feature}</li>)}
+                </ul>
+                <p className="mt-6 text-[10px] uppercase leading-5 tracking-[0.12em] text-brand-muted">Indicative design pathway · Subject to site review · Subject to planning requirements</p>
+                <Link to="/contact/" className="focus-ring gold-gradient-btn mt-6 inline-flex min-h-12 items-center justify-center gap-2 px-5 py-3 text-xs font-bold uppercase">
+                  Discuss This Design <ArrowRight className="transition-transform group-hover:translate-x-1" size={16} aria-hidden="true" />
+                </Link>
+              </motion.article>
             ))}
           </div>
         </div>
