@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { motion, useReducedMotion } from 'framer-motion'
+import { HOUSE_LAND_ENABLED } from '../config/featureFlags.js'
 
 const quickLinks = [
   ['Home', '/'],
@@ -39,6 +40,9 @@ function BrandMark({ company, logo }) {
 export default function Footer({ company, logo }) {
   const reducedMotion = useReducedMotion()
   const year = new Date().getFullYear()
+  const visibleServiceLinks = HOUSE_LAND_ENABLED
+    ? serviceLinks
+    : serviceLinks.filter(([label]) => label !== 'House & Land Packages')
 
   return (
     <motion.footer
@@ -80,7 +84,7 @@ export default function Footer({ company, logo }) {
           <div>
             <p className="text-xs font-semibold uppercase text-white">Services</p>
             <nav className="mt-4 grid gap-2" aria-label="Footer services navigation">
-              {serviceLinks.map(([label, to]) => (
+              {visibleServiceLinks.map(([label, to]) => (
                 <Link
                   key={label}
                   to={to}

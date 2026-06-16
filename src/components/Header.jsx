@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { ArrowRight, Menu, X } from 'lucide-react'
+import { HOUSE_LAND_ENABLED } from '../config/featureFlags.js'
 
 const navItems = [
   ['Home', '/'],
@@ -41,6 +42,9 @@ export default function Header({ company, logo }) {
   const menuButtonRef = useRef(null)
   const closeButtonRef = useRef(null)
   const reducedMotion = useReducedMotion()
+  const visibleNavItems = HOUSE_LAND_ENABLED
+    ? navItems
+    : navItems.filter(([label]) => label !== 'House & Land')
 
   useEffect(() => {
     const updateScrolled = () => setScrolled(window.scrollY > 24)
@@ -104,7 +108,7 @@ export default function Header({ company, logo }) {
           </Link>
 
           <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary navigation">
-            {navItems.map(([label, to]) => (
+            {visibleNavItems.map(([label, to]) => (
               <Link
                 key={label}
                 to={to}
@@ -168,7 +172,7 @@ export default function Header({ company, logo }) {
               </div>
 
               <nav className="flex flex-1 flex-col items-center justify-center gap-7" aria-label="Mobile navigation">
-                {navItems.map(([label, to], index) => (
+                {visibleNavItems.map(([label, to], index) => (
                   <motion.div
                     key={label}
                     initial={reducedMotion ? false : { opacity: 0, y: 18 }}

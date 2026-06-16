@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import {
   ArrowRight,
@@ -20,6 +20,7 @@ import {
   X,
 } from 'lucide-react'
 import PageHero from '../components/PageHero.jsx'
+import { HOUSE_LAND_ENABLED } from '../config/featureFlags.js'
 import usePageMeta from '../hooks/usePageMeta.js'
 import projectResidential from '../assets/stitch/project-residential.webp'
 import {
@@ -315,6 +316,10 @@ export default function HouseAndLandPage() {
       }),
     [filters],
   )
+
+  if (!HOUSE_LAND_ENABLED) {
+    return <Navigate to="/" replace />
+  }
 
   const filtersActive = Object.entries(initialFilters).some(([key, value]) => filters[key] !== value)
   const updateFilter = (name, value) => setFilters((current) => ({ ...current, [name]: value }))

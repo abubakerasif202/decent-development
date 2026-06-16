@@ -5,7 +5,6 @@
 ## Main Navigation
 - [Home](https://www.decentdevelopment.com.au/) - Homepage showing core services and licensing information.
 - [Completed Projects](https://www.decentdevelopment.com.au/projects/) - Full portfolio of custom duplex, triplex, and residential builds.
-- [House & Land Packages](https://www.decentdevelopment.com.au/house-and-land-packages/) - Premium family home, duplex, and triplex opportunities across Sydney and NSW.
 - [Meet the Team](https://www.decentdevelopment.com.au/meet-the-team/) - Profiles of our specialist builders and project managers.
 - [Collaboration](https://www.decentdevelopment.com.au/collaboration/) - Collaboration details with trusted delivery partners like Milestone Development.
 - [Contact Us](https://www.decentdevelopment.com.au/contact/) - Project enquiries, office address in North Sydney, and contact details.

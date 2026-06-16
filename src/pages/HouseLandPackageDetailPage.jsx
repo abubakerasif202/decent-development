@@ -14,6 +14,7 @@ import {
 } from 'lucide-react'
 import { getHouseLandPackageBySlug } from '../data/houseLandPackages.js'
 import { getHomeDesignByName, roomPlanningHighlights } from '../data/homeDesignOptions.js'
+import { HOUSE_LAND_ENABLED } from '../config/featureFlags.js'
 import usePageMeta from '../hooks/usePageMeta.js'
 
 const siteUrl = 'https://www.decentdevelopment.com.au'
@@ -78,6 +79,10 @@ export default function HouseLandPackageDetailPage() {
     path: packageItem ? `/house-and-land-packages/${packageItem.slug}/` : '/house-and-land-packages/',
     schemas,
   })
+
+  if (!HOUSE_LAND_ENABLED) {
+    return <Navigate to="/" replace />
+  }
 
   if (!packageItem) return <Navigate to="/house-and-land-packages/" replace />
 

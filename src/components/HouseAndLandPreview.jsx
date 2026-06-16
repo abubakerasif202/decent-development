@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { motion, useReducedMotion } from 'framer-motion'
 import { ArrowRight, Building2, ClipboardCheck, Home, Layers3 } from 'lucide-react'
 import projectResidential from '../assets/stitch/project-residential.webp'
+import { HOUSE_LAND_ENABLED } from '../config/featureFlags.js'
 
 const points = [
   { label: 'Family house and land', icon: Home },
@@ -12,6 +13,7 @@ const points = [
 
 export default function HouseAndLandPreview() {
   const reducedMotion = useReducedMotion()
+  if (!HOUSE_LAND_ENABLED) return null
 
   return (
     <section className="bg-brand-bg py-16 text-brand-charcoal sm:py-24" aria-labelledby="house-land-preview-title">

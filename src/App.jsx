@@ -12,6 +12,7 @@ import NotFoundPage from './pages/NotFoundPage.jsx'
 import Footer from './components/Footer.jsx'
 import Header from './components/Header.jsx'
 import IntroAnimation from './components/IntroAnimation.jsx'
+import { HOUSE_LAND_ENABLED } from './config/featureFlags.js'
 import logo from './assets/Logo.png'
 import logoDark from './assets/Logo-dark.png'
 import teamHussain from './assets/team-hussain.webp'
@@ -88,10 +89,21 @@ function AppRoutes() {
       <Route path="/projects/" element={<ProjectsPage company={company} />} />
       <Route path="/projects/:slug" element={<ProjectDetailPage company={company} />} />
       <Route path="/projects/:slug/" element={<ProjectDetailPage company={company} />} />
-      <Route path="/house-and-land-packages" element={<Navigate to="/house-and-land-packages/" replace />} />
-      <Route path="/house-and-land-packages/" element={<HouseAndLandPage />} />
-      <Route path="/house-and-land-packages/:slug" element={<HouseLandPackageDetailPage />} />
-      <Route path="/house-and-land-packages/:slug/" element={<HouseLandPackageDetailPage />} />
+      {HOUSE_LAND_ENABLED ? (
+        <>
+          <Route path="/house-and-land-packages" element={<Navigate to="/house-and-land-packages/" replace />} />
+          <Route path="/house-and-land-packages/" element={<HouseAndLandPage />} />
+          <Route path="/house-and-land-packages/:slug" element={<HouseLandPackageDetailPage />} />
+          <Route path="/house-and-land-packages/:slug/" element={<HouseLandPackageDetailPage />} />
+        </>
+      ) : (
+        <>
+          <Route path="/house-and-land-packages" element={<Navigate to="/" replace />} />
+          <Route path="/house-and-land-packages/" element={<Navigate to="/" replace />} />
+          <Route path="/house-and-land-packages/:slug" element={<Navigate to="/" replace />} />
+          <Route path="/house-and-land-packages/:slug/" element={<Navigate to="/" replace />} />
+        </>
+      )}
       <Route path="/team" element={<Navigate to="/meet-the-team/" replace />} />
       <Route path="/completed-projects/" element={<Navigate to="/projects/" replace />} />
       <Route path="/meet-the-team/" element={<TeamPage company={company} teamAssets={assets.team} />} />

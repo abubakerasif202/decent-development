@@ -1,5 +1,6 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import path from 'node:path'
+import { HOUSE_LAND_ENABLED } from '../src/config/featureFlags.js'
 import { houseLandPackages } from '../src/data/houseLandPackages.js'
 import { projects } from '../src/data/projects.js'
 
@@ -275,47 +276,6 @@ const routes = [
     schemas: [organizationSchema, breadcrumb('/projects/', 'Projects'), projectListSchema],
   },
   {
-    path: '/house-and-land-packages/',
-    priority: '0.8',
-    title: 'House & Land Packages | DECENT Development',
-    description:
-      'Explore premium house and land package opportunities with DECENT Development across Sydney and New South Wales. Enquire about residential builds, duplexes, triplexes, and development-ready land options.',
-    h1: 'House & Land Packages',
-    body: [
-      'DECENT Development helps clients explore premium house and land packages across Sydney and New South Wales, from family homes to duplex and triplex development-ready sites.',
-      'The team provides practical guidance across design, feasibility, construction planning, approvals, and delivery to help clients move from enquiry to build-ready confidence.',
-    ],
-    subheadings: [
-      {
-        title: 'Build with confidence from land to completion',
-        text: 'Plan a family residence, attached duplex, triplex, or investment-focused residential project with practical guidance across design, feasibility, construction planning, and delivery.',
-      },
-      {
-        title: 'House and land opportunities across Sydney and NSW',
-        text: 'DECENT Development works from North Sydney with project experience across Auburn, Regents Park, Rouse Hill, Canley Vale, Canley Heights, and surrounding Sydney suburbs.',
-      },
-      {
-        title: 'Current House & Land Opportunities',
-        text: 'Explore illustrative Decent package pathways for family homes, duplex development Sydney projects, triplex development NSW projects, and broader multi-residential opportunities.',
-      },
-    ],
-    schemas: [
-      organizationSchema,
-      breadcrumb('/house-and-land-packages/', 'House & Land Packages'),
-      {
-        '@context': 'https://schema.org',
-        '@type': 'WebPage',
-        '@id': `${siteUrl}/house-and-land-packages/#webpage`,
-        name: 'House & Land Packages',
-        description:
-          'Explore premium house and land package opportunities with DECENT Development across Sydney and New South Wales.',
-        url: `${siteUrl}/house-and-land-packages/`,
-      },
-      houseAndLandServiceSchema,
-      houseAndLandInventorySchema,
-    ],
-  },
-  {
     path: '/collaboration/',
     priority: '0.8',
     title: 'Construction Collaboration Partners | DECENT Development',
@@ -386,6 +346,93 @@ const routes = [
   },
 ]
 
+if (HOUSE_LAND_ENABLED) {
+  routes.push({
+    path: '/house-and-land-packages/',
+    priority: '0.8',
+    title: 'House & Land Packages | DECENT Development',
+    description:
+      'Explore premium house and land package opportunities with DECENT Development across Sydney and New South Wales. Enquire about residential builds, duplexes, triplexes, and development-ready land options.',
+    h1: 'House & Land Packages',
+    body: [
+      'DECENT Development helps clients explore premium house and land packages across Sydney and New South Wales, from family homes to duplex and triplex development-ready sites.',
+      'The team provides practical guidance across design, feasibility, construction planning, approvals, and delivery to help clients move from enquiry to build-ready confidence.',
+    ],
+    subheadings: [
+      {
+        title: 'Build with confidence from land to completion',
+        text: 'Plan a family residence, attached duplex, triplex, or investment-focused residential project with practical guidance across design, feasibility, construction planning, and delivery.',
+      },
+      {
+        title: 'House and land opportunities across Sydney and NSW',
+        text: 'DECENT Development works from North Sydney with project experience across Auburn, Regents Park, Rouse Hill, Canley Vale, Canley Heights, and surrounding Sydney suburbs.',
+      },
+      {
+        title: 'Current House & Land Opportunities',
+        text: 'Explore illustrative Decent package pathways for family homes, duplex development Sydney projects, triplex development NSW projects, and broader multi-residential opportunities.',
+      },
+    ],
+    schemas: [
+      organizationSchema,
+      breadcrumb('/house-and-land-packages/', 'House & Land Packages'),
+      {
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        '@id': `${siteUrl}/house-and-land-packages/#webpage`,
+        name: 'House & Land Packages',
+        description:
+          'Explore premium house and land package opportunities with DECENT Development across Sydney and New South Wales.',
+        url: `${siteUrl}/house-and-land-packages/`,
+      },
+      houseAndLandServiceSchema,
+      houseAndLandInventorySchema,
+    ],
+  })
+
+  for (const packageItem of houseLandPackages) {
+    const routePath = `/house-and-land-packages/${packageItem.slug}/`
+
+    routes.push({
+      path: routePath,
+      priority: '0.7',
+      title: packageItem.seoTitle,
+      description: packageItem.seoDescription,
+      h1: packageItem.title,
+      body: [
+        packageItem.description,
+        `${packageItem.title} is an illustrative ${packageItem.packageType.toLowerCase()} pathway for ${packageItem.region}. Pricing, availability, inclusions, and site suitability are confirmed during enquiry.`,
+      ],
+      subheadings: [
+        {
+          title: 'Opportunity highlights',
+          text: [...packageItem.features, ...packageItem.highlights].join('. '),
+        },
+        {
+          title: `Residential development in ${packageItem.region}`,
+          text: `${packageItem.locationNotes} ${packageItem.enquiryNotes}`,
+        },
+      ],
+      schemas: [
+        organizationSchema,
+        packageBreadcrumb(routePath, packageItem.title),
+        {
+          '@context': 'https://schema.org',
+          '@type': 'WebPage',
+          '@id': `${siteUrl}${routePath}#webpage`,
+          name: packageItem.title,
+          description: packageItem.seoDescription,
+          url: `${siteUrl}${routePath}`,
+          about: packageItem.packageType,
+          spatialCoverage: {
+            '@type': 'Place',
+            name: packageItem.region,
+          },
+        },
+      ],
+    })
+  }
+}
+
 for (const project of projects) {
   routes.push({
     path: `/projects/${project.slug}/`,
@@ -424,49 +471,6 @@ for (const project of projects) {
         spatialCoverage: {
           '@type': 'Place',
           name: project.address,
-        },
-      },
-    ],
-  })
-}
-
-for (const packageItem of houseLandPackages) {
-  const routePath = `/house-and-land-packages/${packageItem.slug}/`
-
-  routes.push({
-    path: routePath,
-    priority: '0.7',
-    title: packageItem.seoTitle,
-    description: packageItem.seoDescription,
-    h1: packageItem.title,
-    body: [
-      packageItem.description,
-      `${packageItem.title} is an illustrative ${packageItem.packageType.toLowerCase()} pathway for ${packageItem.region}. Pricing, availability, inclusions, and site suitability are confirmed during enquiry.`,
-    ],
-    subheadings: [
-      {
-        title: 'Opportunity highlights',
-        text: [...packageItem.features, ...packageItem.highlights].join('. '),
-      },
-      {
-        title: `Residential development in ${packageItem.region}`,
-        text: `${packageItem.locationNotes} ${packageItem.enquiryNotes}`,
-      },
-    ],
-    schemas: [
-      organizationSchema,
-      packageBreadcrumb(routePath, packageItem.title),
-      {
-        '@context': 'https://schema.org',
-        '@type': 'WebPage',
-        '@id': `${siteUrl}${routePath}#webpage`,
-        name: packageItem.title,
-        description: packageItem.seoDescription,
-        url: `${siteUrl}${routePath}`,
-        about: packageItem.packageType,
-        spatialCoverage: {
-          '@type': 'Place',
-          name: packageItem.region,
         },
       },
     ],

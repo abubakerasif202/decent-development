@@ -42,8 +42,13 @@
     },
     {
       "source": "/house-and-land-packages",
-      "destination": "/house-and-land-packages/",
-      "permanent": true
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/house-and-land-packages/",
+      "destination": "/",
+      "permanent": false
     },
     {
       "source": "/projects/:slug",
@@ -52,8 +57,13 @@
     },
     {
       "source": "/house-and-land-packages/:slug",
-      "destination": "/house-and-land-packages/:slug/",
-      "permanent": true
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/house-and-land-packages/:slug/",
+      "destination": "/",
+      "permanent": false
     }
   ],
   "rewrites": [
@@ -68,14 +78,6 @@
     {
       "source": "/collaboration/",
       "destination": "/collaboration/index.html"
-    },
-    {
-      "source": "/house-and-land-packages/",
-      "destination": "/house-and-land-packages/index.html"
-    },
-    {
-      "source": "/house-and-land-packages/:slug/",
-      "destination": "/house-and-land-packages/:slug/index.html"
     },
     {
       "source": "/(.*)",
