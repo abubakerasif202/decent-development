@@ -180,6 +180,24 @@ const projectListSchema = {
   })),
 }
 
+const homeSubheadings = [
+  {
+    title: 'Premium Residential Construction & Duplex Developments in NSW',
+    text: 'DECENT Development specializes in high-end residential construction, custom homes, duplex and triplex developments, and heritage renovations across Sydney and New South Wales. We build with exceptional craftsmanship and architectural integrity.',
+  },
+  {
+    title: 'Professional Project Management & Building Consultation',
+    text: 'Our certified builders and project managers oversee every phase of development from planning to handover. We maintain strict compliance, quality control, and transparency, ensuring your project is completed on time and within budget.',
+  },
+]
+
+if (HOUSE_LAND_ENABLED) {
+  homeSubheadings.push({
+    title: 'House & Land Packages Across Sydney and NSW',
+    text: 'Explore premium family home, duplex, and triplex opportunities with practical guidance across land review, feasibility, construction planning, and project delivery.',
+  })
+}
+
 const houseAndLandServiceSchema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
@@ -236,20 +254,7 @@ const routes = [
       'DECENT Development delivers residential construction, commercial construction, property development, renovations, extensions, building consultation, and project management.',
       'The company operates from North Sydney and publishes licence, ACN, contact, team, and service information for transparent project enquiries.',
     ],
-    subheadings: [
-      {
-        title: 'Premium Residential Construction & Duplex Developments in NSW',
-        text: 'DECENT Development specializes in high-end residential construction, custom homes, duplex and triplex developments, and heritage renovations across Sydney and New South Wales. We build with exceptional craftsmanship and architectural integrity.',
-      },
-      {
-        title: 'Professional Project Management & Building Consultation',
-        text: 'Our certified builders and project managers oversee every phase of development from planning to handover. We maintain strict compliance, quality control, and transparency, ensuring your project is completed on time and within budget.',
-      },
-      {
-        title: 'House & Land Packages Across Sydney and NSW',
-        text: 'Explore premium family home, duplex, and triplex opportunities with practical guidance across land review, feasibility, construction planning, and project delivery.',
-      },
-    ],
+    subheadings: homeSubheadings,
     schemas: [organizationSchema, websiteSchema, serviceSchema, faqSchema],
   },
   {
