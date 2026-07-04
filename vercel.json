@@ -64,6 +64,11 @@
       "source": "/house-and-land-packages/:slug/",
       "destination": "/",
       "permanent": false
+    },
+    {
+      "source": "/assets/house-land/:path*",
+      "destination": "/",
+      "permanent": false
     }
   ],
   "rewrites": [
