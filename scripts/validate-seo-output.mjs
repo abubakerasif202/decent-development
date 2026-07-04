@@ -116,7 +116,9 @@ const expectedRedirects = {
   '/meet-the-team': '/meet-the-team/',
   '/projects/:slug': '/projects/:slug/',
   '/house-and-land-packages': HOUSE_LAND_ENABLED ? '/house-and-land-packages/' : '/',
+  '/house-and-land-packages/': HOUSE_LAND_ENABLED ? '/house-and-land-packages/' : '/',
   '/house-and-land-packages/:slug': HOUSE_LAND_ENABLED ? '/house-and-land-packages/:slug/' : '/',
+  '/house-and-land-packages/:slug/': HOUSE_LAND_ENABLED ? '/house-and-land-packages/:slug/' : '/',
 }
 
 for (const [source, destination] of Object.entries(expectedRedirects)) {
