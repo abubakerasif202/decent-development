@@ -193,50 +193,25 @@ const homeSubheadings = [
 
 if (HOUSE_LAND_ENABLED) {
   homeSubheadings.push({
-    title: 'House & Land Packages Across Sydney and NSW',
-    text: 'Explore premium family home, duplex, and triplex opportunities with practical guidance across land review, feasibility, construction planning, and project delivery.',
+    title: 'Ava & Bela Residence House and Land Packages',
+    text: 'Explore Ava Residence and Bela Residence package pathways with practical guidance across land review, inclusions, pricing, approvals, and construction planning.',
   })
-}
-
-const houseAndLandServiceSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Service',
-  '@id': `${siteUrl}/house-and-land-packages/#service`,
-  name: 'House & Land Packages',
-  description:
-    'Premium house and land package opportunities across Sydney and New South Wales, including family homes, duplexes, triplexes, and development-ready residential sites.',
-  url: `${siteUrl}/house-and-land-packages/`,
-  provider: {
-    '@id': `${siteUrl}/#organization`,
-  },
-  areaServed: company.areaServed,
-  serviceType: [
-    'House and land packages',
-    'Residential construction',
-    'Duplex development',
-    'Triplex development',
-  ],
 }
 
 const houseAndLandInventorySchema = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
   '@id': `${siteUrl}/house-and-land-packages/#opportunities`,
-  name: 'DECENT Development house and land opportunities',
+  name: 'DECENT Development Ava and Bela Residence package pathways',
   description:
-    'Illustrative house and land package pathways for family homes, duplex developments, triplex developments, and multi-residential projects across Sydney and New South Wales.',
+    'Ava Residence and Bela Residence house and land package pathways across Sydney and New South Wales.',
   itemListElement: houseLandPackages.map((packageItem, index) => ({
     '@type': 'ListItem',
     position: index + 1,
     item: {
-      '@type': 'Service',
+      '@type': 'WebPage',
       name: packageItem.title,
       description: packageItem.description,
-      serviceType: packageItem.packageType,
-      areaServed: packageItem.region,
-      provider: {
-        '@id': `${siteUrl}/#organization`,
-      },
       url: `${siteUrl}/house-and-land-packages/${packageItem.slug}/`,
     },
   })),
@@ -357,24 +332,24 @@ if (HOUSE_LAND_ENABLED) {
     priority: '0.8',
     title: 'House & Land Packages | DECENT Development',
     description:
-      'Explore premium house and land package opportunities with DECENT Development across Sydney and New South Wales. Enquire about residential builds, duplexes, triplexes, and development-ready land options.',
-    h1: 'House & Land Packages',
+      'Explore Ava Residence and Bela Residence house and land package opportunities with DECENT Development across Sydney and New South Wales. Enquire about single-storey and double-storey residential packages.',
+    h1: 'Ava & Bela Residence Packages',
     body: [
-      'DECENT Development helps clients explore premium house and land packages across Sydney and New South Wales, from family homes to duplex and triplex development-ready sites.',
-      'The team provides practical guidance across design, feasibility, construction planning, approvals, and delivery to help clients move from enquiry to build-ready confidence.',
+      'DECENT Development presents Ava Residence and Bela Residence as premium house and land package pathways for clients seeking quality residential construction across Sydney and New South Wales.',
+      'Each package is subject to land availability, planning review, final inclusions, pricing documentation, and construction scope confirmation.',
     ],
     subheadings: [
       {
-        title: 'Build with confidence from land to completion',
-        text: 'Plan a family residence, attached duplex, triplex, or investment-focused residential project with practical guidance across design, feasibility, construction planning, and delivery.',
+        title: 'Featured House & Land Packages',
+        text: 'Ava Residence is a premium double-storey family residence, while Bela Residence is a compact single-storey design suited to practical Sydney living.',
       },
       {
-        title: 'House and land opportunities across Sydney and NSW',
-        text: 'DECENT Development works from North Sydney with project experience across Auburn, Regents Park, Rouse Hill, Canley Vale, Canley Heights, and surrounding Sydney suburbs.',
+        title: 'Compare Ava & Bela',
+        text: 'Compare storeys, approximate size, bedrooms, bathrooms, garage provision, land requirements, price guide, and the key strengths of each package pathway.',
       },
       {
-        title: 'Current House & Land Opportunities',
-        text: 'Explore illustrative Decent package pathways for family homes, duplex development Sydney projects, triplex development NSW projects, and broader multi-residential opportunities.',
+        title: 'Turnkey Inclusions',
+        text: 'Turnkey inclusions may include site works, approvals, structure, facade finishes, roofing, garage, kitchen, bathrooms, laundry, internal finishes, electrical, heating and cooling, landscaping, and BASIX-related items, subject to final specification.',
       },
     ],
     schemas: [
@@ -386,10 +361,9 @@ if (HOUSE_LAND_ENABLED) {
         '@id': `${siteUrl}/house-and-land-packages/#webpage`,
         name: 'House & Land Packages',
         description:
-          'Explore premium house and land package opportunities with DECENT Development across Sydney and New South Wales.',
+          'Explore Ava Residence and Bela Residence house and land package opportunities with DECENT Development across Sydney and New South Wales.',
         url: `${siteUrl}/house-and-land-packages/`,
       },
-      houseAndLandServiceSchema,
       houseAndLandInventorySchema,
     ],
   })
@@ -405,15 +379,15 @@ if (HOUSE_LAND_ENABLED) {
       h1: packageItem.title,
       body: [
         packageItem.description,
-        `${packageItem.title} is an illustrative ${packageItem.packageType.toLowerCase()} pathway for ${packageItem.region}. Pricing, availability, inclusions, and site suitability are confirmed during enquiry.`,
+        `${packageItem.title} is a ${packageItem.packageType.toLowerCase()} pathway for ${packageItem.region}. Pricing, availability, inclusions, land suitability, approvals, and construction scope are confirmed during enquiry.`,
       ],
       subheadings: [
         {
-          title: 'Opportunity highlights',
+          title: 'Package features',
           text: [...packageItem.features, ...packageItem.highlights].join('. '),
         },
         {
-          title: `Residential development in ${packageItem.region}`,
+          title: 'Location and land notes',
           text: `${packageItem.locationNotes} ${packageItem.enquiryNotes}`,
         },
       ],

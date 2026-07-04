@@ -93,7 +93,7 @@ function AppRoutes() {
         <>
           <Route path="/house-and-land-packages" element={<Navigate to="/house-and-land-packages/" replace />} />
           <Route path="/house-and-land-packages/" element={<HouseAndLandPage />} />
-          <Route path="/house-and-land-packages/:slug" element={<HouseLandPackageDetailPage />} />
+          <Route path="/house-and-land-packages/:slug" element={<HouseLandSlugRedirect />} />
           <Route path="/house-and-land-packages/:slug/" element={<HouseLandPackageDetailPage />} />
         </>
       ) : (
@@ -112,6 +112,12 @@ function AppRoutes() {
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   )
+}
+
+function HouseLandSlugRedirect() {
+  const location = useLocation()
+
+  return <Navigate to={`${location.pathname}/`} replace />
 }
 
 function App() {
