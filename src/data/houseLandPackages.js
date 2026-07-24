@@ -24,39 +24,39 @@ export const houseLandPackages = [
     buildTime: '8-12 months',
     priceLabel: 'House & Land from $1,200,000',
     status: 'Available by enquiry',
-    image: '/assets/house-land/ava/hero-exterior.jpg',
+    image: '/projects/rouse-hill/hero.webp',
     gallery: [
       {
-        src: '/assets/house-land/ava/hero-exterior.jpg',
-        alt: 'Ava Residence double-storey modern exterior with white facade and double garage',
+        src: '/projects/rouse-hill/hero.webp',
+        alt: 'Ava Residence illustrative double-storey residential exterior reference with modern street presence',
       },
       {
-        src: '/assets/house-land/ava/floor-plan.jpg',
-        alt: 'Ava Residence floor plan showing double-storey family layout',
+        src: '/projects/rouse-hill/detail.webp',
+        alt: 'Ava Residence illustrative architectural detail reference for a premium family package',
       },
       {
-        src: '/assets/house-land/ava/lot-plan.jpg',
-        alt: 'Ava Residence supplied lot plan reference for Lot 4612',
+        src: '/projects/rouse-hill/street.webp',
+        alt: 'Ava Residence illustrative streetscape reference for a New South Wales residential package',
       },
       {
-        src: '/assets/house-land/ava/aerial-exterior.jpg',
-        alt: 'Ava Residence exterior concept with modern landscaped frontage',
+        src: '/projects/rouse-hill/gallery-1.webp',
+        alt: 'Ava Residence illustrative exterior angle showing refined modern residential frontage',
       },
       {
-        src: '/assets/house-land/ava/living-room.jpg',
-        alt: 'Ava Residence living room concept with natural light and modern finishes',
+        src: '/projects/rouse-hill/gallery-2.webp',
+        alt: 'Ava Residence illustrative facade and outdoor finish reference for enquiry discussion',
       },
       {
-        src: '/assets/house-land/ava/kitchen.jpg',
-        alt: 'Ava Residence kitchen concept with contemporary cabinetry and island bench',
+        src: '/projects/rouse-hill/gallery-3.webp',
+        alt: 'Ava Residence illustrative premium residential construction reference image',
       },
       {
-        src: '/assets/house-land/ava/bathroom.jpg',
-        alt: 'Ava Residence bathroom concept with refined modern finishes',
+        src: '/projects/rouse-hill-10-dorian/interior.jpg',
+        alt: 'Ava Residence illustrative interior finish reference with modern residential detailing',
       },
       {
-        src: '/assets/house-land/ava/inclusions-preview.jpg',
-        alt: 'Ava Residence inclusion reference preview from supplied package material',
+        src: '/projects/rouse-hill-10-dorian/detail.jpg',
+        alt: 'Ava Residence illustrative inclusion and exterior finish reference for package enquiry',
       },
     ],
     summary:
@@ -120,39 +120,39 @@ export const houseLandPackages = [
     buildTime: 'Confirmed during consultation',
     priceLabel: 'Enquire for pricing',
     status: 'Available by enquiry',
-    image: '/assets/house-land/bela/facade-option-1.jpg',
+    image: '/projects/canley-vale-24/hero.webp',
     gallery: [
       {
-        src: '/assets/house-land/bela/facade-option-1.jpg',
-        alt: 'Bela Residence single-storey facade option with arched entry and garage',
+        src: '/projects/canley-vale-24/hero.webp',
+        alt: 'Bela Residence illustrative compact residential facade reference with modern frontage',
       },
       {
-        src: '/assets/house-land/bela/facade-option-2.jpg',
-        alt: 'Bela Residence single-storey facade option with modern frontage',
+        src: '/projects/canley-vale-24/detail.webp',
+        alt: 'Bela Residence illustrative architectural detail reference for a compact package pathway',
       },
       {
-        src: '/assets/house-land/bela/facade-option-3.jpg',
-        alt: 'Bela Residence single-storey facade option with contemporary roofline',
+        src: '/projects/canley-vale-24/street.webp',
+        alt: 'Bela Residence illustrative streetscape reference for a Sydney house and land enquiry',
       },
       {
-        src: '/assets/house-land/bela/facade-option-4.jpg',
-        alt: 'Bela Residence single-storey facade option with clean modern entry',
+        src: '/projects/canley-vale-24/gallery-1.webp',
+        alt: 'Bela Residence illustrative exterior angle showing clean modern residential detailing',
       },
       {
-        src: '/assets/house-land/bela/floor-plan.jpg',
-        alt: 'Bela Residence floor plan showing compact three-bedroom layout',
+        src: '/projects/canley-vale-24/gallery-2.webp',
+        alt: 'Bela Residence illustrative frontage and material reference for design discussion',
       },
       {
-        src: '/assets/house-land/bela/turnkey-inclusions-cover.jpg',
-        alt: 'Bela Residence turnkey inclusions reference cover',
+        src: '/projects/canley-vale-24/gallery-3.webp',
+        alt: 'Bela Residence illustrative residential construction reference for package inclusions',
       },
       {
-        src: '/assets/house-land/bela/inclusion-kitchen.jpg',
-        alt: 'Bela Residence kitchen inclusion category preview',
+        src: '/projects/canley-vale-24-the-avenue/interior.png',
+        alt: 'Bela Residence illustrative interior finish reference for turnkey inclusion discussion',
       },
       {
-        src: '/assets/house-land/bela/inclusion-bathroom.jpg',
-        alt: 'Bela Residence bathroom inclusion category preview',
+        src: '/projects/canley-vale-24-the-avenue/detail.png',
+        alt: 'Bela Residence illustrative detail reference for package specification discussion',
       },
     ],
     summary:
