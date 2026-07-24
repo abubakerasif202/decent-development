@@ -43,38 +43,13 @@
     },
     {
       "source": "/house-and-land-packages",
-      "destination": "/",
-      "permanent": false
+      "destination": "/house-and-land-packages/",
+      "permanent": true
     },
     {
-      "source": "/house-and-land-packages/",
-      "destination": "/",
-      "permanent": false
-    },
-    {
-      "source": "/house-and-land-packages/:path*",
-      "destination": "/",
-      "permanent": false
-    },
-    {
-      "source": "/house-and-land-packages/:path*/",
-      "destination": "/",
-      "permanent": false
-    },
-    {
-      "source": "/assets/house-land",
-      "destination": "/",
-      "permanent": false
-    },
-    {
-      "source": "/assets/house-land/:path*",
-      "destination": "/",
-      "permanent": false
-    },
-    {
-      "source": "/assets/house-land/:path*/",
-      "destination": "/",
-      "permanent": false
+      "source": "/house-and-land-packages/:slug",
+      "destination": "/house-and-land-packages/:slug/",
+      "permanent": true
     },
     {
       "source": "/projects/:slug",
@@ -94,6 +69,14 @@
     {
       "source": "/projects/:slug/",
       "destination": "/projects/:slug/index.html"
+    },
+    {
+      "source": "/house-and-land-packages/",
+      "destination": "/house-and-land-packages/index.html"
+    },
+    {
+      "source": "/house-and-land-packages/:slug/",
+      "destination": "/house-and-land-packages/:slug/index.html"
     },
     {
       "source": "/meet-the-team/",
