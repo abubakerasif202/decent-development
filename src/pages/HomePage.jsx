@@ -55,9 +55,9 @@ export default function HomePage({ company }) {
   ]
 
   usePageMeta({
-    title: 'DECENT Development | Premium Construction & Property Development',
+    title: 'Sydney Construction & Property Development | DECENT',
     description:
-      'Premium construction, property development, renovation, and project management solutions delivered across New South Wales with clarity, precision, and long-term value.',
+      'DECENT Development delivers residential and commercial construction, property development and project management across Sydney and New South Wales.',
     path: '/',
     schemas: homeSchemas,
   })

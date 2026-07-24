@@ -10,7 +10,15 @@ function updateNode(selector, value, attribute = 'content') {
   node.setAttribute(attribute, value)
 }
 
-export default function usePageMeta({ title, description, path = '/', schemas = [] }) {
+export default function usePageMeta({
+  title,
+  description,
+  path = '/',
+  robots = 'index, follow',
+  schemas = [],
+  socialImage = '/og-image.webp',
+  socialImageAlt = 'DECENT Development residential construction and property development in Sydney',
+}) {
   const schemasStr = JSON.stringify(schemas)
 
   useEffect(() => {
@@ -21,16 +29,25 @@ export default function usePageMeta({ title, description, path = '/', schemas = 
       normalizedPath = `${normalizedPath}/`
     }
 
+    const socialImageUrl = socialImage.startsWith('http') ? socialImage : `${SITE_URL}${socialImage}`
+
     updateNode('meta[name="description"]', description)
+    updateNode('meta[name="robots"]', robots)
     updateNode('meta[property="og:title"]', title)
     updateNode('meta[property="og:description"]', description)
     updateNode('meta[property="og:url"]', `${SITE_URL}${normalizedPath}`)
+    updateNode('meta[property="og:image"]', socialImageUrl)
+    updateNode('meta[property="og:image:alt"]', socialImageAlt)
     updateNode('meta[name="twitter:title"]', title)
     updateNode('meta[name="twitter:description"]', description)
+    updateNode('meta[name="twitter:image"]', socialImageUrl)
+    updateNode('meta[name="twitter:image:alt"]', socialImageAlt)
     updateNode('link[rel="canonical"]', `${SITE_URL}${normalizedPath}`, 'href')
 
-    // Handle dynamic schema injection
-    const existingScripts = document.querySelectorAll('script[data-schema-dynamic]')
+    // Replace prerendered route schemas on hydration and stale dynamic schemas after navigation.
+    const existingScripts = document.querySelectorAll(
+      'script[data-schema-route], script[data-schema-dynamic]',
+    )
     existingScripts.forEach((script) => script.remove())
 
     if (schemasStr) {
@@ -47,9 +64,11 @@ export default function usePageMeta({ title, description, path = '/', schemas = 
     }
 
     return () => {
-      // Clean up dynamic schemas on unmount
-      const existingScriptsOnCleanup = document.querySelectorAll('script[data-schema-dynamic]')
+      // Clean up the active route schemas before the next route injects its own.
+      const existingScriptsOnCleanup = document.querySelectorAll(
+        'script[data-schema-route], script[data-schema-dynamic]',
+      )
       existingScriptsOnCleanup.forEach((script) => script.remove())
     }
-  }, [description, path, title, schemasStr])
+  }, [description, path, robots, schemasStr, socialImage, socialImageAlt, title])
 }

@@ -31,6 +31,10 @@ function expectNotIncludes(haystack, needle, label) {
   if (haystack.includes(needle)) fail(`${label}: includes ${needle}`)
 }
 
+function expectIncludes(haystack, needle, label) {
+  if (!haystack.includes(needle)) fail(`${label}: missing ${needle}`)
+}
+
 function getRedirect(source) {
   return vercelConfig.redirects.find((redirect) => redirect.source === source)
 }
@@ -41,6 +45,7 @@ const robots = readFileSync(path.resolve('public/robots.txt'), 'utf8')
 const llms = readFileSync(path.resolve('public/llms.txt'), 'utf8')
 const headerSource = readFileSync(path.resolve('src/components/Header.jsx'), 'utf8')
 const footerSource = readFileSync(path.resolve('src/components/Footer.jsx'), 'utf8')
+const notFoundHtml = read('404.html')
 
 if (!HOUSE_LAND_ENABLED) {
   if (existsSync(path.join(distDir, 'house-and-land-packages'))) {
@@ -50,6 +55,8 @@ if (!HOUSE_LAND_ENABLED) {
   for (const file of [publicSitemap, distSitemap, llms]) {
     expectNotIncludes(file, '/house-and-land-packages/', 'House & Land hidden output')
   }
+
+  expectNotIncludes(notFoundHtml, '/house-and-land-packages/', '404 page hidden output')
 }
 
 const houseLandPaths = HOUSE_LAND_ENABLED
@@ -61,9 +68,12 @@ const houseLandPaths = HOUSE_LAND_ENABLED
 
 expectNotIncludes(publicSitemap, '<loc>https://www.decentdevelopment.com.au/projects</loc>', 'public sitemap')
 expectNotIncludes(distSitemap, '<loc>https://www.decentdevelopment.com.au/projects</loc>', 'dist sitemap')
+expectNotIncludes(publicSitemap, '<lastmod>', 'public sitemap unverifiable modification dates')
+expectNotIncludes(distSitemap, '<lastmod>', 'dist sitemap unverifiable modification dates')
 
 const expectedCanonicalPaths = [
   '/',
+  '/services/',
   '/projects/',
   '/collaboration/',
   '/meet-the-team/',
@@ -90,9 +100,25 @@ for (const canonicalPath of expectedCanonicalPaths) {
 
   expectEqual(pageCanonical, canonical, `${htmlPath} canonical`)
   expectEqual(ogUrl, canonical, `${htmlPath} og:url`)
+  expectIncludes(html, '<meta name="robots" content="index, follow" />', `${htmlPath} robots`)
+  expectIncludes(html, '<meta property="og:image:alt" content="', `${htmlPath} og:image:alt`)
+  expectIncludes(html, '<meta property="og:image:width" content="1200" />', `${htmlPath} og:image width`)
+  expectIncludes(html, '<meta property="og:image:height" content="630" />', `${htmlPath} og:image height`)
+  expectIncludes(html, '<meta name="twitter:image:alt" content="', `${htmlPath} twitter:image:alt`)
+  expectIncludes(html, '<nav aria-label="Primary navigation"', `${htmlPath} static navigation`)
+  expectIncludes(html, 'data-schema-route="true"', `${htmlPath} replaceable route schema marker`)
+
+  for (const internalPath of ['/services/', '/projects/', '/meet-the-team/', '/contact/']) {
+    expectIncludes(html, `href="${internalPath}"`, `${htmlPath} internal link`)
+  }
+
+  if (!HOUSE_LAND_ENABLED) {
+    expectNotIncludes(html, '/house-and-land-packages/', `${htmlPath} hidden House & Land link`)
+  }
 }
 
 for (const redirectedPath of [
+  '/services',
   '/projects',
   '/contact',
   '/collaboration',
@@ -110,13 +136,24 @@ for (const redirectedPath of [
 }
 
 const expectedRedirects = {
+  '/services': '/services/',
   '/projects': '/projects/',
   '/contact': '/contact/',
   '/collaboration': '/collaboration/',
   '/meet-the-team': '/meet-the-team/',
   '/projects/:slug': '/projects/:slug/',
-  '/house-and-land-packages': HOUSE_LAND_ENABLED ? '/house-and-land-packages/' : '/',
-  '/house-and-land-packages/:slug': HOUSE_LAND_ENABLED ? '/house-and-land-packages/:slug/' : '/',
+  ...(HOUSE_LAND_ENABLED
+    ? {
+        '/house-and-land-packages': '/house-and-land-packages/',
+        '/house-and-land-packages/:slug': '/house-and-land-packages/:slug/',
+      }
+    : {
+        '/house-and-land-packages': '/',
+        '/house-and-land-packages/': '/',
+        '/house-and-land-packages/:path*': '/',
+        '/assets/house-land': '/',
+        '/assets/house-land/:path*': '/',
+      }),
 }
 
 for (const [source, destination] of Object.entries(expectedRedirects)) {
@@ -128,10 +165,17 @@ for (const [source, destination] of Object.entries(expectedRedirects)) {
 
   expectEqual(redirect.destination, destination, `Redirect ${source}`)
   if (source === destination) fail(`Redirect loop detected for ${source}`)
+
+  if (
+    !HOUSE_LAND_ENABLED &&
+    (source.startsWith('/house-and-land-packages') || source.startsWith('/assets/house-land'))
+  ) {
+    expectEqual(String(redirect.permanent), 'false', `Temporary hidden-content redirect ${source}`)
+  }
 }
 
 if (HOUSE_LAND_ENABLED) {
-  for (const staleRedirect of ['/house-and-land-packages/', '/house-and-land-packages/:slug/']) {
+  for (const staleRedirect of ['/house-and-land-packages/', '/house-and-land-packages/:path*']) {
     const redirect = getRedirect(staleRedirect)
     if (redirect?.destination === '/') {
       fail(`House & Land enabled but ${staleRedirect} redirects to home`)
@@ -162,7 +206,25 @@ if (HOUSE_LAND_ENABLED) {
       fail(`${packageItem.slug} contains Product or Offer schema`)
     }
   }
+} else {
+  for (const rewrite of vercelConfig.rewrites) {
+    if (rewrite.source.startsWith('/house-and-land-packages')) {
+      fail(`House & Land hidden but rewrite remains for ${rewrite.source}`)
+    }
+  }
 }
+
+if (vercelConfig.rewrites.some((rewrite) => rewrite.source === '/(.*)' && rewrite.destination === '/index.html')) {
+  fail('Catch-all SPA rewrite creates indexable soft 404 responses')
+}
+
+expectIncludes(publicSitemap, '<loc>https://www.decentdevelopment.com.au/services/</loc>', 'public sitemap services route')
+expectIncludes(distSitemap, '<loc>https://www.decentdevelopment.com.au/services/</loc>', 'dist sitemap services route')
+expectIncludes(llms, '[Services](https://www.decentdevelopment.com.au/services/)', 'llms services route')
+expectIncludes(headerSource, "['Services', '/services/']", 'Header services link')
+expectIncludes(footerSource, "['Services', '/services/']", 'Footer services link')
+expectIncludes(notFoundHtml, '<meta name="robots" content="noindex, nofollow" />', 'Static 404 robots directive')
+expectNotIncludes(notFoundHtml, 'rel="canonical"', 'Static 404 canonical')
 
 if (!robots.includes(`Sitemap: ${siteUrl}/sitemap.xml`)) {
   fail('robots.txt does not point at canonical sitemap URL')
@@ -171,6 +233,26 @@ if (!robots.includes(`Sitemap: ${siteUrl}/sitemap.xml`)) {
 const titles = new Set()
 const descriptions = new Set()
 const h1s = new Set()
+
+const homeHtml = read('index.html')
+expectIncludes(
+  homeHtml,
+  '<title>Sydney Construction &amp; Property Development | DECENT</title>',
+  'Homepage title targeting',
+)
+expectIncludes(
+  homeHtml,
+  '>Sydney construction and property development</h1>',
+  'Homepage H1 targeting',
+)
+
+const servicesHtml = read('services/index.html')
+expectIncludes(servicesHtml, '"@type": "Service"', 'Services page Service schema')
+expectIncludes(
+  servicesHtml,
+  '>Sydney construction services from planning to handover</h1>',
+  'Services page H1',
+)
 
 for (const canonicalPath of expectedCanonicalPaths) {
   const htmlPath = canonicalPath === '/' ? 'index.html' : `${canonicalPath.replace(/^\/|\/$/g, '')}/index.html`

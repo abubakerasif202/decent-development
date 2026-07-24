@@ -7,6 +7,7 @@ import HouseAndLandPage from './pages/HouseAndLandPage.jsx'
 import HouseLandPackageDetailPage from './pages/HouseLandPackageDetailPage.jsx'
 import ProjectDetailPage from './pages/ProjectDetailPage.jsx'
 import ProjectsPage from './pages/ProjectsPage.jsx'
+import ServicesPage from './pages/ServicesPage.jsx'
 import TeamPage from './pages/TeamPage.jsx'
 import NotFoundPage from './pages/NotFoundPage.jsx'
 import Footer from './components/Footer.jsx'
@@ -89,6 +90,8 @@ function AppRoutes() {
       <Route path="/projects/" element={<ProjectsPage company={company} />} />
       <Route path="/projects/:slug" element={<ProjectDetailPage company={company} />} />
       <Route path="/projects/:slug/" element={<ProjectDetailPage company={company} />} />
+      <Route path="/services" element={<Navigate to="/services/" replace />} />
+      <Route path="/services/" element={<ServicesPage />} />
       {HOUSE_LAND_ENABLED ? (
         <>
           <Route path="/house-and-land-packages" element={<Navigate to="/house-and-land-packages/" replace />} />

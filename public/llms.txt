@@ -4,8 +4,8 @@
 
 ## Main Navigation
 - [Home](https://www.decentdevelopment.com.au/) - Homepage showing core services and licensing information.
+- [Services](https://www.decentdevelopment.com.au/services/) - Residential and commercial construction, property development, project management, renovations, and building consultation.
 - [Completed Projects](https://www.decentdevelopment.com.au/projects/) - Full portfolio of custom duplex, triplex, and residential builds.
-- [House & Land Packages](https://www.decentdevelopment.com.au/house-and-land-packages/) - Ava Residence and Bela Residence package pathways across Sydney and New South Wales.
 - [Meet the Team](https://www.decentdevelopment.com.au/meet-the-team/) - Profiles of our specialist builders and project managers.
 - [Collaboration](https://www.decentdevelopment.com.au/collaboration/) - Collaboration details with trusted delivery partners like Milestone Development.
 - [Contact Us](https://www.decentdevelopment.com.au/contact/) - Project enquiries, office address in North Sydney, and contact details.

@@ -5,7 +5,6 @@ import { houseLandPackages } from '../src/data/houseLandPackages.js'
 import { projects } from '../src/data/projects.js'
 
 const siteUrl = 'https://www.decentdevelopment.com.au'
-const lastmod = new Date().toISOString().split('T')[0]
 
 const company = {
   name: 'DECENT Development',
@@ -187,7 +186,7 @@ const homeSubheadings = [
   },
   {
     title: 'Professional Project Management & Building Consultation',
-    text: 'Our certified builders and project managers oversee every phase of development from planning to handover. We maintain strict compliance, quality control, and transparency, ensuring your project is completed on time and within budget.',
+    text: 'Our certified builders and project managers coordinate each phase of development from planning to handover, with clear reporting, quality control, and transparent communication throughout delivery.',
   },
 ]
 
@@ -221,16 +220,43 @@ const routes = [
   {
     path: '/',
     priority: '1.0',
-    title: 'DECENT Development | Premium Construction & Property Development',
+    title: 'Sydney Construction & Property Development | DECENT',
     description:
-      'Premium construction, property development, renovation, and project management solutions delivered across New South Wales with clarity, precision, and long-term value.',
-    h1: 'Premium construction and property development in New South Wales',
+      'DECENT Development delivers residential and commercial construction, property development and project management across Sydney and New South Wales.',
+    h1: 'Sydney construction and property development',
     body: [
       'DECENT Development delivers residential construction, commercial construction, property development, renovations, extensions, building consultation, and project management.',
       'The company operates from North Sydney and publishes licence, ACN, contact, team, and service information for transparent project enquiries.',
     ],
     subheadings: homeSubheadings,
     schemas: [organizationSchema, websiteSchema, serviceSchema, faqSchema],
+  },
+  {
+    path: '/services/',
+    priority: '0.9',
+    title: 'Sydney Construction Services | DECENT Development',
+    description:
+      'Explore residential and commercial construction, property development, project management, renovations and building consultation across Sydney and NSW.',
+    h1: 'Sydney construction services from planning to handover',
+    body: [
+      'DECENT Development supports residential and commercial projects across Sydney and New South Wales with coordinated construction, property development, consultation, and project management.',
+      'The service model is built around early scope clarity, practical planning, disciplined construction coordination, quality control, and transparent client communication.',
+    ],
+    subheadings: [
+      {
+        title: 'Residential and Commercial Construction',
+        text: 'Residential builds, commercial spaces, renovations, and extensions are planned around site conditions, programme requirements, consultant inputs, trade coordination, and the agreed construction scope.',
+      },
+      {
+        title: 'Property Development and Project Management',
+        text: 'Development and project management support covers feasibility thinking, delivery planning, procurement coordination, reporting, programme oversight, and construction execution.',
+      },
+      {
+        title: 'Building Consultation',
+        text: 'Building consultation provides practical guidance on buildability, planning pathways, project risk, documentation requirements, and construction sequencing before major commitments are made.',
+      },
+    ],
+    schemas: [organizationSchema, breadcrumb('/services/', 'Services'), serviceSchema],
   },
   {
     path: '/projects/',
@@ -545,6 +571,19 @@ function escapeScriptJson(value) {
 
 function staticBody(route) {
   const paragraphs = route.body.map((copy) => `<p>${escapeHtml(copy)}</p>`).join('')
+  const navigation = [
+    ['Home', '/'],
+    ['Services', '/services/'],
+    ['Projects', '/projects/'],
+    ['Partners', '/collaboration/'],
+    ['Meet the Team', '/meet-the-team/'],
+    ['Contact', '/contact/'],
+  ]
+    .map(
+      ([label, href]) =>
+        `<a href="${href}" style="color:#fffaf2;text-decoration:none;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em">${escapeHtml(label)}</a>`,
+    )
+    .join('')
 
   let subheadingsHtml = ''
   if (route.subheadings) {
@@ -556,13 +595,16 @@ function staticBody(route) {
       .join('')
   }
 
-  return `<main aria-label="${escapeHtml(route.h1)}" style="background:#121212;color:#fffaf2;font-family:ui-sans-serif,system-ui,Segoe UI,Arial,sans-serif;min-height:100vh;padding:6rem 1.25rem 4rem"><section style="max-width:760px;margin:0 auto"><p style="color:#c5a059;text-transform:uppercase;letter-spacing:.18em;font-size:.75rem;font-weight:700">DECENT Development</p><h1 style="font-family:Georgia,Cambria,Times New Roman,serif;font-size:clamp(2.5rem,8vw,5rem);line-height:.95;margin:1rem 0 1.5rem">${escapeHtml(route.h1)}</h1><div style="display:grid;gap:1rem;color:#c9c3b8;font-size:1rem;line-height:1.8">${paragraphs}${subheadingsHtml}</div><p style="margin-top:2rem;color:#c5a059;font-size:.875rem">Licence ${company.licence} &middot; ACN ${company.acn}</p></section></main>`
+  return `<main aria-label="${escapeHtml(route.h1)}" style="background:#121212;color:#fffaf2;font-family:ui-sans-serif,system-ui,Segoe UI,Arial,sans-serif;min-height:100vh;padding:2rem 1.25rem 4rem"><nav aria-label="Primary navigation" style="max-width:960px;margin:0 auto 5rem;display:flex;flex-wrap:wrap;gap:1rem 1.5rem;border-bottom:1px solid rgba(197,160,89,.28);padding-bottom:1.25rem">${navigation}</nav><section style="max-width:760px;margin:0 auto"><p style="color:#c5a059;text-transform:uppercase;letter-spacing:.18em;font-size:.75rem;font-weight:700">DECENT Development</p><h1 style="font-family:Georgia,Cambria,Times New Roman,serif;font-size:clamp(2.5rem,8vw,5rem);line-height:.95;margin:1rem 0 1.5rem">${escapeHtml(route.h1)}</h1><div style="display:grid;gap:1rem;color:#c9c3b8;font-size:1rem;line-height:1.8">${paragraphs}${subheadingsHtml}</div><p style="margin-top:2rem;color:#c5a059;font-size:.875rem">Licence ${company.licence} &middot; ACN ${company.acn}</p><p style="margin-top:1rem"><a href="/contact/" style="color:#fffaf2;text-decoration:underline;text-decoration-color:#c5a059;text-underline-offset:.3rem">Discuss a construction or development project</a></p></section></main>`
 }
 
 function applyHead(baseHtml, route) {
   const canonical = `${siteUrl}${route.path}`
   const schemaTags = route.schemas
-    .map((schema) => `<script type="application/ld+json">${escapeScriptJson(schema)}</script>`)
+    .map(
+      (schema) =>
+        `<script type="application/ld+json" data-schema-route="true">${escapeScriptJson(schema)}</script>`,
+    )
     .join('\n    ')
 
   return baseHtml
@@ -588,12 +630,20 @@ function applyHead(baseHtml, route) {
       `<meta property="og:url" content="${canonical}" />`,
     )
     .replace(
+      /<meta property="og:image:alt" content="[^"]*" \/>/,
+      `<meta property="og:image:alt" content="${escapeHtml(route.socialImageAlt ?? `${route.h1} by DECENT Development`)}" />`,
+    )
+    .replace(
       /<meta name="twitter:title" content="[^"]*" \/>/,
       `<meta name="twitter:title" content="${escapeHtml(route.title)}" />`,
     )
     .replace(
       /<meta\s+name="twitter:description"\s+content="[^"]*"\s*\/>/,
       `<meta name="twitter:description" content="${escapeHtml(route.description)}" />`,
+    )
+    .replace(
+      /<meta name="twitter:image:alt" content="[^"]*" \/>/,
+      `<meta name="twitter:image:alt" content="${escapeHtml(route.socialImageAlt ?? `${route.h1} by DECENT Development`)}" />`,
     )
     .replace(
       /<script type="application\/ld\+json">[\s\S]*?<\/script>/,
@@ -619,7 +669,6 @@ ${routes
   .map(
     (route) => `  <url>
     <loc>${siteUrl}${route.path}</loc>
-    <lastmod>${lastmod}</lastmod>
     <priority>${route.priority}</priority>
   </url>`,
   )

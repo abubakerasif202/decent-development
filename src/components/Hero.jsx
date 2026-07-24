@@ -49,19 +49,22 @@ export default function Hero({ company }) {
         <div className="max-w-3xl">
           <motion.h1
             id="hero-title"
-            className="font-display text-6xl font-normal uppercase leading-[0.95] text-gold sm:text-7xl lg:text-8xl"
+            className="font-display text-5xl font-normal uppercase leading-[0.95] text-gold sm:text-7xl lg:text-8xl"
             initial={reducedMotion ? false : 'hidden'}
             animate={reducedMotion ? undefined : 'visible'}
             variants={heroTitleVariants}
           >
             <motion.span className="block" variants={heroTitleLineVariants}>
-              Building
+              Sydney{' '}
             </motion.span>
             <motion.span className="block" variants={heroTitleLineVariants}>
-              Better
+              Construction{' '}
             </motion.span>
             <motion.span className="block" variants={heroTitleLineVariants}>
-              Futures
+              &amp; Property{' '}
+            </motion.span>
+            <motion.span className="block" variants={heroTitleLineVariants}>
+              Development
             </motion.span>
           </motion.h1>
           <motion.div

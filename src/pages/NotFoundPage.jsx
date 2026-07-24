@@ -8,6 +8,7 @@ export default function NotFoundPage() {
     title: 'Page Not Found | DECENT Development',
     description: 'The requested page could not be found.',
     path,
+    robots: 'noindex, nofollow',
   })
 
   return (

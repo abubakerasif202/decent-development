@@ -18,31 +18,37 @@ const proofTiles = [
 
 const services = [
   {
+    id: 'residential-construction',
     title: 'Residential Construction',
     copy: 'New homes and residential builds managed with disciplined scheduling, site coordination, and an unwavering focus on quality.',
     icon: Home,
   },
   {
+    id: 'commercial-construction',
     title: 'Commercial Construction',
     copy: 'Commercial spaces delivered with practical staging, clear stakeholder communication, and reliable trade management.',
     icon: Building2,
   },
   {
+    id: 'property-development',
     title: 'Property Development',
     copy: 'Development support from early feasibility thinking through delivery planning and construction execution.',
     icon: Landmark,
   },
   {
+    id: 'project-management',
     title: 'Project Management',
     copy: 'Specialist project management that keeps scope, time, budget, and reporting aligned from start to finish.',
     icon: ClipboardCheck,
   },
   {
+    id: 'renovations-extensions',
     title: 'Renovations & Extensions',
     copy: 'Careful upgrades and extensions that respect existing structures while enhancing liveability and value.',
     icon: Hammer,
   },
   {
+    id: 'building-consultation',
     title: 'Building Consultation',
     copy: 'Straightforward guidance on buildability, planning pathways, project risk, and construction sequencing.',
     icon: Wrench,
@@ -113,9 +119,10 @@ export default function Services() {
         </motion.div>
 
         <div className="grid gap-4 sm:grid-cols-2 lg:w-3/5 xl:grid-cols-3">
-          {services.map(({ title, copy, icon: Icon }, index) => (
+          {services.map(({ id, title, copy, icon: Icon }, index) => (
             <motion.article
               key={title}
+              id={id}
               className="group flex min-h-52 flex-col items-center justify-center border border-brand-border bg-brand-surface p-6 text-center hover:border-brand-gold hover:shadow-[0_10px_30px_rgba(201,162,39,0.08)] rounded-xl transition-all duration-300"
               initial={reducedMotion ? false : { opacity: 0, y: 22 }}
               whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}

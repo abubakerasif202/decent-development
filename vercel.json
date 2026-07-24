@@ -1,4 +1,5 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
   "redirects": [
     {
       "source": "/about",
@@ -7,7 +8,7 @@
     },
     {
       "source": "/services",
-      "destination": "/#services",
+      "destination": "/services/",
       "permanent": true
     },
     {
@@ -42,13 +43,28 @@
     },
     {
       "source": "/house-and-land-packages",
-      "destination": "/house-and-land-packages/",
-      "permanent": true
+      "destination": "/",
+      "permanent": false
     },
     {
-      "source": "/house-and-land-packages/:slug",
-      "destination": "/house-and-land-packages/:slug/",
-      "permanent": true
+      "source": "/house-and-land-packages/",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/house-and-land-packages/:path*",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/assets/house-land",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/assets/house-land/:path*",
+      "destination": "/",
+      "permanent": false
     },
     {
       "source": "/projects/:slug",
@@ -58,12 +74,16 @@
   ],
   "rewrites": [
     {
-      "source": "/house-and-land-packages/",
-      "destination": "/house-and-land-packages/index.html"
+      "source": "/services/",
+      "destination": "/services/index.html"
     },
     {
-      "source": "/house-and-land-packages/:slug/",
-      "destination": "/house-and-land-packages/:slug/index.html"
+      "source": "/projects/",
+      "destination": "/projects/index.html"
+    },
+    {
+      "source": "/projects/:slug/",
+      "destination": "/projects/:slug/index.html"
     },
     {
       "source": "/meet-the-team/",
@@ -76,10 +96,6 @@
     {
       "source": "/collaboration/",
       "destination": "/collaboration/index.html"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
     }
   ],
   "headers": [

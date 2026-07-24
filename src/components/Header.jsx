@@ -7,7 +7,7 @@ import { HOUSE_LAND_ENABLED } from '../config/featureFlags.js'
 const navItems = [
   ['Home', '/'],
   ['About', '/#about'],
-  ['Services', '/#services'],
+  ['Services', '/services/'],
   ['House & Land', '/house-and-land-packages/'],
   ['Projects', '/projects/'],
   ['Partners', '/collaboration/'],

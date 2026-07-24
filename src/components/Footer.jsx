@@ -11,9 +11,9 @@ const quickLinks = [
 
 const serviceLinks = [
   ['About', '/#about'],
-  ['Services', '/#services'],
+  ['Services', '/services/'],
   ['House & Land Packages', '/house-and-land-packages/'],
-  ['Project Management', '/#services'],
+  ['Project Management', '/services/#project-management'],
 ]
 
 function BrandMark({ company, logo }) {
