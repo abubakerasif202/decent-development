@@ -213,7 +213,7 @@ export default function HouseLandPackageDetailPage() {
                 fetchPriority="high"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-brand-charcoal/45 via-transparent to-transparent" aria-hidden="true" />
-              <div className="absolute bottom-4 left-4 right-4 rounded-2xl border border-white/40 bg-white/95 px-4 py-3 text-[11px] font-bold uppercase tracking-[0.16em] text-brand-charcoal shadow-sm backdrop-blur sm:bottom-5 sm:left-5 sm:right-auto">Reference package imagery</div>
+              <div className="absolute bottom-4 left-4 right-4 rounded-2xl border border-white/40 bg-white/95 px-4 py-3 text-[11px] font-bold uppercase tracking-[0.16em] text-brand-charcoal shadow-sm backdrop-blur sm:bottom-5 sm:left-5 sm:right-auto">Illustrative package imagery</div>
             </div>
           </motion.div>
         </div>
