@@ -151,8 +151,10 @@ const expectedRedirects = {
         '/house-and-land-packages': '/',
         '/house-and-land-packages/': '/',
         '/house-and-land-packages/:path*': '/',
+        '/house-and-land-packages/:path*/': '/',
         '/assets/house-land': '/',
         '/assets/house-land/:path*': '/',
+        '/assets/house-land/:path*/': '/',
       }),
 }
 
