@@ -23,7 +23,7 @@ import usePageMeta from '../hooks/usePageMeta.js'
 const siteUrl = 'https://www.decentdevelopment.com.au'
 
 const pageDescription =
-  'Explore Ava Residence and Bela Residence house and land package opportunities with DECENT Development across Sydney and New South Wales. Enquire about single-storey and double-storey residential packages.'
+  'Explore Ava Residence and Bela Residence duplex house and land packages in Sydney and NSW with DECENT Development. Turnkey single-storey and double-storey residential packages.'
 
 const processSteps = [
   ['Package enquiry', 'Share the package you prefer, your land details if available, timing, budget direction, and decision priorities.'],
@@ -52,7 +52,7 @@ const faqs = [
   },
   {
     question: 'What areas do you service?',
-    answer: 'DECENT Development works across Sydney and New South Wales from its North Sydney office.',
+    answer: 'DECENT Development services Greater Sydney (including South West Sydney growth corridors) and New South Wales from its North Sydney office.',
   },
   {
     question: 'How do I start?',
@@ -195,7 +195,7 @@ function HeroVisual() {
       whileHover={reducedMotion ? undefined : { y: -6, rotateY: -2 }}
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
     >
-      <div className="relative overflow-hidden rounded-[1.55rem]">
+      <div className="relative overflow-hidden rounded-[1.5rem]">
         <img
           src={ava.image}
           alt={ava.gallery[0].alt}
@@ -276,14 +276,26 @@ export default function HouseAndLandPage() {
       '@context': 'https://schema.org',
       '@type': 'WebPage',
       '@id': `${siteUrl}/house-and-land-packages/#webpage`,
-      name: 'House & Land Packages',
+      name: 'Duplex House & Land Packages Sydney',
       description: pageDescription,
       url: `${siteUrl}/house-and-land-packages/`,
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.answer,
+        },
+      })),
     },
   ]
 
   usePageMeta({
-    title: 'House & Land Packages | DECENT Development',
+    title: 'Duplex House & Land Packages Sydney NSW | DECENT Development',
     description: pageDescription,
     path: '/house-and-land-packages/',
     schemas,

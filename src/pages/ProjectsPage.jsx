@@ -101,9 +101,9 @@ export default function ProjectsPage() {
   ]
 
   usePageMeta({
-    title: 'Completed Projects | Decent Development Sydney',
+    title: 'Completed Duplex & Triplex Projects Sydney | DECENT Development',
     description:
-      'Explore completed duplex, triplex and residential development projects by Decent Development across Auburn, Rouse Hill, Canley Vale, Canley Heights and Regents Park.',
+      'Explore completed duplex, triplex and residential property development projects by DECENT Development across Auburn, Rouse Hill, Canley Vale, Canley Heights and Regents Park.',
     path: '/projects/',
     schemas: projectsSchemas,
   })

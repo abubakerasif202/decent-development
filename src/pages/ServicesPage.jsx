@@ -100,15 +100,45 @@ export default function ServicesPage() {
         },
       })),
     },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'How long does a duplex development project take from planning to completion in NSW?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'A typical Sydney duplex development takes 12–18 months in total: 1–2 months for feasibility & initial design, 2–4 months for CDC approval (or 4–8 months for DA), 8–12 months for construction, and 1–2 months for final subdivision and strata titles.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'What are the requirements for building a duplex under NSW Housing SEPP?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Under the NSW Low and Mid-Rise Housing reforms and Housing SEPP, dual occupancies generally require a minimum lot size (typically 400m²–600m² depending on local council LEP), minimum frontage width (usually 12m–15m), and adherence to height, setback, and landscaped area requirements.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Why choose a specialized project manager for residential property development?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'A specialized property development project manager mitigates financial risk, manages council DA/CDC approvals, coordinates architects and trades, ensures quality compliance under NSW licence 476988C, and keeps site delivery on schedule and within budget.',
+          },
+        },
+      ],
+    },
   ]
 
   usePageMeta({
-    title: 'Sydney Construction Services | DECENT Development',
+    title: 'Sydney Duplex Builders & Project Management Services | DECENT',
     description:
-      'Explore residential and commercial construction, property development, project management, renovations and building consultation across Sydney and NSW.',
+      'Specialized duplex, triplex & residential construction services, property development management, and council planning consultation across Sydney and NSW.',
     path: '/services/',
     schemas,
-    socialImageAlt: 'Sydney construction services from planning to handover by DECENT Development',
+    socialImageAlt: 'Sydney duplex construction and project management services by DECENT Development',
   })
 
   return (

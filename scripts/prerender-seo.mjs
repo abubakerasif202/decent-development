@@ -174,6 +174,14 @@ const projectListSchema = {
       spatialCoverage: {
         '@type': 'Place',
         name: project.address,
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: project.address,
+          addressLocality: project.suburb,
+          addressRegion: 'NSW',
+          postalCode: project.postcode,
+          addressCountry: 'AU',
+        },
       },
     },
   })),
@@ -220,9 +228,9 @@ const routes = [
   {
     path: '/',
     priority: '1.0',
-    title: 'Sydney Construction & Property Development | DECENT',
+    title: 'Sydney Duplex Builder & Property Development | DECENT Development',
     description:
-      'DECENT Development delivers residential and commercial construction, property development and project management across Sydney and New South Wales.',
+      'DECENT Development delivers residential construction, duplex & triplex property development, and project management across Sydney and New South Wales. Licence 476988C.',
     h1: 'Sydney construction and property development',
     body: [
       'DECENT Development delivers residential construction, commercial construction, property development, renovations, extensions, building consultation, and project management.',
@@ -234,9 +242,9 @@ const routes = [
   {
     path: '/services/',
     priority: '0.9',
-    title: 'Sydney Construction Services | DECENT Development',
+    title: 'Sydney Duplex Builders & Project Management Services | DECENT',
     description:
-      'Explore residential and commercial construction, property development, project management, renovations and building consultation across Sydney and NSW.',
+      'Specialized duplex, triplex & residential construction services, property development management, and council planning consultation across Sydney and NSW.',
     h1: 'Sydney construction services from planning to handover',
     body: [
       'DECENT Development supports residential and commercial projects across Sydney and New South Wales with coordinated construction, property development, consultation, and project management.',
@@ -261,9 +269,9 @@ const routes = [
   {
     path: '/projects/',
     priority: '0.9',
-    title: 'Completed Projects | Decent Development Sydney',
+    title: 'Completed Duplex & Triplex Projects Sydney | DECENT Development',
     description:
-      'Explore completed duplex, triplex and residential development projects by Decent Development across Auburn, Rouse Hill, Canley Vale, Canley Heights and Regents Park.',
+      'Explore completed duplex, triplex and residential property development projects by DECENT Development across Auburn, Rouse Hill, Canley Vale, Canley Heights and Regents Park.',
     h1: 'Recently completed projects',
     body: [
       'Decent Development is a Sydney property developer presenting completed residential projects across Auburn, Regents Park, Rouse Hill, Canley Vale and Canley Heights.',
@@ -476,6 +484,14 @@ for (const project of projects) {
         spatialCoverage: {
           '@type': 'Place',
           name: project.address,
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: project.address,
+            addressLocality: project.suburb,
+            addressRegion: 'NSW',
+            postalCode: project.postcode,
+            addressCountry: 'AU',
+          },
         },
       },
     ],

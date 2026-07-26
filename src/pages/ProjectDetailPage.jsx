@@ -46,7 +46,14 @@ export default function ProjectDetailPage() {
           'spatialCoverage': {
             '@type': 'Place',
             'name': project.address,
-            'address': project.address,
+            'address': {
+              '@type': 'PostalAddress',
+              'streetAddress': project.address,
+              'addressLocality': project.suburb,
+              'addressRegion': 'NSW',
+              'postalCode': project.postcode,
+              'addressCountry': 'AU',
+            },
           },
           'provider': {
             '@type': 'Organization',

@@ -239,7 +239,7 @@ const h1s = new Set()
 const homeHtml = read('index.html')
 expectIncludes(
   homeHtml,
-  '<title>Sydney Construction &amp; Property Development | DECENT</title>',
+  '<title>Sydney Duplex Builder &amp; Property Development | DECENT Development</title>',
   'Homepage title targeting',
 )
 expectIncludes(
