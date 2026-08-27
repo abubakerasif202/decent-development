@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { motion, useReducedMotion } from 'framer-motion'
 import { HOUSE_LAND_ENABLED } from '../config/featureFlags.js'
+import ABDeveloperCredit from './ABDeveloperCredit.jsx'
 
 const quickLinks = [
   ['Home', '/'],
@@ -117,7 +118,9 @@ export default function Footer({ company, logo }) {
         </div>
       </div>
 
-      <div className="pb-8 text-center text-[10px] uppercase text-neutral-500">
+      <ABDeveloperCredit />
+
+      <div className="pb-8 pt-5 text-center text-[10px] uppercase text-neutral-500">
         &copy; {year} {company.name}. All rights reserved.
       </div>
     </motion.footer>
