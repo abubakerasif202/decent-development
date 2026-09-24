@@ -16,7 +16,6 @@ import IntroAnimation from './components/IntroAnimation.jsx'
 import { HOUSE_LAND_ENABLED } from './config/featureFlags.js'
 import logo from './assets/Logo.png'
 import logoDark from './assets/Logo-dark.png'
-import teamHussain from './assets/team-hussain.webp'
 import teamMohammad from './assets/team-mohammad.webp'
 import teamNemat from './assets/team-nemat.webp'
 
@@ -36,7 +35,6 @@ const assets = {
   team: {
     nemat: teamNemat,
     mohammad: teamMohammad,
-    hussain: teamHussain,
   },
 }
 
