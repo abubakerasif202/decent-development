@@ -61,7 +61,7 @@ export default function TeamPage({ company, teamAssets }) {
           },
           {
             '@type': 'Person',
-            'name': 'Hussain Jafari',
+            'name': 'Francis An',
             'jobTitle': 'Home & Land Package Specialist',
             'description': 'Focuses on streamlined home-and-land package outcomes with a polished finish.',
             'worksFor': {
