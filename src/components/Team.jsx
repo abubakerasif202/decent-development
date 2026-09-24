@@ -17,11 +17,11 @@ const members = [
     initials: 'MM',
   },
   {
-    name: 'Hussain Jafari',
+    name: 'Francis An',
     role: 'Home & Land Package Specialist',
     bio: 'Focuses on streamlined home-and-land package outcomes with a polished finish.',
-    assetKey: 'hussain',
-    initials: 'HJ',
+    assetKey: 'francis',
+    initials: 'FA',
   },
 ]
 
