@@ -17,6 +17,7 @@ import { HOUSE_LAND_ENABLED } from './config/featureFlags.js'
 import logo from './assets/Logo.png'
 import logoDark from './assets/Logo-dark.png'
 import teamMohammad from './assets/team-mohammad.webp'
+import teamFrancis from './assets/team-francis-an.webp'
 import teamNemat from './assets/team-nemat.webp'
 
 const company = {
@@ -35,6 +36,7 @@ const assets = {
   team: {
     nemat: teamNemat,
     mohammad: teamMohammad,
+    francis: teamFrancis,
   },
 }
 
